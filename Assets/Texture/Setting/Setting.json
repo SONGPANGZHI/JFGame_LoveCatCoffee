@@ -1,0 +1,26 @@
+{"skeleton":{"images":"images/"},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"Setting_Bg","bone":"root","attachment":"Setting_Bg"},
+	{"name":"Setting_Button","bone":"root","attachment":"Setting_Button"},
+	{"name":"Setting_Sound","bone":"root","attachment":"Setting_Sound"},
+	{"name":"Setting_Vibrate","bone":"root","attachment":"Setting_Vibrate"},
+	{"name":"Setting_Music","bone":"root","attachment":"Setting_Music"},
+	{"name":"Setting_Confirm","bone":"root","attachment":"Setting_Confirm"},
+	{"name":"Setting_Frame","bone":"root","attachment":"Setting_Frame"},
+	{"name":"Setting_Xian","bone":"root","attachment":"Setting_Xian"}
+],
+"skins":{
+	"default":{
+		"Setting_Xian":{"Setting_Xian":{"x":320.5,"y":562,"width":161,"height":8}},
+		"Setting_Frame":{"Setting_Frame":{"x":707,"y":980,"width":84,"height":82}},
+		"Setting_Confirm":{"Setting_Confirm":{"x":708,"y":1107,"width":68,"height":58}},
+		"Setting_Music":{"Setting_Music":{"x":359.5,"y":1234,"width":79,"height":78}},
+		"Setting_Vibrate":{"Setting_Vibrate":{"x":369.5,"y":970,"width":99,"height":88}},
+		"Setting_Sound":{"Setting_Sound":{"x":366,"y":1111,"width":82,"height":76}},
+		"Setting_Button":{"Setting_Button":{"x":542,"y":734.5,"width":384,"height":159}},
+		"Setting_Bg":{"Setting_Bg":{"x":547,"y":997,"width":728,"height":980}}
+	}
+},
+"animations":{"animation":{}}
+}

@@ -1,0 +1,16 @@
+{"skeleton":{"images":"images/"},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"Rewards_Light","bone":"root","attachment":"Rewards_Light"},
+	{"name":"Rewards_Frame","bone":"root","attachment":"Rewards_Frame"},
+	{"name":"Rewards_Title","bone":"root","attachment":"Rewards_Title"}
+],
+"skins":{
+	"default":{
+		"Rewards_Title":{"Rewards_Title":{"x":550,"y":1420,"width":670,"height":136}},
+		"Rewards_Frame":{"Rewards_Frame":{"x":539,"y":1087.5,"width":242,"height":241}},
+		"Rewards_Light":{"Rewards_Light":{"x":528,"y":1102,"width":924,"height":976}}
+	}
+},
+"animations":{"animation":{}}
+}

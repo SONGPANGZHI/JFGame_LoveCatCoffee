@@ -1,0 +1,16 @@
+{"skeleton":{"images":"images/"},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"loading","bone":"root","attachment":"loading"},
+	{"name":"loading_1","bone":"root","attachment":"loading_1"},
+	{"name":"loading_2","bone":"root","attachment":"loading_2"}
+],
+"skins":{
+	"default":{
+		"loading_2":{"loading_2":{"x":541.5,"y":399,"width":811,"height":50}},
+		"loading_1":{"loading_1":{"x":541.5,"y":398.5,"width":827,"height":63}},
+		"loading":{"loading":{"x":541,"y":961,"width":1082,"height":1922}}
+	}
+},
+"animations":{"animation":{}}
+}

@@ -1,0 +1,93 @@
+{
+	"Test": [{
+		"name": "Xiaowu_Zhaopai",
+		"x": 182,
+		"y": 312.5,
+		"width": 136,
+		"height": 185
+
+	}, {
+		"name": "Xiaowu_Weilan",
+		"x": 541,
+		"y": 364.5,
+		"width": 1082,
+		"height": 247
+
+	}, {
+		"name": "Xiaowu_Hua",
+		"x": 541,
+		"y": 483.5,
+		"width": 1082,
+		"height": 291
+
+	}, {
+		"name": "Xiaowu_Dianpai",
+		"x": 73.5,
+		"y": 933.5,
+		"width": 147,
+		"height": 233
+
+	}, {
+		"name": "Xiaowu_Taijie",
+		"x": 422,
+		"y": 288,
+		"width": 246,
+		"height": 230
+
+	}, {
+		"name": "Xiaowu_Moguwu",
+		"x": 541,
+		"y": 1078.5,
+		"width": 1082,
+		"height": 1687
+
+	}, {
+		"name": "Xiaowu_3_Qiangzhi",
+		"x": 546.5,
+		"y": 1730.5,
+		"width": 849,
+		"height": 383
+
+	}, {
+		"name": "Xiaowu_3_Diban",
+		"x": 547,
+		"y": 1582.5,
+		"width": 846,
+		"height": 435
+
+	}, {
+		"name": "Xiaowu_2_Qiangzhi",
+		"x": 546.5,
+		"y": 1448.5,
+		"width": 849,
+		"height": 717
+
+	}, {
+		"name": "Xiaowu_2_Diban",
+		"x": 547,
+		"y": 1133.5,
+		"width": 846,
+		"height": 435
+
+	}, {
+		"name": "Xiaowu_Xiangzi",
+		"x": 566.5,
+		"y": 702.5,
+		"width": 713,
+		"height": 305
+
+	}, {
+		"name": "Xiaowu_1_Qiangzhi",
+		"x": 547,
+		"y": 959,
+		"width": 848,
+		"height": 784
+
+	}, {
+		"name": "Xiaowu_1_Diban",
+		"x": 546.5,
+		"y": 549,
+		"width": 847,
+		"height": 554
+	}]
+}

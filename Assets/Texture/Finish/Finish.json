@@ -1,0 +1,26 @@
+{"skeleton":{"images":"images/"},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"Finish_Bg","bone":"root","attachment":"Finish_Bg"},
+	{"name":"Finish_Hm","bone":"root","attachment":"Finish_Hm"},
+	{"name":"Finish_ProgressBar_Bg","bone":"root","attachment":"Finish_ProgressBar_Bg"},
+	{"name":"Finish_ProgressBar","bone":"root","attachment":"Finish_ProgressBar"},
+	{"name":"Finish_Gift_1","bone":"root","attachment":"Finish_Gift_1"},
+	{"name":"Finish_Gift_2","bone":"root","attachment":"Finish_Gift_2"},
+	{"name":"Finish_Gift_3","bone":"root","attachment":"Finish_Gift_3"},
+	{"name":"Finiah_ChatFrame","bone":"root","attachment":"Finiah_ChatFrame"}
+],
+"skins":{
+	"default":{
+		"Finiah_ChatFrame":{"Finiah_ChatFrame":{"x":697,"y":1286.5,"width":170,"height":79}},
+		"Finish_Gift_3":{"Finish_Gift_3":{"x":812.5,"y":1052,"width":65,"height":66}},
+		"Finish_Gift_2":{"Finish_Gift_2":{"x":690.5,"y":1052,"width":65,"height":66}},
+		"Finish_Gift_1":{"Finish_Gift_1":{"x":575.5,"y":1052,"width":65,"height":66}},
+		"Finish_ProgressBar":{"Finish_ProgressBar":{"x":542.5,"y":984,"width":633,"height":46}},
+		"Finish_ProgressBar_Bg":{"Finish_ProgressBar_Bg":{"x":542.5,"y":985,"width":643,"height":56}},
+		"Finish_Hm":{"Finish_Hm":{"x":459,"y":667.5,"width":88,"height":77}},
+		"Finish_Bg":{"Finish_Bg":{"x":541,"y":1009.5,"width":728,"height":1005}}
+	}
+},
+"animations":{"animation":{}}
+}

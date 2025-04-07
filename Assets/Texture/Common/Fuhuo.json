@@ -1,0 +1,26 @@
+{"skeleton":{"images":"images/"},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"Common_Bg","bone":"root","attachment":"Common_Bg"},
+	{"name":"Common_Frame_1","bone":"root","attachment":"Common_Frame_1"},
+	{"name":"Common_Cancel","bone":"root","attachment":"Common_Cancel"},
+	{"name":"Common_Button_1","bone":"root","attachment":"Common_Button_1"},
+	{"name":"Common_Share","bone":"root","attachment":"Common_Share"},
+	{"name":"Common_Button_2","bone":"root","attachment":"Common_Button_2"},
+	{"name":"Common_Daoju_1","bone":"root","attachment":"Common_Daoju_1"},
+	{"name":"Common_AD","bone":"root","attachment":"Common_AD"}
+],
+"skins":{
+	"default":{
+		"Common_AD":{"Common_AD":{"x":460,"y":667,"width":88,"height":70}},
+		"Common_Daoju_1":{"Common_Daoju_1":{"x":544,"y":1188.5,"width":162,"height":155}},
+		"Common_Button_2":{"Common_Button_2":{"x":543.5,"y":832,"width":381,"height":164}},
+		"Common_Share":{"Common_Share":{"x":460.5,"y":662,"width":63,"height":68}},
+		"Common_Button_1":{"Common_Button_1":{"x":543.5,"y":655,"width":381,"height":164}},
+		"Common_Cancel":{"Common_Cancel":{"x":861.5,"y":1422,"width":93,"height":94}},
+		"Common_Frame_1":{"Common_Frame_1":{"x":538.5,"y":1195.5,"width":245,"height":245}},
+		"Common_Bg":{"Common_Bg":{"x":541,"y":996.5,"width":728,"height":979}}
+	}
+},
+"animations":{"animation":{}}
+}

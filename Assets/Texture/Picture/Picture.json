@@ -1,0 +1,44 @@
+{"skeleton":{"images":"images/"},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"Picture_Bg","bone":"root","attachment":"Picture_Bg"},
+	{"name":"Picture_Button_3","bone":"root","attachment":"Picture_Button_3"},
+	{"name":"Picture_Button_2","bone":"root","attachment":"Picture_Button_2"},
+	{"name":"Picture_Button_1","bone":"root","attachment":"Picture_Button_1"},
+	{"name":"Picture_Shu","bone":"root","attachment":"Picture_Shu"},
+	{"name":"Picture_Line","bone":"root","attachment":"Picture_Line"},
+	{"name":"Picture_ItemBox","bone":"root","attachment":"Picture_ItemBox"},
+	{"name":"Picture_Button_Bg","bone":"root","attachment":"Picture_Button_Bg"},
+	{"name":"Picture_Button_4","bone":"root","attachment":"Picture_Button_4"},
+	{"name":"Picture_Slider","bone":"root","attachment":"Picture_Slider"},
+	{"name":"Picture_Slider_Icon","bone":"root","attachment":"Picture_Slider_Icon"},
+	{"name":"Picture_Frame","bone":"root","attachment":"Picture_Frame"},
+	{"name":"Picture_Tp_1","bone":"root","attachment":"Picture_Tp_1"},
+	{"name":"Picture_Tp_3","bone":"root","attachment":"Picture_Tp_3"},
+	{"name":"Picture_Unfold","bone":"root","attachment":"Picture_Unfold"},
+	{"name":"Picture_Tp_2","bone":"root","attachment":"Picture_Tp_2"},
+	{"name":"Picture_Shrink","bone":"root","attachment":"Picture_Shrink"}
+],
+"skins":{
+	"default":{
+		"Picture_Shrink":{"Picture_Shrink":{"x":877,"y":862,"width":62,"height":38}},
+		"Picture_Tp_2":{"Picture_Tp_2":{"x":525,"y":1013,"width":878,"height":256}},
+		"Picture_Unfold":{"Picture_Unfold":{"x":877,"y":1208,"width":62,"height":38}},
+		"Picture_Tp_3":{"Picture_Tp_3":{"x":526,"y":1356,"width":878,"height":256}},
+		"Picture_Tp_1":{"Picture_Tp_1":{"x":526,"y":1356,"width":878,"height":256}},
+		"Picture_Frame":{"Picture_Frame":{"x":526,"y":1331,"width":894,"height":318}},
+		"Picture_Slider_Icon":{"Picture_Slider_Icon":{"x":993,"y":1428,"width":38,"height":82}},
+		"Picture_Slider":{"Picture_Slider":{"x":994.5,"y":819,"width":21,"height":1290}},
+		"Picture_Button_4":{"Picture_Button_4":{"x":412.5,"y":1553,"width":197,"height":96}},
+		"Picture_Button_Bg":{"Picture_Button_Bg":{"x":512.5,"y":1553.5,"width":467,"height":69}},
+		"Picture_ItemBox":{"Picture_ItemBox":{"x":200,"y":666.5,"width":212,"height":273}},
+		"Picture_Line":{"Picture_Line":{"x":526,"y":538.5,"width":902,"height":721}},
+		"Picture_Shu":{"Picture_Shu":{"x":525,"y":846.5,"width":1050,"height":1561}},
+		"Picture_Button_1":{"Picture_Button_1":{"x":320.5,"y":1649,"width":141,"height":134}},
+		"Picture_Button_2":{"Picture_Button_2":{"x":749.5,"y":1649,"width":141,"height":134}},
+		"Picture_Button_3":{"Picture_Button_3":{"x":533.5,"y":1681,"width":141,"height":134}},
+		"Picture_Bg":{"Picture_Bg":{"x":541,"y":961,"width":1082,"height":1922}}
+	}
+},
+"animations":{"animation":{}}
+}

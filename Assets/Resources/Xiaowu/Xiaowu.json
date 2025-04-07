@@ -1,0 +1,36 @@
+{"skeleton":{"images":"images/"},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"Xiaowu_1_Diban","bone":"root","attachment":"Xiaowu_1_Diban"},
+	{"name":"Xiaowu_1_Qiangzhi","bone":"root","attachment":"Xiaowu_1_Qiangzhi"},
+	{"name":"Xiaowu_Xiangzi","bone":"root","attachment":"Xiaowu_Xiangzi"},
+	{"name":"Xiaowu_2_Diban","bone":"root","attachment":"Xiaowu_2_Diban"},
+	{"name":"Xiaowu_2_Qiangzhi","bone":"root","attachment":"Xiaowu_2_Qiangzhi"},
+	{"name":"Xiaowu_3_Diban","bone":"root","attachment":"Xiaowu_3_Diban"},
+	{"name":"Xiaowu_3_Qiangzhi","bone":"root","attachment":"Xiaowu_3_Qiangzhi"},
+	{"name":"Xiaowu_Moguwu","bone":"root","attachment":"Xiaowu_Moguwu"},
+	{"name":"Xiaowu_Taijie","bone":"root","attachment":"Xiaowu_Taijie"},
+	{"name":"Xiaowu_Dianpai","bone":"root","attachment":"Xiaowu_Dianpai"},
+	{"name":"Xiaowu_Hua","bone":"root","attachment":"Xiaowu_Hua"},
+	{"name":"Xiaowu_Weilan","bone":"root","attachment":"Xiaowu_Weilan"},
+	{"name":"Xiaowu_Zhaopai","bone":"root","attachment":"Xiaowu_Zhaopai"}
+],
+"skins":{
+	"default":{
+		"Xiaowu_Zhaopai":{"Xiaowu_Zhaopai":{"x":182,"y":312.5,"width":136,"height":185}},
+		"Xiaowu_Weilan":{"Xiaowu_Weilan":{"x":541,"y":364.5,"width":1082,"height":247}},
+		"Xiaowu_Hua":{"Xiaowu_Hua":{"x":541,"y":483.5,"width":1082,"height":291}},
+		"Xiaowu_Dianpai":{"Xiaowu_Dianpai":{"x":73.5,"y":933.5,"width":147,"height":233}},
+		"Xiaowu_Taijie":{"Xiaowu_Taijie":{"x":422,"y":288,"width":246,"height":230}},
+		"Xiaowu_Moguwu":{"Xiaowu_Moguwu":{"x":541,"y":1078.5,"width":1082,"height":1687}},
+		"Xiaowu_3_Qiangzhi":{"Xiaowu_3_Qiangzhi":{"x":546.5,"y":1730.5,"width":849,"height":383}},
+		"Xiaowu_3_Diban":{"Xiaowu_3_Diban":{"x":547,"y":1582.5,"width":846,"height":435}},
+		"Xiaowu_2_Qiangzhi":{"Xiaowu_2_Qiangzhi":{"x":546.5,"y":1448.5,"width":849,"height":717}},
+		"Xiaowu_2_Diban":{"Xiaowu_2_Diban":{"x":547,"y":1133.5,"width":846,"height":435}},
+		"Xiaowu_Xiangzi":{"Xiaowu_Xiangzi":{"x":566.5,"y":702.5,"width":713,"height":305}},
+		"Xiaowu_1_Qiangzhi":{"Xiaowu_1_Qiangzhi":{"x":547,"y":959,"width":848,"height":784}},
+		"Xiaowu_1_Diban":{"Xiaowu_1_Diban":{"x":546.5,"y":549,"width":847,"height":554}}
+	}
+},
+"animations":{"animation":{}}
+}

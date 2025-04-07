@@ -1,0 +1,26 @@
+{"skeleton":{"images":"images/"},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"DressUp_Frame","bone":"root","attachment":"DressUp_Frame"},
+	{"name":"DressUp_Click","bone":"root","attachment":"DressUp_Click"},
+	{"name":"DressUp_Reset","bone":"root","attachment":"DressUp_Reset"},
+	{"name":"DressUp_Confirm","bone":"root","attachment":"DressUp_Confirm"},
+	{"name":"DressUp_Button","bone":"root","attachment":"DressUp_Button"},
+	{"name":"DressUp_ItemBox","bone":"root","attachment":"DressUp_ItemBox"},
+	{"name":"DressUp_Select","bone":"root","attachment":"DressUp_Select"},
+	{"name":"DressUp_Return","bone":"root","attachment":"DressUp_Return"}
+],
+"skins":{
+	"default":{
+		"DressUp_Return":{"DressUp_Return":{"x":95.9999999999998,"y":1821,"width":102,"height":108}},
+		"DressUp_Select":{"DressUp_Select":{"x":551.5,"y":267.5,"width":311,"height":249}},
+		"DressUp_ItemBox":{"DressUp_ItemBox":{"x":551.5,"y":267,"width":295,"height":234}},
+		"DressUp_Button":{"DressUp_Button":{"x":555.5,"y":80.5,"width":251,"height":121}},
+		"DressUp_Confirm":{"DressUp_Confirm":{"x":913.5,"y":1609,"width":249,"height":122}},
+		"DressUp_Reset":{"DressUp_Reset":{"x":913.5,"y":1772,"width":249,"height":122}},
+		"DressUp_Click":{"DressUp_Click":{"x":555,"y":685.5,"width":150,"height":171}},
+		"DressUp_Frame":{"DressUp_Frame":{"x":541,"y":216,"width":1082,"height":432}}
+	}
+},
+"animations":{"animation":{}}
+}

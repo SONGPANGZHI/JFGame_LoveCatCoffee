@@ -1,0 +1,32 @@
+{"skeleton":{"images":"images/"},
+"bones":[{"name":"root"}],
+"slots":[
+	{"name":"Main_Picture","bone":"root","attachment":"Main_Picture"},
+	{"name":"Main_DressUp","bone":"root","attachment":"Main_DressUp"},
+	{"name":"Main_Button_2","bone":"root","attachment":"Main_Button_2"},
+	{"name":"Main_Button_1","bone":"root","attachment":"Main_Button_1"},
+	{"name":"Main_Set","bone":"root","attachment":"Main_Set"},
+	{"name":"Main_Bg","bone":"root","attachment":"Main_Bg"},
+	{"name":"Main_SignIn","bone":"root","attachment":"Main_SignIn"},
+	{"name":"Main_Feedback","bone":"root","attachment":"Main_Feedback"},
+	{"name":"Main_RankingList","bone":"root","attachment":"Main_RankingList"},
+	{"name":"Main_Game","bone":"root","attachment":"Main_Game"},
+	{"name":"Main_Hint","bone":"root","attachment":"Main_Hint"}
+],
+"skins":{
+	"default":{
+		"Main_Hint":{"Main_Hint":{"x":153.5,"y":1627.5,"width":43,"height":43}},
+		"Main_Game":{"Main_Game":{"x":974,"y":1393.5,"width":138,"height":115}},
+		"Main_RankingList":{"Main_RankingList":{"x":973.5,"y":1578.5,"width":145,"height":129}},
+		"Main_Feedback":{"Main_Feedback":{"x":117,"y":1385.5,"width":136,"height":127}},
+		"Main_SignIn":{"Main_SignIn":{"x":106,"y":1576,"width":126,"height":130}},
+		"Main_Bg":{"Main_Bg":{"x":108,"y":1467.5,"width":178,"height":409}},
+		"Main_Set":{"Main_Set":{"x":122,"y":1786.5,"width":122,"height":133}},
+		"Main_Button_1":{"Main_Button_1":{"x":535,"y":320.5,"width":396,"height":169}},
+		"Main_Button_2":{"Main_Button_2":{"x":534.5,"y":145.5,"width":395,"height":169}},
+		"Main_DressUp":{"Main_DressUp":{"x":953.5,"y":142,"width":151,"height":152}},
+		"Main_Picture":{"Main_Picture":{"x":117.5,"y":142,"width":151,"height":152}}
+	}
+},
+"animations":{"animation":{}}
+}
