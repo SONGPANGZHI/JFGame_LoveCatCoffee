@@ -36,3 +36,24 @@ public enum AwardvideoType
     Heart,          //复活
 }
 
+public enum BlockPropType
+{ 
+    None,               //
+    Ball,               //球
+    BlueBrush,          //蓝色刷子
+    Brush,              //刷子
+    CannedFish,         //鱼罐头
+    Cat,                //猫
+    CatTreas,           //猫条
+    Cheese,             //奶酪
+    Gamepad,            //手柄
+    Gift,               //礼物
+    HoneyPot,           //蜂蜜
+    IceCream,           //甜筒
+    Jelly,              //果冻
+    Milk,               //牛奶
+    Sanitizer,          //洗手液
+    StrawberryMilk,     //草莓牛奶
+    Sugar,              //糖
+    Woolen              //毛线
+}
