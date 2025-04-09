@@ -9,6 +9,7 @@ public class CatGeneration : MonoBehaviour
     public List<CatData> catDatas_Temp;
     //刚开始生成3只猫咪
 
+    private Transform posTran;
     private void Start()
     {
         AddCatList();
@@ -24,7 +25,6 @@ public class CatGeneration : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             GameObject GO = Instantiate(catDatas_Temp[i].gameObject, catPos[i]);
-            RemoveUsedLocation(catPos[i]);
             GO.GetComponent<CatData>().InitCatData();
         }
     }
@@ -33,9 +33,8 @@ public class CatGeneration : MonoBehaviour
     public void CreateCat()
     {
         int randonCat = Random.Range(0, catDatas_Temp.Count);
+        CheckUsedLocation(catPos[3]);
         GameObject GO = Instantiate(catDatas_Temp[randonCat].gameObject, catPos[3]);
-        RemoveUsedLocation(catPos[3]);
-
         GO.GetComponent<CatData>().InitCatData();
         GameManager.Instance.CheckCatRequirements(GO.GetComponent<CatData>());
         catPos.Shuffle();
@@ -50,15 +49,14 @@ public class CatGeneration : MonoBehaviour
         }
     }
 
-    //移除已用位置
-    public void RemoveUsedLocation(Transform trans)
+    //查看位置
+    public void CheckUsedLocation(Transform trans)
     {
-        catPos.Remove(trans);
-    }
-
-    //添加新的位置
-    public void AddNewLocation(Transform trans)
-    {
-        catPos.Add(trans);
+        while (trans.childCount > 0)
+        {
+            catPos.Shuffle();
+            trans = catPos[0];
+        }
+        posTran = trans;
     }
 }
