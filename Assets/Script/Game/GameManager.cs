@@ -13,13 +13,15 @@ public class GameManager : MonoBehaviour
     [Header("猫咪种类")]
     public List<CatData> catDataAll;
 
+    [Header("猫咪需求道具")]
+    public List<CatData> catNeedBlock;
 
 
     [Header("放置区数据")]
     public List<BlockPropData> dropZoneData;
     public Transform dropZoneTran;
 
-
+    private CatData catData_Temp;
 
     private void Awake()
     {
@@ -38,14 +40,15 @@ public class GameManager : MonoBehaviour
         GO.transform.localScale = new Vector3(0.7F, 0.7F, 0.7F);
         GO.SetActive(true);
         dropZoneData.Add(GO.GetComponent<BlockPropData>());
+
+        CheckForMatches();
+        if (CatNeedBlock(_blockProp))
+            catData_Temp.UpdateTMP();
+
         if (dropZoneData.Count >= 7)
         {
             //游戏结束逻辑
             Debug.LogError("游戏结束---");
-        }
-        else
-        {
-            CheckForMatches();
         }
 
     }
@@ -101,185 +104,36 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    #region  猫咪需求
+
+    //猫咪需求
+    public bool CatNeedBlock(BlockPropData _catBlock)
+    {
+        for (int i = 0; i < catNeedBlock.Count; i++)
+        {
+            if (_catBlock.blockPropType == catNeedBlock[i].needBlock.blockPropType)
+            {
+                catData_Temp = catNeedBlock[i];
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //检查猫咪需求
+    public void CheckCatRequirements(CatData catData)
+    {
+        for (int i = 0; i < dropZoneData.Count; i++)
+        {
+            if (dropZoneData[i].blockPropType == catData.needBlock.blockPropType)
+            {
+                catData.UpdateTMP();
+            }
+        }
+    }
+
+    #endregion
+
 }
 
 
-//[Header("猫咪设置")]
-//public GameObject[] catPrefabs; // 必须包含10个不同猫咪预制体
-//public Transform catsContainer;
-
-//[Header("图形设置")]
-//public GameObject[] shapePrefabs; // 必须包含10个不同图形预制体
-//public Transform shapesContainer;
-
-//[Header("放置区域")]
-//public RectTransform dropZone; // 需要添加Collider2D
-
-//private Dictionary<int, GameObject> catMap = new Dictionary<int, GameObject>(); // 图形类型到猫咪的映射
-//private Dictionary<int, List<GameObject>> placedShapes = new Dictionary<int, List<GameObject>>();
-
-//    void Start()
-//    {
-//        InitializeGame();
-//    }
-
-//    void InitializeGame()
-//    {
-//        // 确保数量匹配
-//        if (catPrefabs.Length != 10 || shapePrefabs.Length != 10)
-//        {
-//            Debug.LogError("需要正好10个猫咪和10个图形预制体！");
-//            return;
-//        }
-
-//        // 生成所有猫咪并建立映射
-//        for (int i = 0; i < 10; i++)
-//        {
-//            GameObject cat = Instantiate(catPrefabs[i], catsContainer);
-//            cat.SetActive(false);
-//            catMap.Add(i, cat);
-//        }
-
-//        GenerateShapes();
-//    }
-
-//    void GenerateShapes()
-//    {
-//        // 生成30个图形（每个类型3个）
-//        List<int> shapeIndexes = new List<int>();
-//        for (int i = 0; i < 10; i++)
-//        {
-//            for (int j = 0; j < 3; j++)
-//            {
-//                shapeIndexes.Add(i);
-//            }
-//        }
-
-//        // 随机打乱顺序
-//        Shuffle(shapeIndexes);
-
-//        // 实例化图形
-//        foreach (int index in shapeIndexes)
-//        {
-//            GameObject shape = Instantiate(shapePrefabs[index], shapesContainer);
-//            shape.AddComponent<DraggableShape>().Initialize(this, index);
-//        }
-
-//        // 随机显示一个猫咪
-//        ShowRandomCat();
-//    }
-
-//    void ShowRandomCat()
-//    {
-//        // 隐藏所有猫咪
-//        foreach (var cat in catMap.Values)
-//        {
-//            cat.SetActive(false);
-//        }
-
-//        // 随机显示一个
-//        int randomIndex = Random.Range(0, 10);
-//        catMap[randomIndex].SetActive(true);
-//    }
-
-//    // 被DraggableShape调用的方法
-//    public void OnShapeDropped(int shapeType, GameObject shape)
-//    {
-//        if (!RectTransformUtility.RectangleContainsScreenPoint(dropZone, shape.transform.position))
-//        {
-//            return;
-//        }
-
-//        // 添加到已放置列表
-//        if (!placedShapes.ContainsKey(shapeType))
-//        {
-//            placedShapes[shapeType] = new List<GameObject>();
-//        }
-//        placedShapes[shapeType].Add(shape);
-
-//        // 检查是否满足条件
-//        if (placedShapes[shapeType].Count == 3)
-//        {
-//            HandleMatch(shapeType);
-//        }
-//    }
-
-//    void HandleMatch(int matchedType)
-//    {
-//        // 隐藏对应的猫咪
-//        if (catMap.ContainsKey(matchedType))
-//        {
-//            Destroy(catMap[matchedType]);
-//            catMap.Remove(matchedType);
-//        }
-
-//        // 销毁对应的图形
-//        foreach (var shape in placedShapes[matchedType])
-//        {
-//            Destroy(shape);
-//        }
-//        placedShapes.Remove(matchedType);
-
-//        // 生成新猫咪
-//        ShowRandomCat();
-//    }
-
-//    void Shuffle<T>(List<T> list)
-//    {
-//        for (int i = 0; i < list.Count; i++)
-//        {
-//            T temp = list[i];
-//            int randomIndex = Random.Range(i, list.Count);
-//            list[i] = list[randomIndex];
-//            list[randomIndex] = temp;
-//        }
-//    }
-//}
-//// 拖拽组件
-//public class DraggableShape : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
-//{
-//    private GameManager gameManager;
-//    private int shapeType;
-//    private CanvasGroup canvasGroup;
-//    private RectTransform rectTransform;
-//    private Vector2 startPosition;
-
-//    public void Initialize(GameManager manager, int type)
-//    {
-//        gameManager = manager;
-//        shapeType = type;
-//        rectTransform = GetComponent<RectTransform>();
-//        canvasGroup = gameObject.AddComponent<CanvasGroup>();
-//    }
-
-//    public void OnBeginDrag(PointerEventData eventData)
-//    {
-//        startPosition = rectTransform.anchoredPosition;
-//        canvasGroup.blocksRaycasts = false;
-//    }
-
-//    public void OnDrag(PointerEventData eventData)
-//    {
-//        rectTransform.anchoredPosition += eventData.delta / GetComponentInParent<Canvas>().scaleFactor;
-//    }
-
-//    public void OnEndDrag(PointerEventData eventData)
-//    {
-//        canvasGroup.blocksRaycasts = true;
-//        gameManager.OnShapeDropped(shapeType, gameObject);
-
-//        // 如果未被接收则返回原位
-//        if (!IsInDropZone())
-//        {
-//            rectTransform.anchoredPosition = startPosition;
-//        }
-//    }
-
-//    private bool IsInDropZone()
-//    {
-//        return RectTransformUtility.RectangleContainsScreenPoint(
-//            gameManager.dropZone,
-//            rectTransform.position
-//        );
-//    }
-//}

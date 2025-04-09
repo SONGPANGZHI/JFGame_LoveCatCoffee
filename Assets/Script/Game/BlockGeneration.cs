@@ -9,26 +9,11 @@ public class BlockGeneration : MonoBehaviour
     public Transform bottom_Tran;
     public float horizontalSpacing = 2f;
 
-    private List<GameObject> blocks = new List<GameObject>();
-
-    private void Start()
-    {
-        InitAddBlockObject();
-    }
-
-    //初始化 添加数组
-    public void InitAddBlockObject()
-    {
-        for (int i = 0; i < GameManager.Instance.blockPropAll.Count; i++)
-        {
-            blocks.Add(GameManager.Instance.blockPropAll[i].gameObject);
-        }
-    }
-
+    
     //初始化 方块
     public void InitBlock()
     {
-        blocks.Shuffle();
+        GameManager.Instance.blockPropAll.Shuffle();
         TopBolck();
         MiddleBlock();
         BottomBolck();
@@ -39,7 +24,7 @@ public class BlockGeneration : MonoBehaviour
     {
         for (int i = 0; i < 6; i++)
         {
-            GameObject GO = Instantiate(blocks[i],top_Tran);
+            GameObject GO = Instantiate(GameManager.Instance.blockPropAll[i].prefab,top_Tran);
             GO.GetComponent<RectTransform>().anchoredPosition = new Vector2(i* horizontalSpacing,0);
         }
     }
@@ -49,7 +34,7 @@ public class BlockGeneration : MonoBehaviour
     {
         for (int i = 6; i < 12; i++)
         {
-            GameObject GO = Instantiate(blocks[i], middle_Tran);
+            GameObject GO = Instantiate(GameManager.Instance.blockPropAll[i].prefab, middle_Tran);
             GO.GetComponent<RectTransform>().anchoredPosition = new Vector2((i-6) * horizontalSpacing, 0);
         }
     }
@@ -57,10 +42,10 @@ public class BlockGeneration : MonoBehaviour
     //底部
     public void BottomBolck()
     {
-        blocks.Shuffle();
+        GameManager.Instance.blockPropAll.Shuffle();
         for (int i = 0; i < 6; i++)
         {
-            GameObject GO = Instantiate(blocks[i], bottom_Tran);
+            GameObject GO = Instantiate(GameManager.Instance.blockPropAll[i].prefab, bottom_Tran);
             GO.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * horizontalSpacing, 0);
         }
     }

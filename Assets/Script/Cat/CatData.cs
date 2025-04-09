@@ -16,7 +16,7 @@ public class CatData : MonoBehaviour
 
     public GameObject finish_IMG;
 
-    private int text_NUM = 3;
+    public int text_NUM = 3;
 
     public static Action CreateCatAction;
 
@@ -26,7 +26,8 @@ public class CatData : MonoBehaviour
         finish_IMG.SetActive(false);
         RandomBlockProp();
         propIcon_IMG.sprite = needBlock.GetComponent<Image>().sprite;
-        RandomDialogueDirection();
+        GameManager.Instance.catNeedBlock.Add(this);
+        //RandomDialogueDirection();
     }
 
     //随机道具
@@ -63,6 +64,7 @@ public class CatData : MonoBehaviour
         {
             finish_IMG.SetActive(true);
             needNum_TMP.gameObject.SetActive(true);
+            GameManager.Instance.catNeedBlock.Remove(this);
             StartCoroutine(DestroyObject());
         }
         else
@@ -74,7 +76,7 @@ public class CatData : MonoBehaviour
     //销毁该目标
     IEnumerator DestroyObject()
     {
-        yield return new WaitForSeconds(0.5F);
+        yield return new WaitForSeconds(1F);
         Destroy(gameObject);
         CreateCatAction?.Invoke();
     }
