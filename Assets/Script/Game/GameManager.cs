@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviour
     }
 
 
-
     #region  放置区以及三消逻辑
 
     //生成放置区物品

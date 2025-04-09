@@ -11,6 +11,13 @@ public class PropData
     public string propDesc;
 }
 
+public enum BlockHierarchy
+{ 
+    TopBlock,
+    MiddleBlock,
+    BottomBlock,
+}
+
 //道具类型
 public enum PropType
 {
