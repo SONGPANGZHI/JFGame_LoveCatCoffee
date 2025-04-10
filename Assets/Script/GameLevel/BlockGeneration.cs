@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class BlockGeneration : MonoBehaviour
 {
-    public static BlockGeneration instance;
-
     public Transform top_Tran;
     public Transform middle_Tran;
     public Transform bottom_Tran;
@@ -18,15 +16,12 @@ public class BlockGeneration : MonoBehaviour
     private List<BlockPropData> bottomBlockList = new List<BlockPropData>();
 
     private List<BlockPropData> blockAll_Temp = new List<BlockPropData>();
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-    }
-
+   
     private void Start()
     {
         //AddTempBlock();
+        BlockPropData.JudgeScendRowUnlockActon += CheckMiddleData;
+        BlockPropData.JudgeThirdRowUnlockActon += CheckTopData;
     }
 
     //初始化 方块
@@ -163,13 +158,6 @@ public class BlockGeneration : MonoBehaviour
     public void AllocatingArrays()
     {
         GameLevelManagement.Instance.blockPropAll.Shuffle();
-        //if (GameManager.Instance.blockPropAll.Count > 18)
-        //{
-        //    GameManager.Instance.blockPropAll.Remove(GameManager.Instance.blockPropAll[0]);
-        //    GameManager.Instance.blockPropAll.Remove(GameManager.Instance.blockPropAll[1]);
-        //}
-        //GameManager.Instance.blockPropAll.Add(GameManager.Instance.blockPropAll[RandomID()]);
-        //GameManager.Instance.blockPropAll.Add(GameManager.Instance.blockPropAll[RandomID()]);
 
         for (int i = 0; i < GameLevelManagement.Instance.blockPropAll.Count; i++)
         {

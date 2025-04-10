@@ -356,6 +356,9 @@ MonoBehaviour:
   catNeedBlock: []
   dropZoneData: []
   dropZoneTran: {fileID: 3648123397574050045}
+  conveyorSpeed: 6
+  keepTime: 0
+  speedSurvivalTime: 30
 --- !u!1 &1841216625
 GameObject:
   m_ObjectHideFlags: 0

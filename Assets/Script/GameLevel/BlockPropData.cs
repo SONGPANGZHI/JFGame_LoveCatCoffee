@@ -39,6 +39,7 @@ public class BlockPropData : MonoBehaviour
     //点击方块
     public void BlockClick()
     {
+        Debug.LogError("点击--");
         gameObject.SetActive(false);
         GameLevelManagement.Instance.CreateDropZoneObject(this);
         JudgeBlockClick();
@@ -50,10 +51,12 @@ public class BlockPropData : MonoBehaviour
         switch (blockHierarchy)
         {
             case BlockHierarchy.BottomBlock:
-                BlockGeneration.instance.CheckMiddleData();
+                JudgeScendRowUnlockActon?.Invoke();
+                //BlockGeneration.instance.CheckMiddleData();
                 break;
             case BlockHierarchy.MiddleBlock:
-                BlockGeneration.instance.CheckTopData();
+                JudgeThirdRowUnlockActon?.Invoke();
+                //BlockGeneration.instance.CheckTopData();
                 break;
         }
     }

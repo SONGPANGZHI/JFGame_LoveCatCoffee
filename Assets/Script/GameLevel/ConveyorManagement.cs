@@ -64,19 +64,18 @@ public class ConveyorManagement : MonoBehaviour
             CheckLoopRight();
         }
 
-       
     }
 
     public void ConveyorMove()
     {
         foreach (Transform image in leftConveyor_IMG)
         {
-            image.Translate(Vector3.left * scrollSpeed * 10 * Time.deltaTime);
+            image.Translate(Vector3.left * GameLevelManagement.Instance.conveyorSpeed * 10 * Time.deltaTime);
         }
 
         foreach (Transform item in rightConveyor_IMG)
         {
-            item.Translate(Vector3.right * scrollSpeed * 10 * Time.deltaTime);
+            item.Translate(Vector3.right * GameLevelManagement.Instance.conveyorSpeed * 10 * Time.deltaTime);
         }
     }
 

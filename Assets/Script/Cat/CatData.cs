@@ -35,6 +35,7 @@ public class CatData : MonoBehaviour
         RandomBlockProp();
         propIcon_IMG.sprite = needBlock.GetComponent<Image>().sprite;
         GameLevelManagement.Instance.catNeedBlock.Add(this);
+        needNum_TMP.gameObject.SetActive(false);
         //RandomDialogueDirection();
     }
 
@@ -71,14 +72,14 @@ public class CatData : MonoBehaviour
         if (text_NUM == 0)
         {
             finish_IMG.SetActive(true);
-            needNum_TMP.gameObject.SetActive(true);
+            //needNum_TMP.gameObject.SetActive(true);
             GameLevelManagement.Instance.catNeedBlock.Remove(this);
             StartCoroutine(DestroyObject());
         }
-        else
-        {
-            needNum_TMP.text = text_NUM.ToString();
-        }
+        //else
+        //{
+        //    needNum_TMP.text = text_NUM.ToString();
+        //}
     }
 
     //销毁该目标

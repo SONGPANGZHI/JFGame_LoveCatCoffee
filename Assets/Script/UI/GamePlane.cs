@@ -66,8 +66,9 @@ public class GamePlane : MonoBehaviour
         if (PlayerPrefs.HasKey("ClearPropKey"))
         {
             //道具使用
-            Debug.Log("道具使用---");
+            GameLevelManagement.Instance.ClearPropUse();
             clear_BTN.interactable = false;
+            Debug.Log("道具使用---");
         }
         else
         {
@@ -96,8 +97,9 @@ public class GamePlane : MonoBehaviour
         if (PlayerPrefs.HasKey("SpeedPropKey"))
         {
             //道具使用
-            Debug.Log("道具使用---");
+            GameLevelManagement.Instance.SpeedPropUse();
             speed_BTN.interactable = false;
+            Debug.Log("道具使用---");
         }
         else
         {

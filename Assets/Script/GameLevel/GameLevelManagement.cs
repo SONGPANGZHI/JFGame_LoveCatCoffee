@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameLevelManagement : MonoBehaviour
@@ -23,6 +24,13 @@ public class GameLevelManagement : MonoBehaviour
     private CatData catData_Temp;
     private GameObject currentOBJ;
 
+    [Header("传送带 速度")]
+    public int conveyorSpeed = 6;
+    public bool keepTime = false;
+    private float timer;
+
+    [Header("道具速度 存在时长 默认30s")]
+    public float speedSurvivalTime = 30F ;
 
     private void Awake()
     {
@@ -50,21 +58,10 @@ public class GameLevelManagement : MonoBehaviour
         dropZoneData.Add(currentOBJ.GetComponent<BlockPropData>());
 
         CheckForMatches();
-        if (CatNeedBlock(_blockProp))
-            catData_Temp.UpdateTMP();
 
-        if (dropZoneData.Count >= 7)
-        {
-            //游戏结束逻辑
-            Debug.LogError("游戏结束---");
-        }
-
-    }
-
-    //判断 是否 是特殊方块
-    public void JudgeSpecialBlock(BlockPropData _blockProp)
-    {
-
+        //if (CatNeedBlock(_blockProp))
+        //    catData_Temp.UpdateTMP();
+        Invoke("DetermineDropAreaFull",0.5f);
     }
 
     //检查物品类型
@@ -88,6 +85,7 @@ public class GameLevelManagement : MonoBehaviour
 
         // 重新排列剩余卡牌
         RearrangeCards();
+        //DetermineDropAreaFull();
     }
 
     //重新排列
@@ -105,6 +103,18 @@ public class GameLevelManagement : MonoBehaviour
         }
     }
 
+    //检查游戏状态
+    public void DetermineDropAreaFull()
+    {
+        if (dropZoneData.Count >= 7)
+        {
+            //游戏结束逻辑
+            GameManager.Instance.pauseGame = false;
+            UIManagement.Instance.OpenGameOverPlane();
+            Debug.LogError("游戏结束---");
+        }
+    }
+
     //1秒后销毁
     IEnumerator DestroyObject(List<BlockPropData> matchedCards)
     {
@@ -114,6 +124,8 @@ public class GameLevelManagement : MonoBehaviour
             dropZoneData.Remove(card);
             Destroy(card.gameObject);
         }
+
+        DetermineDropAreaFull();
     }
 
     #endregion
@@ -148,4 +160,44 @@ public class GameLevelManagement : MonoBehaviour
 
     #endregion
 
+    #region 道具的使用
+
+    //清除道具
+    public void ClearPropUse()
+    {
+        dropZoneData.Clear();
+        for (int i = 0; i < dropZoneTran.childCount; i++)
+        {
+            Destroy(dropZoneTran.GetChild(i).gameObject);
+        }
+    }
+
+    //加速道具使用
+    public void SpeedPropUse()
+    {
+        conveyorSpeed = 15;
+        keepTime = true;
+        SpeedTimer();
+    }
+
+    //计时器
+    public void SpeedTimer()
+    {
+        if (keepTime)
+        {
+            timer += Time.deltaTime;
+            if (timer >= speedSurvivalTime)
+            {
+                keepTime = false;
+                conveyorSpeed = 6;
+                timer = 0;
+            }
+        }
+    }
+    #endregion
+
+    void Update()
+    {
+        SpeedTimer();
+    }
 }

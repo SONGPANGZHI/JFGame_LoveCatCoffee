@@ -36,7 +36,7 @@ public class CatGeneration : MonoBehaviour
         CheckUsedLocation(catPos[3]);
         GameObject GO = Instantiate(catDatas_Temp[randonCat].gameObject, catPos[3]);
         GO.GetComponent<CatData>().InitCatData();
-        GameLevelManagement.Instance.CheckCatRequirements(GO.GetComponent<CatData>());
+        //GameLevelManagement.Instance.CheckCatRequirements(GO.GetComponent<CatData>());
         catPos.Shuffle();
     }
 
