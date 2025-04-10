@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,21 +21,28 @@ public class CatData : MonoBehaviour
 
     public static Action CreateCatAction;
 
+    private List<BlockPropData> catNeedBlock_Temp = new List<BlockPropData>();
+
+    private void Start()
+    {
+        //AddCatNeedBlock();
+    }
+
     //初始化
     public void InitCatData()
     {
         finish_IMG.SetActive(false);
         RandomBlockProp();
         propIcon_IMG.sprite = needBlock.GetComponent<Image>().sprite;
-        GameManager.Instance.catNeedBlock.Add(this);
+        GameLevelManagement.Instance.catNeedBlock.Add(this);
         //RandomDialogueDirection();
     }
 
     //随机道具
     public BlockPropData RandomBlockProp()
     {
-        int propID = UnityEngine.Random.Range(0,GameManager.Instance.blockPropAll.Count);
-        needBlock = GameManager.Instance.blockPropAll[propID];
+        int propID = UnityEngine.Random.Range(0, GameLevelManagement.Instance.blockPropAll.Count);
+        needBlock = GameLevelManagement.Instance.blockPropAll[propID];
         return needBlock;
     }
 
@@ -64,7 +72,7 @@ public class CatData : MonoBehaviour
         {
             finish_IMG.SetActive(true);
             needNum_TMP.gameObject.SetActive(true);
-            GameManager.Instance.catNeedBlock.Remove(this);
+            GameLevelManagement.Instance.catNeedBlock.Remove(this);
             StartCoroutine(DestroyObject());
         }
         else
@@ -79,5 +87,13 @@ public class CatData : MonoBehaviour
         yield return new WaitForSeconds(1F);
         Destroy(gameObject);
         CreateCatAction?.Invoke();
+    }
+
+    public void AddCatNeedBlock()
+    {
+        for (int i = 0; i < GameLevelManagement.Instance.blockPropAll.Count - 1; i++)
+        {
+            catNeedBlock_Temp.Add(GameLevelManagement.Instance.blockPropAll[i]);
+        }
     }
 }

@@ -36,16 +36,16 @@ public class CatGeneration : MonoBehaviour
         CheckUsedLocation(catPos[3]);
         GameObject GO = Instantiate(catDatas_Temp[randonCat].gameObject, catPos[3]);
         GO.GetComponent<CatData>().InitCatData();
-        GameManager.Instance.CheckCatRequirements(GO.GetComponent<CatData>());
+        GameLevelManagement.Instance.CheckCatRequirements(GO.GetComponent<CatData>());
         catPos.Shuffle();
     }
 
     //添加猫咪数组
     public void AddCatList()
     {
-        for (int i = 0; i < GameManager.Instance.catDataAll.Count; i++)
+        for (int i = 0; i < GameLevelManagement.Instance.catDataAll.Count; i++)
         {
-            catDatas_Temp.Add(GameManager.Instance.catDataAll[i]);
+            catDatas_Temp.Add(GameLevelManagement.Instance.catDataAll[i]);
         }
     }
 

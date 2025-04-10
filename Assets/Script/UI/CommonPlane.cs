@@ -158,6 +158,7 @@ public class CommonPlane : MonoBehaviour
         transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3f).OnComplete(() => 
         {
             this.gameObject.SetActive(false);
+            GameManager.Instance.pauseGame = true;
         });
     }
 

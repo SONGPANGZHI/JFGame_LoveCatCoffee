@@ -17,26 +17,29 @@ public class UIManagement : MonoBehaviour
     [SerializeField]
     private AwardPlane awardPlane;
 
+    [SerializeField]
+    private GameObject mainGame;
+
     public LoadingPlane loadingPlane;
 
-
+    private GameObject mainGameOBJ;
     public string sceneName;
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
-        //else if (this != Instance)
-        //{
-        //    Destroy(gameObject);
-        //}
+        else if (this != Instance)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
     {
-        //OpenMainPlane();
+        OpenMainPlane();
     }
 
     //打开主界面
@@ -44,6 +47,8 @@ public class UIManagement : MonoBehaviour
     {
         mainPlane.gameObject.SetActive(true);
         mainPlane.InitPlane();
+        GameManager.Instance.pauseGame = true;
+        //CloseGame();
     }
 
     //打开游戏界面
@@ -52,6 +57,7 @@ public class UIManagement : MonoBehaviour
         mainPlane.ClosePlane();
         mainPlane.gameObject.SetActive(false);
         gamePlane.gameObject.SetActive(true);
+        //OpenGame();
         gamePlane.GamePlaneInit();
     }
 
@@ -64,12 +70,15 @@ public class UIManagement : MonoBehaviour
     //打开设置界面 
     public void OpenSettingPlane(bool _isGame = false)
     {
+        GameManager.Instance.pauseGame = false;
         settingPlane.gameObject.SetActive(true);
         settingPlane.InitSetPlane(_isGame);
     }
 
+    //打开游戏结束界面
     public void OpenGameOverPlane()
-    { 
+    {
+        GameManager.Instance.pauseGame = false;
         gameOverPlane.gameObject.SetActive(true);
         gameOverPlane.GameOverPlaneInit();
     }
@@ -78,6 +87,7 @@ public class UIManagement : MonoBehaviour
     public void OpenCommonPlane(CommonPlaneType _planeType,PropData propData = null) 
     {
         commonPlane.gameObject.SetActive(true);
+        GameManager.Instance.pauseGame = false;
         switch (_planeType)
         {
             case CommonPlaneType.Resurgence:

@@ -39,7 +39,7 @@ public class GamePlane : MonoBehaviour
     public void GamePlaneInit()
     {
         GamePlaneInitData();
-        buttom_Menu.DOMoveY(143, 0.3f); 
+        buttom_Menu.DOMoveY(143, 0.1f); 
     }
 
 

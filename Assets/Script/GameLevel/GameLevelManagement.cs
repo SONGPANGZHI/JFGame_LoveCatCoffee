@@ -1,44 +1,53 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class GameManager : MonoBehaviour
+public class GameLevelManagement : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameLevelManagement Instance;
 
-    [Header("æ–¹å—é“å…·ç§ç±»")]
+    [Header("·½¿éµÀ¾ßÖÖÀà")]
     public List<BlockPropData> blockPropAll;
-    [Header("çŒ«å’ªç§ç±»")]
+    [Header("Ã¨ßäÖÖÀà")]
     public List<CatData> catDataAll;
 
-    [Header("çŒ«å’ªéœ€æ±‚é“å…·")]
+    [Header("Ã¨ßäĞèÇóµÀ¾ß")]
     public List<CatData> catNeedBlock;
 
 
-    [Header("æ”¾ç½®åŒºæ•°æ®")]
+    [Header("·ÅÖÃÇøÊı¾İ")]
     public List<BlockPropData> dropZoneData;
     public Transform dropZoneTran;
 
     private CatData catData_Temp;
+    private GameObject currentOBJ;
+
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
             Instance = this;
     }
 
+    #region  ·ÅÖÃÇøÒÔ¼°ÈıÏûÂß¼­
 
-    #region  æ”¾ç½®åŒºä»¥åŠä¸‰æ¶ˆé€»è¾‘
-
-    //ç”Ÿæˆæ”¾ç½®åŒºç‰©å“
+    //Éú³É·ÅÖÃÇøÎïÆ·
     public void CreateDropZoneObject(BlockPropData _blockProp)
     {
-        GameObject GO = Instantiate(_blockProp.prefab, dropZoneTran);
-        GO.transform.localScale = new Vector3(0.7F, 0.7F, 0.7F);
-        GO.SetActive(true);
-        dropZoneData.Add(GO.GetComponent<BlockPropData>());
+        if (_blockProp.blockPropType == BlockPropType.Gift)
+        {
+            int randomID = Random.Range(0, blockPropAll.Count);
+            currentOBJ = Instantiate(blockPropAll[randomID].prefab, dropZoneTran);
+        }
+        else
+        {
+            currentOBJ = Instantiate(_blockProp.prefab, dropZoneTran);
+        }
+
+        currentOBJ.transform.localScale = new Vector3(0.7F, 0.7F, 0.7F);
+        currentOBJ.SetActive(true);
+        dropZoneData.Add(currentOBJ.GetComponent<BlockPropData>());
 
         CheckForMatches();
         if (CatNeedBlock(_blockProp))
@@ -46,51 +55,57 @@ public class GameManager : MonoBehaviour
 
         if (dropZoneData.Count >= 7)
         {
-            //æ¸¸æˆç»“æŸé€»è¾‘
-            Debug.LogError("æ¸¸æˆç»“æŸ---");
+            //ÓÎÏ·½áÊøÂß¼­
+            Debug.LogError("ÓÎÏ·½áÊø---");
         }
 
     }
 
-    //æ£€æŸ¥ç‰©å“ç±»å‹
+    //ÅĞ¶Ï ÊÇ·ñ ÊÇÌØÊâ·½¿é
+    public void JudgeSpecialBlock(BlockPropData _blockProp)
+    {
+
+    }
+
+    //¼ì²éÎïÆ·ÀàĞÍ
     public void CheckForMatches()
     {
-        // è·å–æ‰€æœ‰å¡ç‰Œå¹¶æŒ‰ç±»å‹åˆ†ç»„
+        // »ñÈ¡ËùÓĞ¿¨ÅÆ²¢°´ÀàĞÍ·Ö×é
         var cardGroups = dropZoneData.GroupBy(card => card.blockPropType).Where(group => group.Count() >= 3);
 
-        // å¤„ç†åŒ¹é…çš„å¡ç‰Œç»„
+        // ´¦ÀíÆ¥ÅäµÄ¿¨ÅÆ×é
         foreach (var group in cardGroups)
         {
-            // è·å–å‰ä¸‰ä¸ªåŒ¹é…çš„å¡ç‰Œ
+            // »ñÈ¡Ç°Èı¸öÆ¥ÅäµÄ¿¨ÅÆ
             var matchedCards = group.Take(3).ToList();
 
-            // é”€æ¯å¡ç‰Œæˆ–æ‰§è¡Œæ¶ˆé™¤åŠ¨ç”»
+            // Ïú»Ù¿¨ÅÆ»òÖ´ĞĞÏû³ı¶¯»­
             StartCoroutine(DestroyObject(matchedCards));
 
-            // å¯ä»¥åœ¨è¿™é‡Œæ·»åŠ å¾—åˆ†é€»è¾‘ç­‰
-            Debug.Log($"æ¶ˆé™¤äº†3ä¸ª{group.Key}ç±»å‹çš„å¡ç‰Œ");
+            // ¿ÉÒÔÔÚÕâÀïÌí¼ÓµÃ·ÖÂß¼­µÈ
+            Debug.Log($"Ïû³ıÁË3¸ö{group.Key}ÀàĞÍµÄ¿¨ÅÆ");
         }
 
-        // é‡æ–°æ’åˆ—å‰©ä½™å¡ç‰Œ
+        // ÖØĞÂÅÅÁĞÊ£Óà¿¨ÅÆ
         RearrangeCards();
     }
 
-    //é‡æ–°æ’åˆ—
+    //ÖØĞÂÅÅÁĞ
     private void RearrangeCards()
     {
-        // è·å–æ‰€æœ‰å¡ç‰Œå¹¶æŒ‰é¡ºåºæ’åˆ—
+        // »ñÈ¡ËùÓĞ¿¨ÅÆ²¢°´Ë³ĞòÅÅÁĞ
         var cards = dropZoneData
             .OrderBy(card => card.transform.GetSiblingIndex())
             .ToList();
 
-        // é‡æ–°è®¾ç½®é¡ºåº
+        // ÖØĞÂÉèÖÃË³Ğò
         for (int i = 0; i < cards.Count; i++)
         {
             cards[i].transform.SetSiblingIndex(i);
         }
     }
 
-    //1ç§’åé”€æ¯
+    //1ÃëºóÏú»Ù
     IEnumerator DestroyObject(List<BlockPropData> matchedCards)
     {
         yield return new WaitForSeconds(0.3f);
@@ -103,9 +118,9 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region  çŒ«å’ªéœ€æ±‚
+    #region  Ã¨ßäĞèÇó
 
-    //çŒ«å’ªéœ€æ±‚
+    //Ã¨ßäĞèÇó
     public bool CatNeedBlock(BlockPropData _catBlock)
     {
         for (int i = 0; i < catNeedBlock.Count; i++)
@@ -119,7 +134,7 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
-    //æ£€æŸ¥çŒ«å’ªéœ€æ±‚
+    //¼ì²éÃ¨ßäĞèÇó
     public void CheckCatRequirements(CatData catData)
     {
         for (int i = 0; i < dropZoneData.Count; i++)
@@ -134,5 +149,3 @@ public class GameManager : MonoBehaviour
     #endregion
 
 }
-
-

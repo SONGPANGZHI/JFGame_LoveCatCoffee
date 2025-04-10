@@ -47,7 +47,6 @@ public class MainPlane : MonoBehaviour
     public void InitPlane()
     {
         bottom_OBJ.DOMoveY(225,0.3f);
-
         currentLevel_TMP.text = "当前关卡：" + PlayerPrefs.GetInt("CurrentLevelKey");
     }
 
