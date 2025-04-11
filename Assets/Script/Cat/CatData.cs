@@ -74,6 +74,7 @@ public class CatData : MonoBehaviour
             finish_IMG.SetActive(true);
             //needNum_TMP.gameObject.SetActive(true);
             GameLevelManagement.Instance.catNeedBlock.Remove(this);
+
             StartCoroutine(DestroyObject());
         }
         //else
@@ -87,14 +88,16 @@ public class CatData : MonoBehaviour
     {
         yield return new WaitForSeconds(1F);
         Destroy(gameObject);
-        CreateCatAction?.Invoke();
+        GameManager.Instance.currentNumberCats += 1;
+        if(GameManager.Instance.currentNumberCats <= 30)
+            CreateCatAction?.Invoke();
     }
 
-    public void AddCatNeedBlock()
-    {
-        for (int i = 0; i < GameLevelManagement.Instance.blockPropAll.Count - 1; i++)
-        {
-            catNeedBlock_Temp.Add(GameLevelManagement.Instance.blockPropAll[i]);
-        }
-    }
+    //public void AddCatNeedBlock()
+    //{
+    //    for (int i = 0; i < GameLevelManagement.Instance.blockPropAll.Count - 1; i++)
+    //    {
+    //        catNeedBlock_Temp.Add(GameLevelManagement.Instance.blockPropAll[i]);
+    //    }
+    //}
 }

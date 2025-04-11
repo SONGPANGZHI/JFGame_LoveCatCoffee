@@ -76,18 +76,17 @@ public class UIManagement : MonoBehaviour
     }
 
     //打开游戏结束界面
-    public void OpenGameOverPlane()
+    public void OpenGameOverPlane(bool isGameOver = false)
     {
         GameManager.Instance.pauseGame = false;
         gameOverPlane.gameObject.SetActive(true);
-        gameOverPlane.GameOverPlaneInit();
+        gameOverPlane.GameOverPlaneInit(isGameOver);
     }
 
     //打开通用界面
     public void OpenCommonPlane(CommonPlaneType _planeType,PropData propData = null) 
     {
         commonPlane.gameObject.SetActive(true);
-        GameManager.Instance.pauseGame = false;
         switch (_planeType)
         {
             case CommonPlaneType.Resurgence:

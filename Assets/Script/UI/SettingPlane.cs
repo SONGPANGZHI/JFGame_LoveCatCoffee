@@ -67,7 +67,11 @@ public class SettingPlane : MonoBehaviour
     //放弃挑战
     private void GiveUpChallengeClick()
     {
-        ClosePlane();
+        transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3f).OnComplete(() =>
+        {
+            this.gameObject.SetActive(false);
+        });
+
         //需要判断是否 使用过道具
         if (PlayerPrefs.HasKey(propUserKey))
         {

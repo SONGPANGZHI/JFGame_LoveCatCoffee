@@ -38,6 +38,12 @@ public class GameLevelManagement : MonoBehaviour
             Instance = this;
     }
 
+    private void Start()
+    {
+        GameManager.Instance.pauseGame = true;
+        GameManager.Instance.currentNumberCats = 0;
+    }
+
     #region  放置区以及三消逻辑
 
     //生成放置区物品
@@ -59,8 +65,10 @@ public class GameLevelManagement : MonoBehaviour
 
         CheckForMatches();
 
-        //if (CatNeedBlock(_blockProp))
-        //    catData_Temp.UpdateTMP();
+
+        if (CatNeedBlock(_blockProp))
+            catData_Temp.UpdateTMP();
+
         Invoke("DetermineDropAreaFull",0.5f);
     }
 
@@ -178,6 +186,7 @@ public class GameLevelManagement : MonoBehaviour
         conveyorSpeed = 15;
         keepTime = true;
         SpeedTimer();
+        Debug.LogError("开始加速 当前速度 15");
     }
 
     //计时器
@@ -191,6 +200,7 @@ public class GameLevelManagement : MonoBehaviour
                 keepTime = false;
                 conveyorSpeed = 6;
                 timer = 0;
+                Debug.LogError("加速结束 当前速度 6");
             }
         }
     }

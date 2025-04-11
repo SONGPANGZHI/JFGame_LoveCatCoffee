@@ -55,6 +55,8 @@ public class MainPlane : MonoBehaviour
     {
         //加载场景
         UIManagement.Instance.sceneName = "GameLevel";
+        GameManager.Instance.NumberLevelChallenges += 1;
+        PlayerPrefs.SetInt(GameManager.NumberLevelChallengesKey, GameManager.Instance.NumberLevelChallenges);
         UIManagement.Instance.OpenLoadingPlane();
 
     }

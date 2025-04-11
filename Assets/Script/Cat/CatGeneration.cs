@@ -13,7 +13,7 @@ public class CatGeneration : MonoBehaviour
     private void Start()
     {
         AddCatList();
-        CatData.CreateCatAction += CreateCat;
+        CatData.CreateCatAction += DetermineCurrentProgressCat;
 
         CatInit();
     }
@@ -27,6 +27,8 @@ public class CatGeneration : MonoBehaviour
             GameObject GO = Instantiate(catDatas_Temp[i].gameObject, catPos[i]);
             GO.GetComponent<CatData>().InitCatData();
         }
+
+        GameManager.Instance.CatNumChange(3);
     }
 
     //随机生成一只猫咪
@@ -34,9 +36,9 @@ public class CatGeneration : MonoBehaviour
     {
         int randonCat = Random.Range(0, catDatas_Temp.Count);
         CheckUsedLocation(catPos[3]);
-        GameObject GO = Instantiate(catDatas_Temp[randonCat].gameObject, catPos[3]);
+        GameObject GO = Instantiate(catDatas_Temp[randonCat].gameObject, CheckUsedLocation(catPos[3]));
         GO.GetComponent<CatData>().InitCatData();
-        //GameLevelManagement.Instance.CheckCatRequirements(GO.GetComponent<CatData>());
+        GameLevelManagement.Instance.CheckCatRequirements(GO.GetComponent<CatData>());
         catPos.Shuffle();
     }
 
@@ -50,7 +52,7 @@ public class CatGeneration : MonoBehaviour
     }
 
     //查看位置
-    public void CheckUsedLocation(Transform trans)
+    public Transform CheckUsedLocation(Transform trans)
     {
         while (trans.childCount > 0)
         {
@@ -58,5 +60,22 @@ public class CatGeneration : MonoBehaviour
             trans = catPos[0];
         }
         posTran = trans;
+
+        return posTran;
     }
+
+    //判断 当前已生成几只猫
+    public void DetermineCurrentProgressCat()
+    {
+        if (GameManager.Instance.currentNumberCats <= 30)
+        {
+            CreateCat();
+        }
+        else
+        {
+            //游戏结束
+            UIManagement.Instance.OpenGameOverPlane(true);
+        }
+    }
+
 }

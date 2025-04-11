@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class GameOverPlane : MonoBehaviour
@@ -34,7 +35,15 @@ public class GameOverPlane : MonoBehaviour
     [SerializeField]
     private Button back_BTN;                        //返回按钮
 
-    public float progress;
+    private float progress;
+
+    private bool planeState;
+
+    #region  文本常量 不需要变动
+    private const string VictoryChallengesNum_TMP = "今日挑战<NUM>次";
+    private const string DefeatedChallengesNum_TMP = "今日已挑战<NUM>次";
+    private const string ProgressBarNum_TMP = "关卡进度<NUM>%";
+    #endregion
 
     private void Awake()
     {
@@ -42,16 +51,49 @@ public class GameOverPlane : MonoBehaviour
         back_BTN.onClick.AddListener(BackMain);
     }
 
-    //界面初始化
-    public void GameOverPlaneInit()
+    //界面初始化  _isVictory = true 打开胜利界面  false 失败界面
+    public void GameOverPlaneInit(bool _isVictory = false)
     {
-        transform.GetChild(0).DOScale(new Vector3(1,1,1),0.3F);
+        planeState = _isVictory;
+        transform.GetChild(0).DOScale(new Vector3(1, 1, 1), 0.3F);
+        JudgingPlaneState();
         AwardPlane.OnRewardTwo += GetSecondReward;
         AwardPlane.OnRewardThree += GetThirdReward;
         AwardPlane.OnRewardOne += ResidueProgress;
         JudgingGameProgress();
     }
 
+    //判断界面状态
+    public void JudgingPlaneState()
+    {
+        if (planeState)
+        {
+            //胜利
+            victory_UI.SetActive(true);
+            defeated_UI.SetActive(false);
+            challengesNum_TMP.text = GameManager.Instance.GetNumbersText(VictoryChallengesNum_TMP, 
+                PlayerPrefs.GetInt(GameManager.NumberLevelChallengesKey));
+        }
+        else
+        {
+            //失败
+            defeated_UI.SetActive(true);
+            victory_UI.SetActive(false);
+            challengesNum_TMP.text = GameManager.Instance.GetNumbersText(DefeatedChallengesNum_TMP,
+                PlayerPrefs.GetInt(GameManager.NumberLevelChallengesKey));
+        }
+
+        LevelProgress_TMP.text = GameManager.Instance.GetNumbersText(ProgressBarNum_TMP, GetGameProgress());
+    }
+
+    //获得游戏进度
+    public int GetGameProgress()
+    {
+        float progree = (GameManager.Instance.currentNumberCats / 30) * 100;
+        Debug.LogError("progree" + progree);
+        progress = progree / 100;
+        return (int)progree;
+    }
 
     //判断游戏进度
     public void JudgingGameProgress()
@@ -92,7 +134,6 @@ public class GameOverPlane : MonoBehaviour
         }
     }
 
-
     //奖励界面关闭 第二次奖励界面
     public void GetSecondReward()
     {
@@ -132,8 +173,6 @@ public class GameOverPlane : MonoBehaviour
         }
     }
 
-
-
     //进度条 
     public void SetProgress(float value)
     {
@@ -142,7 +181,6 @@ public class GameOverPlane : MonoBehaviour
         UIManagement.Instance.OpenAwardPlane();
         });
     }
-
 
     //重新挑战
     public void RecChanllengeClick()
@@ -170,7 +208,6 @@ public class GameOverPlane : MonoBehaviour
         UIManagement.Instance.CloseGamePlane();
         UIManagement.Instance.loadingPlane.LoadUIScene();
     }
-
 
     //#region 测试
     ////成功界面

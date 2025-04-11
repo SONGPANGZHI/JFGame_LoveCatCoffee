@@ -1,13 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public bool pauseGame = true;     
+
+    [Header("游戏暂停")]
+    public bool pauseGame = true;
+
+    [Header("当前猫咪猫咪数量")]
+    public float currentNumberCats;
+
+    [Header("关卡挑战次数")]
+    public int NumberLevelChallenges;
+
+
+    #region  游戏保存KEY
+
+    public static string NumberLevelChallengesKey = "NumberLevelChallengesKEY";      //关卡挑战次数
+
+
+    #endregion
+
     private void Awake()
     {
         if (Instance == null)
@@ -21,10 +34,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //猫咪数量改变
+    public void CatNumChange(int num = 1)
+    {
+        currentNumberCats += num;
+    }
 
-   
+    //获取 文本中数字
+    public string GetNumbersText(string _TMP,int numID)
+    {
+        string finalTMP = _TMP.Replace("<NUM>", numID.ToString());
+        Debug.LogError(finalTMP);
+        return finalTMP;
+    }
 
-   
 }
 
 

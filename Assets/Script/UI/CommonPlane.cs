@@ -96,21 +96,22 @@ public class CommonPlane : MonoBehaviour
         
     }
 
-    //放弃挑战 回到主界面
+    //放弃挑战 打开失败界面
     private void AbandonClick()
     {
         //打开主界面.
-        BackClick();
-        UIManagement.Instance.loadingPlane.gameObject.SetActive(true);
-        UIManagement.Instance.CloseGamePlane();
-        UIManagement.Instance.loadingPlane.LoadUIScene();
+        ClosePlane();
+        UIManagement.Instance.OpenGameOverPlane();
+        //UIManagement.Instance.loadingPlane.gameObject.SetActive(true);
+        //UIManagement.Instance.CloseGamePlane();
+        //UIManagement.Instance.loadingPlane.LoadUIScene();
     }
 
     //分享 复活
     private void ShareGetClick()
     {
         //通过分享复活  相当于清除道具
-        BackClick();
+        ClosePlane();
         PlayerPrefs.SetInt(SettingPlane.propUserKey, 1);
         Debug.LogError("分享复活直接使用清除道具----");
     }
@@ -119,7 +120,7 @@ public class CommonPlane : MonoBehaviour
     private void ADGetClick()
     {
         //观看 广告获得道具  点击就可以获得
-        BackClick();
+        ClosePlane();
         IssueReward(propData.awardvideoType);
     }
 
@@ -159,6 +160,15 @@ public class CommonPlane : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             GameManager.Instance.pauseGame = true;
+        });
+    }
+    
+    //关闭界面
+    public void ClosePlane()
+    {
+        transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3f).OnComplete(() =>
+        {
+            this.gameObject.SetActive(false);
         });
     }
 
