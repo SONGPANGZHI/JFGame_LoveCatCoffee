@@ -141,9 +141,11 @@ public class CommonPlane : MonoBehaviour
                 break;
             case AwardvideoType.Speed:
                 PlayerPrefs.SetString("SpeedPropKey", "SpeedProp");
+                UIManagement.Instance.gamePlane.UpdateSpeedPropShow();
                 break;
             case AwardvideoType.Perspective:
                 PlayerPrefs.SetString("PerspectivePropKey", "PerspectiveProp");
+                UIManagement.Instance.gamePlane.UpadtePerspectivePropShow();
                 break;
             case AwardvideoType.Heart:
                 break;

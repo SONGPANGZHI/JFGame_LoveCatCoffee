@@ -21,12 +21,6 @@ public class CatData : MonoBehaviour
 
     public static Action CreateCatAction;
 
-    private List<BlockPropData> catNeedBlock_Temp = new List<BlockPropData>();
-
-    private void Start()
-    {
-        //AddCatNeedBlock();
-    }
 
     //初始化
     public void InitCatData()
@@ -42,8 +36,8 @@ public class CatData : MonoBehaviour
     //随机道具
     public BlockPropData RandomBlockProp()
     {
-        int propID = UnityEngine.Random.Range(0, GameLevelManagement.Instance.blockPropAll.Count);
-        needBlock = GameLevelManagement.Instance.blockPropAll[propID];
+        int propID = UnityEngine.Random.Range(0, GameLevelManagement.Instance.blockPropData_Temp.Count-1);
+        needBlock = GameLevelManagement.Instance.blockPropData_Temp[propID];
         return needBlock;
     }
 

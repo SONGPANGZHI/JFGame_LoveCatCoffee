@@ -121,6 +121,7 @@ public class GamePlane : MonoBehaviour
         perspective_Prop[1].SetActive(true);
     }
 
+
     //透视
     private void PerspectiveClick()
     {
@@ -128,8 +129,9 @@ public class GamePlane : MonoBehaviour
         if (PlayerPrefs.HasKey("PerspectivePropKey"))
         {
             //道具使用
-            Debug.Log("道具使用---");
+            GameLevelManagement.Instance.PerspectivePropUse();
             perspective_BTN.interactable = false;
+            Debug.Log("道具使用---");
         }
         else
         {

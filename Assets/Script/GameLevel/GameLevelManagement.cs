@@ -10,12 +10,13 @@ public class GameLevelManagement : MonoBehaviour
 
     [Header("方块道具种类")]
     public List<BlockPropData> blockPropAll;
+
+    public List<BlockPropData> blockPropData_Temp;      //临时数据
     [Header("猫咪种类")]
     public List<CatData> catDataAll;
 
     [Header("猫咪需求道具")]
     public List<CatData> catNeedBlock;
-
 
     [Header("放置区数据")]
     public List<BlockPropData> dropZoneData;
@@ -32,10 +33,22 @@ public class GameLevelManagement : MonoBehaviour
     [Header("道具速度 存在时长 默认30s")]
     public float speedSurvivalTime = 30F ;
 
+    [Header("透视道具")]
+    public bool perspective = false;
+    private float perspectiveTimer;
+    [Header("透视道具 存在时长 默认30s")]
+    public float perspectiveSurvivalTime = 30f;
+
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
+
+        for (int i = 0; i < blockPropAll.Count; i++)
+        {
+            blockPropData_Temp.Add(blockPropAll[i]);
+        }
+
     }
 
     private void Start()
@@ -51,7 +64,7 @@ public class GameLevelManagement : MonoBehaviour
     {
         if (_blockProp.blockPropType == BlockPropType.Gift)
         {
-            int randomID = Random.Range(0, blockPropAll.Count);
+            int randomID = Random.Range(0, blockPropAll.Count - 1);
             currentOBJ = Instantiate(blockPropAll[randomID].prefab, dropZoneTran);
         }
         else
@@ -189,7 +202,7 @@ public class GameLevelManagement : MonoBehaviour
         Debug.LogError("开始加速 当前速度 15");
     }
 
-    //计时器
+    //速度计时器
     public void SpeedTimer()
     {
         if (keepTime)
@@ -204,10 +217,35 @@ public class GameLevelManagement : MonoBehaviour
             }
         }
     }
+
+
+    //透视道具使用
+    public void PerspectivePropUse()
+    {
+        perspective = true;
+    }
+
+    public void PerspectiveTimer()
+    {
+        if (perspective)
+        {
+            perspectiveTimer += Time.deltaTime;
+            if (perspectiveTimer >= perspectiveSurvivalTime)
+            {
+                perspective = false;
+                perspectiveTimer = 0;
+                Debug.LogError("透视结束");
+            }
+        }
+    }
+
+
+   
     #endregion
 
     void Update()
     {
         SpeedTimer();
+        PerspectiveTimer();
     }
 }

@@ -51,7 +51,6 @@ public class ConveyorManagement : MonoBehaviour
         }
     }
 
-
     void Update()
     {
         if (GameManager.Instance.pauseGame)
@@ -63,9 +62,9 @@ public class ConveyorManagement : MonoBehaviour
             CheckLoop();
             CheckLoopRight();
         }
-
     }
 
+    //移动
     public void ConveyorMove()
     {
         foreach (Transform image in leftConveyor_IMG)
@@ -79,7 +78,7 @@ public class ConveyorManagement : MonoBehaviour
         }
     }
 
-
+    //检查向左移动
     public void CheckLoop()
     {
         // 检查是否需要循环
@@ -99,6 +98,7 @@ public class ConveyorManagement : MonoBehaviour
 
     }
 
+    //检查向右移动
     public void CheckLoopRight()
     {
         if (rightConveyor_IMG[0].localPosition.x > imageWidth)
