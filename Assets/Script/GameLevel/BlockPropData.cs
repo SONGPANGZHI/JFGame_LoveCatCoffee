@@ -8,6 +8,7 @@ public class BlockPropData : MonoBehaviour
 {
     public BlockPropType blockPropType;
     public BlockHierarchy blockHierarchy;
+    public Sprite dorpZoneSprite;
     public GameObject prefab;
     public List<GameObject> unlockblock;      //0 左边 1 右边
     public Color unlockColor;
@@ -65,6 +66,12 @@ public class BlockPropData : MonoBehaviour
     {
         transform.GetComponent<Button>().interactable = true;
         transform.GetComponent<Image>().color = Color.white;
+    }
+
+    //按钮不可点击
+    public void BtnInteractableState()
+    {
+        transform.GetComponent<Button>().interactable = false;
     }
 }
 

@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,6 +16,7 @@ public class CatData : MonoBehaviour
 
     public GameObject finish_IMG;
 
+
     public int text_NUM = 3;
 
     public static Action CreateCatAction;
@@ -28,6 +28,7 @@ public class CatData : MonoBehaviour
         finish_IMG.SetActive(false);
         RandomBlockProp();
         propIcon_IMG.sprite = needBlock.GetComponent<Image>().sprite;
+        propIcon_IMG.SetNativeSize();
         GameLevelManagement.Instance.catNeedBlock.Add(this);
         needNum_TMP.gameObject.SetActive(false);
         //RandomDialogueDirection();

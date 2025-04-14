@@ -23,17 +23,17 @@ public class ConveyorManagement : MonoBehaviour
     //初始化 第一条 传送带
     public void InitConveyorLeft()
     {
-        leftConveyor_IMG[0].anchoredPosition = new Vector3(0, -120, 0);
-        leftConveyor_IMG[1].anchoredPosition = new Vector3(imageWidth, -120, 0);
-        leftConveyor_IMG[2].anchoredPosition = new Vector3(imageWidth * 2, -120, 0);
+        leftConveyor_IMG[0].localPosition = new Vector3(0, 0, 0);
+        leftConveyor_IMG[1].localPosition = new Vector3(imageWidth, 0, 0);
+        leftConveyor_IMG[2].localPosition = new Vector3(imageWidth * 2, 0, 0);
     }
 
     //初始化 第二条 传送带
     public void InitConveyorRight()
     {
-        rightConveyor_IMG[0].anchoredPosition = new Vector3(0, -120, 0);
-        rightConveyor_IMG[1].anchoredPosition = new Vector3(-imageWidth, -120, 0);
-        rightConveyor_IMG[2].anchoredPosition = new Vector3(-imageWidth * 2, -120, 0);
+        rightConveyor_IMG[0].localPosition = new Vector3(0, 0, 0);
+        rightConveyor_IMG[1].localPosition = new Vector3(-imageWidth, 0, 0);
+        rightConveyor_IMG[2].localPosition = new Vector3(-imageWidth * 2, 0, 0);
     }
 
 
@@ -62,6 +62,13 @@ public class ConveyorManagement : MonoBehaviour
             CheckLoop();
             CheckLoopRight();
         }
+
+        //// 移动所有图片
+        //ConveyorMove();
+
+        //// 检查是否需要循环
+        //CheckLoop();
+        //CheckLoopRight();
     }
 
     //移动
@@ -87,7 +94,7 @@ public class ConveyorManagement : MonoBehaviour
             // 将最左边的图片移到最右边
             leftConveyor_IMG[0].GetComponent<BlockGeneration>().ClearAllObject();
             RectTransform firstImage = leftConveyor_IMG[0];
-            firstImage.anchoredPosition = new Vector3(leftConveyor_IMG[2].localPosition.x + imageWidth, -120, 0);
+            firstImage.localPosition = new Vector3(leftConveyor_IMG[2].localPosition.x + imageWidth, 0, 0);
 
             // 重新排序数组
             leftConveyor_IMG[0] = leftConveyor_IMG[1];
@@ -106,7 +113,7 @@ public class ConveyorManagement : MonoBehaviour
             // 将最左边的图片移到最右边
             rightConveyor_IMG[0].GetComponent<BlockGeneration>().ClearAllObject();
             RectTransform firstImage = rightConveyor_IMG[0];
-            firstImage.anchoredPosition = new Vector3( rightConveyor_IMG[2].localPosition.x - imageWidth, -120, 0);
+            firstImage.localPosition = new Vector3( rightConveyor_IMG[2].localPosition.x - imageWidth, 0, 0);
 
             // 重新排序数组
             rightConveyor_IMG[0] = rightConveyor_IMG[1];

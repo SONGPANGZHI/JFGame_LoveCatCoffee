@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPropType: 2
   blockHierarchy: 0
+  dorpZoneSprite: {fileID: 21300000, guid: cea4d0372a4e320448677f5a25acb4e3, type: 3}
   prefab: {fileID: 5221786437885437005}
   unlockblock: []
   unlockColor: {r: 0.24705882, g: 0.24705882, b: 0.24705882, a: 1}

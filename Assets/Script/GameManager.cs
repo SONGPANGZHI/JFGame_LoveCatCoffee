@@ -41,13 +41,43 @@ public class GameManager : MonoBehaviour
     }
 
     //获取 文本中数字
-    public string GetNumbersText(string _TMP,int numID)
+    public string GetNumbersText(string _TMP, int numID)
     {
         string finalTMP = _TMP.Replace("<NUM>", numID.ToString());
         Debug.LogError(finalTMP);
         return finalTMP;
     }
 
+
+    #region JSON 读取
+
+    public void StartLoadConfigAsset()
+    {
+
+    }
+
+    public void InitGameLevelJSON()
+    { 
+    
+    }
+
+    #endregion
 }
+
+//public class GameLevelFileData
+//{
+//    public int LevelID;
+//    public int Target;
+//    public int Amount;
+//    public int TypeID;
+//    public float ConveyorSpeed;
+//    public float ClearTime;
+//    public int ClearStep;
+//}
+
+//public class ProbabilityCardsAppeare
+//{ 
+
+//}
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameLevelManagement : MonoBehaviour
 {
@@ -19,8 +20,9 @@ public class GameLevelManagement : MonoBehaviour
     public List<CatData> catNeedBlock;
 
     [Header("放置区数据")]
-    public List<BlockPropData> dropZoneData;
+    public List<GameObject> dropZoneData;
     public Transform dropZoneTran;
+    public GameObject dropZonePrefab;
 
     private CatData catData_Temp;
     private GameObject currentOBJ;
@@ -62,20 +64,19 @@ public class GameLevelManagement : MonoBehaviour
     //生成放置区物品
     public void CreateDropZoneObject(BlockPropData _blockProp)
     {
+        int randomID = Random.Range(0, blockPropAll.Count - 1);
+        currentOBJ = Instantiate(dropZonePrefab, dropZoneTran);
         if (_blockProp.blockPropType == BlockPropType.Gift)
         {
-            int randomID = Random.Range(0, blockPropAll.Count - 1);
-            currentOBJ = Instantiate(blockPropAll[randomID].prefab, dropZoneTran);
+            currentOBJ.GetComponent<DropZone>().DropZoneInit(blockPropAll[randomID]);
+            currentOBJ.name = blockPropAll[randomID].blockPropType.ToString();
         }
         else
         {
-            currentOBJ = Instantiate(_blockProp.prefab, dropZoneTran);
+            currentOBJ.GetComponent<DropZone>().DropZoneInit(_blockProp);
+            currentOBJ.name = _blockProp.blockPropType.ToString();
         }
-
-        currentOBJ.transform.localScale = new Vector3(0.7F, 0.7F, 0.7F);
-        currentOBJ.SetActive(true);
-        dropZoneData.Add(currentOBJ.GetComponent<BlockPropData>());
-
+        dropZoneData.Add(currentOBJ);
         CheckForMatches();
 
 
@@ -89,7 +90,7 @@ public class GameLevelManagement : MonoBehaviour
     public void CheckForMatches()
     {
         // 获取所有卡牌并按类型分组
-        var cardGroups = dropZoneData.GroupBy(card => card.blockPropType).Where(group => group.Count() >= 3);
+        var cardGroups = dropZoneData.GroupBy(card => card.GetComponent<DropZone>().blockPropType).Where(group => group.Count() >= 3);
 
         // 处理匹配的卡牌组
         foreach (var group in cardGroups)
@@ -124,6 +125,8 @@ public class GameLevelManagement : MonoBehaviour
         }
     }
 
+
+
     //检查游戏状态
     public void DetermineDropAreaFull()
     {
@@ -137,7 +140,7 @@ public class GameLevelManagement : MonoBehaviour
     }
 
     //1秒后销毁
-    IEnumerator DestroyObject(List<BlockPropData> matchedCards)
+    IEnumerator DestroyObject(List<GameObject> matchedCards)
     {
         yield return new WaitForSeconds(0.3f);
         foreach (var card in matchedCards)
@@ -172,7 +175,7 @@ public class GameLevelManagement : MonoBehaviour
     {
         for (int i = 0; i < dropZoneData.Count; i++)
         {
-            if (dropZoneData[i].blockPropType == catData.needBlock.blockPropType)
+            if (dropZoneData[i].GetComponent<DropZone>().blockPropType == catData.needBlock.blockPropType)
             {
                 catData.UpdateTMP();
             }

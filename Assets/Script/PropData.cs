@@ -64,3 +64,12 @@ public enum BlockPropType
     Sugar,              //糖
     Woolen              //毛线
 }
+
+public enum TypesCards
+{ 
+    None,
+    KeyCard,            //关键牌
+    VoidCard,           //无效牌
+    SurplusCard,        //冗余牌
+    MysteryCard,        //盲盒
+}
