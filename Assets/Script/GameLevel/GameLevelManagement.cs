@@ -8,11 +8,12 @@ using UnityEngine.UI;
 public class GameLevelManagement : MonoBehaviour
 {
     public static GameLevelManagement Instance;
+    [Header("关卡数据")]
+    public List<GameLevelConfig> gameLevelDataList;
 
     [Header("方块道具种类")]
     public List<BlockPropData> blockPropAll;
 
-    public List<BlockPropData> blockPropData_Temp;      //临时数据
     [Header("猫咪种类")]
     public List<CatData> catDataAll;
 
@@ -41,6 +42,11 @@ public class GameLevelManagement : MonoBehaviour
     [Header("透视道具 存在时长 默认30s")]
     public float perspectiveSurvivalTime = 30f;
 
+
+    [Header("关卡数据")]
+    public List<BlockPropData> blockPropData_Temp;      //临时数据
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -58,6 +64,32 @@ public class GameLevelManagement : MonoBehaviour
         GameManager.Instance.pauseGame = true;
         GameManager.Instance.currentNumberCats = 0;
     }
+
+    #region 获取关卡数据
+
+    //加载 关卡数据
+    public void LoadGameLevel()
+    {
+        if (PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey) == 1)
+        {
+            //新手关卡
+        }
+        else
+        { 
+        
+        }
+    }
+
+    //获取 
+    public void GetGameLevelData()
+    { 
+    
+    }
+
+
+
+    #endregion
+
 
     #region  放置区以及三消逻辑
 
@@ -248,7 +280,11 @@ public class GameLevelManagement : MonoBehaviour
 
     void Update()
     {
-        SpeedTimer();
-        PerspectiveTimer();
+        if (GameManager.Instance.pauseGame)
+        {
+            SpeedTimer();
+            PerspectiveTimer();
+        }
+        
     }
 }

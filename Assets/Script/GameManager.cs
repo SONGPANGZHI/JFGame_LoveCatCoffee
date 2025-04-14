@@ -16,7 +16,8 @@ public class GameManager : MonoBehaviour
 
     #region  游戏保存KEY
 
-    public static string NumberLevelChallengesKey = "NumberLevelChallengesKEY";      //关卡挑战次数
+    public static string NumberLevelChallengesKey = "NumberLevelChallengesKEY";         //关卡挑战次数
+    public static string CurrentGameLevelKey = "CurrentGameLevelKEY";                   //当前游戏关卡
 
 
     #endregion
