@@ -48,6 +48,7 @@ public class GameLevelManagement : MonoBehaviour
     [Header("关卡数据")]
     public List<BlockPropData> blockPropData_Temp;      //临时数据
     public GameLevelConfig currentLevelData;
+    public bool _isNovice;
 
     private void Awake()
     {
@@ -81,7 +82,7 @@ public class GameLevelManagement : MonoBehaviour
     public List<BlockPropData> needCatData_Temp;            //猫咪需求牌
 
 
-    public int eachLayerNum;                            //每一层数据 总数/6
+    public int eachLayerNum;                            //每一层数据 总数/3
     public int keyCardAllNum;
     public int keyType;
     public int masteryNum;
@@ -97,33 +98,28 @@ public class GameLevelManagement : MonoBehaviour
     //加载 关卡数据
     public void LoadGameLevel()
     {
-        //if (PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey) == 0)
-        //{
-        //    //新手关卡
-        //    currentLevelData = gameLevelDataList[0];
-        //}
-        //else
-        //{
-        //    currentLevelData = gameLevelDataList[PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey)];
-        //}
-        currentLevelData = gameLevelDataList[1];
+        if (PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey) == 0)
+        {
+            //新手关卡
+            _isNovice = true;
+        }
+        else
+        {
+            _isNovice = false;
+        }
+        currentLevelData = gameLevelDataList[PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey)];
         blockPropData_Temp.Shuffle();                                       //随机
         keyType = currentLevelData.TypeID / 2;                              //关键牌 种类
-        eachLayerNum = currentLevelData.Amount / 6;                         //每一行 关键牌 总数
+        eachLayerNum = currentLevelData.Amount / 3;                         //每一行 关键牌 总数
         masteryNum = currentLevelData.Amount - currentLevelData.KeyCardNum;               //冗余牌 总数
         AllocatingRowsKeyCard();
 
-        Debug.LogError("masteryNum" + masteryNum);
-
         //分类猫咪需求牌和冗余牌
         AddCatNeedType();
-
-
-
-
+        //添加 关键牌 和 冗余牌
         GetKeyCard();
         MysteryCard();
-
+        //添加每一行牌数
         GetKeyCardLayer();
         GetSurplusCardLayer();
     }
@@ -131,23 +127,15 @@ public class GameLevelManagement : MonoBehaviour
     //分配各行 关键牌数
     public void AllocatingRowsKeyCard()
     {
-        middleLayerKeyCardNum = (int)Math.Ceiling(currentLevelData.KeyCardNum * currentLevelData.CardType[0].InterLayer);       //11
-        bottomLayerKeyCardNum = (int)Math.Ceiling(currentLevelData.KeyCardNum * currentLevelData.CardType[0].BottomLayer);      //21
-        topLayerKeyCardNum = currentLevelData.KeyCardNum - middleLayerKeyCardNum - bottomLayerKeyCardNum;                       //4
+        middleLayerKeyCardNum = (int)Math.Ceiling(currentLevelData.KeyCardNum * currentLevelData.CardType[0].InterLayer);       
+        bottomLayerKeyCardNum = (int)Math.Ceiling(currentLevelData.KeyCardNum * currentLevelData.CardType[0].BottomLayer);      
+        topLayerKeyCardNum = currentLevelData.KeyCardNum - middleLayerKeyCardNum - bottomLayerKeyCardNum;                       
 
 
-        middleLayerSurplusCardNum = masteryNum - middleLayerKeyCardNum;                     //36-11 = 25
-        bottomLayerSurplusCardNum = masteryNum - bottomLayerKeyCardNum;                     //36-21 = 15
-        topLayerSurplusCardNum = masteryNum - topLayerKeyCardNum;                           //36 - 4 = 32
+        middleLayerSurplusCardNum = eachLayerNum - middleLayerKeyCardNum;                     
+        bottomLayerSurplusCardNum = eachLayerNum - bottomLayerKeyCardNum;                     
+        topLayerSurplusCardNum = eachLayerNum - topLayerKeyCardNum;                           
 
-
-        Debug.LogError("topLayerKeyCardNum" + topLayerKeyCardNum);
-        Debug.LogError("middleLayerKeyCardNum" + middleLayerKeyCardNum);
-        Debug.LogError("bottomLayerKeyCardNum" + bottomLayerKeyCardNum);
-
-        Debug.LogError("masteryNum" + masteryNum);
-        Debug.LogError("middleLayerSurplusCardNum" + middleLayerSurplusCardNum);
-        Debug.LogError("bottomLayerSurplusCardNum" + bottomLayerSurplusCardNum);
     }
 
 
@@ -187,9 +175,6 @@ public class GameLevelManagement : MonoBehaviour
                 keyCardData.Add(needCatData_Temp[i]);
             }
         }
-
-        Debug.LogError("keyCardData" + keyCardData.Count);
-
     }
 
     //冗余牌
@@ -210,56 +195,47 @@ public class GameLevelManagement : MonoBehaviour
                 SurplusCardData.Add(SurplusCardType[i]);
             }
         }
-
-        Debug.LogError("SurplusCardData" + SurplusCardData.Count);
     }
 
     //获得关键牌在每层排列
     public void GetKeyCardLayer()
     {
-        for (int i = 0; i < keyCardData.Count; i++)
+
+        for (int i = 0; i < topLayerKeyCardNum; i++)
         {
-            if (i < topLayerKeyCardNum)
-            {
-                topLayerData_Temp.Add(keyCardData[i]);
-            }
-            else if (i >= topLayerKeyCardNum&& i < middleLayerKeyCardNum)
-            {
-                middleLayerData_Temp.Add(keyCardData[i]);
-            }
-            else
-            {
-                bottomLayerData_Temp.Add(keyCardData[i]);
-            }
+            topLayerData_Temp.Add(keyCardData[i]);
         }
 
-        Debug.LogError("topLayerData_Temp" + topLayerData_Temp.Count);
-        Debug.LogError("middleLayerData_Temp" + middleLayerData_Temp.Count);
-        Debug.LogError("bottomLayerData_Temp" + bottomLayerData_Temp.Count);
+        for (int i = 0; i < middleLayerKeyCardNum; i++)
+        {
+            middleLayerData_Temp.Add(keyCardData[i]);
+        }
+
+        for (int i = 0; i < bottomLayerKeyCardNum; i++)
+        {
+            bottomLayerData_Temp.Add(keyCardData[i]);
+        }
     }
 
     //其他牌 在每一层分部
     public void GetSurplusCardLayer()
     {
-        for (int i = 0; i < SurplusCardData.Count; i++)
+
+        for (int i = 0; i < topLayerSurplusCardNum; i++)
         {
-            if (i < bottomLayerSurplusCardNum)
-            {
-                bottomLayerData_Temp.Add(SurplusCardData[i]);
-            }
-            else if (i >= bottomLayerSurplusCardNum && i < middleLayerSurplusCardNum)
-            {
-                middleLayerData_Temp.Add(SurplusCardData[i]);
-            }
-            else
-            {
-                topLayerData_Temp.Add(SurplusCardData[i]);
-            }
+            topLayerData_Temp.Add(SurplusCardData[i]);
         }
 
-        Debug.LogError("topLayerData_Temp" + topLayerData_Temp.Count);
-        Debug.LogError("middleLayerData_Temp" + middleLayerData_Temp.Count);
-        Debug.LogError("bottomLayerData_Temp" + bottomLayerData_Temp.Count);
+        for (int i = 0; i < middleLayerSurplusCardNum; i++)
+        {
+            middleLayerData_Temp.Add(SurplusCardData[i]);
+        }
+
+        for (int i = 0; i < bottomLayerSurplusCardNum; i++)
+        {
+            bottomLayerData_Temp.Add(SurplusCardData[i]);
+        }
+
     }
 
 

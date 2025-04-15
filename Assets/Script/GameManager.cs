@@ -35,6 +35,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //检查保存数据
+    public void CheckSaveData()
+    {
+        if (!PlayerPrefs.HasKey(CurrentGameLevelKey))
+        {
+            PlayerPrefs.SetInt(CurrentGameLevelKey, 0);
+        }
+    }
+
     //猫咪数量改变
     public void CatNumChange(int num = 1)
     {
