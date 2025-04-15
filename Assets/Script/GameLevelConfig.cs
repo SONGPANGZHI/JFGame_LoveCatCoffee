@@ -9,6 +9,7 @@ public class GameLevelConfig : ScriptableObject
 {
     public int LevelID;                                 //关卡ID
     public int Target;                                  //猫猫需求总数
+    public int KeyCardNum;
     public int Amount;                                  //总牌数
     public int TypeID;                                  //生成牌的种类数量
     public float ConveyorSpeed;                         //传送带速度
@@ -21,8 +22,7 @@ public class GameLevelConfig : ScriptableObject
 public class ProbabilityCardsAppeare
 {
     public TypesCards CardType;
-    public float TotalProportion;
-    public float FirstLayer;
-    public float InterLayer;
     public float BottomLayer;
+    public float InterLayer;
+    public float TopLayer;
 }

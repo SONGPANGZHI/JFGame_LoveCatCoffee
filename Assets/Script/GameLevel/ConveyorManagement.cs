@@ -53,15 +53,15 @@ public class ConveyorManagement : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.pauseGame)
-        {
-            // 移动所有图片
-            ConveyorMove();
+        //if (GameManager.Instance.pauseGame)
+        //{
+        //    // 移动所有图片
+        //    ConveyorMove();
 
-            // 检查是否需要循环
-            CheckLoop();
-            CheckLoopRight();
-        }
+        //    // 检查是否需要循环
+        //    CheckLoop();
+        //    CheckLoopRight();
+        //}
 
         //// 移动所有图片
         //ConveyorMove();

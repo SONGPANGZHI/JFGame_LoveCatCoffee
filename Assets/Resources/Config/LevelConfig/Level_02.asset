@@ -13,30 +13,19 @@ MonoBehaviour:
   m_Name: Level_02
   m_EditorClassIdentifier: 
   LevelID: 2
-  Target: 30
-  Amount: 99
-  TypeID: 8
+  Target: 12
+  KeyCardNum: 36
+  Amount: 72
+  TypeID: 4
   ConveyorSpeed: 0
   ClearTime: 0
   ClearStep: 0
   CardType:
   - CardType: 1
-    TotalProportion: 0.35
-    FirstLayer: 0.2
+    BottomLayer: 0.58
     InterLayer: 0.3
-    BottomLayer: 0.5
-  - CardType: 2
-    TotalProportion: 0.4
-    FirstLayer: 0.4
-    InterLayer: 0.3
-    BottomLayer: 0.3
+    TopLayer: 0.12
   - CardType: 3
-    TotalProportion: 0.25
-    FirstLayer: 0.4
-    InterLayer: 0.3
-    BottomLayer: 0.3
-  - CardType: 4
-    TotalProportion: 0
-    FirstLayer: 0.33
-    InterLayer: 0.33
-    BottomLayer: 0.34
+    BottomLayer: 0.2
+    InterLayer: 0.2
+    TopLayer: 0.2

@@ -479,6 +479,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2faccd9bd90ac04498bf5ad36e6f7e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameLevelDataList:
+  - {fileID: 11400000, guid: 9fe8678f7bae4c64cb7760ffb1ddfc1b, type: 2}
+  - {fileID: 11400000, guid: 4b058c8e3908f784fad3df7622687ce7, type: 2}
+  - {fileID: 11400000, guid: 9bab513b32878f04393fd68cdeba98b8, type: 2}
   blockPropAll:
   - {fileID: 447146943071365715, guid: 9700013850c8ad243985a143c881ce22, type: 3}
   - {fileID: 6367266253363022506, guid: a58f593b94670e843ac4fc0fbc38e4b3, type: 3}
@@ -498,7 +502,6 @@ MonoBehaviour:
   - {fileID: 1495674455185651206, guid: 569828799f3ea1743905ab45ddb0bd64, type: 3}
   - {fileID: 7500797559866235487, guid: 88b912fb694624f4aa67134e273d90f2, type: 3}
   - {fileID: 4042508646167157471, guid: 5f806ad076804ad4396fbcd993d4616f, type: 3}
-  blockPropData_Temp: []
   catDataAll:
   - {fileID: 8851476057428258837, guid: 04c46abd3392d6d41ba701f938a4456a, type: 3}
   - {fileID: 4723874313274095388, guid: 50d73adc5feb4764f93eb7c43f30ae36, type: 3}
@@ -515,6 +518,14 @@ MonoBehaviour:
   speedSurvivalTime: 30
   perspective: 0
   perspectiveSurvivalTime: 30
+  blockPropData_Temp: []
+  currentLevelData: {fileID: 0}
+  keyCardData: []
+  mysteryCardData: []
+  topLayerData_Temp: []
+  middleLayerData_Temp: []
+  bottomLayerData_Temp: []
+  needCatData_Temp: []
 --- !u!1 &919338671
 GameObject:
   m_ObjectHideFlags: 0
