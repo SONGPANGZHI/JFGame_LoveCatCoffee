@@ -483,6 +483,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9fe8678f7bae4c64cb7760ffb1ddfc1b, type: 2}
   - {fileID: 11400000, guid: 4b058c8e3908f784fad3df7622687ce7, type: 2}
   - {fileID: 11400000, guid: 9bab513b32878f04393fd68cdeba98b8, type: 2}
+  - {fileID: 11400000, guid: 90ef87d66f91684488358281bd6a4a8b, type: 2}
+  - {fileID: 11400000, guid: 57f41dda744e2c64bb824117c05bbfd2, type: 2}
+  - {fileID: 11400000, guid: 800606965759419429a9a7749027247a, type: 2}
+  - {fileID: 11400000, guid: a186f8c85c54ab74691e7596a9e9c6c5, type: 2}
+  - {fileID: 11400000, guid: b41f8f711e89aaf4580b1fac19371618, type: 2}
+  - {fileID: 11400000, guid: a1694dc41051ffe4dacd97f36a458635, type: 2}
+  - {fileID: 11400000, guid: e30b2f04ec989cf47944349d8ef5e855, type: 2}
   blockPropAll:
   - {fileID: 447146943071365715, guid: 9700013850c8ad243985a143c881ce22, type: 3}
   - {fileID: 6367266253363022506, guid: a58f593b94670e843ac4fc0fbc38e4b3, type: 3}
@@ -520,12 +527,18 @@ MonoBehaviour:
   perspectiveSurvivalTime: 30
   blockPropData_Temp: []
   currentLevelData: {fileID: 0}
+  _isNovice: 0
   keyCardData: []
-  mysteryCardData: []
+  SurplusCardData: []
+  SurplusCardType: []
   topLayerData_Temp: []
   middleLayerData_Temp: []
   bottomLayerData_Temp: []
   needCatData_Temp: []
+  eachLayerNum: 0
+  keyCardAllNum: 0
+  keyType: 0
+  masteryNum: 0
 --- !u!1 &919338671
 GameObject:
   m_ObjectHideFlags: 0
@@ -2406,6 +2419,12 @@ MonoBehaviour:
   - {fileID: 3648123397838643410}
   rightConveyor_IMG:
   - {fileID: 3648123398419711039}
+  - {fileID: 3648123398465829878}
+  - {fileID: 3648123397021664417}
+  leftConveyor_Sceond_IMG:
+  - {fileID: 3648123397041298023}
+  - {fileID: 3648123397838643410}
+  rightConveyor_Sceond_IMG:
   - {fileID: 3648123398465829878}
   - {fileID: 3648123397021664417}
 --- !u!224 &3648123397889304599

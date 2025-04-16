@@ -50,6 +50,13 @@ public class GameLevelManagement : MonoBehaviour
     public GameLevelConfig currentLevelData;
     public bool _isNovice;
 
+    public Dictionary<int, List<BlockPropData>> topBlockDic_Top = new Dictionary<int, List<BlockPropData>>();
+    public Dictionary<int, List<BlockPropData>> middleBlockDic_Top = new Dictionary<int, List<BlockPropData>>();
+    public Dictionary<int, List<BlockPropData>> bottomBlockDic_Top = new Dictionary<int, List<BlockPropData>>();
+    public Dictionary<int, List<BlockPropData>> topBlockDic_Bottom = new Dictionary<int, List<BlockPropData>>();
+    public Dictionary<int, List<BlockPropData>> middleBlockDic_Bottom = new Dictionary<int, List<BlockPropData>>();
+    public Dictionary<int, List<BlockPropData>> bottomBlockDic_Bottom = new Dictionary<int, List<BlockPropData>>();
+
     private void Awake()
     {
         if (Instance == null)
@@ -122,19 +129,26 @@ public class GameLevelManagement : MonoBehaviour
         //添加每一行牌数
         GetKeyCardLayer();
         GetSurplusCardLayer();
+
+        //添加到 字典
+        //InitEachLayerBlockList();
+
+        SegmentationTopData();
+        SegmentationMiddleData();
+        SegmentationBottomData();
     }
 
     //分配各行 关键牌数
     public void AllocatingRowsKeyCard()
     {
         middleLayerKeyCardNum = (int)Math.Ceiling(currentLevelData.KeyCardNum * currentLevelData.CardType[0].InterLayer);       
-        bottomLayerKeyCardNum = (int)Math.Ceiling(currentLevelData.KeyCardNum * currentLevelData.CardType[0].BottomLayer);      
-        topLayerKeyCardNum = currentLevelData.KeyCardNum - middleLayerKeyCardNum - bottomLayerKeyCardNum;                       
+        topLayerKeyCardNum = (int)Math.Ceiling(currentLevelData.KeyCardNum * currentLevelData.CardType[0].TopLayer);
+        bottomLayerKeyCardNum = currentLevelData.KeyCardNum - middleLayerKeyCardNum - topLayerKeyCardNum;
 
 
         middleLayerSurplusCardNum = eachLayerNum - middleLayerKeyCardNum;                     
         bottomLayerSurplusCardNum = eachLayerNum - bottomLayerKeyCardNum;                     
-        topLayerSurplusCardNum = eachLayerNum - topLayerKeyCardNum;                           
+        topLayerSurplusCardNum = eachLayerNum - topLayerKeyCardNum;
 
     }
 
@@ -236,9 +250,82 @@ public class GameLevelManagement : MonoBehaviour
             bottomLayerData_Temp.Add(SurplusCardData[i]);
         }
 
+        topLayerData_Temp.Shuffle();
+        middleLayerData_Temp.Shuffle();
+        bottomLayerData_Temp.Shuffle();
     }
 
 
+    //分割top数据
+    public void SegmentationTopData()
+    {
+        topLayerData_Temp.Shuffle();
+        List<BlockPropData> topLayerData_Top_Temp = new List<BlockPropData>();
+        List<BlockPropData> topLayerData_Bottom_Temp = new List<BlockPropData>();
+        
+        int ID = topLayerData_Temp.Count / 2;
+
+        for (int i = 0; i < topLayerData_Temp.Count; i++)
+        {
+            if (i < ID)
+                topLayerData_Top_Temp.Add(topLayerData_Temp[i]);
+            else
+                topLayerData_Bottom_Temp.Add(topLayerData_Temp[i]);
+        }
+
+        int arrayID = topLayerData_Top_Temp.Count / 6;
+        topBlockDic_Top = topLayerData_Top_Temp.SplitIntoGroups(arrayID);
+        topBlockDic_Bottom = topLayerData_Bottom_Temp.SplitIntoGroups(arrayID);
+
+        Debug.LogError("topBlockDic_Top" + topBlockDic_Top.Count);
+        Debug.LogError("topBlockDic_Bottom" + topBlockDic_Bottom.Count);
+    }
+
+    //分割 middle 数组
+    public void SegmentationMiddleData()
+    {
+        middleLayerData_Temp.Shuffle();
+        List<BlockPropData> topLayerData_Top_Temp = new List<BlockPropData>();
+        List<BlockPropData> topLayerData_Bottom_Temp = new List<BlockPropData>();
+        
+        int ID = topLayerData_Temp.Count / 2;
+
+        for (int i = 0; i < middleLayerData_Temp.Count; i++)
+        {
+            if (i < ID)
+                topLayerData_Top_Temp.Add(middleLayerData_Temp[i]);
+            else
+                topLayerData_Bottom_Temp.Add(middleLayerData_Temp[i]);
+        }
+        int arrayID = topLayerData_Top_Temp.Count / 6;
+        middleBlockDic_Top = topLayerData_Top_Temp.SplitIntoGroups(arrayID);
+        middleBlockDic_Bottom = topLayerData_Bottom_Temp.SplitIntoGroups(arrayID);
+        Debug.LogError("middleBlockDic_Top" + middleBlockDic_Top.Count);
+        Debug.LogError("middleBlockDic_Bottom" + middleBlockDic_Bottom.Count);
+    }
+
+    //分割 bottom 数组
+    public void SegmentationBottomData()
+    {
+        bottomLayerData_Temp.Shuffle();
+        List<BlockPropData> topLayerData_Top_Temp = new List<BlockPropData>();
+        List<BlockPropData> topLayerData_Bottom_Temp = new List<BlockPropData>();
+       
+        int ID = topLayerData_Temp.Count / 2;
+
+        for (int i = 0; i < bottomLayerData_Temp.Count; i++)
+        {
+            if (i < ID)
+                topLayerData_Top_Temp.Add(bottomLayerData_Temp[i]);
+            else
+                topLayerData_Bottom_Temp.Add(bottomLayerData_Temp[i]);
+        }
+        int arrayID = topLayerData_Top_Temp.Count / 6;
+        bottomBlockDic_Top = topLayerData_Top_Temp.SplitIntoGroups(arrayID);
+        bottomBlockDic_Bottom = topLayerData_Bottom_Temp.SplitIntoGroups(arrayID);
+        Debug.LogError("bottomBlockDic_Top" + bottomBlockDic_Top.Count);
+        Debug.LogError("bottomBlockDic_Bottom" + bottomBlockDic_Bottom.Count);
+    }
 
     #endregion
 
@@ -437,6 +524,43 @@ public class GameLevelManagement : MonoBehaviour
             SpeedTimer();
             PerspectiveTimer();
         }
+
         
+    }
+}
+
+public static class ListExtensions
+{
+    private static System.Random rng = new System.Random();
+
+    public static void Shuffle<T>(this IList<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+    }
+
+    public static Dictionary<int, List<T>> SplitIntoGroups<T>(this List<T> source, int groupCount)
+    {
+        Dictionary<int, List<T>> result = new Dictionary<int, List<T>>();
+
+        int itemsPerGroup = Mathf.CeilToInt(source.Count / (float)groupCount);
+
+        for (int i = 0; i < groupCount; i++)
+        {
+            int startIndex = i * itemsPerGroup;
+            if (startIndex >= source.Count) break;
+
+            int endIndex = Mathf.Min(startIndex + itemsPerGroup, source.Count);
+            result.Add(i, source.GetRange(startIndex, endIndex - startIndex));
+        }
+
+        return result;
     }
 }

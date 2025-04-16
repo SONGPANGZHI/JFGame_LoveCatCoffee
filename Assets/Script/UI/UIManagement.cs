@@ -124,5 +124,18 @@ public class UIManagement : MonoBehaviour
             Debug.Log("测试已经使用复活道具---");
             PlayerPrefs.SetInt(SettingPlane.propUserKey,1);
         }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            int saveID = PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey);
+            PlayerPrefs.SetInt(GameManager.CurrentGameLevelKey, saveID + 1);
+            Debug.LogError("CurrentGameLevelKey" + saveID);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Delete))
+        {
+            PlayerPrefs.DeleteAll();
+            Debug.LogError("清除所有PlayerPrefs");
+        }
     }
 }

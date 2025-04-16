@@ -37,8 +37,8 @@ public class CatData : MonoBehaviour
     //Ëæ»úµÀ¾ß
     public BlockPropData RandomBlockProp()
     {
-        int propID = UnityEngine.Random.Range(0, GameLevelManagement.Instance.blockPropData_Temp.Count-1);
-        needBlock = GameLevelManagement.Instance.blockPropData_Temp[propID];
+        int propID = UnityEngine.Random.Range(0, GameLevelManagement.Instance.needCatData_Temp.Count);
+        needBlock = GameLevelManagement.Instance.needCatData_Temp[propID];
         return needBlock;
     }
 

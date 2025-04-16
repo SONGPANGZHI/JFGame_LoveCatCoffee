@@ -91,4 +91,17 @@ public class MainPlane : MonoBehaviour
     {
         bottom_OBJ.DOMoveY(-300, 0.3f);
     }
+
+    public void Test()
+    {
+        int saveID = PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey);
+        PlayerPrefs.SetInt(GameManager.CurrentGameLevelKey, saveID + 1);
+        Debug.LogError("CurrentGameLevelKey" + saveID);
+    }
+
+    public void DeleTest()
+    {
+        PlayerPrefs.DeleteAll();
+        Debug.LogError("清除所有PlayerPrefs");
+    }
 }

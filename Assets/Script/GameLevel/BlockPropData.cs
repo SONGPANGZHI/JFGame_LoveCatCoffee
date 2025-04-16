@@ -17,6 +17,8 @@ public class BlockPropData : MonoBehaviour
     public static Action JudgeThirdRowUnlockActon;
     public static Action JudgeScendRowUnlockActon;
 
+    private bool _isActive = true;
+
     private void Awake()
     {
         prefab.GetComponent<Button>().onClick.AddListener(BlockClick);
@@ -25,6 +27,14 @@ public class BlockPropData : MonoBehaviour
     //初始化
     public void InitBlock()
     {
+        gameObject.SetActive(_isActive);
+
+        if (CheckUnlock())
+        {
+            transform.GetComponent<Image>().color = Color.white;
+            transform.GetComponent<Button>().interactable = true;
+        }
+
         if (blockHierarchy == BlockHierarchy.BottomBlock)
         {
             transform.GetComponent<Image>().color = Color.white;
@@ -35,12 +45,14 @@ public class BlockPropData : MonoBehaviour
             transform.GetComponent<Image>().color = unlockColor;
             transform.GetComponent<Button>().interactable = false;
         }
+
     }
 
     //点击方块
     public void BlockClick()
     {
         gameObject.SetActive(false);
+        _isActive = false;
         GameLevelManagement.Instance.CreateDropZoneObject(this);
         JudgeBlockClick();
     }
@@ -48,6 +60,7 @@ public class BlockPropData : MonoBehaviour
     //判断方块是否解锁
     public void JudgeBlockClick()
     {
+      
         switch (blockHierarchy)
         {
             case BlockHierarchy.BottomBlock:
@@ -73,5 +86,19 @@ public class BlockPropData : MonoBehaviour
     {
         transform.GetComponent<Button>().interactable = false;
     }
+
+    //检查 是否解锁
+    public bool CheckUnlock()
+    {
+        foreach (var item in unlockblock)
+        {
+            if (item.activeSelf)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
 
