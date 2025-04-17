@@ -57,6 +57,13 @@ public class GameLevelManagement : MonoBehaviour
     public Dictionary<int, List<BlockPropData>> middleBlockDic_Bottom = new Dictionary<int, List<BlockPropData>>();
     public Dictionary<int, List<BlockPropData>> bottomBlockDic_Bottom = new Dictionary<int, List<BlockPropData>>();
 
+    public Dictionary<int, List<bool>> topBlockDic_Bool_Top = new Dictionary<int, List<bool>>();
+    public Dictionary<int, List<bool>> middleBlockDic_Bool_Top = new Dictionary<int, List<bool>>();
+    public Dictionary<int, List<bool>> bottomBlockDic_Bool_Top = new Dictionary<int, List<bool>>();
+    public Dictionary<int, List<bool>> topBlockDic_Bool_Bottom = new Dictionary<int, List<bool>>();
+    public Dictionary<int, List<bool>> middleBlockDic_Bool_Bottom = new Dictionary<int, List<bool>>();
+    public Dictionary<int, List<bool>> bottomBlockDic_Bool_Bottom = new Dictionary<int, List<bool>>();
+
     private void Awake()
     {
         if (Instance == null)
@@ -262,7 +269,8 @@ public class GameLevelManagement : MonoBehaviour
         topLayerData_Temp.Shuffle();
         List<BlockPropData> topLayerData_Top_Temp = new List<BlockPropData>();
         List<BlockPropData> topLayerData_Bottom_Temp = new List<BlockPropData>();
-        
+
+
         int ID = topLayerData_Temp.Count / 2;
 
         for (int i = 0; i < topLayerData_Temp.Count; i++)
@@ -270,7 +278,9 @@ public class GameLevelManagement : MonoBehaviour
             if (i < ID)
                 topLayerData_Top_Temp.Add(topLayerData_Temp[i]);
             else
+            {
                 topLayerData_Bottom_Temp.Add(topLayerData_Temp[i]);
+            }
         }
 
         int arrayID = topLayerData_Top_Temp.Count / 6;

@@ -279,4 +279,13 @@ public class BlockGeneration : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        BlockPropData.JudgeScendRowUnlockActon -= CheckMiddleData;
+        BlockPropData.JudgeThirdRowUnlockActon -= CheckTopData;
+
+    }
+
+
+
 }

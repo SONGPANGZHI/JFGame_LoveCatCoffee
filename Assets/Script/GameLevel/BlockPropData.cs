@@ -102,3 +102,9 @@ public class BlockPropData : MonoBehaviour
 
 }
 
+public class BlockConfigData
+{
+    public bool active = false;
+    public BlockPropData blockPropData;
+}
+

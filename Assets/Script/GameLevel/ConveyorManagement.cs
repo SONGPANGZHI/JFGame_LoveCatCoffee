@@ -17,6 +17,8 @@ public class ConveyorManagement : MonoBehaviour
     private bool firstGameLevel;
     private bool otherGameLevel;
     private int dictionaryArrayID = 2;
+
+    
     void Start()
     {
         //// 初始化图片位置
