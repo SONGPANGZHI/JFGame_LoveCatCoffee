@@ -10,6 +10,7 @@ public class BlockGeneration : MonoBehaviour
     public Transform bottom_Tran;
     public float horizontalSpacing = 2f;
 
+    public int layerID;
 
     private List<BlockPropData> topBlockList = new List<BlockPropData>();
     private List<BlockPropData> middleBlockList = new List<BlockPropData>();
@@ -36,36 +37,37 @@ public class BlockGeneration : MonoBehaviour
     //生成 第一条 传送带
     public void CreateLeftConveyor(int ID)
     {
-        MiddleBlock(GameLevelManagement.Instance.middleBlockDic_Top[ID]);
-        TopBolck(GameLevelManagement.Instance.topBlockDic_Top[ID]);
-        BottomBolck(GameLevelManagement.Instance.bottomBlockDic_Top[ID]);
+        MiddleBlock(2, GameLevelManagement.Instance.middleBlockDic_Top[ID], GameLevelManagement.Instance.middleBlockDic_Bool_Top[ID],ConveyorLayer.Top);
+        TopBolck(1, GameLevelManagement.Instance.topBlockDic_Top[ID], GameLevelManagement.Instance.topBlockDic_Bool_Top[ID], ConveyorLayer.Top);
+        BottomBolck(3, GameLevelManagement.Instance.bottomBlockDic_Top[ID], GameLevelManagement.Instance.bottomBlockDic_Bool_Top[ID], ConveyorLayer.Top);
         Invoke("UnlockBlockData", 0.2F);
 
     }
 
     public void CreateRightConveyor(int ID)
     {
-        MiddleBlock(GameLevelManagement.Instance.middleBlockDic_Bottom[ID]);
-        TopBolck(GameLevelManagement.Instance.topBlockDic_Bottom[ID]);
-        BottomBolck(GameLevelManagement.Instance.bottomBlockDic_Bottom[ID]);
+        MiddleBlock(ID, GameLevelManagement.Instance.middleBlockDic_Bottom[ID], GameLevelManagement.Instance.middleBlockDic_Bool_Bottom[ID], ConveyorLayer.Bottom);
+        TopBolck(ID, GameLevelManagement.Instance.topBlockDic_Bottom[ID], GameLevelManagement.Instance.topBlockDic_Bool_Bottom[ID], ConveyorLayer.Bottom);
+        BottomBolck(ID, GameLevelManagement.Instance.bottomBlockDic_Bottom[ID], GameLevelManagement.Instance.bottomBlockDic_Bool_Bottom[ID], ConveyorLayer.Bottom);
         Invoke("UnlockBlockData", 0.2F);
     }
     //生成Top
-    public void TopBolck(List<BlockPropData> blockList)
+    public void TopBolck(int id, List<BlockPropData> blockList, List<bool> bools, ConveyorLayer conveyorLayer)
     {
         if (GameLevelManagement.Instance.perspective)
-            RandomBlock(blockList, top_Tran, BlockHierarchy.TopBlock);
+            RandomBlock(id,blockList, top_Tran, BlockHierarchy.TopBlock, bools, conveyorLayer);
         else
-            CreateBlock(blockList, top_Tran, BlockHierarchy.TopBlock);
+            CreateBlock(id,blockList, top_Tran, BlockHierarchy.TopBlock, bools, conveyorLayer);
     }
 
     //中间
-    public void MiddleBlock(List<BlockPropData> blockList)
+    public void MiddleBlock(int id, List<BlockPropData> blockList,List<bool> bools,ConveyorLayer conveyorLayer)
     {
+
         if (GameLevelManagement.Instance.perspective)
-            RandomBlock(blockList, middle_Tran, BlockHierarchy.MiddleBlock);
+            RandomBlock(id,blockList, middle_Tran, BlockHierarchy.MiddleBlock, bools, conveyorLayer);
         else
-            CreateBlock(blockList, middle_Tran, BlockHierarchy.MiddleBlock);
+            CreateBlock(id,blockList, middle_Tran, BlockHierarchy.MiddleBlock, bools, conveyorLayer);
         //for (int i = 0; i < middleBlockList.Count; i++)
         //{
         //    GameObject GO = Instantiate(middleBlockList[i].prefab, middle_Tran);
@@ -76,12 +78,12 @@ public class BlockGeneration : MonoBehaviour
     }
 
     //底部
-    public void BottomBolck(List<BlockPropData> blockList)
+    public void BottomBolck(int id,List<BlockPropData> blockList, List<bool> bools, ConveyorLayer conveyorLayer)
     {
         if (GameLevelManagement.Instance.perspective)
-            RandomBlock(blockList, bottom_Tran, BlockHierarchy.BottomBlock);
+            RandomBlock(id,blockList, bottom_Tran, BlockHierarchy.BottomBlock, bools, conveyorLayer);
         else
-            CreateBlock(blockList, bottom_Tran, BlockHierarchy.BottomBlock);
+            CreateBlock(id,blockList, bottom_Tran, BlockHierarchy.BottomBlock, bools, conveyorLayer);
         //for (int i = 0; i < bottomBlockList.Count; i++)
         //{
         //    GameObject GO = Instantiate(bottomBlockList[i].prefab, bottom_Tran);
@@ -92,7 +94,7 @@ public class BlockGeneration : MonoBehaviour
     }
 
     //透视道具使用生成方块
-    public void RandomBlock(List<BlockPropData> blockPropDatas, Transform trans, BlockHierarchy blockHierarchy)
+    public void RandomBlock(int id,List<BlockPropData> blockPropDatas, Transform trans, BlockHierarchy blockHierarchy, List<bool> bools,ConveyorLayer conveyorLayer)
     {
         for (int i = 0; i < blockPropDatas.Count; i++)
         {
@@ -101,76 +103,115 @@ public class BlockGeneration : MonoBehaviour
                 int blockID = Random.Range(0, GameLevelManagement.Instance.blockPropAll.Count - 1);
                 GameObject GO = Instantiate(GameLevelManagement.Instance.blockPropAll[blockID].prefab, trans);
                 GO.GetComponent<BlockPropData>().blockHierarchy = blockHierarchy;
-                GO.GetComponent<BlockPropData>().InitBlock();
+                GO.GetComponent<BlockPropData>().conveyorLayer = conveyorLayer;
+                //GO.GetComponent<BlockPropData>()._isActive = bools[i];
+                GO.GetComponent<BlockPropData>().InitBlock(id,i, bools[i], layerID);
                 GO.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * horizontalSpacing, 0);
             }
             else
             {
                 GameObject GO = Instantiate(blockPropDatas[i].prefab, trans);
                 GO.GetComponent<BlockPropData>().blockHierarchy = blockHierarchy;
-                GO.GetComponent<BlockPropData>().InitBlock();
+                GO.GetComponent<BlockPropData>().conveyorLayer = conveyorLayer;
+                //GO.GetComponent<BlockPropData>()._isActive = bools[i];
+                GO.GetComponent<BlockPropData>().InitBlock(id,i, bools[i], layerID);
                 GO.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * horizontalSpacing, 0);
             }
         }
     }
 
     //生成方块
-    public void CreateBlock(List<BlockPropData> blockPropDatas,Transform trans, BlockHierarchy blockHierarchy)
+    public void CreateBlock(int id,List<BlockPropData> blockPropDatas,Transform trans, BlockHierarchy blockHierarchy,List<bool> bools, ConveyorLayer conveyorLayer)
     {
+        if (conveyorLayer == ConveyorLayer.Top)
+        {
+            switch (blockHierarchy)
+            {
+                case BlockHierarchy.TopBlock:
+                    id = 0;
+                    break;
+                case BlockHierarchy.MiddleBlock:
+                    id = 1;
+                    break;
+                case BlockHierarchy.BottomBlock:
+                    id = 2;
+                    break;
+            }
+        }
+        else
+        {
+            switch (blockHierarchy)
+            {
+                case BlockHierarchy.TopBlock:
+                    id = 0;
+                    break;
+                case BlockHierarchy.MiddleBlock:
+                    id = 1;
+                    break;
+                case BlockHierarchy.BottomBlock:
+                    id = 2;
+                    break;
+            }
+        }
+
+
+      
         for (int i = 0; i < blockPropDatas.Count; i++)
         {
             GameObject GO = Instantiate(blockPropDatas[i].prefab, trans);
             GO.GetComponent<BlockPropData>().blockHierarchy = blockHierarchy;
-            GO.GetComponent<BlockPropData>().InitBlock();
+            GO.GetComponent<BlockPropData>().conveyorLayer = conveyorLayer;
+            //GO.GetComponent<BlockPropData>()._isActive = bools[i];
+            GO.GetComponent<BlockPropData>().InitBlock(id,i, bools[i], layerID);
             GO.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * horizontalSpacing, 0);
         }
     }
 
     //检查已生成的道具是否有礼盒
-    public void CheckGiftBlock()
-    {
-        for (int i = 0; i < top_Tran.childCount; i++)
-        {
-            if (top_Tran.GetChild(i).GetComponent<BlockPropData>().blockPropType == BlockPropType.Gift)
-            {
-                Destroy(top_Tran.GetChild(i).gameObject);
-                int blockID = Random.Range(0, GameLevelManagement.Instance.blockPropAll.Count - 1);
-                GameObject GO = Instantiate(GameLevelManagement.Instance.blockPropAll[blockID].prefab, top_Tran);
-                GO.transform.SetSiblingIndex(i);
-                GO.GetComponent<BlockPropData>().blockHierarchy = BlockHierarchy.TopBlock;
-                GO.GetComponent<BlockPropData>().InitBlock();
-                GO.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * horizontalSpacing, 0);
-            }
-        }
+    //public void CheckGiftBlock()
+    //{
+    //    for (int i = 0; i < top_Tran.childCount; i++)
+    //    {
+    //        if (top_Tran.GetChild(i).GetComponent<BlockPropData>().blockPropType == BlockPropType.Gift)
+    //        {
+    //            Destroy(top_Tran.GetChild(i).gameObject);
+    //            int blockID = Random.Range(0, GameLevelManagement.Instance.blockPropAll.Count - 1);
+    //            GameObject GO = Instantiate(GameLevelManagement.Instance.blockPropAll[blockID].prefab, top_Tran);
+    //            GO.transform.SetSiblingIndex(i);
+    //            GO.GetComponent<BlockPropData>().blockHierarchy = BlockHierarchy.TopBlock;
+    //            GO.GetComponent<BlockPropData>().InitBlock();
+    //            GO.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * horizontalSpacing, 0);
+    //        }
+    //    }
 
-        for (int i = 0; i < middle_Tran.childCount; i++)
-        {
-            if (middle_Tran.GetChild(i).GetComponent<BlockPropData>().blockPropType == BlockPropType.Gift)
-            {
-                Destroy(middle_Tran.GetChild(i).gameObject);
-                int blockID = Random.Range(0, GameLevelManagement.Instance.blockPropAll.Count - 1);
-                GameObject GO = Instantiate(GameLevelManagement.Instance.blockPropAll[blockID].prefab, middle_Tran);
-                GO.transform.SetSiblingIndex(i);
-                GO.GetComponent<BlockPropData>().blockHierarchy = BlockHierarchy.MiddleBlock;
-                GO.GetComponent<BlockPropData>().InitBlock();
-                GO.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * horizontalSpacing, 0);
-            }
-        }
+    //    for (int i = 0; i < middle_Tran.childCount; i++)
+    //    {
+    //        if (middle_Tran.GetChild(i).GetComponent<BlockPropData>().blockPropType == BlockPropType.Gift)
+    //        {
+    //            Destroy(middle_Tran.GetChild(i).gameObject);
+    //            int blockID = Random.Range(0, GameLevelManagement.Instance.blockPropAll.Count - 1);
+    //            GameObject GO = Instantiate(GameLevelManagement.Instance.blockPropAll[blockID].prefab, middle_Tran);
+    //            GO.transform.SetSiblingIndex(i);
+    //            GO.GetComponent<BlockPropData>().blockHierarchy = BlockHierarchy.MiddleBlock;
+    //            GO.GetComponent<BlockPropData>().InitBlock();
+    //            GO.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * horizontalSpacing, 0);
+    //        }
+    //    }
 
-        for (int i = 0; i < bottom_Tran.childCount; i++)
-        {
-            if (bottom_Tran.GetChild(i).GetComponent<BlockPropData>().blockPropType == BlockPropType.Gift)
-            {
-                Destroy(bottom_Tran.GetChild(i).gameObject);
-                int blockID = Random.Range(0, GameLevelManagement.Instance.blockPropAll.Count - 1);
-                GameObject GO = Instantiate(GameLevelManagement.Instance.blockPropAll[blockID].prefab, bottom_Tran);
-                GO.transform.SetSiblingIndex(i);
-                GO.GetComponent<BlockPropData>().blockHierarchy = BlockHierarchy.BottomBlock;
-                GO.GetComponent<BlockPropData>().InitBlock();
-                GO.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * horizontalSpacing, 0);
-            }
-        }
-    }
+    //    for (int i = 0; i < bottom_Tran.childCount; i++)
+    //    {
+    //        if (bottom_Tran.GetChild(i).GetComponent<BlockPropData>().blockPropType == BlockPropType.Gift)
+    //        {
+    //            Destroy(bottom_Tran.GetChild(i).gameObject);
+    //            int blockID = Random.Range(0, GameLevelManagement.Instance.blockPropAll.Count - 1);
+    //            GameObject GO = Instantiate(GameLevelManagement.Instance.blockPropAll[blockID].prefab, bottom_Tran);
+    //            GO.transform.SetSiblingIndex(i);
+    //            GO.GetComponent<BlockPropData>().blockHierarchy = BlockHierarchy.BottomBlock;
+    //            GO.GetComponent<BlockPropData>().InitBlock();
+    //            GO.GetComponent<RectTransform>().anchoredPosition = new Vector2(i * horizontalSpacing, 0);
+    //        }
+    //    }
+    //}
 
 
     #region 添加数据

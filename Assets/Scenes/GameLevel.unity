@@ -1678,6 +1678,7 @@ MonoBehaviour:
   middle_Tran: {fileID: 3648123396548889249}
   bottom_Tran: {fileID: 3648123397266464417}
   horizontalSpacing: 180
+  layerID: 36
 --- !u!224 &3648123397021664417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1793,6 +1794,7 @@ MonoBehaviour:
   middle_Tran: {fileID: 3648123398465581490}
   bottom_Tran: {fileID: 3648123397292487696}
   horizontalSpacing: 180
+  layerID: 18
 --- !u!222 &3648123397041298021
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2382,6 +2384,7 @@ MonoBehaviour:
   middle_Tran: {fileID: 3648123398274252741}
   bottom_Tran: {fileID: 3648123396751160851}
   horizontalSpacing: 180
+  layerID: 36
 --- !u!1 &3648123397889304592
 GameObject:
   m_ObjectHideFlags: 0
@@ -2507,6 +2510,7 @@ MonoBehaviour:
   middle_Tran: {fileID: 3648123397947727449}
   bottom_Tran: {fileID: 3648123398328116159}
   horizontalSpacing: 180
+  layerID: 0
 --- !u!222 &3648123397920178746
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2945,6 +2949,7 @@ MonoBehaviour:
   middle_Tran: {fileID: 3648123398312761826}
   bottom_Tran: {fileID: 3648123396876340948}
   horizontalSpacing: 180
+  layerID: 0
 --- !u!224 &3648123398419711039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3050,6 +3055,7 @@ MonoBehaviour:
   middle_Tran: {fileID: 3648123398375713551}
   bottom_Tran: {fileID: 3648123396877987815}
   horizontalSpacing: 180
+  layerID: 18
 --- !u!224 &3648123398465829878
 RectTransform:
   m_ObjectHideFlags: 0

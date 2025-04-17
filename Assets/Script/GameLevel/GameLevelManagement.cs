@@ -6,6 +6,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class GameLevelManagement : MonoBehaviour
 {
@@ -60,6 +61,7 @@ public class GameLevelManagement : MonoBehaviour
     public Dictionary<int, List<bool>> topBlockDic_Bool_Top = new Dictionary<int, List<bool>>();
     public Dictionary<int, List<bool>> middleBlockDic_Bool_Top = new Dictionary<int, List<bool>>();
     public Dictionary<int, List<bool>> bottomBlockDic_Bool_Top = new Dictionary<int, List<bool>>();
+
     public Dictionary<int, List<bool>> topBlockDic_Bool_Bottom = new Dictionary<int, List<bool>>();
     public Dictionary<int, List<bool>> middleBlockDic_Bool_Bottom = new Dictionary<int, List<bool>>();
     public Dictionary<int, List<bool>> bottomBlockDic_Bool_Bottom = new Dictionary<int, List<bool>>();
@@ -310,6 +312,7 @@ public class GameLevelManagement : MonoBehaviour
         int arrayID = topLayerData_Top_Temp.Count / 6;
         middleBlockDic_Top = topLayerData_Top_Temp.SplitIntoGroups(arrayID);
         middleBlockDic_Bottom = topLayerData_Bottom_Temp.SplitIntoGroups(arrayID);
+        InitializeDictionary(arrayID,6);
         Debug.LogError("middleBlockDic_Top" + middleBlockDic_Top.Count);
         Debug.LogError("middleBlockDic_Bottom" + middleBlockDic_Bottom.Count);
     }
@@ -335,6 +338,61 @@ public class GameLevelManagement : MonoBehaviour
         bottomBlockDic_Bottom = topLayerData_Bottom_Temp.SplitIntoGroups(arrayID);
         Debug.LogError("bottomBlockDic_Top" + bottomBlockDic_Top.Count);
         Debug.LogError("bottomBlockDic_Bottom" + bottomBlockDic_Bottom.Count);
+    }
+
+
+    // 初始化指定长度的字典，所有bool值默认为false
+    public void InitializeDictionary(int keyCount, int listLength)
+    {
+        topBlockDic_Bool_Top.Clear();
+        middleBlockDic_Bool_Top.Clear();
+        bottomBlockDic_Bool_Top.Clear();
+        topBlockDic_Bool_Bottom.Clear();
+        middleBlockDic_Bool_Bottom.Clear();
+        bottomBlockDic_Bool_Bottom.Clear();
+        for (int i = 0; i < keyCount; i++)
+        {
+            // 创建并填充新列表
+            List<bool> newList = new List<bool>(listLength);
+            for (int j = 0; j < listLength; j++)
+            {
+                newList.Add(true); // 默认全部false
+            }
+            topBlockDic_Bool_Top.Add(i, newList);
+            middleBlockDic_Bool_Top.Add(i, newList);
+            bottomBlockDic_Bool_Top.Add(i, newList);
+            topBlockDic_Bool_Bottom.Add(i, newList);
+            middleBlockDic_Bool_Bottom.Add(i, newList);
+            bottomBlockDic_Bool_Bottom.Add(i, newList);
+
+        }
+    }
+
+
+    public void ModifyBlockByIndex(int dictKey, int listIndex, bool newData)
+    {
+        //获取对应的列表
+        List<bool> targetList = bottomBlockDic_Bool_Top[dictKey];
+
+        //newData = targetList[listIndex];
+        targetList[listIndex] = newData;
+        Test(bottomBlockDic_Bool_Top);
+        Test(topBlockDic_Bool_Top);
+        Test(middleBlockDic_Bool_Top);
+        //Debug.LogError("bottomBlockDic_Bool_Top" + bottomBlockDic_Bool_Top.Values);
+        //Debug.LogError("topBlockDic_Bool_Top" + topBlockDic_Bool_Top.Values);
+        //Debug.LogError("middleBlockDic_Bool_Top" + middleBlockDic_Bool_Top.Values);
+    }
+
+    public void Test( Dictionary<int, List<bool>> TEMP)
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        foreach (var item in TEMP)
+        {
+            sb.AppendLine($"键 {item.Key}: " + string.Join(", ", item.Value));
+            
+        }
+        Debug.LogError(sb);
     }
 
     #endregion

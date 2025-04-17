@@ -72,3 +72,9 @@ public enum TypesCards
     SurplusCard,        //冗余牌
     MysteryCard,        //盲盒
 }
+
+public enum ConveyorLayer
+{ 
+    Top,
+    Bottom,
+}

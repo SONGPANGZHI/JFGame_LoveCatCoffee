@@ -8,27 +8,35 @@ public class BlockPropData : MonoBehaviour
 {
     public BlockPropType blockPropType;
     public BlockHierarchy blockHierarchy;
+    public ConveyorLayer conveyorLayer;
     public Sprite dorpZoneSprite;
     public GameObject prefab;
     public List<GameObject> unlockblock;      //0 左边 1 右边
     public Color unlockColor;
-
+    public int ID;
 
     public static Action JudgeThirdRowUnlockActon;
     public static Action JudgeScendRowUnlockActon;
 
-    private bool _isActive = true;
+    public bool _isActive = true;
 
+    public int hierarchyID;
+    public int listID;
     private void Awake()
     {
         prefab.GetComponent<Button>().onClick.AddListener(BlockClick);
     }
 
     //初始化
-    public void InitBlock()
+    public void InitBlock(int _hierarchyID,int _listID,bool active,int _ID)
     {
-        gameObject.SetActive(_isActive);
-
+        hierarchyID = _hierarchyID;
+        listID = _listID;
+        if(conveyorLayer == ConveyorLayer.Top)
+            ID = _hierarchyID * 6 + _listID + _ID;
+        else
+            ID = _hierarchyID * 6 + _listID + 54 + _ID;
+        gameObject.SetActive(active);
         if (CheckUnlock())
         {
             transform.GetComponent<Image>().color = Color.white;
@@ -52,7 +60,8 @@ public class BlockPropData : MonoBehaviour
     public void BlockClick()
     {
         gameObject.SetActive(false);
-        _isActive = false;
+        //_isActive = false;
+        UpdateData();
         GameLevelManagement.Instance.CreateDropZoneObject(this);
         JudgeBlockClick();
     }
@@ -100,11 +109,32 @@ public class BlockPropData : MonoBehaviour
         return true;
     }
 
+    public void UpdateData()
+    {
+        switch (conveyorLayer)
+        {
+            case ConveyorLayer.Top:
+                GetLayerDicData();
+                break;
+            case ConveyorLayer.Bottom:
+                break;
+        }
+    }
+
+    public void GetLayerDicData()
+    {
+        switch (blockHierarchy)
+        {
+            case BlockHierarchy.TopBlock:
+                //GameLevelManagement.Instance.ModifyBlockByIndex(hierarchyID,listID,false);
+                break;
+            case BlockHierarchy.MiddleBlock:
+                break;
+            case BlockHierarchy.BottomBlock:
+                GameLevelManagement.Instance.ModifyBlockByIndex(hierarchyID, listID, false);
+                break;
+        }
+    }
 }
 
-public class BlockConfigData
-{
-    public bool active = false;
-    public BlockPropData blockPropData;
-}
 
