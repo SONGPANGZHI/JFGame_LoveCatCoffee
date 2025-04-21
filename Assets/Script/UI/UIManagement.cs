@@ -17,12 +17,9 @@ public class UIManagement : MonoBehaviour
     [SerializeField]
     private AwardPlane awardPlane;
 
-    [SerializeField]
-    private GameObject mainGame;
 
     public LoadingPlane loadingPlane;
 
-    private GameObject mainGameOBJ;
     public string sceneName;
     private void Awake()
     {
@@ -123,7 +120,7 @@ public class UIManagement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Debug.Log("测试已经使用复活道具---");
-            PlayerPrefs.SetInt(SettingPlane.propUserKey,1);
+            PlayerPrefs.SetInt(GameManager.propUserKey,1);
         }
 
         if (Input.GetKeyDown(KeyCode.W))

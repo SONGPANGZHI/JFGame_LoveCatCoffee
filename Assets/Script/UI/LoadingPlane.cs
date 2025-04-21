@@ -38,6 +38,8 @@ public class LoadingPlane : MonoBehaviour
             valueBG.DOFade(0, 0.5f).SetEase(Ease.Linear);
             load_TMP.DOFade(0, 0.5f).SetEase(Ease.Linear);
             changeValue.DOFade(0, 0.5f).SetEase(Ease.Linear);
+            bg.transform.GetChild(0).GetComponent<Image>().DOFade(0, 0.5f).SetEase(Ease.Linear);
+            bg.transform.GetChild(1).GetComponent<Image>().DOFade(0, 0.5f).SetEase(Ease.Linear);
             bg.DOFade(0, 0.5f).SetEase(Ease.Linear).OnComplete(() => {
 
                 UIManagement.Instance.OpenGamePlane();
@@ -64,6 +66,8 @@ public class LoadingPlane : MonoBehaviour
             valueBG.DOFade(0, 0.5f).SetEase(Ease.Linear);
             load_TMP.DOFade(0, 0.5f).SetEase(Ease.Linear);
             changeValue.DOFade(0, 0.5f).SetEase(Ease.Linear);
+            bg.transform.GetChild(0).GetComponent<Image>().DOFade(0, 0.5f).SetEase(Ease.Linear);
+            bg.transform.GetChild(1).GetComponent<Image>().DOFade(0, 0.5f).SetEase(Ease.Linear);
             bg.DOFade(0, 0.5f).SetEase(Ease.Linear).OnComplete(() => {
 
                 this.gameObject.SetActive(false);

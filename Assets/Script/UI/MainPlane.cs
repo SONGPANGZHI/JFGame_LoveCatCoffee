@@ -52,6 +52,7 @@ public class MainPlane : MonoBehaviour
     private void StartPlayClick()
     {
         //加载场景
+        MusicManagement.instance.ClickPlaySFX();
         UIManagement.Instance.sceneName = "GameLevel";
         GameManager.Instance.SavaChallengTime();
         UIManagement.Instance.OpenLoadingPlane();
@@ -62,6 +63,7 @@ public class MainPlane : MonoBehaviour
     private void ChallengeClick()
     {
         //加载场景
+        MusicManagement.instance.ClickPlaySFX();
         UIManagement.Instance.sceneName = "DailyChallenge";
         UIManagement.Instance.OpenLoadingPlane();
     }
@@ -81,6 +83,7 @@ public class MainPlane : MonoBehaviour
     //设置界面
     private void SettingClick()
     {
+        MusicManagement.instance.ClickPlaySFX();
         UIManagement.Instance.OpenSettingPlane();
     }
 
@@ -89,16 +92,4 @@ public class MainPlane : MonoBehaviour
         bottom_OBJ.DOMoveY(-300, 0.3f);
     }
 
-    public void Test()
-    {
-        int saveID = PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey);
-        PlayerPrefs.SetInt(GameManager.CurrentGameLevelKey, saveID + 1);
-        Debug.LogError("CurrentGameLevelKey" + saveID);
-    }
-
-    public void DeleTest()
-    {
-        PlayerPrefs.DeleteAll();
-        Debug.LogError("清除所有PlayerPrefs");
-    }
 }

@@ -11,8 +11,24 @@ public class PropData
     public string propDesc;
 }
 
+[Serializable]
+public class BlockPropDataClass
+{
+    public int ID;
+    public bool active;
+    public BlockDataConfig config;
+
+    public BlockPropDataClass(int _id,bool _active, BlockDataConfig _config)
+    { 
+        ID= _id;
+        active= _active;    
+        config= _config;
+    }
+}
+
 public enum BlockHierarchy
 { 
+    None,
     TopBlock,
     MiddleBlock,
     BottomBlock,
@@ -75,6 +91,7 @@ public enum TypesCards
 
 public enum ConveyorLayer
 { 
+    None,
     Top,
     Bottom,
 }

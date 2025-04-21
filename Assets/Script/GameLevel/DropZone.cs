@@ -7,12 +7,12 @@ public class DropZone : MonoBehaviour
 {
     public Image iconSprite; 
     public BlockPropType blockPropType;
-    public BlockPropData blockPropData;
+    public BlockDataConfig blockPropData;
 
-    public void DropZoneInit(BlockPropData _blockPropData)
+    public void DropZoneInit(BlockDataConfig _blockPropData)
     {
         blockPropData = _blockPropData;
-        iconSprite.sprite = blockPropData.dorpZoneSprite;
+        iconSprite.sprite = blockPropData.DorpZoneSprite;
         blockPropType = blockPropData.blockPropType;
     }
 

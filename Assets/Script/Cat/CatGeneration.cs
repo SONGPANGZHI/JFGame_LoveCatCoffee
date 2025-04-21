@@ -14,7 +14,6 @@ public class CatGeneration : MonoBehaviour
     {
         AddCatList();
         CatData.CreateCatAction += DetermineCurrentProgressCat;
-
         CatInit();
     }
 

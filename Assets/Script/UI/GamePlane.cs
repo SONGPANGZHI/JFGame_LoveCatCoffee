@@ -55,6 +55,7 @@ public class GamePlane : MonoBehaviour
     //设置
     private void SettingClick()
     {
+        MusicManagement.instance.ClickPlaySFX();
         //打开设置界面
         UIManagement.Instance.OpenSettingPlane(true);
     }
@@ -71,6 +72,7 @@ public class GamePlane : MonoBehaviour
     //清除
     private void ClearClick()
     {
+        MusicManagement.instance.ClickPlaySFX();
         //清除道具使用 先看广告获得
         if (PlayerPrefs.HasKey("ClearPropKey"))
         {
@@ -102,6 +104,7 @@ public class GamePlane : MonoBehaviour
     //加速
     private void SpeedClick()
     {
+        MusicManagement.instance.ClickPlaySFX();
         //清除加速使用
         if (PlayerPrefs.HasKey("SpeedPropKey"))
         {
@@ -134,6 +137,7 @@ public class GamePlane : MonoBehaviour
     //透视
     private void PerspectiveClick()
     {
+        MusicManagement.instance.ClickPlaySFX();
         //清除透视使用
         if (PlayerPrefs.HasKey("PerspectivePropKey"))
         {
@@ -171,7 +175,7 @@ public class GamePlane : MonoBehaviour
         perspective_BTN.interactable = true;
         PlayerPrefs.DeleteKey("PerspectivePropKey");
 
-        PlayerPrefs.DeleteKey(SettingPlane.propUserKey);
+        PlayerPrefs.DeleteKey(GameManager.propUserKey);
     }
 
 

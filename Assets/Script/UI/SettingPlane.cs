@@ -24,10 +24,7 @@ public class SettingPlane : MonoBehaviour
     private GameObject bottom_Menu_Game;
 
     //保存设置Key 不需要修改
-    private const string musicSetKey = "MusicSettingKey";
-    private const string soundSetKey = "SoundSettingKey";
-    private const string shakeSetKey = "ShakeSettingKey";
-    public const string propUserKey = "PropUserKey";
+    
     private void Awake()
     {
         giveUP_BTN.onClick.AddListener(GiveUpChallengeClick);
@@ -59,21 +56,22 @@ public class SettingPlane : MonoBehaviour
     //初始化姐界面数据
     public void InitSetData()
     {
-        music_Toggle.isOn = FindSettingSave(musicSetKey);
-        sound_Toggle.isOn = FindSettingSave(soundSetKey);
-        shake_Toggle.isOn = FindSettingSave(shakeSetKey);
+        music_Toggle.isOn = FindSettingSave(GameManager.musicSetKey);
+        sound_Toggle.isOn = FindSettingSave(GameManager.soundSetKey);
+        shake_Toggle.isOn = FindSettingSave(GameManager.shakeSetKey);
     }
 
     //放弃挑战
     private void GiveUpChallengeClick()
     {
+        MusicManagement.instance.ClickPlaySFX();
         transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3f).OnComplete(() =>
         {
             this.gameObject.SetActive(false);
         });
 
         //需要判断是否 使用过道具
-        if (PlayerPrefs.HasKey(propUserKey))
+        if (PlayerPrefs.HasKey(GameManager.propUserKey))
         {
             //打开结束界面
             UIManagement.Instance.OpenGameOverPlane();
@@ -87,6 +85,7 @@ public class SettingPlane : MonoBehaviour
 
     public void ClosePlane()
     {
+        MusicManagement.instance.ClickPlaySFX();
         transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3f).OnComplete(() => 
         {
             this.gameObject.SetActive(false);
@@ -98,48 +97,51 @@ public class SettingPlane : MonoBehaviour
     //音乐   0 为 打开音乐，1 关闭音乐
     private void MusicClick(bool open)
     {
+        MusicManagement.instance.ClickPlaySFX();
         music_Toggle.isOn = open;
         if (open)
         {
             //打开音乐
-            PlayerPrefs.SetInt(musicSetKey, 0);
+            PlayerPrefs.SetInt(GameManager.musicSetKey, 0);
         }
         else 
         {
             //关闭
-            PlayerPrefs.SetInt(musicSetKey, 1);
+            PlayerPrefs.SetInt(GameManager.musicSetKey, 1);
         }
     }
 
     //音效
     private void SoundClick(bool open)
     {
+        MusicManagement.instance.ClickPlaySFX();
         sound_Toggle.isOn = open;
         if (open)
         {
             //打开音效
-            PlayerPrefs.SetInt(soundSetKey, 0);
+            PlayerPrefs.SetInt(GameManager.soundSetKey, 0);
         }
         else
         {
             //关闭
-            PlayerPrefs.SetInt(soundSetKey, 1);
+            PlayerPrefs.SetInt(GameManager.soundSetKey, 1);
         }
     }
 
     //震动
     private void ShakeClick(bool open)
     {
+        MusicManagement.instance.ClickPlaySFX();
         shake_Toggle.isOn = open;
         if (open)
         {
             //打开震动
-            PlayerPrefs.SetInt(shakeSetKey, 0);
+            PlayerPrefs.SetInt(GameManager.shakeSetKey, 0);
         }
         else
         {
             //关闭
-            PlayerPrefs.SetInt(shakeSetKey, 1);
+            PlayerPrefs.SetInt(GameManager.shakeSetKey, 1);
         }
     }
 

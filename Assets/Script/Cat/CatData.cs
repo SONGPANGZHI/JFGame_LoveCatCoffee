@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class CatData : MonoBehaviour
 {
-    public BlockPropData needBlock;
+    public BlockDataConfig needBlock;
 
     public Transform dialogue_OBJ;
 
@@ -29,14 +29,14 @@ public class CatData : MonoBehaviour
     {
         finish_IMG.SetActive(false);
         RandomBlockProp();
-        propIcon_IMG.sprite = needBlock.GetComponent<Image>().sprite;
+        propIcon_IMG.sprite = needBlock.Icon;
         propIcon_IMG.SetNativeSize();
         GameLevelManagement.Instance.catNeedBlock.Add(this);
         needNum_TMP.gameObject.SetActive(false);
     }
 
     //Ëæ»úµÀ¾ß
-    public BlockPropData RandomBlockProp()
+    public BlockDataConfig RandomBlockProp()
     {
         GameLevelManagement.Instance.AddCatNeedID();
         needBlock = GameLevelManagement.Instance.needCatData_Temp[GameLevelManagement.Instance.catNeedBlockID];

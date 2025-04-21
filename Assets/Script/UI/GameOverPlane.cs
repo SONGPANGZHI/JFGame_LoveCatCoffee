@@ -187,6 +187,7 @@ public class GameOverPlane : MonoBehaviour
     //重新挑战
     public void RecChanllengeClick()
     {
+        MusicManagement.instance.ClickPlaySFX();
         transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
         {
             //加载界面
@@ -201,6 +202,7 @@ public class GameOverPlane : MonoBehaviour
     //返回主界面
     public void BackMain()
     {
+        MusicManagement.instance.ClickPlaySFX();
         transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
         {
             AwardPlane.OnRewardTwo -= GetSecondReward;

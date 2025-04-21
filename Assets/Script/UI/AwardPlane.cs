@@ -32,6 +32,7 @@ public class AwardPlane : MonoBehaviour
     //三个阶段回调
     public void OKClick()
     {
+        MusicManagement.instance.ClickPlaySFX();
         transform.GetChild(0).DOScale(new Vector3(0,0,0), 0.7f).OnComplete(() =>
         {
             this.gameObject.SetActive(false);

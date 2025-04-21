@@ -89,6 +89,7 @@ public class CommonPlane : MonoBehaviour
 
     public void AffirmAbandonClick()
     {
+        MusicManagement.instance.ClickPlaySFX();
         transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3f).OnComplete(() =>
         {
             ResurgenceInitPlane();
@@ -112,7 +113,7 @@ public class CommonPlane : MonoBehaviour
     {
         //通过分享复活  相当于清除道具
         ClosePlane();
-        PlayerPrefs.SetInt(SettingPlane.propUserKey, 1);
+        PlayerPrefs.SetInt(GameManager.propUserKey, 1);
         Debug.LogError("分享复活直接使用清除道具----");
     }
 
@@ -158,6 +159,7 @@ public class CommonPlane : MonoBehaviour
     //关闭界面
     private void BackClick()
     {
+        MusicManagement.instance.ClickPlaySFX();
         transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3f).OnComplete(() => 
         {
             this.gameObject.SetActive(false);
