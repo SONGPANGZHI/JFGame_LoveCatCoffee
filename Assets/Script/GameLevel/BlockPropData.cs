@@ -61,7 +61,7 @@ public class BlockPropData : MonoBehaviour
     {
         gameObject.SetActive(false);
         //_isActive = false;
-        UpdateData();
+        //UpdateData();
         GameLevelManagement.Instance.CreateDropZoneObject(this);
         JudgeBlockClick();
     }

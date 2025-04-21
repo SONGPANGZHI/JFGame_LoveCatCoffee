@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +22,7 @@ public class CatData : MonoBehaviour
 
     public static Action CreateCatAction;
 
+    
 
     //初始化
     public void InitCatData()
@@ -31,14 +33,13 @@ public class CatData : MonoBehaviour
         propIcon_IMG.SetNativeSize();
         GameLevelManagement.Instance.catNeedBlock.Add(this);
         needNum_TMP.gameObject.SetActive(false);
-        //RandomDialogueDirection();
     }
 
     //随机道具
     public BlockPropData RandomBlockProp()
     {
-        int propID = UnityEngine.Random.Range(0, GameLevelManagement.Instance.needCatData_Temp.Count);
-        needBlock = GameLevelManagement.Instance.needCatData_Temp[propID];
+        GameLevelManagement.Instance.AddCatNeedID();
+        needBlock = GameLevelManagement.Instance.needCatData_Temp[GameLevelManagement.Instance.catNeedBlockID];
         return needBlock;
     }
 
@@ -69,13 +70,10 @@ public class CatData : MonoBehaviour
             finish_IMG.SetActive(true);
             //needNum_TMP.gameObject.SetActive(true);
             GameLevelManagement.Instance.catNeedBlock.Remove(this);
-
+            GameManager.Instance.currentNumberCats += 1;
+            UIManagement.Instance.gamePlane.TargetTmpChange();
             StartCoroutine(DestroyObject());
         }
-        //else
-        //{
-        //    needNum_TMP.text = text_NUM.ToString();
-        //}
     }
 
     //销毁该目标
@@ -83,9 +81,20 @@ public class CatData : MonoBehaviour
     {
         yield return new WaitForSeconds(1F);
         Destroy(gameObject);
-        GameManager.Instance.currentNumberCats += 1;
-        if(GameManager.Instance.currentNumberCats <= 30)
+
+        if (GameManager.Instance.currentNumberCats < GameLevelManagement.Instance.currentLevelData.Target - 2)
+        {
             CreateCatAction?.Invoke();
+
+        }
+        else if (GameManager.Instance.currentNumberCats == GameLevelManagement.Instance.currentLevelData.Target)
+        {
+            //游戏结束
+            UIManagement.Instance.OpenGameOverPlane(true);
+            GameManager.Instance.SavaGameLevel();
+        }
+           
+        
     }
 
     //public void AddCatNeedBlock()

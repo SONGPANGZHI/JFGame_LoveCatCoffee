@@ -28,13 +28,14 @@ public class CatGeneration : MonoBehaviour
             GO.GetComponent<CatData>().InitCatData();
         }
 
-        GameManager.Instance.CatNumChange(3);
+        //GameManager.Instance.CatNumChange(3);
     }
 
     //随机生成一只猫咪
     public void CreateCat()
     {
         int randonCat = Random.Range(0, catDatas_Temp.Count);
+        
         GameObject GO = Instantiate(catDatas_Temp[randonCat].gameObject, CheckUsedLocation(catPos[3]));
         GO.GetComponent<CatData>().InitCatData();
         GameLevelManagement.Instance.CheckCatRequirements(GO.GetComponent<CatData>());
@@ -66,15 +67,14 @@ public class CatGeneration : MonoBehaviour
     //判断 当前已生成几只猫
     public void DetermineCurrentProgressCat()
     {
-        if (GameManager.Instance.currentNumberCats <= 30)
+        if (GameManager.Instance.currentNumberCats < GameLevelManagement.Instance.currentLevelData.Target)
         {
             CreateCat();
         }
-        else
-        {
-            //游戏结束
-            UIManagement.Instance.OpenGameOverPlane(true);
-        }
     }
 
+    private void OnDisable()
+    {
+        CatData.CreateCatAction -= DetermineCurrentProgressCat;
+    }
 }

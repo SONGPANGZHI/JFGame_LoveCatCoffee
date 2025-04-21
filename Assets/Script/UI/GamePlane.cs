@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,8 @@ public class GamePlane : MonoBehaviour
     [SerializeField]
     private List<GameObject> perspective_Prop;
 
+    [SerializeField]
+    private TMP_Text targetNum_TMP;
 
     [SerializeField]
     private RectTransform buttom_Menu;
@@ -39,9 +42,15 @@ public class GamePlane : MonoBehaviour
     public void GamePlaneInit()
     {
         GamePlaneInitData();
-        buttom_Menu.DOMoveY(143, 0.1f); 
+        TargetTmpChange();
+        buttom_Menu.DOMoveY(143, 0.1f);
     }
 
+    //目标文本 改变
+    public void TargetTmpChange()
+    {
+        targetNum_TMP.text = GameManager.Instance.currentNumberCats + "/" + GameLevelManagement.Instance.currentLevelData.Target;
+    }
 
     //设置
     private void SettingClick()

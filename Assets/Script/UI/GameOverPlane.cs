@@ -39,6 +39,7 @@ public class GameOverPlane : MonoBehaviour
 
     private bool planeState;
 
+
     #region  文本常量 不需要变动
     private const string VictoryChallengesNum_TMP = "今日挑战<NUM>次";
     private const string DefeatedChallengesNum_TMP = "今日已挑战<NUM>次";
@@ -69,18 +70,19 @@ public class GameOverPlane : MonoBehaviour
         if (planeState)
         {
             //胜利
+            resChallenge_BTN.gameObject.SetActive(false);
             victory_UI.SetActive(true);
             defeated_UI.SetActive(false);
-            challengesNum_TMP.text = GameManager.Instance.GetNumbersText(VictoryChallengesNum_TMP, 
-                PlayerPrefs.GetInt(GameManager.NumberLevelChallengesKey));
+            challengesNum_TMP.text = GameManager.Instance.GetNumbersText(VictoryChallengesNum_TMP, GameManager.Instance.NumberLevelChallenges);
+            GameManager.Instance.SavaChallengTime();
         }
         else
         {
             //失败
+            resChallenge_BTN.gameObject.SetActive(true);
             defeated_UI.SetActive(true);
             victory_UI.SetActive(false);
-            challengesNum_TMP.text = GameManager.Instance.GetNumbersText(DefeatedChallengesNum_TMP,
-                PlayerPrefs.GetInt(GameManager.NumberLevelChallengesKey));
+            challengesNum_TMP.text = GameManager.Instance.GetNumbersText(DefeatedChallengesNum_TMP, GameManager.Instance.NumberLevelChallenges);
         }
 
         LevelProgress_TMP.text = GameManager.Instance.GetNumbersText(ProgressBarNum_TMP, GetGameProgress());
@@ -89,7 +91,7 @@ public class GameOverPlane : MonoBehaviour
     //获得游戏进度
     public int GetGameProgress()
     {
-        float progree = (GameManager.Instance.currentNumberCats / 30) * 100;
+        float progree = (GameManager.Instance.currentNumberCats / GameLevelManagement.Instance.currentLevelData.Target) * 100;
         Debug.LogError("progree" + progree);
         progress = progree / 100;
         return (int)progree;
@@ -191,6 +193,8 @@ public class GameOverPlane : MonoBehaviour
             UIManagement.Instance.CloseGamePlane();
             this.gameObject.SetActive(false);
             UIManagement.Instance.OpenLoadingPlane();
+            if(planeState)
+                GameLevelManagement.Instance.currentLevelData = GameLevelManagement.Instance.gameLevelDataList[PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey) - 1];
         });
     }
 

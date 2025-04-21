@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,7 +20,8 @@ public class GameManager : MonoBehaviour
     public static string NumberLevelChallengesKey = "NumberLevelChallengesKEY";         //关卡挑战次数
     public static string CurrentGameLevelKey = "CurrentGameLevelKEY";                   //当前游戏关卡
 
-
+    public string LogOutTimeKey;
+    public string LogInTimeKey;
     #endregion
 
     private void Awake()
@@ -33,7 +35,12 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        LogInTime();
     }
+
+   
+
 
     //检查保存数据
     public void CheckSaveData()
@@ -57,6 +64,65 @@ public class GameManager : MonoBehaviour
         Debug.LogError(finalTMP);
         return finalTMP;
     }
+
+    #region 时间获取
+
+    //登录
+    public void LogInTime()
+    {
+        GetCurrentTime();
+        if (LogInTimeKey != PlayerPrefs.GetString("LogOutTimeKey"))
+        {
+            NumberLevelChallenges = 0;
+            Debug.LogError("新的一天--");
+        }
+    }
+
+    //获取时间
+    public void GetCurrentTime()
+    {
+        DateTime now = DateTime.Now;
+
+        LogInTimeKey = now.ToString("yyyy年MM月dd日");
+        PlayerPrefs.SetString("LogInTimeKey", LogInTimeKey);
+
+    }
+
+    //退出
+    public void OnApplicationQuit()
+    {
+        DateTime now = DateTime.Now;
+        //UnityEditor.EditorApplication.isPlaying = false;
+        string LogOutTime = now.ToString("yyyy年MM月dd日");
+        PlayerPrefs.SetString("LogOutTimeKey", LogOutTime);
+    }
+    #endregion
+
+    #region 数据保存
+
+    public void LoadSaveDate()
+    {
+        NumberLevelChallenges = PlayerPrefs.GetInt(NumberLevelChallengesKey);
+    }
+
+
+    //保存关卡等级
+    public void SavaGameLevel()
+    {
+        int saveID = PlayerPrefs.GetInt(CurrentGameLevelKey);
+        PlayerPrefs.SetInt(CurrentGameLevelKey, saveID + 1);
+        Debug.LogError("CurrentGameLevelKey" + saveID);
+    }
+
+    //保存挑战次数
+    public void SavaChallengTime()
+    {
+        NumberLevelChallenges += 1;
+        PlayerPrefs.SetInt(NumberLevelChallengesKey, NumberLevelChallenges);
+        Debug.LogError("NumberLevelChallengesKey" + NumberLevelChallenges);
+    }
+
+    #endregion
 
 
     #region JSON 读取

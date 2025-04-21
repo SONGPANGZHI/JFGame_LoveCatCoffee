@@ -1,12 +1,8 @@
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 public class GameLevelManagement : MonoBehaviour
 {
@@ -494,6 +490,20 @@ public class GameLevelManagement : MonoBehaviour
     #endregion
 
     #region  猫咪需求
+
+    public int catNeedBlockID = -1;
+
+    public void AddCatNeedID()
+    {
+        catNeedBlockID += 1;
+
+        if (catNeedBlockID > needCatData_Temp.Count - 1)
+        {
+            catNeedBlockID = 0;
+        }
+        
+
+    }
 
     //猫咪需求
     public bool CatNeedBlock(BlockPropData _catBlock)

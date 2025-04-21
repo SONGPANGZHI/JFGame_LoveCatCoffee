@@ -38,16 +38,14 @@ public class MainPlane : MonoBehaviour
         pretend_BTN.onClick.AddListener(PretendClick);
         setting_BTN.onClick.AddListener(SettingClick);
 
-        if (!PlayerPrefs.HasKey("CurrentLevelKey"))
-            PlayerPrefs.SetInt("CurrentLevelKey",1);
     }
 
 
     //界面初始化
     public void InitPlane()
     {
-        bottom_OBJ.DOMoveY(225,0.3f);
-        currentLevel_TMP.text = "当前关卡：" + PlayerPrefs.GetInt("CurrentLevelKey");
+        bottom_OBJ.DOMoveY(300,0.3f);
+        currentLevel_TMP.text = "当前关卡：" + (PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey) + 1);
     }
 
     //开始
@@ -55,8 +53,7 @@ public class MainPlane : MonoBehaviour
     {
         //加载场景
         UIManagement.Instance.sceneName = "GameLevel";
-        GameManager.Instance.NumberLevelChallenges += 1;
-        PlayerPrefs.SetInt(GameManager.NumberLevelChallengesKey, GameManager.Instance.NumberLevelChallenges);
+        GameManager.Instance.SavaChallengTime();
         UIManagement.Instance.OpenLoadingPlane();
 
     }
