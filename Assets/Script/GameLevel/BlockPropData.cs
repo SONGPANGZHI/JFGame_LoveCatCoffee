@@ -15,6 +15,7 @@ public class BlockPropData : MonoBehaviour
     public List<GameObject> unlockblock;
     public Color unlockColor;
 
+    public static Vector2 clickPos;
     public static Action JudgeThirdRowUnlockActon;
     public static Action JudgeScendRowUnlockActon;
 
@@ -32,23 +33,7 @@ public class BlockPropData : MonoBehaviour
         icon.sprite = blockPropData.config.Icon;
         icon.SetNativeSize();
         gameObject.SetActive(active);
-
-        if (CheckUnlock())
-        {
-            transform.GetComponent<Image>().color = Color.white;
-            transform.GetComponent<Button>().interactable = true;
-        }
-
-        if (hierarchy == BlockHierarchy.BottomBlock)
-        {
-            transform.GetComponent<Image>().color = Color.white;
-            transform.GetComponent<Button>().interactable = true;
-        }
-        else
-        {
-            transform.GetComponent<Image>().color = unlockColor;
-            transform.GetComponent<Button>().interactable = false;
-        }
+        Invoke("ShowUnlock", 0.2F);
     }
 
     //按钮点击
@@ -62,17 +47,43 @@ public class BlockPropData : MonoBehaviour
         JudgeBlockClick();
     }
 
+    //延迟一秒 显示状态
+    public void ShowUnlock()
+    {
+        if (CheckUnlock())
+        {
+            transform.GetComponent<Image>().color = Color.white;
+            transform.GetComponent<Button>().interactable = true;
+        }
+        else
+        {
+            transform.GetComponent<Image>().color = unlockColor;
+            transform.GetComponent<Button>().interactable = false;
+        }
+    }
+
 
     public bool CheckUnlock()
-    {   
-        foreach (var item in unlockblock)
+    {
+        if (unlockblock.Count == 0)
         {
-            if (item.activeSelf)
+            return true;
+        }
+        else if (unlockblock.Count == 1)
+        {
+            if (!unlockblock[0].activeSelf)
+                return true;
+        }
+        else
+        {
+            for (int i = 0; i < unlockblock.Count; i++)
             {
-                return false;
+                if (!unlockblock[0].activeSelf && !unlockblock[1].activeSelf)
+                    return true;
             }
         }
-        return true;
+
+        return false;
     }
 
     //刷新数据

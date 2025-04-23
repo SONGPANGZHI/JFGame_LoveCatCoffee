@@ -74,7 +74,7 @@ public class GameOverPlane : MonoBehaviour
             victory_UI.SetActive(true);
             defeated_UI.SetActive(false);
             challengesNum_TMP.text = GameManager.Instance.GetNumbersText(VictoryChallengesNum_TMP, GameManager.Instance.NumberLevelChallenges);
-            GameManager.Instance.SavaChallengTime();
+            //GameManager.Instance.SavaChallengTime();
         }
         else
         {
@@ -92,7 +92,6 @@ public class GameOverPlane : MonoBehaviour
     public int GetGameProgress()
     {
         float progree = (GameManager.Instance.currentNumberCats / GameLevelManagement.Instance.currentLevelData.Target) * 100;
-        Debug.LogError("progree" + progree);
         progress = progree / 100;
         return (int)progree;
     }
@@ -188,6 +187,7 @@ public class GameOverPlane : MonoBehaviour
     public void RecChanllengeClick()
     {
         MusicManagement.instance.ClickPlaySFX();
+        GameManager.Instance.SavaChallengTime();
         transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
         {
             //加载界面

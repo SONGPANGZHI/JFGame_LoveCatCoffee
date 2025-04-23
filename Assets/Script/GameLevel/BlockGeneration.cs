@@ -30,7 +30,7 @@ public class BlockGeneration : MonoBehaviour
         MiddleBlock(GameLevelManagement.Instance.middleBlockDic_Top[ID]);
         TopBolck(GameLevelManagement.Instance.topBlockDic_Top[ID]);
         BottomBolck(GameLevelManagement.Instance.bottomBlockDic_Top[ID]);
-        Invoke("UnlockBlockData", 0.2F);
+        Invoke("UnlockBlockData", 0.1F);
 
     }
 
@@ -39,7 +39,7 @@ public class BlockGeneration : MonoBehaviour
         MiddleBlock(GameLevelManagement.Instance.middleBlockDic_Bottom[ID]);
         TopBolck(GameLevelManagement.Instance.topBlockDic_Bottom[ID]);
         BottomBolck(GameLevelManagement.Instance.bottomBlockDic_Bottom[ID]);
-        Invoke("UnlockBlockData", 0.2F);
+        Invoke("UnlockBlockData", 0.1F);
     }
     //生成Top
     public void TopBolck(List<BlockPropDataClass> blockList)

@@ -82,6 +82,7 @@ public class LoadingPlane : MonoBehaviour
         load_TMP.color = new Color32(123,35,6,255);
         changeValue.color = Color.white;
         bg.color = Color.white;
-
+        bg.transform.GetChild(0).GetComponent<Image>().color = Color.white;
+        bg.transform.GetChild(1).GetComponent<Image>().color = Color.white;
     }
 }

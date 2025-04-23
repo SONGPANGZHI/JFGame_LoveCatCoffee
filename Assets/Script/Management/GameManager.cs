@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
     public string GetNumbersText(string _TMP, int numID)
     {
         string finalTMP = _TMP.Replace("<NUM>", numID.ToString());
-        Debug.LogError(finalTMP);
         return finalTMP;
     }
 
@@ -116,15 +115,14 @@ public class GameManager : MonoBehaviour
     {
         int saveID = PlayerPrefs.GetInt(CurrentGameLevelKey);
         PlayerPrefs.SetInt(CurrentGameLevelKey, saveID + 1);
-        Debug.LogError("CurrentGameLevelKey" + saveID);
     }
 
     //保存挑战次数
     public void SavaChallengTime()
     {
-        NumberLevelChallenges += 1;
-        PlayerPrefs.SetInt(NumberLevelChallengesKey, NumberLevelChallenges);
-        Debug.LogError("NumberLevelChallengesKey" + NumberLevelChallenges);
+        int saveID = PlayerPrefs.GetInt(NumberLevelChallengesKey);
+        PlayerPrefs.SetInt(NumberLevelChallengesKey, saveID + 1);
+        NumberLevelChallenges = PlayerPrefs.GetInt(NumberLevelChallengesKey);
     }
 
     #endregion

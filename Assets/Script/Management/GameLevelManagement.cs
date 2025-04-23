@@ -1,9 +1,9 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class GameLevelManagement : MonoBehaviour
@@ -30,7 +30,7 @@ public class GameLevelManagement : MonoBehaviour
     private GameObject currentOBJ;
 
     [Header("传送带 速度")]
-    public int conveyorSpeed = 6;
+    public float conveyorSpeed = 0.2f;
     public bool keepTime = false;
     private float timer;
 
@@ -49,6 +49,8 @@ public class GameLevelManagement : MonoBehaviour
     public GameLevelConfig currentLevelData;
     public bool _isNovice;
 
+    public GameObject destroyParticle;
+
     public Dictionary<int, List<BlockPropDataClass>> topBlockDic_Top = new Dictionary<int, List<BlockPropDataClass>>();
     public Dictionary<int, List<BlockPropDataClass>> middleBlockDic_Top = new Dictionary<int, List<BlockPropDataClass>>();
     public Dictionary<int, List<BlockPropDataClass>> bottomBlockDic_Top = new Dictionary<int, List<BlockPropDataClass>>();
@@ -59,8 +61,9 @@ public class GameLevelManagement : MonoBehaviour
 
     public Dictionary<int, BlockPropDataClass> currentAllBlockData = new Dictionary<int, BlockPropDataClass>();
 
-
-
+    public GameObject prefab;
+    public Transform conveyor;
+    public Transform dorpZonePos;
 
 
     private void Awake()
@@ -116,7 +119,18 @@ public class GameLevelManagement : MonoBehaviour
             _isNovice = false;
         }
 
-        currentLevelData = gameLevelDataList[PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey)];
+        if (UIManagement.Instance._isChallengBool)
+        {
+            //挑战
+            currentLevelData = gameLevelDataList[19];
+        }
+        else
+        {
+            //每日
+            currentLevelData = gameLevelDataList[PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey)];
+        }
+
+        //currentLevelData = gameLevelDataList[PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey)];
         blockPropData_Temp.Shuffle();                                           //随机
         keyType = currentLevelData.TypeID / 2;                                  //关键牌 种类
         eachLayerNum = currentLevelData.Amount / 3;                             //每一行 关键牌 总数
@@ -354,7 +368,6 @@ public class GameLevelManagement : MonoBehaviour
             currentAllBlockData.Add(i, propData);
         }
 
-        Test(currentAllBlockData);
     }
 
    
@@ -366,17 +379,6 @@ public class GameLevelManagement : MonoBehaviour
     public void ModifyBlockByIndex(int dictKey, bool newData)
     {
         currentAllBlockData[dictKey].active = newData;
-    }
-
-    public void Test( Dictionary<int, BlockPropDataClass> TEMP)
-    {
-        System.Text.StringBuilder sb = new System.Text.StringBuilder();
-        foreach (var item in TEMP)
-        {
-            sb.AppendLine($"键 {item.Key}: " + string.Join(", ", item.Value));
-            
-        }
-        Debug.LogError(sb);
     }
 
     #endregion
@@ -399,21 +401,25 @@ public class GameLevelManagement : MonoBehaviour
             currentOBJ.GetComponent<DropZone>().DropZoneInit(_blockProp.blockPropData.config);
             currentOBJ.name = _blockProp.propType.ToString();
         }
-        dropZoneData.Add(currentOBJ);
-        CheckForMatches();
 
+        dropZoneData.Add(currentOBJ);
+
+        CheckForMatches();
 
         if (CatNeedBlock(_blockProp))
             catData_Temp.UpdateTMP();
 
-        Invoke("DetermineDropAreaFull",0.5f);
+        
     }
 
     //检查物品类型
     public void CheckForMatches()
     {
-        // 获取所有卡牌并按类型分组
-        var cardGroups = dropZoneData.GroupBy(card => card.GetComponent<DropZone>().blockPropType).Where(group => group.Count() >= 3);
+        // 获取所有卡牌并按类型分组P
+        var cardGroups = dropZoneData
+            .OrderBy(card => card.GetComponent<DropZone>().blockPropType)  // 先按类型排序
+            .GroupBy(card => card.GetComponent<DropZone>().blockPropType)  // 然后分组
+            .Where(group => group.Count() >= 3);  // 筛选出数量>=3的组
 
         // 处理匹配的卡牌组
         foreach (var group in cardGroups)
@@ -421,34 +427,54 @@ public class GameLevelManagement : MonoBehaviour
             // 获取前三个匹配的卡牌
             var matchedCards = group.Take(3).ToList();
 
+            CreateParticle(matchedCards);
             // 销毁卡牌或执行消除动画
             StartCoroutine(DestroyObject(matchedCards));
+            
 
             // 可以在这里添加得分逻辑等
             Debug.Log($"消除了3个{group.Key}类型的卡牌");
+            //Invoke("DetermineDropAreaFull", 0.5f);
         }
 
         // 重新排列剩余卡牌
         RearrangeCards();
-        //DetermineDropAreaFull();
+        
     }
 
     //重新排列
     private void RearrangeCards()
     {
-        // 获取所有卡牌并按顺序排列
-        var cards = dropZoneData
-            .OrderBy(card => card.transform.GetSiblingIndex())
+        // 1. 获取所有卡牌并缓存信息
+        var cardsWithInfo = dropZoneData.Select(card => new {
+            Card = card,
+            Type = card.GetComponent<DropZone>().blockPropType,
+            OriginalIndex = card.transform.GetSiblingIndex()
+        }).ToList();
+
+        // 2. 按类型分组并记录每个类型的最后位置
+        var typeLastIndexDict = new Dictionary<BlockPropType, int>();
+        foreach (var card in cardsWithInfo.OrderBy(c => c.OriginalIndex))
+        {
+            typeLastIndexDict[card.Type] = cardsWithInfo.IndexOf(card);
+        }
+
+        // 3. 排序规则：
+        //    - 先按类型第一次出现的位置排序（保持类型组的相对顺序）
+        //    - 同类型组内按原始顺序排序
+        var sortedCards = cardsWithInfo
+            .OrderBy(card => typeLastIndexDict.Keys.ToList().IndexOf(card.Type))
+            .ThenBy(card => card.OriginalIndex)
+            .Select(card => card.Card)
             .ToList();
 
-        // 重新设置顺序
-        for (int i = 0; i < cards.Count; i++)
+        // 4. 重新设置顺序
+        for (int i = 0; i < sortedCards.Count; i++)
         {
-            cards[i].transform.SetSiblingIndex(i);
+            sortedCards[i].transform.SetSiblingIndex(i);
         }
+        Invoke("DetermineDropAreaFull", 0.5f);
     }
-
-
 
     //检查游戏状态
     public void DetermineDropAreaFull()
@@ -462,7 +488,7 @@ public class GameLevelManagement : MonoBehaviour
         }
     }
 
-    //1秒后销毁
+    //0.3秒后销毁
     IEnumerator DestroyObject(List<GameObject> matchedCards)
     {
         yield return new WaitForSeconds(0.3f);
@@ -472,8 +498,26 @@ public class GameLevelManagement : MonoBehaviour
             Destroy(card.gameObject);
         }
 
-        DetermineDropAreaFull();
+       
     }
+
+    //生成粒子特效
+    public void CreateParticle(List<GameObject> matchedCards)
+    {
+        foreach (var item in matchedCards)
+        {
+            GameObject GO = Instantiate(destroyParticle, item.transform);
+            StartCoroutine(DestoryParticle(GO));
+        }
+    }
+
+    //销毁粒子
+    IEnumerator DestoryParticle(GameObject _Particle)
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(_Particle);
+    }
+
 
     #endregion
 
@@ -510,14 +554,15 @@ public class GameLevelManagement : MonoBehaviour
     //检查猫咪需求
     public void CheckCatRequirements(CatData catData)
     {
-        //for (int i = 0; i < dropZoneData.Count; i++)
-        //{
-        //    if (dropZoneData[i].GetComponent<DropZone>().blockPropType == catData.needBlock.blockPropType)
-        //    {
-        //        catData.UpdateTMP();
-        //    }
-        //}
+        for (int i = 0; i < dropZoneData.Count; i++)
+        {
+            if (dropZoneData[i].GetComponent<DropZone>().blockPropType == catData.needBlock.blockPropType)
+            {
+                catData.UpdateTMP();
+            }
+        }
     }
+
 
     #endregion
 
@@ -526,6 +571,7 @@ public class GameLevelManagement : MonoBehaviour
     //清除道具
     public void ClearPropUse()
     {
+        UpdateCatNeedNum();
         dropZoneData.Clear();
         for (int i = 0; i < dropZoneTran.childCount; i++)
         {
@@ -533,13 +579,54 @@ public class GameLevelManagement : MonoBehaviour
         }
     }
 
+    //清除道具 刷新 猫猫需求数
+    public void UpdateCatNeedNum()
+    {
+        HashSet<BlockPropType> encountered = new HashSet<BlockPropType>();
+
+        for (int i = 0; i < dropZoneData.Count; i++)
+        {
+            if (!encountered.Contains(dropZoneData[i].GetComponent<DropZone>().blockPropType) &&
+                GetCatNeedBlockType(dropZoneData[i].GetComponent<DropZone>()))
+            {
+                encountered.Add(dropZoneData[i].GetComponent<DropZone>().blockPropType);
+                UpdateCurrentCatNeedNum(dropZoneData[i].GetComponent<DropZone>());
+            }
+        }
+
+    }
+
+    //获取类型
+    public bool GetCatNeedBlockType(DropZone dropZone)
+    {
+        for (int i = 0; i < needCatData_Temp.Count; i++)
+        {
+            if (dropZone.blockPropType == needCatData_Temp[i].blockPropType)
+                return true;
+        }
+        return false;
+    }
+
+    //刷新
+    public void UpdateCurrentCatNeedNum(DropZone dropZone)
+    {
+        for (int i = 0; i < catNeedBlock.Count; i++)
+        {
+            if (dropZone.blockPropType == catNeedBlock[i].needBlock.blockPropType)
+            {
+                catNeedBlock[i].text_NUM = 1;
+                catNeedBlock[i].UpdateTMP();
+            }
+        }
+    }
+
     //加速道具使用
     public void SpeedPropUse()
     {
-        conveyorSpeed = 15;
+        conveyorSpeed = 0.7f;
         keepTime = true;
         SpeedTimer();
-        Debug.LogError("开始加速 当前速度 15");
+        Debug.LogError("开始加速 当前速度 0.7");
     }
 
     //速度计时器
@@ -551,9 +638,9 @@ public class GameLevelManagement : MonoBehaviour
             if (timer >= speedSurvivalTime)
             {
                 keepTime = false;
-                conveyorSpeed = 6;
+                conveyorSpeed = 0.3f;
                 timer = 0;
-                Debug.LogError("加速结束 当前速度 6");
+                Debug.LogError("加速结束 当前速度 0.3");
             }
         }
     }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ConveyorManagement : MonoBehaviour
 {
-    public float scrollSpeed = 1.0f;
     public float imageWidth = 1080F; // 单张图片的宽度
 
     public List<RectTransform> leftConveyor_IMG; // 三张图片的Transform数组
@@ -125,12 +124,12 @@ public class ConveyorManagement : MonoBehaviour
     {
         foreach (Transform image in leftConveyor_Sceond_IMG)
         {
-            image.Translate(Vector3.left * GameLevelManagement.Instance.conveyorSpeed * 10 * Time.deltaTime);
+            image.Translate(Vector3.left * GameLevelManagement.Instance.conveyorSpeed * Time.deltaTime);
         }
 
         foreach (Transform item in rightConveyor_Sceond_IMG)
         {
-            item.Translate(Vector3.right * GameLevelManagement.Instance.conveyorSpeed * 10 * Time.deltaTime);
+            item.Translate(Vector3.right * GameLevelManagement.Instance.conveyorSpeed * Time.deltaTime);
         }
     }
 
@@ -140,12 +139,12 @@ public class ConveyorManagement : MonoBehaviour
     {
         foreach (Transform image in leftConveyor_IMG)
         {
-            image.Translate(Vector3.left * GameLevelManagement.Instance.conveyorSpeed * 10 * Time.deltaTime);
+            image.Translate(Vector3.left * GameLevelManagement.Instance.conveyorSpeed * Time.deltaTime);
         }
 
         foreach (Transform item in rightConveyor_IMG)
         {
-            item.Translate(Vector3.right * GameLevelManagement.Instance.conveyorSpeed * 10 * Time.deltaTime);
+            item.Translate(Vector3.right * GameLevelManagement.Instance.conveyorSpeed * Time.deltaTime);
         }
     }
 

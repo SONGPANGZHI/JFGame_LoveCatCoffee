@@ -21,6 +21,8 @@ public class UIManagement : MonoBehaviour
     public LoadingPlane loadingPlane;
 
     public string sceneName;
+
+    public bool _isChallengBool;
     private void Awake()
     {
         if (Instance == null)
@@ -82,8 +84,9 @@ public class UIManagement : MonoBehaviour
     }
 
     //打开通用界面
-    public void OpenCommonPlane(CommonPlaneType _planeType,PropData propData = null) 
+    public void OpenCommonPlane(CommonPlaneType _planeType,PropData propData = null)
     {
+        GameManager.Instance.pauseGame = false;
         commonPlane.gameObject.SetActive(true);
         switch (_planeType)
         {

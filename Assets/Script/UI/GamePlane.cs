@@ -79,13 +79,12 @@ public class GamePlane : MonoBehaviour
             //道具使用
             GameLevelManagement.Instance.ClearPropUse();
             clear_BTN.interactable = false;
-            Debug.Log("道具使用---");
+            clear_Prop[1].SetActive(false);
         }
         else
         {
             //看广告获得
             //激励视频添加道具
-            Debug.LogError("打开清除道具获得界面");
             UIManagement.Instance.OpenCommonPlane(CommonPlaneType.Prop, propData[0]);
         }
     }
@@ -111,13 +110,12 @@ public class GamePlane : MonoBehaviour
             //道具使用
             GameLevelManagement.Instance.SpeedPropUse();
             speed_BTN.interactable = false;
-            Debug.Log("道具使用---");
+            speed_Prop[1].SetActive(false);
         }
         else
         {
             //看广告获得
             //激励视频添加道具
-            Debug.Log("打开加速道具界面");
             UIManagement.Instance.OpenCommonPlane(CommonPlaneType.Prop, propData[1]);
         }
     }
@@ -144,13 +142,12 @@ public class GamePlane : MonoBehaviour
             //道具使用
             GameLevelManagement.Instance.PerspectivePropUse();
             perspective_BTN.interactable = false;
-            Debug.Log("道具使用---");
+            perspective_Prop[1].SetActive(false);
         }
         else
         {
             //看广告获得
             //激励视频添加道具
-            Debug.Log("打开加速道具界面");
             UIManagement.Instance.OpenCommonPlane(CommonPlaneType.Prop, propData[2]);
         }
     }

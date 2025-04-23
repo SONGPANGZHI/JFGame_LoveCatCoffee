@@ -79,7 +79,7 @@ public class CatData : MonoBehaviour
     //销毁该目标
     IEnumerator DestroyObject()
     {
-        yield return new WaitForSeconds(1F);
+        yield return new WaitForSeconds(0.3F);
         Destroy(gameObject);
 
         if (GameManager.Instance.currentNumberCats < GameLevelManagement.Instance.currentLevelData.Target - 2)

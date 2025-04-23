@@ -52,6 +52,7 @@ public class MainPlane : MonoBehaviour
     private void StartPlayClick()
     {
         //加载场景
+        UIManagement.Instance._isChallengBool = false;
         MusicManagement.instance.ClickPlaySFX();
         UIManagement.Instance.sceneName = "GameLevel";
         GameManager.Instance.SavaChallengTime();
@@ -63,8 +64,9 @@ public class MainPlane : MonoBehaviour
     private void ChallengeClick()
     {
         //加载场景
+        UIManagement.Instance._isChallengBool = true;
         MusicManagement.instance.ClickPlaySFX();
-        UIManagement.Instance.sceneName = "DailyChallenge";
+        UIManagement.Instance.sceneName = "GameLevel";
         UIManagement.Instance.OpenLoadingPlane();
     }
 

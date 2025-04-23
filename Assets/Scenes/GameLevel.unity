@@ -609,7 +609,7 @@ MonoBehaviour:
   dropZoneData: []
   dropZoneTran: {fileID: 1987931140}
   dropZonePrefab: {fileID: 431625191893369966, guid: 7bacc599b6320c544a41f34fd1eadd98, type: 3}
-  conveyorSpeed: 6
+  conveyorSpeed: 0.3
   keepTime: 0
   speedSurvivalTime: 30
   perspective: 0
@@ -633,6 +633,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2a40f98a39ef39b49bda07be59b28b7a, type: 2}
   currentLevelData: {fileID: 0}
   _isNovice: 0
+  destroyParticle: {fileID: 803289198933309588, guid: e73ab7676e8053449aa93a50562f36b9, type: 3}
+  prefab: {fileID: 463226327026203121, guid: 624de749bf111304582c5306c7ac5c94, type: 3}
+  conveyor: {fileID: 3648123397889304599}
+  dorpZonePos: {fileID: 3648123397574050045}
   keyCardData: []
   SurplusCardData: []
   topLayerData_Temp: []
@@ -1155,7 +1159,7 @@ Canvas:
   m_GameObject: {fileID: 1868837654}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 316770744}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2518,7 +2522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198b506b4d92e6146a98fdd8e213c8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 6
   imageWidth: 1080
   leftConveyor_IMG:
   - {fileID: 3648123397920178740}

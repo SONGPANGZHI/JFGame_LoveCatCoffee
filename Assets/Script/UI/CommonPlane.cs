@@ -153,6 +153,8 @@ public class CommonPlane : MonoBehaviour
             default:
                 break;
         }
+
+        GameManager.Instance.pauseGame = true;
     }
 
 

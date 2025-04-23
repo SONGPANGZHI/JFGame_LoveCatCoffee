@@ -103,11 +103,13 @@ public class SettingPlane : MonoBehaviour
         {
             //打开音乐
             PlayerPrefs.SetInt(GameManager.musicSetKey, 0);
+            MusicManagement.instance.PlayBGM();
         }
         else 
         {
             //关闭
             PlayerPrefs.SetInt(GameManager.musicSetKey, 1);
+            MusicManagement.instance.CloseBGM();
         }
     }
 

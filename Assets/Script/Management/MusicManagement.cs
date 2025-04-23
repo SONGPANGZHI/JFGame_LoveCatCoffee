@@ -6,11 +6,18 @@ public class MusicManagement : MonoBehaviour
 {
     public static MusicManagement instance;
     public AudioSource source_SFX;
+    public AudioSource source_BGM;
     public AudioClip clip_SFX;
+    public AudioClip clip_BGM;
     private void Awake()
     {
         if(instance==null)
             instance = this;
+    }
+
+    private void Start()
+    {
+        PlayBGM();
     }
 
     //点击播放音效
@@ -24,4 +31,20 @@ public class MusicManagement : MonoBehaviour
         }
     }
 
+
+    //播放BGM
+    public void PlayBGM()
+    {
+        if (PlayerPrefs.GetInt(GameManager.musicSetKey) == 0)
+        {
+            source_BGM.clip = clip_BGM;
+            source_BGM.Play();
+        }
+    }
+
+    public void CloseBGM()
+    {
+        source_BGM.clip = clip_BGM;
+        source_BGM.Stop();
+    }
 }
