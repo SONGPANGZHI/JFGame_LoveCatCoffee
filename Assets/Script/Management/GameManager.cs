@@ -44,8 +44,6 @@ public class GameManager : MonoBehaviour
         LogInTime();
     }
 
-   
-
 
     //检查保存数据
     public void CheckSaveData()

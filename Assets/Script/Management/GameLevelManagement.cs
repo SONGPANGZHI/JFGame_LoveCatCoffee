@@ -121,6 +121,7 @@ public class GameLevelManagement : MonoBehaviour
 
         if (UIManagement.Instance._isChallengBool)
         {
+            _isNovice = false;
             //挑战
             currentLevelData = gameLevelDataList[19];
         }
@@ -415,12 +416,15 @@ public class GameLevelManagement : MonoBehaviour
     //检查物品类型
     public void CheckForMatches()
     {
-        // 获取所有卡牌并按类型分组P
+        // 获取所有卡牌并按类型分组
         var cardGroups = dropZoneData
             .OrderBy(card => card.GetComponent<DropZone>().blockPropType)  // 先按类型排序
             .GroupBy(card => card.GetComponent<DropZone>().blockPropType)  // 然后分组
             .Where(group => group.Count() >= 3);  // 筛选出数量>=3的组
 
+        if(cardGroups.Count() == 0)
+            Invoke("DetermineDropAreaFull", 0.3f);
+        
         // 处理匹配的卡牌组
         foreach (var group in cardGroups)
         {
@@ -431,7 +435,6 @@ public class GameLevelManagement : MonoBehaviour
             // 销毁卡牌或执行消除动画
             StartCoroutine(DestroyObject(matchedCards));
             
-
             // 可以在这里添加得分逻辑等
             Debug.Log($"消除了3个{group.Key}类型的卡牌");
             //Invoke("DetermineDropAreaFull", 0.5f);
@@ -473,7 +476,6 @@ public class GameLevelManagement : MonoBehaviour
         {
             sortedCards[i].transform.SetSiblingIndex(i);
         }
-        Invoke("DetermineDropAreaFull", 0.5f);
     }
 
     //检查游戏状态
@@ -484,13 +486,13 @@ public class GameLevelManagement : MonoBehaviour
             //游戏结束逻辑
             GameManager.Instance.pauseGame = false;
             UIManagement.Instance.OpenGameOverPlane();
-            Debug.LogError("游戏结束---");
         }
     }
 
     //0.3秒后销毁
     IEnumerator DestroyObject(List<GameObject> matchedCards)
     {
+
         yield return new WaitForSeconds(0.3f);
         foreach (var card in matchedCards)
         {
@@ -498,6 +500,7 @@ public class GameLevelManagement : MonoBehaviour
             Destroy(card.gameObject);
         }
 
+        Invoke("DetermineDropAreaFull", 0.5f);
        
     }
 
