@@ -16,6 +16,10 @@ public class GameLevelConfig : ScriptableObject
     public float ClearTime;                             //通关时长
     public int ClearStep;                               //通关步数
     public List<ProbabilityCardsAppeare> CardType;      //关键牌 在各层比例
+
+    public bool giftsPercentProgress_60;
+    public bool giftsPercentProgress_80;
+    public bool giftsPercentProgress_100;
 }
 
 [Serializable]

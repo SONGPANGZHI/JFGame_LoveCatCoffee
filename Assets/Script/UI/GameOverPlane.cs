@@ -61,7 +61,19 @@ public class GameOverPlane : MonoBehaviour
         AwardPlane.OnRewardTwo += GetSecondReward;
         AwardPlane.OnRewardThree += GetThirdReward;
         AwardPlane.OnRewardOne += ResidueProgress;
-        JudgingGameProgress();
+
+        if (!GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60)
+            JudgingGameProgress();
+        else if (GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60 &&
+            !GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_80)
+        {
+            AlreadyReceived_60();
+        }
+        else
+        {
+            AlreadyReceived_80();
+        }
+           
     }
 
     //判断界面状态
@@ -112,6 +124,7 @@ public class GameOverPlane : MonoBehaviour
             {
                 AwardPlane.getGift_80 = true;
             }
+            GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60 = true;
         }
         else
         {
@@ -122,9 +135,9 @@ public class GameOverPlane : MonoBehaviour
     //未达到 礼物领取 进度条动画
     public void ResidueProgress()
     {
+        scheduleVlue.fillAmount = 0.6F;
         float current = scheduleVlue.fillAmount;
         float interpolation = progress - current;
-
         if (progress > 0.6 && progress < 0.8)
         {
             scheduleVlue.DOFillAmount(current + interpolation, 0.3f).SetEase(Ease.Linear);
@@ -215,15 +228,45 @@ public class GameOverPlane : MonoBehaviour
         UIManagement.Instance.loadingPlane.LoadUIScene();
     }
 
-    //#region 测试
-    ////成功界面
-    //public void OpenVictoey()
-    //{ 
-    //    victory_UI.SetActive(true);
-    //    defeated_UI.SetActive(false);
-    //    challengesNum_TMP.text = "今日已挑战1次";
-    //    LevelProgress_TMP.text = "关卡进度" + 100;
+    public void AlreadyReceived_60()
+    {
+        scheduleVlue.fillAmount = 0;
+        float current = 0.6F;
+        if (progress >= 0.8)
+        {
+            if (progress >= 0.8 && progress == 1)
+            {
+                SetProgress(0.8F);
+                AwardPlane.getGift_100 = true;
+            }
+            else
+                SetProgress(progress);
+        }
+        else
+        {
+            float value = progress - 0.6f;
+            scheduleVlue.DOFillAmount(current + value, 0.3f).SetEase(Ease.Linear);
+        }
 
-    //}
-    //#endregion
+        GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_80 = true;
+    }
+
+    public void AlreadyReceived_80()
+    {
+        scheduleVlue.fillAmount = 0;
+        float current = 0.8F;
+
+        if (progress == 1)
+        {
+            SetProgress(progress);
+        }
+        else
+        {
+            float value = progress - 0.8f;
+            scheduleVlue.DOFillAmount(current + value, 0.3f).SetEase(Ease.Linear);
+        }
+
+        GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_100 = true;
+    }
+
 }

@@ -26,8 +26,6 @@ public class CatGeneration : MonoBehaviour
             GameObject GO = Instantiate(catDatas_Temp[i].gameObject, catPos[i]);
             GO.GetComponent<CatData>().InitCatData();
         }
-
-        //GameManager.Instance.CatNumChange(3);
     }
 
     //随机生成一只猫咪

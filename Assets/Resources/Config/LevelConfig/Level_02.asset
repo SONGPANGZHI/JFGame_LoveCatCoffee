@@ -29,3 +29,6 @@ MonoBehaviour:
     BottomLayer: 0.2
     InterLayer: 0.2
     TopLayer: 0.2
+  giftsPercentProgress_60: 0
+  giftsPercentProgress_80: 0
+  giftsPercentProgress_100: 0

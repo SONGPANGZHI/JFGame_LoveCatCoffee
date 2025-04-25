@@ -37,20 +37,23 @@ public class AwardPlane : MonoBehaviour
         {
             this.gameObject.SetActive(false);
 
-            if (getGift_60)
+            if (getGift_60 && !GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60)
             {
                 OnRewardOne?.Invoke();
                 getGift_60 = false;
+                GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60 = true;
             }
-            else if (getGift_80)
+            else if (getGift_80 && !GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_80)
             {
                 OnRewardTwo?.Invoke();
                 getGift_80 = false;
+                GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_80 = true;
             }
-            else if (getGift_100)
+            else if (getGift_100 && !GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_100)
             {
                 OnRewardThree?.Invoke();
                 getGift_100 = false;
+                GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_100 = true;
             }
         });
     }
