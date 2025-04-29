@@ -1784,11 +1784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1d4952f79cd8b4aaf384b81c0f7409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  top_Tran: {fileID: 3648123398163059038}
-  middle_Tran: {fileID: 3648123396548889249}
-  bottom_Tran: {fileID: 3648123397266464417}
-  horizontalSpacing: 180
-  blockPrefab: {fileID: 463226327026203121, guid: 624de749bf111304582c5306c7ac5c94, type: 3}
+  prefabTrans: []
 --- !u!224 &3648123397021664417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1900,11 +1896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1d4952f79cd8b4aaf384b81c0f7409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  top_Tran: {fileID: 3648123396813459413}
-  middle_Tran: {fileID: 3648123398465581490}
-  bottom_Tran: {fileID: 3648123397292487696}
-  horizontalSpacing: 180
-  blockPrefab: {fileID: 463226327026203121, guid: 624de749bf111304582c5306c7ac5c94, type: 3}
+  prefabTrans: []
 --- !u!222 &3648123397041298021
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2488,11 +2480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1d4952f79cd8b4aaf384b81c0f7409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  top_Tran: {fileID: 3648123397128487972}
-  middle_Tran: {fileID: 3648123398274252741}
-  bottom_Tran: {fileID: 3648123396751160851}
-  horizontalSpacing: 180
-  blockPrefab: {fileID: 463226327026203121, guid: 624de749bf111304582c5306c7ac5c94, type: 3}
+  prefabTrans: []
 --- !u!1 &3648123397889304592
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,20 +2511,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageWidth: 1080
-  leftConveyor_IMG:
-  - {fileID: 3648123397920178740}
-  - {fileID: 3648123397041298023}
-  - {fileID: 3648123397838643410}
-  rightConveyor_IMG:
-  - {fileID: 3648123398419711039}
-  - {fileID: 3648123398465829878}
-  - {fileID: 3648123397021664417}
-  leftConveyor_Sceond_IMG:
-  - {fileID: 3648123397041298023}
-  - {fileID: 3648123397838643410}
-  rightConveyor_Sceond_IMG:
-  - {fileID: 3648123398465829878}
-  - {fileID: 3648123397021664417}
+  topConveyor_IMG: []
+  bottomConveyor_IMG: []
+  middle_Trans: []
+  conveyorSpeed: 0.2
 --- !u!224 &3648123397889304599
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2613,11 +2591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1d4952f79cd8b4aaf384b81c0f7409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  top_Tran: {fileID: 3648123396553157958}
-  middle_Tran: {fileID: 3648123397947727449}
-  bottom_Tran: {fileID: 3648123398328116159}
-  horizontalSpacing: 180
-  blockPrefab: {fileID: 463226327026203121, guid: 624de749bf111304582c5306c7ac5c94, type: 3}
+  prefabTrans: []
 --- !u!222 &3648123397920178746
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3052,11 +3026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1d4952f79cd8b4aaf384b81c0f7409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  top_Tran: {fileID: 3648123396867476751}
-  middle_Tran: {fileID: 3648123398312761826}
-  bottom_Tran: {fileID: 3648123396876340948}
-  horizontalSpacing: 180
-  blockPrefab: {fileID: 463226327026203121, guid: 624de749bf111304582c5306c7ac5c94, type: 3}
+  prefabTrans: []
 --- !u!224 &3648123398419711039
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3158,11 +3128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1d4952f79cd8b4aaf384b81c0f7409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  top_Tran: {fileID: 3648123397101262150}
-  middle_Tran: {fileID: 3648123398375713551}
-  bottom_Tran: {fileID: 3648123396877987815}
-  horizontalSpacing: 180
-  blockPrefab: {fileID: 463226327026203121, guid: 624de749bf111304582c5306c7ac5c94, type: 3}
+  prefabTrans: []
 --- !u!224 &3648123398465829878
 RectTransform:
   m_ObjectHideFlags: 0

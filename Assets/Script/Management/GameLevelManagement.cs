@@ -390,25 +390,25 @@ public class GameLevelManagement : MonoBehaviour
     //生成放置区物品
     public void CreateDropZoneObject(BlockPropData _blockProp)
     {
-        int randomID = UnityEngine.Random.Range(0, blockPropAll.Count - 1);
-        currentOBJ = Instantiate(dropZonePrefab, dropZoneTran);
-        if (_blockProp.propType == BlockPropType.Gift)
-        {
-            currentOBJ.GetComponent<DropZone>().DropZoneInit(blockPropAll[randomID]);
-            currentOBJ.name = blockPropAll[randomID].blockPropType.ToString();
-        }
-        else
-        {
-            currentOBJ.GetComponent<DropZone>().DropZoneInit(_blockProp.blockPropData.config);
-            currentOBJ.name = _blockProp.propType.ToString();
-        }
+        //int randomID = UnityEngine.Random.Range(0, blockPropAll.Count - 1);
+        //currentOBJ = Instantiate(dropZonePrefab, dropZoneTran);
+        //if (_blockProp.propType == BlockPropType.Gift)
+        //{
+        //    currentOBJ.GetComponent<DropZone>().DropZoneInit(blockPropAll[randomID]);
+        //    currentOBJ.name = blockPropAll[randomID].blockPropType.ToString();
+        //}
+        //else
+        //{
+        //    currentOBJ.GetComponent<DropZone>().DropZoneInit(_blockProp.blockPropData.config);
+        //    currentOBJ.name = _blockProp.propType.ToString();
+        //}
 
-        dropZoneData.Add(currentOBJ);
+        //dropZoneData.Add(currentOBJ);
 
-        CheckForMatches();
+        //CheckForMatches();
 
-        if (CatNeedBlock(_blockProp))
-            catData_Temp.UpdateTMP();
+        //if (CatNeedBlock(_blockProp))
+        //    catData_Temp.UpdateTMP();
 
         
     }
