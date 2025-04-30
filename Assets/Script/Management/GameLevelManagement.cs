@@ -543,14 +543,14 @@ public class GameLevelManagement : MonoBehaviour
     //√®ﬂ‰–Ë«Û
     public bool CatNeedBlock(BlockPropData _catBlock)
     {
-        for (int i = 0; i < catNeedBlock.Count; i++)
-        {
-            if (_catBlock.propType == catNeedBlock[i].needBlock.blockPropType)
-            {
-                catData_Temp = catNeedBlock[i];
-                return true;
-            }
-        }
+        //for (int i = 0; i < catNeedBlock.Count; i++)
+        //{
+        //    if (_catBlock.propType == catNeedBlock[i].needBlock.blockPropType)
+        //    {
+        //        catData_Temp = catNeedBlock[i];
+        //        return true;
+        //    }
+        //}
         return false;
     }
 
@@ -559,7 +559,7 @@ public class GameLevelManagement : MonoBehaviour
     {
         for (int i = 0; i < dropZoneData.Count; i++)
         {
-            if (dropZoneData[i].GetComponent<DropZone>().blockPropType == catData.needBlock.blockPropType)
+            if (dropZoneData[i].GetComponent<DropZone>().blockPropTypeNew == catData.needBlock.blockPropType)
             {
                 catData.UpdateTMP();
             }
@@ -615,7 +615,7 @@ public class GameLevelManagement : MonoBehaviour
     {
         for (int i = 0; i < catNeedBlock.Count; i++)
         {
-            if (dropZone.blockPropType == catNeedBlock[i].needBlock.blockPropType)
+            if (dropZone.blockPropTypeNew == catNeedBlock[i].needBlock.blockPropType)
             {
                 catNeedBlock[i].text_NUM = 1;
                 catNeedBlock[i].UpdateTMP();

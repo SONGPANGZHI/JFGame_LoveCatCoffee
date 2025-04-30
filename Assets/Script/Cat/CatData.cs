@@ -1,13 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CatData : MonoBehaviour
 {
-    public BlockDataConfig needBlock;
+    public BlockDataConfigNew needBlock;
 
     public Transform dialogue_OBJ;
 
@@ -31,15 +30,17 @@ public class CatData : MonoBehaviour
         RandomBlockProp();
         propIcon_IMG.sprite = needBlock.Icon;
         propIcon_IMG.SetNativeSize();
-        GameLevelManagement.Instance.catNeedBlock.Add(this);
+        PlayGameManagement.Instance.catNeedBlock.Add(this);
         needNum_TMP.gameObject.SetActive(false);
     }
 
     //随机道具
-    public BlockDataConfig RandomBlockProp()
+    public BlockDataConfigNew RandomBlockProp()
     {
-        GameLevelManagement.Instance.AddCatNeedID();
-        needBlock = GameLevelManagement.Instance.needCatData_Temp[GameLevelManagement.Instance.catNeedBlockID];
+        //GameLevelManagement.Instance.AddCatNeedID();
+        //needBlock = GameLevelManagement.Instance.needCatData_Temp[GameLevelManagement.Instance.catNeedBlockID];
+        int randomID = UnityEngine.Random.Range(0, text_NUM);
+        needBlock = PlayGameManagement.Instance.blockDataConfig_TEMP[randomID];
         return needBlock;
     }
 
@@ -69,7 +70,7 @@ public class CatData : MonoBehaviour
         {
             finish_IMG.SetActive(true);
             //needNum_TMP.gameObject.SetActive(true);
-            GameLevelManagement.Instance.catNeedBlock.Remove(this);
+            PlayGameManagement.Instance.catNeedBlock.Remove(this);
             GameManager.Instance.currentNumberCats += 1;
             UIManagement.Instance.gamePlane.TargetTmpChange();
             StartCoroutine(DestroyObject());
@@ -82,26 +83,29 @@ public class CatData : MonoBehaviour
         yield return new WaitForSeconds(0.3F);
         Destroy(gameObject);
 
-        if (GameManager.Instance.currentNumberCats < GameLevelManagement.Instance.currentLevelData.Target - 2)
-        {
-            CreateCatAction?.Invoke();
+        //if (PlayGameManagement.Instance.middleAllNum <= 0)
+        //{
+        //    //游戏结束
+        //    UIManagement.Instance.OpenGameOverPlane(true);
+        //    GameManager.Instance.SavaGameLevel();
+        //}
+        //else
+        //{
+        //    CreateCatAction?.Invoke();
+        //}
 
-        }
-        else if (GameManager.Instance.currentNumberCats == GameLevelManagement.Instance.currentLevelData.Target)
+
+        if (GameManager.Instance.currentNumberCats < PlayGameManagement.Instance.catTarget - 2)
         {
-            //游戏结束
-            UIManagement.Instance.OpenGameOverPlane(true);
-            GameManager.Instance.SavaGameLevel();
+
+            CreateCatAction?.Invoke();
         }
-           
-        
+        //else if (GameManager.Instance.currentNumberCats == PlayGameManagement.Instance.catTarget)
+        //{
+        //    //游戏结束
+        //    UIManagement.Instance.OpenGameOverPlane(true);
+        //    GameManager.Instance.SavaGameLevel();
+        //}
     }
 
-    //public void AddCatNeedBlock()
-    //{
-    //    for (int i = 0; i < GameLevelManagement.Instance.blockPropAll.Count - 1; i++)
-    //    {
-    //        catNeedBlock_Temp.Add(GameLevelManagement.Instance.blockPropAll[i]);
-    //    }
-    //}
 }

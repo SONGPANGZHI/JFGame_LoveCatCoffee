@@ -13,6 +13,7 @@ public class ConveyorManagement : MonoBehaviour
 
     public float conveyorSpeed = 0.2f;
 
+
     private void Start()
     {
         ConveyorInitData();
@@ -45,7 +46,7 @@ public class ConveyorManagement : MonoBehaviour
     {
         for (int i = 0; i < middle_Trans.Count; i++)
         {
-            int elementCount = Random.Range(4, 11);
+            int elementCount = Random.Range(6,13);
             GenerateMiddleBlock(i, elementCount);
         }
     }
@@ -56,7 +57,12 @@ public class ConveyorManagement : MonoBehaviour
         for (int i = 0; i < element; i++)
         {
             GameObject GO = Instantiate(PlayGameManagement.Instance.blockPrefab, middle_Trans[transIndex]);
-            GO.GetComponent<BlockPropData>().BlockInit(PlayGameManagement.Instance.blockDataConfig_TEMP[i]);
+            GO.transform.localPosition = new Vector2(0, i * 15);
+            GO.GetComponent<BlockPropData>().BlockInit(PlayGameManagement.Instance.blockDataConfig_TEMP[i],true);
+            if (i < element - 1)
+                GO.GetComponent<BlockPropData>().ButtonNotClickable();
+
+            PlayGameManagement.Instance.middleAllNum += 1; 
         }
     }
 

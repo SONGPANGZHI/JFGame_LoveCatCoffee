@@ -7,30 +7,63 @@ public class BlockPropData : MonoBehaviour
 {
     #region 新版玩法三消
 
-    public BlockDataConfig dataConfig;
+    public BlockDataConfigNew dataConfig;
 
-    public BlockPropType propType;
+    public BlockPropTypeNew propType;
     public Image icon;
+    public Transform blockParent;
 
+    public bool midlleBlock;
     private void Awake()
     {
         transform.GetComponent<Button>().onClick.AddListener(BlockClick);
     }
 
 
-    public void BlockInit(BlockDataConfig blockDataConfig)
+    public void BlockInit(BlockDataConfigNew blockDataConfig,bool isMiddleBlock = false)
     {
+        blockParent = this.transform.parent;
+        midlleBlock = isMiddleBlock;
         dataConfig = blockDataConfig;
         propType = dataConfig.blockPropType;
-        icon.sprite = dataConfig.DorpZoneSprite;
+        icon.sprite = dataConfig.Icon;
+    }
+
+    //按钮不可以点击
+    public void ButtonNotClickable()
+    {
+        transform.GetComponent<Button>().interactable = false;
     }
 
     //按钮点击
     public void BlockClick()
     {
-        //MusicManagement.instance.ClickPlaySFX();
+        MusicManagement.instance.ClickPlaySFX();
         PlayGameManagement.Instance.CreateDropZoneObject(dataConfig);
         Destroy(gameObject);
+        UpdateButtonInteractability();
+        if (midlleBlock)
+            PlayGameManagement.Instance.middleAllNum -= 1;
+
+        Vectory();
+    }
+
+    //刷新按钮状态
+    public void UpdateButtonInteractability()
+    {
+        if (blockParent.childCount - 2 < 0) return;
+
+        blockParent.GetChild(blockParent.childCount-2).GetComponent<Button>().interactable = true;
+    }
+
+    public void Vectory()
+    {
+        if (PlayGameManagement.Instance.middleAllNum <= 0)
+        {
+            //游戏结束
+            UIManagement.Instance.OpenGameOverPlane(true);
+            GameManager.Instance.SavaGameLevel();
+        }
     }
 
     #endregion

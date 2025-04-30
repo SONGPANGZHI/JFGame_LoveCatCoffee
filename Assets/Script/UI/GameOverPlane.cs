@@ -62,17 +62,19 @@ public class GameOverPlane : MonoBehaviour
         AwardPlane.OnRewardThree += GetThirdReward;
         AwardPlane.OnRewardOne += ResidueProgress;
 
-        if (!GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60)
-            JudgingGameProgress();
-        else if (GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60 &&
-            !GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_80)
-        {
-            AlreadyReceived_60();
-        }
-        else
-        {
-            AlreadyReceived_80();
-        }
+        JudgingGameProgress();
+
+        //if (!GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60)
+        //    JudgingGameProgress();
+        //else if (GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60 &&
+        //    !GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_80)
+        //{
+        //    AlreadyReceived_60();
+        //}
+        //else
+        //{
+        //    AlreadyReceived_80();
+        //}
            
     }
 
@@ -103,7 +105,7 @@ public class GameOverPlane : MonoBehaviour
     //获得游戏进度
     public int GetGameProgress()
     {
-        float progree = (GameManager.Instance.currentNumberCats / GameLevelManagement.Instance.currentLevelData.Target) * 100;
+        float progree = (GameManager.Instance.currentNumberCats / PlayGameManagement.Instance.catTarget) * 100;
         progress = progree / 100;
         return (int)progree;
     }
@@ -124,7 +126,7 @@ public class GameOverPlane : MonoBehaviour
             {
                 AwardPlane.getGift_80 = true;
             }
-            GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60 = true;
+            //GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60 = true;
         }
         else
         {
@@ -207,8 +209,8 @@ public class GameOverPlane : MonoBehaviour
             UIManagement.Instance.CloseGamePlane();
             this.gameObject.SetActive(false);
             UIManagement.Instance.OpenLoadingPlane();
-            if(planeState)
-                GameLevelManagement.Instance.currentLevelData = GameLevelManagement.Instance.gameLevelDataList[PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey) - 1];
+            //if(planeState)
+            //    GameLevelManagement.Instance.currentLevelData = GameLevelManagement.Instance.gameLevelDataList[PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey) - 1];
         });
     }
 
@@ -248,7 +250,7 @@ public class GameOverPlane : MonoBehaviour
             scheduleVlue.DOFillAmount(current + value, 0.3f).SetEase(Ease.Linear);
         }
 
-        GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_80 = true;
+        //GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_80 = true;
     }
 
     public void AlreadyReceived_80()
@@ -266,7 +268,7 @@ public class GameOverPlane : MonoBehaviour
             scheduleVlue.DOFillAmount(current + value, 0.3f).SetEase(Ease.Linear);
         }
 
-        GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_100 = true;
+        //GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_100 = true;
     }
 
 }

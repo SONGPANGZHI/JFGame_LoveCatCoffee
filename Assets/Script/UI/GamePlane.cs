@@ -49,7 +49,7 @@ public class GamePlane : MonoBehaviour
     //目标文本 改变
     public void TargetTmpChange()
     {
-        targetNum_TMP.text = GameManager.Instance.currentNumberCats + "/" + GameLevelManagement.Instance.currentLevelData.Target;
+        targetNum_TMP.text = GameManager.Instance.currentNumberCats + "/" + PlayGameManagement.Instance.catTarget;
     }
 
     //设置
@@ -77,7 +77,7 @@ public class GamePlane : MonoBehaviour
         if (PlayerPrefs.HasKey("ClearPropKey"))
         {
             //道具使用
-            GameLevelManagement.Instance.ClearPropUse();
+            //GameLevelManagement.Instance.ClearPropUse();
             clear_BTN.interactable = false;
             clear_Prop[1].SetActive(false);
         }
@@ -108,7 +108,7 @@ public class GamePlane : MonoBehaviour
         if (PlayerPrefs.HasKey("SpeedPropKey"))
         {
             //道具使用
-            GameLevelManagement.Instance.SpeedPropUse();
+            //GameLevelManagement.Instance.SpeedPropUse();
             speed_BTN.interactable = false;
             speed_Prop[1].SetActive(false);
         }
@@ -140,7 +140,7 @@ public class GamePlane : MonoBehaviour
         if (PlayerPrefs.HasKey("PerspectivePropKey"))
         {
             //道具使用
-            GameLevelManagement.Instance.PerspectivePropUse();
+            //GameLevelManagement.Instance.PerspectivePropUse();
             perspective_BTN.interactable = false;
             perspective_Prop[1].SetActive(false);
         }

@@ -59,6 +59,7 @@ public enum AwardvideoType
     Heart,          //复活
 }
 
+//旧版玩法类型
 public enum BlockPropType
 { 
     None,               //
@@ -80,6 +81,29 @@ public enum BlockPropType
     Sugar,              //糖
     Woolen              //毛线
 }
+
+//新版玩法类型
+public enum BlockPropTypeNew
+{
+    None,               //
+    Apple,              //苹果
+    Avocado,            //牛油果
+    Banana,             //香蕉
+    Blueberry,          //蓝莓
+    Coconut,            //椰子
+    Grape,              //葡萄
+    KiwiFruit,          //猕猴桃
+    Lemon,              //柠檬
+    Litchi,             //荔枝
+    Mango,              //芒果
+    Peach,              //桃子
+    Pear,               //梨
+    Pineapple,          //菠萝
+    Pitaya,             //火龙果
+    Strawberry,         //草莓
+    Watermelon,         //西瓜
+}
+
 
 public enum TypesCards
 { 

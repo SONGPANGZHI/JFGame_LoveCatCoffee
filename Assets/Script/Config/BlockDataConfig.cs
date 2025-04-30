@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+#region 旧版玩法数据
 
 [CreateAssetMenu(fileName = "BlockDataConfig", menuName = "BlockData")]
 public class BlockDataConfig : ScriptableObject
@@ -10,3 +9,7 @@ public class BlockDataConfig : ScriptableObject
     public Sprite DorpZoneSprite;
     public Sprite Icon;
 }
+
+#endregion
+
+

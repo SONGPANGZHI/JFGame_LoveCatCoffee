@@ -41,8 +41,12 @@ public class BlockGeneration : MonoBehaviour
         PlayGameManagement.Instance.blockDataConfig_TEMP.ShuffleTemp();
         for (int i = 0; i < count; i++)
         {
+
             GameObject element = Instantiate(PlayGameManagement.Instance.blockPrefab, prefabTrans[transIndex]);
+            element.transform.localPosition = new Vector2(0,i * 15);
             element.GetComponent<BlockPropData>().BlockInit(PlayGameManagement.Instance.blockDataConfig_TEMP[i]);
+            if (i < count - 1)
+                element.GetComponent<BlockPropData>().ButtonNotClickable();
         }
     }
 
