@@ -9,11 +9,13 @@ public class DropZone : MonoBehaviour
 
     public Image iconSprite;
     public BlockPropTypeNew blockPropTypeNew;
+    public bool isMiddle = false;
     public BlockDataConfigNew blockPropDataNew;
 
-    public void DropZoneInitNew(BlockDataConfigNew _blockPropData)
+    public void DropZoneInitNew(BlockDataConfigNew _blockPropData,bool middle)
     {
         blockPropDataNew = _blockPropData;
+        isMiddle = middle;
         iconSprite.sprite = blockPropDataNew.DorpZoneSprite;
         blockPropTypeNew = blockPropDataNew.blockPropType;
     }

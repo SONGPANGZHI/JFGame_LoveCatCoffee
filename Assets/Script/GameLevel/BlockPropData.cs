@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,11 +21,17 @@ public class BlockPropData : MonoBehaviour
 
     public void BlockInit(BlockDataConfigNew blockDataConfig,bool isMiddleBlock = false)
     {
+        int index = UnityEngine.Random.Range(0, 3);
+        
         blockParent = this.transform.parent;
         midlleBlock = isMiddleBlock;
         dataConfig = blockDataConfig;
         propType = dataConfig.blockPropType;
         icon.sprite = dataConfig.Icon;
+        if (index == 0)
+            transform.GetChild(0).gameObject.SetActive(true);
+        else
+            transform.GetChild(0).gameObject.SetActive(false);
     }
 
     //按钮不可以点击
@@ -35,17 +40,22 @@ public class BlockPropData : MonoBehaviour
         transform.GetComponent<Button>().interactable = false;
     }
 
+    public void MysteryBox()
+    {
+       
+    }
+
     //按钮点击
     public void BlockClick()
     {
         MusicManagement.instance.ClickPlaySFX();
-        PlayGameManagement.Instance.CreateDropZoneObject(dataConfig);
+        PlayGameManagement.Instance.CreateDropZoneObject(dataConfig, midlleBlock);
         Destroy(gameObject);
         UpdateButtonInteractability();
         if (midlleBlock)
             PlayGameManagement.Instance.middleAllNum -= 1;
 
-        Vectory();
+        //Vectory();
     }
 
     //刷新按钮状态

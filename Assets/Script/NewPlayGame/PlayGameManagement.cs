@@ -27,16 +27,18 @@ public class PlayGameManagement : MonoBehaviour
     public bool giftsPercentProgress_80;
     public bool giftsPercentProgress_100;
 
+    public List<BlockPropData> currentSceneBlock;
+
     private void Awake()
     {
         if(Instance == null)
             Instance = this;
     }
 
-    public void CreateDropZoneObject(BlockDataConfigNew _blockProp)
+    public void CreateDropZoneObject(BlockDataConfigNew _blockProp,bool middle)
     {
         GameObject currentOBJ = Instantiate(dropZonePrefab, dropZoneTran);
-        currentOBJ.GetComponent<DropZone>().DropZoneInitNew(_blockProp);
+        currentOBJ.GetComponent<DropZone>().DropZoneInitNew(_blockProp, middle);
 
         dropZoneData.Add(currentOBJ);
 
@@ -94,6 +96,30 @@ public class PlayGameManagement : MonoBehaviour
 
     }
 
+    //检查放置区 中间牌
+    public bool CheckDorpZoneMiddleBlock()
+    {
+        for (int i = 0; i < dropZoneData.Count; i++)
+        {
+            if (dropZoneData[i].GetComponent<DropZone>().isMiddle)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //判断是否结束
+    public void CheckeGameOver()
+    {
+        if (middleAllNum <= 0 && CheckDorpZoneMiddleBlock())
+        {
+            //游戏结束
+            UIManagement.Instance.OpenGameOverPlane(true);
+            GameManager.Instance.SavaGameLevel();
+        }
+    }
+
     //重新排列
     private void RearrangeCards()
     {
@@ -137,7 +163,6 @@ public class PlayGameManagement : MonoBehaviour
             dropZoneData.Remove(card);
             Destroy(card.gameObject);
         }
-
         Invoke("DetermineDropAreaFull", 0.5f);
     }
 
@@ -150,6 +175,7 @@ public class PlayGameManagement : MonoBehaviour
             GameManager.Instance.pauseGame = false;
             UIManagement.Instance.OpenGameOverPlane();
         }
+        CheckeGameOver();
     }
 
     //检查猫咪需求
@@ -163,6 +189,9 @@ public class PlayGameManagement : MonoBehaviour
             }
         }
     }
+
+
+
 
     #region 道具的使用
 

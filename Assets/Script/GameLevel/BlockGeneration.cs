@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class ListExtensionsTEMP
@@ -24,13 +25,14 @@ public class BlockGeneration : MonoBehaviour
     #region 新版玩法三消
     
     public List<Transform> prefabTrans;
+   
 
     //生成所有数据
     public void GenerateAllBlock()
     {
         for (int i = 0; i < prefabTrans.Count; i++)
         {
-            int elementCount = Random.Range(1,4);
+            int elementCount = UnityEngine.Random.Range(1,4);
             GenerateBlock(i, elementCount);
         }
     }
@@ -41,12 +43,15 @@ public class BlockGeneration : MonoBehaviour
         PlayGameManagement.Instance.blockDataConfig_TEMP.ShuffleTemp();
         for (int i = 0; i < count; i++)
         {
-
             GameObject element = Instantiate(PlayGameManagement.Instance.blockPrefab, prefabTrans[transIndex]);
-            element.transform.localPosition = new Vector2(0,i * 15);
+            element.transform.localPosition = new Vector2(0, i * 15);
             element.GetComponent<BlockPropData>().BlockInit(PlayGameManagement.Instance.blockDataConfig_TEMP[i]);
+
             if (i < count - 1)
                 element.GetComponent<BlockPropData>().ButtonNotClickable();
+
+            
+            PlayGameManagement.Instance.currentSceneBlock.Add(element.GetComponent<BlockPropData>());
         }
     }
 

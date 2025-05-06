@@ -131,23 +131,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-   
 }
 
-//public class GameLevelFileData
-//{
-//    public int LevelID;
-//    public int Target;
-//    public int Amount;
-//    public int TypeID;
-//    public float ConveyorSpeed;
-//    public float ClearTime;
-//    public int ClearStep;
-//}
-
-//public class ProbabilityCardsAppeare
-//{ 
-
-//}
 
 

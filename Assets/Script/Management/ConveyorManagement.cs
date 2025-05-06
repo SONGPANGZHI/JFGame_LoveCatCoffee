@@ -46,7 +46,7 @@ public class ConveyorManagement : MonoBehaviour
     {
         for (int i = 0; i < middle_Trans.Count; i++)
         {
-            int elementCount = Random.Range(6,13);
+            int elementCount = Random.Range(1,2);
             GenerateMiddleBlock(i, elementCount);
         }
     }
@@ -61,7 +61,7 @@ public class ConveyorManagement : MonoBehaviour
             GO.GetComponent<BlockPropData>().BlockInit(PlayGameManagement.Instance.blockDataConfig_TEMP[i],true);
             if (i < element - 1)
                 GO.GetComponent<BlockPropData>().ButtonNotClickable();
-
+            PlayGameManagement.Instance.currentSceneBlock.Add(GO.GetComponent<BlockPropData>());
             PlayGameManagement.Instance.middleAllNum += 1; 
         }
     }
