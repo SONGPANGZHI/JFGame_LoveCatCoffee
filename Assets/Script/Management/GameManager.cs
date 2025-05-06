@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -67,6 +71,8 @@ public class GameManager : MonoBehaviour
         return finalTMP;
     }
 
+
+
     #region 时间获取
 
     //登录
@@ -125,20 +131,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-
-    #region JSON 读取
-
-    public void StartLoadConfigAsset()
-    {
-
-    }
-
-    public void InitGameLevelJSON()
-    { 
-    
-    }
-
-    #endregion
+   
 }
 
 //public class GameLevelFileData

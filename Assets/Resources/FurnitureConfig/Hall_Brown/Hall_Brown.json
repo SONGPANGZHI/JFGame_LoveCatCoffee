@@ -1,4 +1,4 @@
-{"skeleton":{"images":"images/"},
+{"skeleton":{"images":"images/Hall_Brown"},
 "bones":[{"name":"root"}],
 "slots":[
 	{"name":"Hall1_Diban","bone":"root","attachment":"Hall1_Diban"},

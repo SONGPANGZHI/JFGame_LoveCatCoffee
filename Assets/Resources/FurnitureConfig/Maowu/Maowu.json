@@ -1,4 +1,4 @@
-{"skeleton":{"images":"images/"},
+{"skeleton":{"images":"images/Maowu"},
 "bones":[{"name":"root"}],
 "slots":[
 	{"name":"Maowu1_Diban","bone":"root","attachment":"Maowu1_Diban"},
