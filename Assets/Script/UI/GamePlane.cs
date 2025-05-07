@@ -42,15 +42,14 @@ public class GamePlane : MonoBehaviour
     public void GamePlaneInit()
     {
         GamePlaneInitData();
-        TargetTmpChange();
         buttom_Menu.DOMoveY(143, 0.1f);
     }
 
-    //目标文本 改变
-    public void TargetTmpChange()
-    {
-        targetNum_TMP.text = GameManager.Instance.currentNumberCats + "/" + PlayGameManagement.Instance.catTarget;
-    }
+    ////目标文本 改变
+    //public void TargetTmpChange()
+    //{
+    //    targetNum_TMP.text = GameManager.Instance.currentNumberCats + "/" + PlayGameManagement.Instance.catTarget;
+    //}
 
     //设置
     private void SettingClick()
@@ -77,7 +76,7 @@ public class GamePlane : MonoBehaviour
         if (PlayerPrefs.HasKey("ClearPropKey"))
         {
             //道具使用
-            //GameLevelManagement.Instance.ClearPropUse();
+            PlayGameManagement.Instance.ClearPropUse();
             clear_BTN.interactable = false;
             clear_Prop[1].SetActive(false);
         }
@@ -108,7 +107,7 @@ public class GamePlane : MonoBehaviour
         if (PlayerPrefs.HasKey("SpeedPropKey"))
         {
             //道具使用
-            //GameLevelManagement.Instance.SpeedPropUse();
+            PlayGameManagement.Instance.SpeedPropUse();
             speed_BTN.interactable = false;
             speed_Prop[1].SetActive(false);
         }
@@ -140,7 +139,7 @@ public class GamePlane : MonoBehaviour
         if (PlayerPrefs.HasKey("PerspectivePropKey"))
         {
             //道具使用
-            //GameLevelManagement.Instance.PerspectivePropUse();
+            PlayGameManagement.Instance.PerspectivePropUse();
             perspective_BTN.interactable = false;
             perspective_Prop[1].SetActive(false);
         }
@@ -150,6 +149,12 @@ public class GamePlane : MonoBehaviour
             //激励视频添加道具
             UIManagement.Instance.OpenCommonPlane(CommonPlaneType.Prop, propData[2]);
         }
+    }
+
+    //随机道具 
+    public void RandomProp()
+    { 
+    
     }
 
     #endregion

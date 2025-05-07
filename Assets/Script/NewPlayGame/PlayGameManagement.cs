@@ -16,10 +16,26 @@ public class PlayGameManagement : MonoBehaviour
     public GameObject blockPrefab;
 
     [Header("猫猫需求")]
-    public int catTarget = 120;
+    public int allMiddleBlockNum = 0;
+
     public List<CatData> catDataAll;
     public List<CatData> catNeedBlock;
     private CatData catData_Temp;
+
+    [Header("传送带 速度")]
+    public float conveyorSpeed = 0.3f;
+    public bool keepTime = false;
+    private float timer;
+
+    [Header("道具速度 存在时长 默认30s")]
+    public float speedSurvivalTime = 30F;
+
+    [Header("透视道具")]
+    public bool perspective = false;
+    private float perspectiveTimer = 0;
+    [Header("透视道具 存在时长 默认30s")]
+    public float perspectiveSurvivalTime = 30f;
+
 
     public int middleAllNum;
 
@@ -27,7 +43,7 @@ public class PlayGameManagement : MonoBehaviour
     public bool giftsPercentProgress_80;
     public bool giftsPercentProgress_100;
 
-    public List<BlockPropData> currentSceneBlock;
+    public List<BlockPropData> currentMysteryBox;
 
     private void Awake()
     {
@@ -191,11 +207,108 @@ public class PlayGameManagement : MonoBehaviour
     }
 
 
-
-
     #region 道具的使用
 
-    
+    //清除道具
+    public void ClearPropUse()
+    {
+        dropZoneData.Clear();
+        for (int i = 0; i < dropZoneTran.childCount; i++)
+        {
+            Destroy(dropZoneTran.GetChild(i).gameObject);
+        }
+        //检查游戏状态
+        CheckeGameOver();
+    }
+
+    //加速道具使用
+    public void SpeedPropUse()
+    {
+        conveyorSpeed = 0.7f;
+        keepTime = true;
+        Debug.LogError("开始加速 当前速度 0.7");
+    }
+
+    //速度计时器
+    public void SpeedTimer()
+    {
+        if (keepTime)
+        {
+            timer += Time.deltaTime;
+            if (timer >= speedSurvivalTime)
+            {
+                keepTime = false;
+                conveyorSpeed = 0.2f;
+                timer = 0;
+                Debug.LogError("加速结束 当前速度 0.3");
+            }
+        }
+    }
+
+    //透视道具使用
+    public void PerspectivePropUse()
+    {
+        perspective = true;
+
+        for (int i = 0; i < currentMysteryBox.Count; i++)
+        {
+            if (currentMysteryBox[i] == null)
+            {
+                currentMysteryBox.RemoveAt(i);
+                continue;
+            }
+            else
+            {
+                currentMysteryBox[i].CloseMysteryBox();
+            }
+            
+        }
+        Debug.LogError("透视开始");
+
+    }
+
+    //打开盲盒
+    public void OpenMysteryBoxShow()
+    {
+        for (int i = 0; i < currentMysteryBox.Count; i++)
+        {
+            if (currentMysteryBox[i].midlleBlock)
+                currentMysteryBox[i].OpenMaysteryBox();
+        }
+    }
+
+    //盲盒列表刷新
+    public void UpdateMysteryBox()
+    {
+        //for (int i = 0; i < currentMysteryBox.Count; i++)
+        //{
+        //    if (currentMysteryBox[i] == null)
+        //        currentMysteryBox.RemoveAt(i);
+        //}
+        currentMysteryBox.RemoveAll(item => item == null);
+    }
+
+    //透视倒计时
+    public void PerspectiveTimer()
+    {
+        if (perspective)
+        {
+            perspectiveTimer += Time.deltaTime;
+            if (perspectiveTimer >= perspectiveSurvivalTime)
+            {
+                perspective = false;
+                perspectiveTimer = 0;
+                OpenMysteryBoxShow();
+                Debug.LogError("透视结束");
+            }
+        }
+    }
 
     #endregion
+
+    private void Update()
+    {
+        SpeedTimer();
+        PerspectiveTimer();
+    }
 }

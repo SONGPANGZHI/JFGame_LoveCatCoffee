@@ -105,7 +105,8 @@ public class GameOverPlane : MonoBehaviour
     //获得游戏进度
     public int GetGameProgress()
     {
-        float progree = (GameManager.Instance.currentNumberCats / PlayGameManagement.Instance.catTarget) * 100;
+        int currentProgress = PlayGameManagement.Instance.allMiddleBlockNum - PlayGameManagement.Instance.middleAllNum;
+        float progree = (currentProgress / PlayGameManagement.Instance.allMiddleBlockNum) * 100;
         progress = progree / 100;
         return (int)progree;
     }

@@ -35,6 +35,8 @@ public class BlockGeneration : MonoBehaviour
             int elementCount = UnityEngine.Random.Range(1,4);
             GenerateBlock(i, elementCount);
         }
+
+        PlayGameManagement.Instance.UpdateMysteryBox();
     }
 
     //生成一组数据
@@ -50,8 +52,6 @@ public class BlockGeneration : MonoBehaviour
             if (i < count - 1)
                 element.GetComponent<BlockPropData>().ButtonNotClickable();
 
-            
-            PlayGameManagement.Instance.currentSceneBlock.Add(element.GetComponent<BlockPropData>());
         }
     }
 

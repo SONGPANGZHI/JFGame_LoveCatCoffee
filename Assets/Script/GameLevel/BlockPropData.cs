@@ -28,8 +28,11 @@ public class BlockPropData : MonoBehaviour
         dataConfig = blockDataConfig;
         propType = dataConfig.blockPropType;
         icon.sprite = dataConfig.Icon;
-        if (index == 0)
+        if (index == 0 && !PlayGameManagement.Instance.perspective)
+        {
             transform.GetChild(0).gameObject.SetActive(true);
+            PlayGameManagement.Instance.currentMysteryBox.Add(this);
+        }
         else
             transform.GetChild(0).gameObject.SetActive(false);
     }
@@ -40,9 +43,16 @@ public class BlockPropData : MonoBehaviour
         transform.GetComponent<Button>().interactable = false;
     }
 
-    public void MysteryBox()
+    //关闭 盲盒
+    public void CloseMysteryBox()
     {
-       
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    //打开 盲盒
+    public void OpenMaysteryBox()
+    {
+        transform.GetChild(0).gameObject.SetActive(true);
     }
 
     //按钮点击

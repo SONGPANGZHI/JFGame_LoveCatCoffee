@@ -1,0 +1,571 @@
+[{
+	"LevelID": 1,
+	"BlockType": 3,
+	"MysteryBox": {
+		"ConveyorArea": 0,
+		"BlockArea": 0.1
+	},
+	"BlockNum": {
+		"min": 1,
+		"max": 5
+	},
+	"ConveyorSpeed": 0,
+	"PositionsNum": 8,
+	"cat": 1,
+	"CatAppearTime": 1,
+	"CatSection": {
+		"min": 0.2,
+		"max": 0.3
+	}
+}, {
+	"LevelID": 2,
+	"BlockType": 5,
+	"MysteryBox": {
+		"ConveyorArea": 0,
+		"BlockArea": 0.1
+	},
+	"BlockNum": {
+		"min": 1,
+		"max": 5
+	},
+	"ConveyorSpeed": 0,
+	"PositionsNum": 10,
+	"cat": 0,
+	"CatAppearTime": 0,
+	"CatSection": {
+		"min": 0,
+		"max": 0
+	}
+}, {
+	"LevelID": 3,
+	"BlockType": 7,
+	"MysteryBox": {
+		"ConveyorArea": 0,
+		"BlockArea": 0.1
+	},
+	"BlockNum": {
+		"min": 1,
+		"max": 5
+	},
+	"ConveyorSpeed": 0,
+	"PositionsNum": 12,
+	"cat": 0,
+	"CatAppearTime": 0,
+	"CatSection": {
+		"min": 0,
+		"max": 0
+	}
+}, {
+	"LevelID": 4,
+	"BlockType": 9,
+	"MysteryBox": {
+		"ConveyorArea": 0.1,
+		"BlockArea": 0.2
+	},
+	"BlockNum": {
+		"min": 2,
+		"max": 7
+	},
+	"ConveyorSpeed": 0,
+	"PositionsNum": 14,
+	"cat": 0,
+	"CatAppearTime": 0,
+	"CatSection": {
+		"min": 0,
+		"max": 0
+	}
+}, {
+	"LevelID": 5,
+	"BlockType": 9,
+	"MysteryBox": {
+		"ConveyorArea": 0.1,
+		"BlockArea": 0.2
+	},
+	"BlockNum": {
+		"min": 2,
+		"max": 7
+	},
+	"ConveyorSpeed": 0,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 1,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.6
+	}
+}, {
+	"LevelID": 6,
+	"BlockType": 9,
+	"MysteryBox": {
+		"ConveyorArea": 0.1,
+		"BlockArea": 0.2
+	},
+	"BlockNum": {
+		"min": 2,
+		"max": 7
+	},
+	"ConveyorSpeed": 0,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 1,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.6
+	}
+}, {
+	"LevelID": 7,
+	"BlockType": 9,
+	"MysteryBox": {
+		"ConveyorArea": 0.2,
+		"BlockArea": 0.3
+	},
+	"BlockNum": {
+		"min": 3,
+		"max": 9
+	},
+	"ConveyorSpeed": 0,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 1,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.6
+	}
+}, {
+	"LevelID": 8,
+	"BlockType": 9,
+	"MysteryBox": {
+		"ConveyorArea": 0.2,
+		"BlockArea": 0.3
+	},
+	"BlockNum": {
+		"min": 3,
+		"max": 9
+	},
+	"ConveyorSpeed": 0,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 1,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.6
+	}
+}, {
+	"LevelID": 9,
+	"BlockType": 9,
+	"MysteryBox": {
+		"ConveyorArea": 0.2,
+		"BlockArea": 0.3
+	},
+	"BlockNum": {
+		"min": 3,
+		"max": 9
+	},
+	"ConveyorSpeed": 0,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 1,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.6
+	}
+}, {
+	"LevelID": 10,
+	"BlockType": 9,
+	"MysteryBox": {
+		"ConveyorArea": 0.2,
+		"BlockArea": 0.3
+	},
+	"BlockNum": {
+		"min": 3,
+		"max": 9
+	},
+	"ConveyorSpeed": 0,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 1,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.6
+	}
+}, {
+	"LevelID": 11,
+	"BlockType": 11,
+	"MysteryBox": {
+		"ConveyorArea": 0.2,
+		"BlockArea": 0.3
+	},
+	"BlockNum": {
+		"min": 4,
+		"max": 11
+	},
+	"ConveyorSpeed": 1,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 1,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.6
+	}
+}, {
+	"LevelID": 12,
+	"BlockType": 11,
+	"MysteryBox": {
+		"ConveyorArea": 0.2,
+		"BlockArea": 0.3
+	},
+	"BlockNum": {
+		"min": 4,
+		"max": 11
+	},
+	"ConveyorSpeed": 1,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 1,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.6
+	}
+}, {
+	"LevelID": 13,
+	"BlockType": 11,
+	"MysteryBox": {
+		"ConveyorArea": 0.2,
+		"BlockArea": 0.3
+	},
+	"BlockNum": {
+		"min": 4,
+		"max": 11
+	},
+	"ConveyorSpeed": 1,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.2,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 14,
+	"BlockType": 11,
+	"MysteryBox": {
+		"ConveyorArea": 0.3,
+		"BlockArea": 0.35
+	},
+	"BlockNum": {
+		"min": 4,
+		"max": 11
+	},
+	"ConveyorSpeed": 1,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.2,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 15,
+	"BlockType": 11,
+	"MysteryBox": {
+		"ConveyorArea": 0.3,
+		"BlockArea": 0.35
+	},
+	"BlockNum": {
+		"min": 5,
+		"max": 13
+	},
+	"ConveyorSpeed": 1,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.2,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 16,
+	"BlockType": 13,
+	"MysteryBox": {
+		"ConveyorArea": 0.3,
+		"BlockArea": 0.35
+	},
+	"BlockNum": {
+		"min": 5,
+		"max": 13
+	},
+	"ConveyorSpeed": 1,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.2,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 17,
+	"BlockType": 13,
+	"MysteryBox": {
+		"ConveyorArea": 0.3,
+		"BlockArea": 0.35
+	},
+	"BlockNum": {
+		"min": 5,
+		"max": 13
+	},
+	"ConveyorSpeed": 1,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.2,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 18,
+	"BlockType": 13,
+	"MysteryBox": {
+		"ConveyorArea": 0.3,
+		"BlockArea": 0.35
+	},
+	"BlockNum": {
+		"min": 5,
+		"max": 13
+	},
+	"ConveyorSpeed": 1,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.2,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 19,
+	"BlockType": 13,
+	"MysteryBox": {
+		"ConveyorArea": 0.35,
+		"BlockArea": 0.4
+	},
+	"BlockNum": {
+		"min": 6,
+		"max": 15
+	},
+	"ConveyorSpeed": 1,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.2,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 20,
+	"BlockType": 13,
+	"MysteryBox": {
+		"ConveyorArea": 0.35,
+		"BlockArea": 0.4
+	},
+	"BlockNum": {
+		"min": 6,
+		"max": 15
+	},
+	"ConveyorSpeed": 1,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 21,
+	"BlockType": 15,
+	"MysteryBox": {
+		"ConveyorArea": 0.35,
+		"BlockArea": 0.4
+	},
+	"BlockNum": {
+		"min": 6,
+		"max": 15
+	},
+	"ConveyorSpeed": 2,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 22,
+	"BlockType": 15,
+	"MysteryBox": {
+		"ConveyorArea": 0.35,
+		"BlockArea": 0.4
+	},
+	"BlockNum": {
+		"min": 7,
+		"max": 17
+	},
+	"ConveyorSpeed": 2,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 23,
+	"BlockType": 15,
+	"MysteryBox": {
+		"ConveyorArea": 0.35,
+		"BlockArea": 0.4
+	},
+	"BlockNum": {
+		"min": 7,
+		"max": 17
+	},
+	"ConveyorSpeed": 2,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 24,
+	"BlockType": 15,
+	"MysteryBox": {
+		"ConveyorArea": 0.35,
+		"BlockArea": 0.4
+	},
+	"BlockNum": {
+		"min": 7,
+		"max": 17
+	},
+	"ConveyorSpeed": 2,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 25,
+	"BlockType": 15,
+	"MysteryBox": {
+		"ConveyorArea": 0.35,
+		"BlockArea": 0.4
+	},
+	"BlockNum": {
+		"min": 7,
+		"max": 17
+	},
+	"ConveyorSpeed": 2,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 26,
+	"BlockType": 16,
+	"MysteryBox": {
+		"ConveyorArea": 0.35,
+		"BlockArea": 0.4
+	},
+	"BlockNum": {
+		"min": 8,
+		"max": 19
+	},
+	"ConveyorSpeed": 2,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 27,
+	"BlockType": 16,
+	"MysteryBox": {
+		"ConveyorArea": 0.35,
+		"BlockArea": 0.4
+	},
+	"BlockNum": {
+		"min": 9,
+		"max": 21
+	},
+	"ConveyorSpeed": 2,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 28,
+	"BlockType": 16,
+	"MysteryBox": {
+		"ConveyorArea": 0.35,
+		"BlockArea": 0.4
+	},
+	"BlockNum": {
+		"min": 9,
+		"max": 21
+	},
+	"ConveyorSpeed": 2,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 29,
+	"BlockType": 16,
+	"MysteryBox": {
+		"ConveyorArea": 0.35,
+		"BlockArea": 0.4
+	},
+	"BlockNum": {
+		"min": 9,
+		"max": 21
+	},
+	"ConveyorSpeed": 2,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.7
+	}
+}, {
+	"LevelID": 30,
+	"BlockType": 16,
+	"MysteryBox": {
+		"ConveyorArea": 0.35,
+		"BlockArea": 0.4
+	},
+	"BlockNum": {
+		"min": 10,
+		"max": 23
+	},
+	"ConveyorSpeed": 2,
+	"PositionsNum": 14,
+	"cat": 1,
+	"CatAppearTime": 2,
+	"CatSection": {
+		"min": 0.3,
+		"max": 0.7
+	}
+}]

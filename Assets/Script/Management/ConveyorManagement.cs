@@ -46,7 +46,7 @@ public class ConveyorManagement : MonoBehaviour
     {
         for (int i = 0; i < middle_Trans.Count; i++)
         {
-            int elementCount = Random.Range(1,2);
+            int elementCount = Random.Range(11,26);
             GenerateMiddleBlock(i, elementCount);
         }
     }
@@ -61,15 +61,9 @@ public class ConveyorManagement : MonoBehaviour
             GO.GetComponent<BlockPropData>().BlockInit(PlayGameManagement.Instance.blockDataConfig_TEMP[i],true);
             if (i < element - 1)
                 GO.GetComponent<BlockPropData>().ButtonNotClickable();
-            PlayGameManagement.Instance.currentSceneBlock.Add(GO.GetComponent<BlockPropData>());
-            PlayGameManagement.Instance.middleAllNum += 1; 
+            PlayGameManagement.Instance.middleAllNum += 1;
+            PlayGameManagement.Instance.allMiddleBlockNum += 1; 
         }
-    }
-
-    //生成所有 中间方块
-    public void GenerateAllMiddleBlock()
-    { 
-    
     }
 
     void Update()
@@ -87,12 +81,12 @@ public class ConveyorManagement : MonoBehaviour
     {
         foreach (Transform image in topConveyor_IMG)
         {
-            image.Translate(Vector3.left * conveyorSpeed * Time.deltaTime);
+            image.Translate(Vector3.left * PlayGameManagement.Instance.conveyorSpeed * Time.deltaTime);
         }
 
         foreach (Transform item in bottomConveyor_IMG)
         {
-            item.Translate(Vector3.right * conveyorSpeed * Time.deltaTime);
+            item.Translate(Vector3.right * PlayGameManagement.Instance.conveyorSpeed * Time.deltaTime);
         }
     }
 

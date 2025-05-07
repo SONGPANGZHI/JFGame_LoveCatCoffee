@@ -72,7 +72,6 @@ public class CatData : MonoBehaviour
             //needNum_TMP.gameObject.SetActive(true);
             PlayGameManagement.Instance.catNeedBlock.Remove(this);
             GameManager.Instance.currentNumberCats += 1;
-            UIManagement.Instance.gamePlane.TargetTmpChange();
             StartCoroutine(DestroyObject());
         }
     }
@@ -95,11 +94,11 @@ public class CatData : MonoBehaviour
         //}
 
 
-        if (GameManager.Instance.currentNumberCats < PlayGameManagement.Instance.catTarget - 2)
-        {
+        //if (GameManager.Instance.currentNumberCats < PlayGameManagement.Instance.catTarget - 2)
+        //{
 
-            CreateCatAction?.Invoke();
-        }
+        //    CreateCatAction?.Invoke();
+        //}
         //else if (GameManager.Instance.currentNumberCats == PlayGameManagement.Instance.catTarget)
         //{
         //    //ÓÎÏ·½áÊø

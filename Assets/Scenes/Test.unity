@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 167437366}
   - component: {fileID: 167437368}
   - component: {fileID: 167437367}
+  - component: {fileID: 167437369}
   m_Layer: 0
   m_Name: GameMas
   m_TagString: Untagged
@@ -163,7 +164,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167437365}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2115b9f13ef9a074bb64f705e8b2cdcb, type: 3}
   m_Name: 
@@ -186,6 +187,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainSceneCamera: {fileID: 1532698470}
   tipsObject: {fileID: 0}
+--- !u!114 &167437369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167437365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5330c005b0ef8748b413dc09428cfb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameLevelInfos: []
 --- !u!1 &1222607267
 GameObject:
   m_ObjectHideFlags: 0

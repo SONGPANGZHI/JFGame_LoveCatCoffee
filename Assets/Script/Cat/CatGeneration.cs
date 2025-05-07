@@ -5,65 +5,65 @@ using UnityEngine;
 public class CatGeneration : MonoBehaviour
 {
 
-    #region 新版玩法
-    public Transform catTrans;
-    public List<CatData> catDatas_Temp;
+    //#region 新版玩法
+    //public Transform catTrans;
+    //public List<CatData> catDatas_Temp;
 
 
-    private void Start()
-    {
-        AddCatList();
-        CatData.CreateCatAction += DetermineCurrentProgressCat;
-        CatInit();
-    }
+    //private void Start()
+    //{
+    //    AddCatList();
+    //    CatData.CreateCatAction += DetermineCurrentProgressCat;
+    //    CatInit();
+    //}
 
-    //初始化
-    public void CatInit()
-    {
-        catDatas_Temp.Shuffle();
-        for (int i = 0; i < 3; i++)
-        {
-            GameObject GO = Instantiate(catDatas_Temp[i].gameObject, catTrans);
-            GO.GetComponent<CatData>().InitCatData();
-        }
-    }
+    ////初始化
+    //public void CatInit()
+    //{
+    //    catDatas_Temp.Shuffle();
+    //    for (int i = 0; i < 3; i++)
+    //    {
+    //        GameObject GO = Instantiate(catDatas_Temp[i].gameObject, catTrans);
+    //        GO.GetComponent<CatData>().InitCatData();
+    //    }
+    //}
 
-    //随机生成一只猫咪
-    public void CreateCat()
-    {
-        int randonCat = Random.Range(0, catDatas_Temp.Count);
+    ////随机生成一只猫咪
+    //public void CreateCat()
+    //{
+    //    int randonCat = Random.Range(0, catDatas_Temp.Count);
 
-        GameObject GO = Instantiate(catDatas_Temp[randonCat].gameObject, catTrans);
-        GO.GetComponent<CatData>().InitCatData();
-        PlayGameManagement.Instance.CheckCatRequirements(GO.GetComponent<CatData>());
-    }
+    //    GameObject GO = Instantiate(catDatas_Temp[randonCat].gameObject, catTrans);
+    //    GO.GetComponent<CatData>().InitCatData();
+    //    PlayGameManagement.Instance.CheckCatRequirements(GO.GetComponent<CatData>());
+    //}
 
-    //添加猫咪数组
-    public void AddCatList()
-    {
-        for (int i = 0; i < PlayGameManagement.Instance.catDataAll.Count; i++)
-        {
-            catDatas_Temp.Add(PlayGameManagement.Instance.catDataAll[i]);
-        }
-    }
+    ////添加猫咪数组
+    //public void AddCatList()
+    //{
+    //    for (int i = 0; i < PlayGameManagement.Instance.catDataAll.Count; i++)
+    //    {
+    //        catDatas_Temp.Add(PlayGameManagement.Instance.catDataAll[i]);
+    //    }
+    //}
 
-    //判断 当前已生成几只猫
-    public void DetermineCurrentProgressCat()
-    {
-        if (GameManager.Instance.currentNumberCats < PlayGameManagement.Instance.catTarget)
-        {
-            CreateCat();
-        }
-    }
+    ////判断 当前已生成几只猫
+    //public void DetermineCurrentProgressCat()
+    //{
+    //    if (GameManager.Instance.currentNumberCats < PlayGameManagement.Instance.catTarget)
+    //    {
+    //        CreateCat();
+    //    }
+    //}
 
-    //移除监听
-    private void OnDisable()
-    {
-        CatData.CreateCatAction -= DetermineCurrentProgressCat;
-    }
+    ////移除监听
+    //private void OnDisable()
+    //{
+    //    CatData.CreateCatAction -= DetermineCurrentProgressCat;
+    //}
 
 
-    #endregion
+    //#endregion
 
 
     #region 旧版玩法
