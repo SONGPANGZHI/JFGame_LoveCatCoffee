@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,16 +20,16 @@ public class BlockPropData : MonoBehaviour
     }
 
 
-    public void BlockInit(BlockDataConfigNew blockDataConfig,bool isMiddleBlock = false)
+    public void MiddleBlockInit(BlockDataConfigNew blockDataConfig,bool isMiddleBlock = false)
     {
-        int index = UnityEngine.Random.Range(0, 3);
+        int index = UnityEngine.Random.Range(0, 10);
         
         blockParent = this.transform.parent;
         midlleBlock = isMiddleBlock;
         dataConfig = blockDataConfig;
         propType = dataConfig.blockPropType;
         icon.sprite = dataConfig.Icon;
-        if (index == 0 && !PlayGameManagement.Instance.perspective)
+        if (index <= PlayGameManagement.Instance.blockArea && !PlayGameManagement.Instance.perspective)
         {
             transform.GetChild(0).gameObject.SetActive(true);
             PlayGameManagement.Instance.currentMysteryBox.Add(this);
@@ -36,6 +37,24 @@ public class BlockPropData : MonoBehaviour
         else
             transform.GetChild(0).gameObject.SetActive(false);
     }
+
+    //初始化 传送带上方格
+    public void ConveyorBlockInit(BlockDataConfigNew blockDataConfig)
+    {
+        int index = UnityEngine.Random.Range(1, 10);
+        blockParent = this.transform.parent;
+        dataConfig = blockDataConfig;
+        propType = dataConfig.blockPropType;
+        icon.sprite = dataConfig.Icon;
+        if (index <= PlayGameManagement.Instance.conveyorArea && !PlayGameManagement.Instance.perspective)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+            PlayGameManagement.Instance.currentMysteryBox.Add(this);
+        }
+        else
+            transform.GetChild(0).gameObject.SetActive(false);
+    }
+
 
     //按钮不可以点击
     public void ButtonNotClickable()
@@ -65,7 +84,6 @@ public class BlockPropData : MonoBehaviour
         if (midlleBlock)
             PlayGameManagement.Instance.middleAllNum -= 1;
 
-        //Vectory();
     }
 
     //刷新按钮状态
@@ -74,16 +92,6 @@ public class BlockPropData : MonoBehaviour
         if (blockParent.childCount - 2 < 0) return;
 
         blockParent.GetChild(blockParent.childCount-2).GetComponent<Button>().interactable = true;
-    }
-
-    public void Vectory()
-    {
-        if (PlayGameManagement.Instance.middleAllNum <= 0)
-        {
-            //游戏结束
-            UIManagement.Instance.OpenGameOverPlane(true);
-            GameManager.Instance.SavaGameLevel();
-        }
     }
 
     #endregion

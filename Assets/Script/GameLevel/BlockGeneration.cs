@@ -2,23 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class ListExtensionsTEMP
-{
-    private static System.Random rng = new System.Random();
 
-    public static void ShuffleTemp<T>(this IList<T> list)
-    {
-        int n = list.Count;
-        while (n > 1)
-        {
-            n--;
-            int k = rng.Next(n + 1);
-            T value = list[k];
-            list[k] = list[n];
-            list[n] = value;
-        }
-    }
-}
 
 public class BlockGeneration : MonoBehaviour
 {
@@ -42,12 +26,12 @@ public class BlockGeneration : MonoBehaviour
     //生成一组数据
     public void GenerateBlock(int transIndex,int count)
     {
-        PlayGameManagement.Instance.blockDataConfig_TEMP.ShuffleTemp();
         for (int i = 0; i < count; i++)
         {
+            int randomBlockType = UnityEngine.Random.Range(0,PlayGameManagement.Instance.blockTypeNum);
             GameObject element = Instantiate(PlayGameManagement.Instance.blockPrefab, prefabTrans[transIndex]);
             element.transform.localPosition = new Vector2(0, i * 15);
-            element.GetComponent<BlockPropData>().BlockInit(PlayGameManagement.Instance.blockDataConfig_TEMP[i]);
+            element.GetComponent<BlockPropData>().ConveyorBlockInit(PlayGameManagement.Instance.blockTypes[randomBlockType]);
 
             if (i < count - 1)
                 element.GetComponent<BlockPropData>().ButtonNotClickable();

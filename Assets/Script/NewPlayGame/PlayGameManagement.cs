@@ -12,7 +12,7 @@ public class PlayGameManagement : MonoBehaviour
     public Transform dropZoneTran;
     public GameObject dropZonePrefab;
 
-    public List<BlockDataConfigNew> blockDataConfig_TEMP;         
+    public List<BlockDataConfigNew> blockDataConfig;         
     public GameObject blockPrefab;
 
     [Header("猫猫需求")]
@@ -23,7 +23,6 @@ public class PlayGameManagement : MonoBehaviour
     private CatData catData_Temp;
 
     [Header("传送带 速度")]
-    public float conveyorSpeed = 0.3f;
     public bool keepTime = false;
     private float timer;
 
@@ -35,6 +34,18 @@ public class PlayGameManagement : MonoBehaviour
     private float perspectiveTimer = 0;
     [Header("透视道具 存在时长 默认30s")]
     public float perspectiveSurvivalTime = 30f;
+
+    [Header("关卡数据")]
+    public List<BlockDataConfigNew> blockTypes;
+    public int middleMin;
+    public int middleMax;
+    public float conveyorSpeed;
+    public int positionsNum;
+    public int blockTypeNum;
+    public int blockArea;
+    public int conveyorArea;
+
+
 
 
     public int middleAllNum;
@@ -49,9 +60,17 @@ public class PlayGameManagement : MonoBehaviour
     {
         if(Instance == null)
             Instance = this;
+
+        //获取方块列表
+        GetBlockTypeList();
+
+        GitMiddleAreaData();
     }
 
-    public void CreateDropZoneObject(BlockDataConfigNew _blockProp,bool middle)
+
+
+    #region 三消逻辑
+    public void CreateDropZoneObject(BlockDataConfigNew _blockProp, bool middle)
     {
         GameObject currentOBJ = Instantiate(dropZonePrefab, dropZoneTran);
         currentOBJ.GetComponent<DropZone>().DropZoneInitNew(_blockProp, middle);
@@ -60,24 +79,8 @@ public class PlayGameManagement : MonoBehaviour
 
         CheckForMatches();
 
-        if (CatNeedBlock(_blockProp))
-            catData_Temp.UpdateTMP();
-
-
-    }
-
-    //猫咪需求
-    public bool CatNeedBlock(BlockDataConfigNew _blockProp)
-    {
-        for (int i = 0; i < catNeedBlock.Count; i++)
-        {
-            if (_blockProp.blockPropType == catNeedBlock[i].needBlock.blockPropType)
-            {
-                catData_Temp = catNeedBlock[i];
-                return true;
-            }
-        }
-        return false;
+        //if (CatNeedBlock(_blockProp))
+        //    catData_Temp.UpdateTMP();
     }
 
     //检查物品类型
@@ -110,30 +113,6 @@ public class PlayGameManagement : MonoBehaviour
         // 重新排列剩余卡牌
         RearrangeCards();
 
-    }
-
-    //检查放置区 中间牌
-    public bool CheckDorpZoneMiddleBlock()
-    {
-        for (int i = 0; i < dropZoneData.Count; i++)
-        {
-            if (dropZoneData[i].GetComponent<DropZone>().isMiddle)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    //判断是否结束
-    public void CheckeGameOver()
-    {
-        if (middleAllNum <= 0 && CheckDorpZoneMiddleBlock())
-        {
-            //游戏结束
-            UIManagement.Instance.OpenGameOverPlane(true);
-            GameManager.Instance.SavaGameLevel();
-        }
     }
 
     //重新排列
@@ -169,6 +148,19 @@ public class PlayGameManagement : MonoBehaviour
         }
     }
 
+    //检查放置区 中间牌
+    public bool CheckDorpZoneMiddleBlock()
+    {
+        for (int i = 0; i < dropZoneData.Count; i++)
+        {
+            if (dropZoneData[i].GetComponent<DropZone>().isMiddle)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
     //0.3秒后销毁
     IEnumerator DestroyObject(List<GameObject> matchedCards)
     {
@@ -194,17 +186,78 @@ public class PlayGameManagement : MonoBehaviour
         CheckeGameOver();
     }
 
-    //检查猫咪需求
-    public void CheckCatRequirements(CatData catData)
+    //判断是否结束
+    public void CheckeGameOver()
     {
-        for (int i = 0; i < dropZoneData.Count; i++)
+        if (middleAllNum <= 0 && CheckDorpZoneMiddleBlock())
         {
-            if (dropZoneData[i].GetComponent<DropZone>().blockPropTypeNew == catData.needBlock.blockPropType)
-            {
-                catData.UpdateTMP();
-            }
+            //游戏结束
+            UIManagement.Instance.OpenGameOverPlane(true);
+            GameManager.Instance.SavaGameLevel();
+            GameManager.Instance.GetGameLevelData();
+            Debug.LogError("解锁下一关");
         }
+
     }
+
+    #endregion
+
+    #region 关卡数据
+
+    //获取方块列表
+    public void GetBlockTypeList()
+    {
+        blockTypes.Clear();
+
+        for (int i = 0; i < blockDataConfig.Count; i++)
+        {
+            blockTypes.Add(blockDataConfig[i]);
+        }
+        Debug.LogError("blockTypes" + blockTypes.Count);
+        blockTypes.Shuffle();
+    }
+
+    //获取关卡中间区域最小最大数
+    public void GitMiddleAreaData()
+    {
+        middleMin = GameManager.Instance.currentGameLevel.BlockNum.min;
+        middleMax = GameManager.Instance.currentGameLevel.BlockNum.max;
+        //conveyorSpeed = GameManager.Instance.currentGameLevel.conveyorSpeed;
+        conveyorSpeed = 0.3f;
+        positionsNum = GameManager.Instance.currentGameLevel.PositionsNum;
+        blockTypeNum = GameManager.Instance.currentGameLevel.BlockType;
+        conveyorArea = (int)(GameManager.Instance.currentGameLevel.MysteryBox.ConveyorArea * 10);
+        blockArea = (int)(GameManager.Instance.currentGameLevel.MysteryBox.BlockArea * 10);
+    }
+
+    #endregion
+
+    ////猫咪需求
+    //public bool CatNeedBlock(BlockDataConfigNew _blockProp)
+    //{
+    //    for (int i = 0; i < catNeedBlock.Count; i++)
+    //    {
+    //        if (_blockProp.blockPropType == catNeedBlock[i].needBlock.blockPropType)
+    //        {
+    //            catData_Temp = catNeedBlock[i];
+    //            return true;
+    //        }
+    //    }
+    //    return false;
+    //}
+
+
+    ////检查猫咪需求
+    //public void CheckCatRequirements(CatData catData)
+    //{
+    //    for (int i = 0; i < dropZoneData.Count; i++)
+    //    {
+    //        if (dropZoneData[i].GetComponent<DropZone>().blockPropTypeNew == catData.needBlock.blockPropType)
+    //        {
+    //            catData.UpdateTMP();
+    //        }
+    //    }
+    //}
 
 
     #region 道具的使用

@@ -36,7 +36,7 @@ public class LoadTestData : MonoBehaviour
 
     void LoadJson()
     {
-        StartLoadFurniturePostion("Hall_Violet");
+        StartLoadFurniturePostion("Xiaowu");
     }
 
     public async void StartLoadFurniturePostion(string furniturePostion)

@@ -88,7 +88,7 @@ public class GameOverPlane : MonoBehaviour
             victory_UI.SetActive(true);
             defeated_UI.SetActive(false);
             challengesNum_TMP.text = GameManager.Instance.GetNumbersText(VictoryChallengesNum_TMP, GameManager.Instance.NumberLevelChallenges);
-            //GameManager.Instance.SavaChallengTime();
+            GameManager.Instance.SavaChallengTime();
         }
         else
         {

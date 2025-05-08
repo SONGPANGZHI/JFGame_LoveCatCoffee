@@ -40,7 +40,7 @@ public class CatData : MonoBehaviour
         //GameLevelManagement.Instance.AddCatNeedID();
         //needBlock = GameLevelManagement.Instance.needCatData_Temp[GameLevelManagement.Instance.catNeedBlockID];
         int randomID = UnityEngine.Random.Range(0, text_NUM);
-        needBlock = PlayGameManagement.Instance.blockDataConfig_TEMP[randomID];
+        //needBlock = PlayGameManagement.Instance.blockDataConfig_TEMP[randomID];
         return needBlock;
     }
 

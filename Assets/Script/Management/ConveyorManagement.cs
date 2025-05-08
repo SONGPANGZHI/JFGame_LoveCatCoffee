@@ -9,18 +9,43 @@ public class ConveyorManagement : MonoBehaviour
     public float imageWidth = 1080F;                    // 单张图片的宽度
     public List<RectTransform> topConveyor_IMG;         // 三张图片的Transform数组
     public List<RectTransform> bottomConveyor_IMG;      // 三张图片的Transform数组
-    public List<Transform> middle_Trans;
+    public List<Transform> middle_Trans_8;
+    public List<Transform> middle_Trans_10;
+    public List<Transform> middle_Trans_12;
+    public List<Transform> middle_Trans_14; 
 
-    public float conveyorSpeed = 0.2f;
-
-
+    private List<Transform> middle_Trans_Temp = new List<Transform>();
     private void Start()
     {
         ConveyorInitData();
         InitConveyor();
+        GetMiddlePos(PlayGameManagement.Instance.positionsNum);
+
         InitMiddleBlock();
+
+
+
     }
 
+    //获取中间 位置数
+    public void GetMiddlePos(int ID)
+    {
+        switch (ID)
+        {
+            case 8:
+                middle_Trans_Temp = middle_Trans_8;
+                break;
+            case 10:
+                middle_Trans_Temp = middle_Trans_10;
+                break;
+            case 12:
+                middle_Trans_Temp = middle_Trans_12;
+                break;
+            case 14:
+                middle_Trans_Temp = middle_Trans_14;
+                break;
+        }
+    }
 
     //初始化 第一条 传送带
     public void InitConveyor()
@@ -44,21 +69,27 @@ public class ConveyorManagement : MonoBehaviour
 
     public void InitMiddleBlock()
     {
-        for (int i = 0; i < middle_Trans.Count; i++)
+        for (int i = 0; i < middle_Trans_Temp.Count; i++)
         {
-            int elementCount = Random.Range(11,26);
+            int elementCount = Random.Range(PlayGameManagement.Instance.middleMin, PlayGameManagement.Instance.middleMax + 1); 
             GenerateMiddleBlock(i, elementCount);
         }
     }
 
     public void GenerateMiddleBlock(int transIndex,int element)
     {
-        PlayGameManagement.Instance.blockDataConfig_TEMP.ShuffleTemp();
         for (int i = 0; i < element; i++)
         {
-            GameObject GO = Instantiate(PlayGameManagement.Instance.blockPrefab, middle_Trans[transIndex]);
+            GameObject GO = Instantiate(PlayGameManagement.Instance.blockPrefab, middle_Trans_Temp[transIndex]);
             GO.transform.localPosition = new Vector2(0, i * 15);
-            GO.GetComponent<BlockPropData>().BlockInit(PlayGameManagement.Instance.blockDataConfig_TEMP[i],true);
+            if (i >= PlayGameManagement.Instance.blockTypeNum)
+            {
+                int randomBlockType = UnityEngine.Random.Range(0, PlayGameManagement.Instance.blockTypeNum);
+                GO.GetComponent<BlockPropData>().MiddleBlockInit(PlayGameManagement.Instance.blockTypes[randomBlockType], true);
+            }
+            else
+                GO.GetComponent<BlockPropData>().MiddleBlockInit(PlayGameManagement.Instance.blockTypes[i],true);
+
             if (i < element - 1)
                 GO.GetComponent<BlockPropData>().ButtonNotClickable();
             PlayGameManagement.Instance.middleAllNum += 1;

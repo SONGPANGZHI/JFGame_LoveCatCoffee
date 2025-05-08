@@ -6,14 +6,11 @@ using UnityEngine;
 
 public class LoadAllConfigData : MonoBehaviour
 {
-    public Dictionary<int, GameLevelInfo> gameLevelDic = new Dictionary<int, GameLevelInfo>();
-    public List<GameLevelInfo> gameLevelInfos = new List<GameLevelInfo>();
 
-
-
-    private void Start()
+    private void Awake()
     {
-        StartLoadConfigAsset();
+        if(GameManager.Instance.gameLevelDic.Count == 0)
+            StartLoadConfigAsset();
     }
 
     public void StartLoadConfigAsset()
@@ -30,9 +27,11 @@ public class LoadAllConfigData : MonoBehaviour
         for (int i = 0; i < rootData.Count; i++)
         {
             GameLevelInfo gameLevelInfo = JsonConvert.DeserializeObject<GameLevelInfo>(rootData[i].ToString());
-            gameLevelDic.Add(gameLevelInfo.LevelID, gameLevelInfo);
-            gameLevelInfos.Add(gameLevelInfo);
+            GameManager.Instance.gameLevelDic.Add(gameLevelInfo.LevelID, gameLevelInfo);
+            GameManager.Instance.gameLevelInfos.Add(gameLevelInfo);
         }
+
+        Debug.Log("关卡数据加载成功---");
 
     }
 

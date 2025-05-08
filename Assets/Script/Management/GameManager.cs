@@ -1,13 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using static LoadAllConfigData;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    [Header("关卡数据")]
+    public Dictionary<int, GameLevelInfo> gameLevelDic = new Dictionary<int, GameLevelInfo>();
+    public List<GameLevelInfo> gameLevelInfos = new List<GameLevelInfo>();
 
     [Header("游戏暂停")]
     public bool pauseGame = true;
@@ -18,6 +20,7 @@ public class GameManager : MonoBehaviour
     [Header("关卡挑战次数")]
     public int NumberLevelChallenges;
 
+    public GameLevelInfo currentGameLevel;
 
     #region  游戏保存KEY
 
@@ -45,16 +48,25 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+
         LogInTime();
+        //检查关卡
+        CheckSaveData();
+
     }
 
+    private void Start()
+    {
+        //获得当前 关卡
+        GetGameLevelData();
+    }
 
     //检查保存数据
     public void CheckSaveData()
     {
         if (!PlayerPrefs.HasKey(CurrentGameLevelKey))
         {
-            PlayerPrefs.SetInt(CurrentGameLevelKey, 0);
+            PlayerPrefs.SetInt(CurrentGameLevelKey, 1);
         }
     }
 
@@ -71,6 +83,13 @@ public class GameManager : MonoBehaviour
         return finalTMP;
     }
 
+    //获取当前关卡
+    public GameLevelInfo GetGameLevelData()
+    {
+        currentGameLevel = gameLevelDic[PlayerPrefs.GetInt(CurrentGameLevelKey)];
+        Debug.LogError("当前关卡" + currentGameLevel.LevelID);
+        return currentGameLevel;
+    }
 
 
     #region 时间获取
@@ -131,7 +150,45 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    
 }
+
+public static class ListExtensions
+{
+    private static System.Random rng = new System.Random();
+
+    public static void Shuffle<T>(this IList<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
+    }
+
+    public static Dictionary<int, List<T>> SplitIntoGroups<T>(this List<T> source, int groupCount)
+    {
+        Dictionary<int, List<T>> result = new Dictionary<int, List<T>>();
+
+        int itemsPerGroup = Mathf.CeilToInt(source.Count / (float)groupCount);
+
+        for (int i = 0; i < groupCount; i++)
+        {
+            int startIndex = i * itemsPerGroup;
+            if (startIndex >= source.Count) break;
+
+            int endIndex = Mathf.Min(startIndex + itemsPerGroup, source.Count);
+            result.Add(i, source.GetRange(startIndex, endIndex - startIndex));
+        }
+
+        return result;
+    }
+}
+
 
 
 
