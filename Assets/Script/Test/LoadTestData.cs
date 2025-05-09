@@ -1,6 +1,5 @@
 using Newtonsoft.Json;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,7 +35,7 @@ public class LoadTestData : MonoBehaviour
 
     void LoadJson()
     {
-        StartLoadFurniturePostion("Xiaowu");
+        StartLoadFurniturePostion("Hall_Brown");
     }
 
     public async void StartLoadFurniturePostion(string furniturePostion)

@@ -104,7 +104,6 @@ public enum BlockPropTypeNew
     Watermelon,         //西瓜
 }
 
-
 public enum TypesCards
 { 
     None,
@@ -113,9 +112,25 @@ public enum TypesCards
     MysteryCard,        //盲盒
 }
 
-public enum ConveyorLayer
+//家具皮肤
+public enum FurnitureType
 { 
     None,
-    Top,
-    Bottom,
+    YellowHouse,
+    PinkHouse,
+}
+
+public enum FurnitureFloor
+{
+    None,
+    FirstFloor,
+    SecondFloor,
+    ThirdFloor,
+}
+public enum AwardType
+{
+    None,
+    Furniture,
+    Cat,
+    Block,
 }

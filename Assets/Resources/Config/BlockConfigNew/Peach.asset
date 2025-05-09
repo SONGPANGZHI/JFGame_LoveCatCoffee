@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockPropType: 11
   DorpZoneSprite: {fileID: 21300000, guid: 56747d1347138ce4b8f11d8b49e027b4, type: 3}
-  Icon: {fileID: 21300000, guid: e01b00f1e9ab04a4bbbb0b0d9436853f, type: 3}
+  Icon: {fileID: 21300000, guid: bd75730bfd36ff546b20120e647a2714, type: 3}

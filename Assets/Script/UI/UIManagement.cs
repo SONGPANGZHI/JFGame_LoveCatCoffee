@@ -17,7 +17,7 @@ public class UIManagement : MonoBehaviour
     [SerializeField]
     private AwardPlane awardPlane;
 
-
+    public FurnitureUpgrade furnitureUpgradePlane;
     public LoadingPlane loadingPlane;
 
     public string sceneName;
@@ -117,6 +117,14 @@ public class UIManagement : MonoBehaviour
         loadingPlane.gameObject.SetActive(true);
         loadingPlane.LoadingPlaneInit();
     }
+
+    //打开家具升级界面
+    public void OpenFurnitureUpgradePlane()
+    {
+        furnitureUpgradePlane.gameObject.SetActive(true);
+        furnitureUpgradePlane.FurnitureInit();
+    }
+
 
     private void Update()
     {
