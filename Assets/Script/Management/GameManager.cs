@@ -125,10 +125,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < furnitureName.Count; i++)
         {
-            if (FurniturePosDic.ContainsKey(furnitureName[i]))
-            {
-                unlockFurniture.Add(FurniturePosDic[furnitureName[i]]);
-            }
+            unlockFurniture.Add(FurniturePosDic[furnitureName[i]]);
         }
     }
 
