@@ -11,11 +11,6 @@ public class FurnitureManagement : MonoBehaviour
     public GameObject furnitureGrid;
     public Transform furnitureTrans;
 
-    private void Start()
-    {
-        InitFurniture();
-    }
-
     //新手关卡（第一关通关）
     public void NoviceLevel()
     {

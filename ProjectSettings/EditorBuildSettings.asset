@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NewPlayGame.unity
     guid: be869e2e73d39ab479ccfca6278cfe45
-  - enabled: 1
-    path: Assets/Scenes/DressUp.unity
-    guid: 3cf2551d299f20b4c98cac3d86d25a79
   m_configObjects: {}
