@@ -9,7 +9,7 @@
 		"min": 1,
 		"max": 5
 	},
-	"ConveyorSpeed": 0,
+	"ConveyorSpeed": 0.3,
 	"PositionsNum": 8,
 	"cat": 1,
 	"CatAppearTime": 1,
@@ -28,14 +28,18 @@
 		"min": 1,
 		"max": 5
 	},
-	"ConveyorSpeed": 0,
+	"ConveyorSpeed": 0.3,
 	"PositionsNum": 10,
 	"cat": 0,
 	"CatAppearTime": 0,
 	"CatSection": {
 		"min": 0,
 		"max": 0
-	}
+	},
+	"FurnitureName": [ 
+		"Hall1_Diban",
+		"Hall1_Qiangzhi"
+	]
 }, {
 	"LevelID": 3,
 	"BlockType": 7,
@@ -47,14 +51,16 @@
 		"min": 1,
 		"max": 5
 	},
-	"ConveyorSpeed": 0,
+	"ConveyorSpeed": 0.3,
 	"PositionsNum": 12,
 	"cat": 0,
 	"CatAppearTime": 0,
 	"CatSection": {
 		"min": 0,
 		"max": 0
-	}
+	},
+	"FurnitureName": [ "Hall1_Chaunghu_2","Hall1_Chaunghu_1","Hall1_Banzi"
+	]
 }, {
 	"LevelID": 4,
 	"BlockType": 9,
@@ -66,14 +72,16 @@
 		"min": 2,
 		"max": 7
 	},
-	"ConveyorSpeed": 0,
+	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
 	"cat": 0,
 	"CatAppearTime": 0,
 	"CatSection": {
 		"min": 0,
 		"max": 0
-	}
+	},
+	"FurnitureName": [ "Hall1_Zhanshigui","Hall1_Shouyintai","Hall1_Shouyinji"
+	]
 }, {
 	"LevelID": 5,
 	"BlockType": 9,
@@ -85,14 +93,16 @@
 		"min": 2,
 		"max": 7
 	},
-	"ConveyorSpeed": 0,
+	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 1,
 	"CatSection": {
 		"min": 0.3,
 		"max": 0.6
-	}
+	},
+	"FurnitureName": ["Hall1_Zhuoyi_1","Hall1_Zhuoyi_2"
+	]
 }, {
 	"LevelID": 6,
 	"BlockType": 9,
@@ -104,14 +114,16 @@
 		"min": 2,
 		"max": 7
 	},
-	"ConveyorSpeed": 0,
+	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 1,
 	"CatSection": {
 		"min": 0.3,
 		"max": 0.6
-	}
+	},
+	"FurnitureName": ["Hall1_Dangaogui","Hall1_Caidan","Hall1_Yuanliao"
+	]
 }, {
 	"LevelID": 7,
 	"BlockType": 9,
@@ -123,14 +135,16 @@
 		"min": 3,
 		"max": 9
 	},
-	"ConveyorSpeed": 0,
+	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 1,
 	"CatSection": {
 		"min": 0.3,
 		"max": 0.6
-	}
+	},
+	"FurnitureName": ["Hall1_Zhizuotai_1","Hall1_Tiaozhitai"
+	]
 }, {
 	"LevelID": 8,
 	"BlockType": 9,
@@ -142,14 +156,16 @@
 		"min": 3,
 		"max": 9
 	},
-	"ConveyorSpeed": 0,
+	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 1,
 	"CatSection": {
 		"min": 0.3,
 		"max": 0.6
-	}
+	},
+	"FurnitureName": [ "Hall1_Kafeiji", "Hall1_Kafeitiaopin"
+	]
 }, {
 	"LevelID": 9,
 	"BlockType": 9,
@@ -161,14 +177,16 @@
 		"min": 3,
 		"max": 9
 	},
-	"ConveyorSpeed": 0,
+	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 1,
 	"CatSection": {
 		"min": 0.3,
 		"max": 0.6
-	}
+	},
+	"FurnitureName": ["Hall1_Yinliaotong","Hall1_Beizi"
+	]
 }, {
 	"LevelID": 10,
 	"BlockType": 9,
@@ -180,14 +198,16 @@
 		"min": 3,
 		"max": 9
 	},
-	"ConveyorSpeed": 0,
+	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 1,
 	"CatSection": {
 		"min": 0.3,
 		"max": 0.6
-	}
+	},
+	"FurnitureName": ["Hall1_Taizi","Hall1_Kafeidai", "Hall1_Caidanping"
+	]
 }, {
 	"LevelID": 11,
 	"BlockType": 11,
@@ -199,14 +219,16 @@
 		"min": 4,
 		"max": 11
 	},
-	"ConveyorSpeed": 1,
+	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 1,
 	"CatSection": {
 		"min": 0.3,
 		"max": 0.6
-	}
+	},
+	"FurnitureName": [ "Hall1_Jiazi", "Hall1_Guizi"
+	]
 }, {
 	"LevelID": 12,
 	"BlockType": 11,
@@ -218,14 +240,16 @@
 		"min": 4,
 		"max": 11
 	},
-	"ConveyorSpeed": 1,
+	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 1,
 	"CatSection": {
 		"min": 0.3,
 		"max": 0.6
-	}
+	},
+	"FurnitureName": ["Hall1_Shujia","Hall1_Yinpinjia"
+	]
 }, {
 	"LevelID": 13,
 	"BlockType": 11,
@@ -237,14 +261,16 @@
 		"min": 4,
 		"max": 11
 	},
-	"ConveyorSpeed": 1,
+	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
 	"CatSection": {
 		"min": 0.2,
 		"max": 0.7
-	}
+	},
+	"FurnitureName": ["Hall1_Pengzai_3","Hall1_Pengzai_1","Hall1_Pengzai_2"
+	]
 }, {
 	"LevelID": 14,
 	"BlockType": 11,
@@ -256,14 +282,16 @@
 		"min": 4,
 		"max": 11
 	},
-	"ConveyorSpeed": 1,
+	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
 	"CatSection": {
 		"min": 0.2,
 		"max": 0.7
-	}
+	},
+	"FurnitureName": ["Hall1_Deng_1","Hall1_Deng_2"
+	]
 }, {
 	"LevelID": 15,
 	"BlockType": 11,
@@ -275,14 +303,16 @@
 		"min": 5,
 		"max": 13
 	},
-	"ConveyorSpeed": 1,
+	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
 	"CatSection": {
 		"min": 0.2,
 		"max": 0.7
-	}
+	},
+	"FurnitureName": ["Hall1_Guashi", "Hall1_Jiaodian"
+	]
 }, {
 	"LevelID": 16,
 	"BlockType": 13,
@@ -294,14 +324,16 @@
 		"min": 5,
 		"max": 13
 	},
-	"ConveyorSpeed": 1,
+	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
 	"CatSection": {
 		"min": 0.2,
 		"max": 0.7
-	}
+	},
+	"FurnitureName": ["Hall1_Louti_1"
+	]
 }, {
 	"LevelID": 17,
 	"BlockType": 13,
@@ -313,7 +345,7 @@
 		"min": 5,
 		"max": 13
 	},
-	"ConveyorSpeed": 1,
+	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
@@ -332,7 +364,7 @@
 		"min": 5,
 		"max": 13
 	},
-	"ConveyorSpeed": 1,
+	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
@@ -351,7 +383,7 @@
 		"min": 6,
 		"max": 15
 	},
-	"ConveyorSpeed": 1,
+	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
@@ -370,7 +402,7 @@
 		"min": 6,
 		"max": 15
 	},
-	"ConveyorSpeed": 1,
+	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
@@ -389,7 +421,7 @@
 		"min": 6,
 		"max": 15
 	},
-	"ConveyorSpeed": 2,
+	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
@@ -408,7 +440,7 @@
 		"min": 7,
 		"max": 17
 	},
-	"ConveyorSpeed": 2,
+	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
@@ -427,7 +459,7 @@
 		"min": 7,
 		"max": 17
 	},
-	"ConveyorSpeed": 2,
+	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
@@ -446,7 +478,7 @@
 		"min": 7,
 		"max": 17
 	},
-	"ConveyorSpeed": 2,
+	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
@@ -465,7 +497,7 @@
 		"min": 7,
 		"max": 17
 	},
-	"ConveyorSpeed": 2,
+	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
@@ -484,7 +516,7 @@
 		"min": 8,
 		"max": 19
 	},
-	"ConveyorSpeed": 2,
+	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
@@ -503,7 +535,7 @@
 		"min": 9,
 		"max": 21
 	},
-	"ConveyorSpeed": 2,
+	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
@@ -522,7 +554,7 @@
 		"min": 9,
 		"max": 21
 	},
-	"ConveyorSpeed": 2,
+	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
@@ -541,7 +573,7 @@
 		"min": 9,
 		"max": 21
 	},
-	"ConveyorSpeed": 2,
+	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,
@@ -560,7 +592,7 @@
 		"min": 10,
 		"max": 23
 	},
-	"ConveyorSpeed": 2,
+	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
 	"cat": 1,
 	"CatAppearTime": 2,

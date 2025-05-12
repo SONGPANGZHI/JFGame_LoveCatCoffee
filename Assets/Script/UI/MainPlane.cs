@@ -80,6 +80,10 @@ public class MainPlane : MonoBehaviour
     private void PretendClick()
     {
         //打开装扮界面
+        UIManagement.Instance._isChallengBool = false;
+        MusicManagement.instance.ClickPlaySFX();
+        UIManagement.Instance.sceneName = "DressUp";
+        UIManagement.Instance.OpenLoadingPlane();
     }
 
     //设置界面

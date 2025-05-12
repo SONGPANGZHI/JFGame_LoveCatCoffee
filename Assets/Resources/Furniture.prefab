@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4754246083278181954}
   - component: {fileID: 2741017796744152420}
-  - component: {fileID: 8731100098711705511}
+  - component: {fileID: 3427068530684494325}
   m_Layer: 0
   m_Name: Furniture
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8731100098711705511
+--- !u!114 &3427068530684494325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,25 +94,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4754246083278181955}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfb7debfd9906c445882519fea870cc1, type: 3}
+  m_Script: {fileID: 11500000, guid: 11659b8c405c5ba4ea2e74399a3d600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultItemName: 
-  currentItemName: 
-  itemLayerID: 0
-  itemPos: {x: 0, y: 0, z: 0}
-  isUnlock: 0
-  loucengUnlock: 0
-  skinItem:
-    skinName: 
-    imagePath: 
-    pos_x: 0
-    pos_y: 0
-    width: 0
-    height: 0
-    canClick: 0
-    orderLayer: 0
-    localPostion: {x: 0, y: 0, z: 0}
-    isDefault: 0
-  defaultMat: {fileID: 0}
-  windEffectMat: {fileID: 0}
+  spriteIcon: {fileID: 2741017796744152420}
+  furnitureInfosData:
+    FurnitureName: 
+    FurniturePos: {x: 0, y: 0}
+    OrderLayer: 0

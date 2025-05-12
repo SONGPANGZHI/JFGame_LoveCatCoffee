@@ -1,5 +1,4 @@
 ﻿using DG.Tweening;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,17 +6,15 @@ using UnityEngine.UI;
 public class AwardPlane : MonoBehaviour
 {
     [SerializeField]
-    private Image icon;
+    public GameObject awardGrid;
+    [SerializeField] 
+    public Transform awardTran;
     [SerializeField]
     private Button ok_BTN;
+    [SerializeField]
+    private string imagePath;
 
-    public static Action OnRewardTwo;
-    public static Action OnRewardThree;
-    public static Action OnRewardOne;
 
-    public static bool getGift_80;
-    public static bool getGift_100;
-    public static bool getGift_60;
     private void Awake()
     {
         ok_BTN.onClick.AddListener(OKClick);
@@ -26,6 +23,12 @@ public class AwardPlane : MonoBehaviour
     //界面初始化
     public void AwardPlaneInit()
     {
+        for (int i = 0; i < PlayGameManagement.Instance.furnitureName.Count; i++)
+        {
+            GameObject GO = Instantiate(awardGrid, awardTran);
+            GO.GetComponent<AwardGrid>().InitAwardGrid(imagePath, PlayGameManagement.Instance.furnitureName[i]);
+        }
+
         transform.GetChild(0).DOScale(new Vector3(1,1,1),0.7f);
     }
 
@@ -37,41 +40,6 @@ public class AwardPlane : MonoBehaviour
         {
             this.gameObject.SetActive(false);
 
-            if (getGift_60)
-            {
-                OnRewardOne?.Invoke();
-                getGift_60 = false;
-            }
-            else if (getGift_80)
-            {
-                OnRewardTwo?.Invoke();
-                getGift_80 = false;
-            }
-            else if (getGift_100 )
-            {
-                OnRewardThree?.Invoke();
-                getGift_100 = false;
-            }
-
-
-            //if (getGift_60 && !PlayGameManagement.Instance.currentLevelData.giftsPercentProgress_60)
-            //{
-            //    OnRewardOne?.Invoke();
-            //    getGift_60 = false;
-            //    GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60 = true;
-            //}
-            //else if (getGift_80 && !GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_80)
-            //{
-            //    OnRewardTwo?.Invoke();
-            //    getGift_80 = false;
-            //    GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_80 = true;
-            //}
-            //else if (getGift_100 && !GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_100)
-            //{
-            //    OnRewardThree?.Invoke();
-            //    getGift_100 = false;
-            //    GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_100 = true;
-            //}
         });
     }
 

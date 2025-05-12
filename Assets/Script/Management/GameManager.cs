@@ -11,6 +11,14 @@ public class GameManager : MonoBehaviour
     public Dictionary<int, GameLevelInfo> gameLevelDic = new Dictionary<int, GameLevelInfo>();
     public List<GameLevelInfo> gameLevelInfos = new List<GameLevelInfo>();
 
+    [Header("家具数据")]
+    public Dictionary<int, FurnitureReward> furnitureRewardDic = new Dictionary<int, FurnitureReward>();
+    public List<FurnitureReward> furnitureRewards = new List<FurnitureReward>();
+    public List<string> furnitureName = new List<string>();
+
+    public Dictionary<string, FurnitureInfos> FurniturePosDic = new Dictionary<string, FurnitureInfos>();
+    public List<FurnitureInfos> unlockFurniture = new List<FurnitureInfos>();
+
     [Header("游戏暂停")]
     public bool pauseGame = true;
 
@@ -59,6 +67,10 @@ public class GameManager : MonoBehaviour
     {
         //获得当前 关卡
         GetGameLevelData();
+
+        LoadSaveGameLeveData();
+
+        GetUnLockDefaultFurniture();
     }
 
     //检查保存数据
@@ -91,6 +103,34 @@ public class GameManager : MonoBehaviour
         return currentGameLevel;
     }
 
+    //加载保存家具数据
+    public void LoadSaveGameLeveData()
+    {
+        for (int i = 0; i < gameLevelDic.Count; i++)
+        {
+            if (i < currentGameLevel.LevelID && gameLevelDic[i + 1].FurnitureName != null)
+            {
+                for (int j = 0; j < gameLevelDic[i+1].FurnitureName.Count; j++)
+                {
+                    furnitureName.Add(gameLevelDic[i + 1].FurnitureName[j]);
+                }
+               
+            }
+
+        }
+    }
+
+    //在字典里找解锁家具
+    public void GetUnLockDefaultFurniture()
+    {
+        for (int i = 0; i < furnitureName.Count; i++)
+        {
+            if (FurniturePosDic.ContainsKey(furnitureName[i]))
+            {
+                unlockFurniture.Add(FurniturePosDic[furnitureName[i]]);
+            }
+        }
+    }
 
     #region 时间获取
 
@@ -150,7 +190,6 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    
 }
 
 public static class ListExtensions

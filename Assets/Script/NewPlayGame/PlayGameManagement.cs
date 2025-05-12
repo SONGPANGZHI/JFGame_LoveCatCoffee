@@ -44,6 +44,7 @@ public class PlayGameManagement : MonoBehaviour
     public int blockTypeNum;
     public int blockArea;
     public int conveyorArea;
+    public List<string> furnitureName;
 
 
 
@@ -222,12 +223,12 @@ public class PlayGameManagement : MonoBehaviour
     {
         middleMin = GameManager.Instance.currentGameLevel.BlockNum.min;
         middleMax = GameManager.Instance.currentGameLevel.BlockNum.max;
-        //conveyorSpeed = GameManager.Instance.currentGameLevel.conveyorSpeed;
-        conveyorSpeed = 0.3f;
+        conveyorSpeed = GameManager.Instance.currentGameLevel.conveyorSpeed;
         positionsNum = GameManager.Instance.currentGameLevel.PositionsNum;
         blockTypeNum = GameManager.Instance.currentGameLevel.BlockType;
         conveyorArea = (int)(GameManager.Instance.currentGameLevel.MysteryBox.ConveyorArea * 10);
         blockArea = (int)(GameManager.Instance.currentGameLevel.MysteryBox.BlockArea * 10);
+        furnitureName = GameManager.Instance.currentGameLevel.FurnitureName;
     }
 
     #endregion

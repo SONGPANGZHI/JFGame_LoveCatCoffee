@@ -57,25 +57,11 @@ public class GameOverPlane : MonoBehaviour
     {
         planeState = _isVictory;
         transform.GetChild(0).DOScale(new Vector3(1, 1, 1), 0.3F);
+
         JudgingPlaneState();
-        AwardPlane.OnRewardTwo += GetSecondReward;
-        AwardPlane.OnRewardThree += GetThirdReward;
-        AwardPlane.OnRewardOne += ResidueProgress;
 
         JudgingGameProgress();
 
-        //if (!GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60)
-        //    JudgingGameProgress();
-        //else if (GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60 &&
-        //    !GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_80)
-        //{
-        //    AlreadyReceived_60();
-        //}
-        //else
-        //{
-        //    AlreadyReceived_80();
-        //}
-           
     }
 
     //判断界面状态
@@ -115,78 +101,14 @@ public class GameOverPlane : MonoBehaviour
     public void JudgingGameProgress()
     {
         scheduleVlue.fillAmount = 0;
-        if (progress >= 0.6)
+        if (progress == 1)
         {
-            //领取礼盒 第一阶段
-            SetProgress(0.6f);
-            if (progress >= 0.6 && progress < 0.8)
-            {
-                AwardPlane.getGift_60 = true;
-            }
-            else
-            {
-                AwardPlane.getGift_80 = true;
-            }
-            //GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_60 = true;
+            //打开 奖励领取
+            SetProgress(1f);
         }
         else
         {
             scheduleVlue.DOFillAmount(progress, 0.3f).SetEase(Ease.Linear);
-        }
-    }
-
-    //未达到 礼物领取 进度条动画
-    public void ResidueProgress()
-    {
-        scheduleVlue.fillAmount = 0.6F;
-        float current = scheduleVlue.fillAmount;
-        float interpolation = progress - current;
-        if (progress > 0.6 && progress < 0.8)
-        {
-            scheduleVlue.DOFillAmount(current + interpolation, 0.3f).SetEase(Ease.Linear);
-        }
-        else if (progress > 0.8 && progress < 1)
-        {
-            scheduleVlue.DOFillAmount(current + interpolation, 0.3f).SetEase(Ease.Linear);
-        }
-    }
-
-    //奖励界面关闭 第二次奖励界面
-    public void GetSecondReward()
-    {
-        float current = scheduleVlue.fillAmount;
-        if (progress >= 0.8)
-        {
-            SetProgress(0.8F);
-            if (progress >= 0.8 && progress == 1)
-            {
-                AwardPlane.getGift_100 = true;
-            }
-            else
-                AwardPlane.getGift_60 = true;
-        }
-        else
-        {
-            AwardPlane.getGift_60 = true;
-            float value = progress - 0.6f;
-            scheduleVlue.DOFillAmount(current + value, 0.3f).SetEase(Ease.Linear);
-        }
-    }
-
-    //领取第三次奖励
-    public void GetThirdReward()
-    {
-        float current = scheduleVlue.fillAmount;
-        if (progress == 1)
-        {
-            //开启第二阶段 礼物领取
-            SetProgress(1);
-        }
-        else
-        {
-            AwardPlane.getGift_60 = true;
-            float value = progress - 0.8f;
-            scheduleVlue.DOFillAmount(current + value, 0.3f).SetEase(Ease.Linear);
         }
     }
 
@@ -195,7 +117,7 @@ public class GameOverPlane : MonoBehaviour
     {
         scheduleVlue.DOFillAmount(value, 0.3f).SetEase(Ease.Linear).OnComplete(() =>
         {
-        UIManagement.Instance.OpenAwardPlane();
+            UIManagement.Instance.OpenAwardPlane();
         });
     }
 
@@ -221,55 +143,11 @@ public class GameOverPlane : MonoBehaviour
         MusicManagement.instance.ClickPlaySFX();
         transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
         {
-            AwardPlane.OnRewardTwo -= GetSecondReward;
-            AwardPlane.OnRewardThree -= GetThirdReward;
-            AwardPlane.OnRewardOne -= ResidueProgress;
             this.gameObject.SetActive(false);
         });
         UIManagement.Instance.loadingPlane.gameObject.SetActive(true);
         UIManagement.Instance.CloseGamePlane();
         UIManagement.Instance.loadingPlane.LoadUIScene();
-    }
-
-    public void AlreadyReceived_60()
-    {
-        scheduleVlue.fillAmount = 0;
-        float current = 0.6F;
-        if (progress >= 0.8)
-        {
-            if (progress >= 0.8 && progress == 1)
-            {
-                SetProgress(0.8F);
-                AwardPlane.getGift_100 = true;
-            }
-            else
-                SetProgress(progress);
-        }
-        else
-        {
-            float value = progress - 0.6f;
-            scheduleVlue.DOFillAmount(current + value, 0.3f).SetEase(Ease.Linear);
-        }
-
-        //GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_80 = true;
-    }
-
-    public void AlreadyReceived_80()
-    {
-        scheduleVlue.fillAmount = 0;
-        float current = 0.8F;
-
-        if (progress == 1)
-        {
-            SetProgress(progress);
-        }
-        else
-        {
-            float value = progress - 0.8f;
-            scheduleVlue.DOFillAmount(current + value, 0.3f).SetEase(Ease.Linear);
-        }
-
-        //GameLevelManagement.Instance.currentLevelData.giftsPercentProgress_100 = true;
     }
 
 }

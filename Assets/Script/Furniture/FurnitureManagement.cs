@@ -1,36 +1,33 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using static LoadAllConfigData;
 
 public class FurnitureManagement : MonoBehaviour
 {
+    public List<GameObject> defaultFurniture;
 
-    #region  家具点击
-    //射线检查
-    public void OnPointClick()
+    public GameObject furnitureGrid;
+    public Transform furnitureTrans;
+
+    //新手关卡（第一关通关）
+    public void NoviceLevel()
     {
-        Debug.Log("OnPointClick ---- ");
+        for (int i = 0; i < defaultFurniture.Count; i++)
+        {
+            Destroy(defaultFurniture[i].gameObject);
+        }
     }
 
-    //public void OnPointerClick(PointerEventData eventData)
-    //{
-    //    Debug.Log("OnPointClick ---- ");
-    //}
-    #endregion
-
+    //初始化建筑
+    public void InitFurniture()
+    {
+        for (int i = 0; i < GameManager.Instance.unlockFurniture.Count; i++)
+        {
+            GameObject GO = Instantiate(furnitureGrid, furnitureTrans);
+            GO.GetComponent<FurnitureInfo>().FurnitureInfoInit(GameManager.Instance.unlockFurniture[i]);
+        }
+    }
 }
 
-public class FurnitureData
-{ 
-    public string FurnitureName;
-}
-
-public class Award
-{
-    public int ID;
-    public string FurnitureNmae;
-    public AwardType AwardType;
-    public FurnitureFloor FurnitureFloor;   
-    
-}
