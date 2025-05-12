@@ -38,7 +38,7 @@ public class LoadTestData : MonoBehaviour
         StartLoadFurniturePostion("Hall_Brown");
     }
 
-    public async void StartLoadFurniturePostion(string furniturePostion)
+    public void StartLoadFurniturePostion(string furniturePostion)
     {
         //string url_defaultConfig = "";
         //var _config = await DownloadHandle.Instance.StartAsyncResources(url_defaultConfig, downloadType.handle, OnDownloadCompleted) as string;

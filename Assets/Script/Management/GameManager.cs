@@ -12,9 +12,10 @@ public class GameManager : MonoBehaviour
     public List<GameLevelInfo> gameLevelInfos = new List<GameLevelInfo>();
 
     [Header("家具数据")]
-    public Dictionary<int, FurnitureReward> furnitureRewardDic = new Dictionary<int, FurnitureReward>();
-    public List<FurnitureReward> furnitureRewards = new List<FurnitureReward>();
-    public List<string> furnitureName = new List<string>();
+    public Dictionary<int, FurnitureReward> furnitureRewardDic = new Dictionary<int, FurnitureReward>();        //奖励池
+    public List<FurnitureReward> furnitureRewards = new List<FurnitureReward>();            //保存数据 
+
+    public List<string> furnitureName = new List<string>();                 //解锁家具
 
     public Dictionary<string, FurnitureInfos> FurniturePosDic = new Dictionary<string, FurnitureInfos>();
     public List<FurnitureInfos> unlockFurniture = new List<FurnitureInfos>();

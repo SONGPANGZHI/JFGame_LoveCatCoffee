@@ -80,14 +80,6 @@
         "OrderLayer": 10
     },
     {
-        "FurnitureName": "Xiaowu_Xiangzi",
-        "FurniturePos": {
-            "x": 0.15000000596046449,
-            "y": 2.809999942779541
-        },
-        "OrderLayer": 10
-    },
-    {
         "FurnitureName": "Hall1_Louti_1",
         "FurniturePos": {
             "x": -0.7200000286102295,
