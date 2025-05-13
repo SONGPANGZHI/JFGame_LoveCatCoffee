@@ -30,6 +30,8 @@ public class MainPlane : MonoBehaviour
     [SerializeField]
     private Transform bottom_OBJ;
 
+    public GameObject redPoint;
+
     private void Awake()
     {
         startPlay_BTN.onClick.AddListener(StartPlayClick);
@@ -46,6 +48,10 @@ public class MainPlane : MonoBehaviour
     {
         bottom_OBJ.DOMoveY(300,0.3f);
         currentLevel_TMP.text = "当前关卡：" + (PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey));
+        if (PlayerPrefs.HasKey(UIManagement.redPointKey))
+            OpenRedPiont();
+        else
+            CloseRedPonit();
     }
 
     //开始
@@ -98,4 +104,14 @@ public class MainPlane : MonoBehaviour
         bottom_OBJ.DOMoveY(-300, 0.3f);
     }
 
+    //打开红点
+    public void OpenRedPiont()
+    {
+        redPoint.SetActive(true);
+    }
+
+    public void CloseRedPonit()
+    {
+        redPoint.SetActive(false);
+    }
 }

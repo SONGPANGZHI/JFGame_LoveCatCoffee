@@ -13,7 +13,7 @@ public class AwardPlane : MonoBehaviour
     private Button ok_BTN;
     [SerializeField]
     private string imagePath;
-
+    public GameObject unlock_TMP;
 
     private void Awake()
     {
@@ -23,14 +23,30 @@ public class AwardPlane : MonoBehaviour
     //界面初始化
     public void AwardPlaneInit()
     {
-        for (int i = 0; i < PlayGameManagement.Instance.furnitureName.Count; i++)
+        if (GameManager.Instance.currentGameLevel.LevelID == 1)
         {
-            GameObject GO = Instantiate(awardGrid, awardTran);
-            GO.GetComponent<AwardGrid>().InitAwardGrid(imagePath, PlayGameManagement.Instance.furnitureName[i]);
-            GameManager.Instance.furnitureName.Add(PlayGameManagement.Instance.furnitureName[i]);
+            unlock_TMP.SetActive(true);
+        }
+        else
+        {
+            unlock_TMP.SetActive(false);
+
+            for (int i = 0; i < PlayGameManagement.Instance.furnitureName.Count; i++)
+            {
+                GameObject GO = Instantiate(awardGrid, awardTran);
+                GO.GetComponent<AwardGrid>().InitAwardGrid(PlayGameManagement.Instance.furnitureName[i]);
+                GameManager.Instance.furnitureName.Add(PlayGameManagement.Instance.furnitureName[i]);
+            }
+
         }
 
+       
+        //保存红点
+        PlayerPrefs.SetString(UIManagement.redPointKey,"RedPiont");
         transform.GetChild(0).DOScale(new Vector3(1,1,1),0.7f);
+        GameManager.Instance.SavaGameLevel();
+        GameManager.Instance.GetGameLevelData();
+        Debug.LogError("解锁下一关");
     }
 
     //三个阶段回调

@@ -104,7 +104,10 @@ public class GameOverPlane : MonoBehaviour
         if (progress == 1)
         {
             //打开 奖励领取
-            SetProgress(1f);
+            scheduleVlue.DOFillAmount(1, 0.3f).SetEase(Ease.Linear).OnComplete(() =>
+            {
+                UIManagement.Instance.OpenAwardPlane();
+            });
         }
         else
         {

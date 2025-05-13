@@ -6,19 +6,24 @@ using UnityEngine;
 
 public class LoadAllConfigData : MonoBehaviour
 {
+    public static LoadAllConfigData instance;
     private string furnitureReward_url;
     public SavaFurnitureData furnitureRewardInfo;
     private void Awake()
     {
+        if(instance == null)
+            instance = this;
+
+
         furnitureReward_url = Application.persistentDataPath + "/furnitureRewardInfo. txt";
         LoadLocal();
 
         if (GameManager.Instance.gameLevelDic.Count == 0)
+        {
             StartLoadConfigAsset();
-
-
-        LoadFurnitureRewardJson();
-        LoadFurniturePosJson();
+            LoadFurnitureRewardJson();
+            LoadFurniturePosJson();
+        }
     }
     private void Start()
     {
@@ -32,7 +37,7 @@ public class LoadAllConfigData : MonoBehaviour
     {
         if (File.Exists(furnitureReward_url))
         {
-            //读取文件的所有字节数组，转换成字符串json，然后还原成player对象bytel] bytes = File.ReadAllBytes(playerInfo url);
+            //读取文件的所有字节数组，转换成字符串json，然后还原成player对象bytel] bytes = File.ReadAllBytes(furnitureReward_url);
             byte[] bytes = File.ReadAllBytes(furnitureReward_url);
             string json = System.Text.Encoding.UTF8.GetString(bytes);
             furnitureRewardInfo = JsonUtility.FromJson<SavaFurnitureData>(json);
@@ -151,6 +156,11 @@ public class LoadAllConfigData : MonoBehaviour
         public AwardType AwardType;
         public string name;
         public FurnitureFloor FurnitureFloor;
+
+        public FurnitureReward(string _name)
+        {
+            name = _name;
+        }
     }
 
     #endregion

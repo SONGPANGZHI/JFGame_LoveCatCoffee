@@ -42,7 +42,11 @@ public class LoadingPlane : MonoBehaviour
             bg.transform.GetChild(1).GetComponent<Image>().DOFade(0, 0.5f).SetEase(Ease.Linear);
             bg.DOFade(0, 0.5f).SetEase(Ease.Linear).OnComplete(() => {
 
-                UIManagement.Instance.OpenGamePlane();
+                if(UIManagement.Instance.sceneName == "DressUp")
+                    UIManagement.Instance.OpenFurnitureUpgradePlane();
+                else
+                    UIManagement.Instance.OpenGamePlane();
+
                 this.gameObject.SetActive(false);
             });
         };

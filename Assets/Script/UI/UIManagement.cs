@@ -21,6 +21,7 @@ public class UIManagement : MonoBehaviour
     public LoadingPlane loadingPlane;
 
     public string sceneName;
+    public static string redPointKey = "RedPointKEY";
 
     public bool _isChallengBool;
     private void Awake()
@@ -121,10 +122,15 @@ public class UIManagement : MonoBehaviour
     //打开家具升级界面
     public void OpenFurnitureUpgradePlane()
     {
+        mainPlane.ClosePlane();
         furnitureUpgradePlane.gameObject.SetActive(true);
         furnitureUpgradePlane.FurnitureInit();
     }
 
+    public void CloseFurnitureUpgradePlane()
+    {
+        furnitureUpgradePlane.gameObject.SetActive(false);
+    }
 
     private void Update()
     {

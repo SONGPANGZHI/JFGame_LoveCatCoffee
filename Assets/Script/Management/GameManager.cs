@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using static LoadAllConfigData;
 
@@ -14,10 +15,9 @@ public class GameManager : MonoBehaviour
     [Header("家具数据")]
     public Dictionary<int, FurnitureReward> furnitureRewardDic = new Dictionary<int, FurnitureReward>();        //奖励池
     public List<FurnitureReward> furnitureRewards = new List<FurnitureReward>();            //保存数据 
-
     public List<string> furnitureName = new List<string>();                 //解锁家具
 
-    public Dictionary<string, FurnitureInfos> FurniturePosDic = new Dictionary<string, FurnitureInfos>();
+    public Dictionary<string, FurnitureInfos> FurniturePosDic = new Dictionary<string, FurnitureInfos>();       //原皮 记录位置
     public List<FurnitureInfos> unlockFurniture = new List<FurnitureInfos>();
 
     [Header("游戏暂停")]
@@ -69,9 +69,9 @@ public class GameManager : MonoBehaviour
         //获得当前 关卡
         GetGameLevelData();
 
-        LoadSaveGameLeveData();
+        //LoadSaveGameLeveData();
 
-        GetUnLockDefaultFurniture();
+        //GetUnLockDefaultFurniture();
     }
 
     //检查保存数据
@@ -191,11 +191,15 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+   
 }
 
 public static class ListExtensions
 {
     private static System.Random rng = new System.Random();
+    private const string DEFAULT_AWARD_PATH = "Images/Hall_Brown/";
+    private static Dictionary<string, Sprite> spriteCache = new Dictionary<string, Sprite>();
+
 
     public static void Shuffle<T>(this IList<T> list)
     {
@@ -226,6 +230,23 @@ public static class ListExtensions
         }
 
         return result;
+    }
+
+    public static Sprite LoadFurnitureSprite(string spriteKey, string imagePath = DEFAULT_AWARD_PATH)
+    {
+        string cacheKey = imagePath + spriteKey;
+
+        if (spriteCache.TryGetValue(cacheKey, out Sprite cachedSprite))
+            return cachedSprite;
+
+        Sprite newSprite = Resources.Load<Sprite>(Path.Combine(imagePath, spriteKey));
+
+        if (newSprite != null)
+            spriteCache[cacheKey] = newSprite;
+        else
+            Debug.LogWarning($"Sprite not found: {cacheKey}");
+
+        return newSprite;
     }
 }
 

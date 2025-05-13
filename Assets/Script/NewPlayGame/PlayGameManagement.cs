@@ -194,9 +194,7 @@ public class PlayGameManagement : MonoBehaviour
         {
             //游戏结束
             UIManagement.Instance.OpenGameOverPlane(true);
-            GameManager.Instance.SavaGameLevel();
-            GameManager.Instance.GetGameLevelData();
-            Debug.LogError("解锁下一关");
+           
         }
 
     }
