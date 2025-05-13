@@ -304,7 +304,7 @@
         "OrderLayer": 3
     },
     {
-        "FurnitureName": "Xiaowu_1_Qiangzhi",
+        "FurnitureName": "Hall1_Qiangzhi",
         "FurniturePos": {
             "x": 0.07000000029802323,
             "y": 0.05999999865889549
@@ -312,7 +312,7 @@
         "OrderLayer": 1
     },
     {
-        "FurnitureName": "Xiaowu_1_Diban",
+        "FurnitureName": "Hall1_Diban",
         "FurniturePos": {
             "x": 0.05999999865889549,
             "y": -4.090000152587891

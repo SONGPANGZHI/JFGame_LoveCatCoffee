@@ -30,12 +30,11 @@ public class FurnitureManagement : MonoBehaviour
     //新手关卡（第一关通关）
     public void NoviceLevel()
     {
-        for (int i = 0; i < defaultFurniture.Count; i++)
+        for (int i = 0; i < 2; i++)
         {
             Destroy(defaultFurniture[i].gameObject);
         }
 
-        
     }
 
     //初始化建筑
@@ -56,17 +55,25 @@ public class FurnitureManagement : MonoBehaviour
     //生成建筑 
     public void CreateFurniture(string spriteKey)
     {
+
         GameObject GO = Instantiate(furnitureGrid, furnitureTrans);
         GO.GetComponent<FurnitureInfo>().FurnitureInfoInit(GetFurnitureKey(spriteKey));
     }
 
-
+    //返回类型
     public FurnitureInfos GetFurnitureKey(string spriteKey)
     {
         if (GameManager.Instance.FurniturePosDic.ContainsKey(spriteKey))
             return GameManager.Instance.FurniturePosDic[spriteKey];
 
         return null;
+    }
+
+    //判断是否是默认家具
+    public bool GetDefaultFurniture()
+    {
+
+        return false;
     }
 }
 
