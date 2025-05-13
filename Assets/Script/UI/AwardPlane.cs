@@ -27,6 +27,7 @@ public class AwardPlane : MonoBehaviour
         {
             GameObject GO = Instantiate(awardGrid, awardTran);
             GO.GetComponent<AwardGrid>().InitAwardGrid(imagePath, PlayGameManagement.Instance.furnitureName[i]);
+            GameManager.Instance.furnitureName.Add(PlayGameManagement.Instance.furnitureName[i]);
         }
 
         transform.GetChild(0).DOScale(new Vector3(1,1,1),0.7f);
