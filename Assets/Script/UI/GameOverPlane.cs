@@ -1,9 +1,7 @@
 ﻿using DG.Tweening;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Playables;
 using UnityEngine.UI;
 
 public class GameOverPlane : MonoBehaviour

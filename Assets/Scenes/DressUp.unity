@@ -365,6 +365,10 @@ MonoBehaviour:
   defaultFurniture:
   - {fileID: 2293516302247187941}
   - {fileID: 1580799298}
+  - {fileID: 5066737661596088597}
+  - {fileID: 6008343434149258674}
+  - {fileID: 6642924759178541959}
+  - {fileID: 8813840086010281355}
   furnitureGrid: {fileID: 4754246083278181955, guid: 152b519afe7bd56449af6680d1a88a85, type: 3}
   furnitureTrans: {fileID: 265795256}
   currentGrid: {fileID: 0}

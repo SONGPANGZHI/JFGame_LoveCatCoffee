@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using static LoadAllConfigData;
+using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     public GameLevelInfo currentGameLevel;
 
+    public GameSaveData CurrentData;
+    private static string SavePath => Path.Combine(Application.persistentDataPath, "GameSaveData.json");
     #region  游戏保存KEY
 
     public static string NumberLevelChallengesKey = "NumberLevelChallengesKEY";         //关卡挑战次数
@@ -57,7 +59,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-
+        InitializeData();
         LogInTime();
         //检查关卡
         CheckSaveData();
@@ -190,8 +192,72 @@ public class GameManager : MonoBehaviour
     }
 
     #endregion
+    private void InitializeData()
+    {
+        if (File.Exists(SavePath))
+        {
+            LoadGameSaveData();
+        }
+        else
+        {
+            Debug.Log("无存档文件，创建新数据并保存初始文件");
+            CurrentData = new GameSaveData();
 
-   
+            // 立即保存创建初始文件
+            SaveData();
+        }
+
+    }
+
+    public void LoadGameSaveData()
+    {
+        try
+        {
+            if (!File.Exists(SavePath))
+            {
+                Debug.LogWarning($"存档文件不存在: {SavePath}");
+                return;
+            }
+
+            string json = File.ReadAllText(SavePath);
+            CurrentData = JsonUtility.FromJson<GameSaveData>(json);
+
+            // 确保反序列化后的对象不为null
+            if (CurrentData == null)
+            {
+                Debug.LogWarning("反序列化失败，创建新数据");
+                CurrentData = new GameSaveData();
+            }
+
+            // 确保所有列表已初始化
+            CurrentData.usedFurniture = CurrentData.usedFurniture ?? new List<FurnitureReward>();
+            CurrentData.collectionFurnitureName = CurrentData.collectionFurnitureName ?? new List<string>();
+
+            Debug.Log("游戏数据加载成功");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"加载数据失败: {e.Message}");
+            CurrentData = new GameSaveData();
+        }
+    
+    }
+
+
+    // 保存列表到JSON文件
+    public void SaveData()
+    {
+        try
+        {
+            string json = JsonUtility.ToJson(CurrentData, true);
+            File.WriteAllText(SavePath, json);
+            Debug.Log($"游戏数据保存成功: {SavePath}");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"保存数据失败: {e.Message}");
+        }
+    }
 }
 
 public static class ListExtensions

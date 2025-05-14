@@ -2871,6 +2871,9 @@ MonoBehaviour:
       min: 0
       max: 0
     FurnitureName: []
+  CurrentData:
+    usedFurniture: []
+    collectionFurnitureName: []
   LogOutTimeKey: 
   LogInTimeKey: 
 --- !u!4 &461545455
@@ -6603,7 +6606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &899807477
 RectTransform:
   m_ObjectHideFlags: 0

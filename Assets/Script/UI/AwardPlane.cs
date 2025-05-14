@@ -35,12 +35,14 @@ public class AwardPlane : MonoBehaviour
             {
                 GameObject GO = Instantiate(awardGrid, awardTran);
                 GO.GetComponent<AwardGrid>().InitAwardGrid(PlayGameManagement.Instance.furnitureName[i]);
-                GameManager.Instance.furnitureName.Add(PlayGameManagement.Instance.furnitureName[i]);
+
+                //把获得的家具名字添加到本地保存
+                GameManager.Instance.CurrentData.collectionFurnitureName.Add(PlayGameManagement.Instance.furnitureName[i]);
+                GameManager.Instance.SaveData();
             }
 
         }
 
-       
         //保存红点
         PlayerPrefs.SetString(UIManagement.redPointKey,"RedPiont");
         transform.GetChild(0).DOScale(new Vector3(1,1,1),0.7f);
@@ -55,9 +57,17 @@ public class AwardPlane : MonoBehaviour
         MusicManagement.instance.ClickPlaySFX();
         transform.GetChild(0).DOScale(new Vector3(0,0,0), 0.7f).OnComplete(() =>
         {
+            ClearTrans();
             this.gameObject.SetActive(false);
 
         });
     }
 
+    public void ClearTrans()
+    {
+        for (int i = 0; i < awardTran.childCount; i++)
+        {
+            Destroy(awardTran.GetChild(i).gameObject);
+        }
+    }
 }

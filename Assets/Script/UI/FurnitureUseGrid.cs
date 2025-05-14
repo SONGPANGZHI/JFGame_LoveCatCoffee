@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static LoadAllConfigData;
 
 public class FurnitureUseGrid : MonoBehaviour
 {
@@ -40,10 +39,13 @@ public class FurnitureUseGrid : MonoBehaviour
     public void UseClick()
     {
         FurnitureManagement.instance.CreateFurniture(spriteKey);
+
         //添加到本地保存家具列表
         FurnitureReward furnitureReward = new FurnitureReward(spriteKey);
-        GameManager.Instance.furnitureRewards.Add(furnitureReward);
-        instance.SaveFurnitureReward();
+        GameManager.Instance.CurrentData.collectionFurnitureName.Remove(spriteKey);
+        GameManager.Instance.CurrentData.usedFurniture.Add(furnitureReward);
+        GameManager.Instance.SaveData();
+
         //状态改变
         useBTN.gameObject.SetActive(false);
         use_Tmp.gameObject.SetActive(true);

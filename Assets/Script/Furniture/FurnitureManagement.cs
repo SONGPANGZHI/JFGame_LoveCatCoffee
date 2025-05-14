@@ -14,6 +14,7 @@ public class FurnitureManagement : MonoBehaviour
     public FurnitureUseGrid currentGrid;        //选中格子
     public FurnitureUseGrid selectBoxGrid;      //之前选择的格子
 
+    private int defaultFurnitureID;
 
     public static string dialogueNoveicKey = "DialogueNoveicKEY";       //对话新手引导
     private void Awake()
@@ -35,6 +36,7 @@ public class FurnitureManagement : MonoBehaviour
             Destroy(defaultFurniture[i].gameObject);
         }
 
+
     }
 
     //初始化建筑
@@ -45,19 +47,34 @@ public class FurnitureManagement : MonoBehaviour
             NoviceLevel();
         }
         
-        for (int i = 0; i < GameManager.Instance.unlockFurniture.Count; i++)
+        for (int i = 0; i < GameManager.Instance.CurrentData.usedFurniture.Count; i++)
         {
-            GameObject GO = Instantiate(furnitureGrid, furnitureTrans);
-            GO.GetComponent<FurnitureInfo>().FurnitureInfoInit(GameManager.Instance.unlockFurniture[i]);
+            if (GetDefaultFurniture(GameManager.Instance.CurrentData.usedFurniture[i].name))
+            {
+                defaultFurniture[defaultFurnitureID].GetComponent<FurnitureInfo>().ChangeSpriteInit(GameManager.Instance.CurrentData.usedFurniture[i].name);
+            }
+            else
+            {
+                GameObject GO = Instantiate(furnitureGrid, furnitureTrans);
+                GO.GetComponent<FurnitureInfo>().FurnitureInfoInit(GetFurnitureKey(GameManager.Instance.CurrentData.usedFurniture[i].name));
+            }
+          
         }
     }
 
     //生成建筑 
     public void CreateFurniture(string spriteKey)
     {
-
-        GameObject GO = Instantiate(furnitureGrid, furnitureTrans);
-        GO.GetComponent<FurnitureInfo>().FurnitureInfoInit(GetFurnitureKey(spriteKey));
+        if (GetDefaultFurniture(spriteKey))
+        {
+            defaultFurniture[defaultFurnitureID].GetComponent<FurnitureInfo>().ChangeSpriteInit(spriteKey);
+        }
+        else
+        {
+            GameObject GO = Instantiate(furnitureGrid, furnitureTrans);
+            GO.GetComponent<FurnitureInfo>().FurnitureInfoInit(GetFurnitureKey(spriteKey));
+        }
+        
     }
 
     //返回类型
@@ -70,9 +87,16 @@ public class FurnitureManagement : MonoBehaviour
     }
 
     //判断是否是默认家具
-    public bool GetDefaultFurniture()
+    public bool GetDefaultFurniture(string spriteKey)
     {
-
+        for (int i = 2; i < defaultFurniture.Count; i++)
+        {
+            if (defaultFurniture[i].name == spriteKey)
+            {
+                defaultFurnitureID = i;
+                return true;
+            }
+        }
         return false;
     }
 }

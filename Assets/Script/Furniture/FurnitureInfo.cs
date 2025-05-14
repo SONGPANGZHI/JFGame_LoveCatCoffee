@@ -15,4 +15,10 @@ public class FurnitureInfo : MonoBehaviour
         transform.GetComponent<SpriteRenderer>().sortingOrder = furnitureInfosData.OrderLayer;
         transform.position = furnitureInfosData.FurniturePos;
     }
+
+    public void ChangeSpriteInit(string spriteKey)
+    {
+        Sprite itemSprite = ListExtensions.LoadFurnitureSprite(spriteKey);
+        transform.GetComponent<SpriteRenderer>().sprite = itemSprite;
+    }
 }

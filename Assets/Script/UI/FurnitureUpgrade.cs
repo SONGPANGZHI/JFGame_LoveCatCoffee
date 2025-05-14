@@ -27,19 +27,19 @@ public class FurnitureUpgrade : MonoBehaviour
     public void FurnitureInit()
     {
         transform.DOScale(new Vector3(1, 1, 1), 0.3F);
-        if (!PlayerPrefs.HasKey(FurnitureManagement.dialogueNoveicKey))
+        if (!PlayerPrefs.HasKey(FurnitureManagement.dialogueNoveicKey) && GameManager.Instance.CurrentData.collectionFurnitureName.Count == 0)
         {
             dialogueBoxObj.SetActive(true);
         }
 
-        if (GameManager.Instance.furnitureName.Count > 0)
+        if (GameManager.Instance.CurrentData.collectionFurnitureName.Count > 0)
         {
             furnitureObj.SetActive(true);
 
-            for (int i = 0; i < GameManager.Instance.furnitureName.Count; i++)
+            for (int i = 0; i < GameManager.Instance.CurrentData.collectionFurnitureName.Count; i++)
             {
                 GameObject GO = Instantiate(gridPrefab, gridTrans);
-                GO.GetComponent<FurnitureUseGrid>().FurnitureGridInit(GameManager.Instance.furnitureName[i]);
+                GO.GetComponent<FurnitureUseGrid>().FurnitureGridInit(GameManager.Instance.CurrentData.collectionFurnitureName[i]);
             }
 
         }
@@ -68,6 +68,7 @@ public class FurnitureUpgrade : MonoBehaviour
         MusicManagement.instance.ClickPlaySFX();
         transform.DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
         {
+            ClearGridTrans();
             this.gameObject.SetActive(false);
         });
         UIManagement.Instance.loadingPlane.gameObject.SetActive(true);
@@ -86,5 +87,13 @@ public class FurnitureUpgrade : MonoBehaviour
     public void CloseFurniturePlane()
     { 
     
+    }
+
+    public void ClearGridTrans()
+    {
+        for (int i = 0; i < gridTrans.childCount; i++)
+        {
+            Destroy(gridTrans.GetChild(i).gameObject);
+        }
     }
 }
