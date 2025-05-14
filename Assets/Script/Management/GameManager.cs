@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public Dictionary<string, FurnitureInfos> FurniturePosDic = new Dictionary<string, FurnitureInfos>();       //原皮 记录位置
     public List<FurnitureInfos> unlockFurniture = new List<FurnitureInfos>();
 
+    public FurnitureInfo currentClickFurniture;
+
     [Header("游戏暂停")]
     public bool pauseGame = true;
 

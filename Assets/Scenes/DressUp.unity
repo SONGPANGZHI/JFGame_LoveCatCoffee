@@ -318,6 +318,8 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin: []
 --- !u!1 &1141949396
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +650,8 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin: []
 --- !u!1 &1687263589
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,6 +701,8 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin: []
 --- !u!212 &1687263592
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -860,6 +866,10 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin:
+  - Hall1_Diban
+  - Hall2_Diban
 --- !u!1 &108275824313087595
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,6 +974,10 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin:
+  - Hall1_Qiangzhi
+  - Hall2_Qiangzhi
 --- !u!212 &1835703929529515421
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1116,6 +1130,10 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin:
+  - Maowu1_Qiangzhi
+  - None
 --- !u!212 &2912432103749913977
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1506,6 +1524,10 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin:
+  - Maowu1_Diban
+  - None
 --- !u!212 &4630490715061794780
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1574,6 +1596,8 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin: []
 --- !u!1 &5066737661596088597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,6 +1769,8 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin: []
 --- !u!4 &6397186179939885224
 Transform:
   m_ObjectHideFlags: 0
@@ -1776,6 +1802,8 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin: []
 --- !u!1 &6642924759178541959
 GameObject:
   m_ObjectHideFlags: 0
@@ -1877,6 +1905,8 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin: []
 --- !u!4 &7157754365954091664
 Transform:
   m_ObjectHideFlags: 0
@@ -1908,6 +1938,8 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin: []
 --- !u!4 &7518240448003753466
 Transform:
   m_ObjectHideFlags: 0
@@ -1939,6 +1971,8 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin: []
 --- !u!1 &7987246290544741619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,6 +2007,8 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin: []
 --- !u!212 &8003021062495194940
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2041,6 +2077,8 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin: []
 --- !u!212 &8170774270754534747
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2109,6 +2147,8 @@ MonoBehaviour:
     FurnitureName: 
     FurniturePos: {x: 0, y: 0}
     OrderLayer: 0
+    FurnitureSkinName: []
+  furnitureSkin: []
 --- !u!4 &8392772711363655824
 Transform:
   m_ObjectHideFlags: 0

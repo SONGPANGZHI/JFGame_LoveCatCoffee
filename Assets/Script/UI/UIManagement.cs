@@ -127,6 +127,13 @@ public class UIManagement : MonoBehaviour
         furnitureUpgradePlane.FurnitureInit();
     }
 
+    //打开家具换皮界面
+    public void OpenFurnitureSkinPlane()
+    {
+        furnitureUpgradePlane.FurnitureSkinInit();
+    }
+
+
     public void CloseFurnitureUpgradePlane()
     {
         furnitureUpgradePlane.gameObject.SetActive(false);

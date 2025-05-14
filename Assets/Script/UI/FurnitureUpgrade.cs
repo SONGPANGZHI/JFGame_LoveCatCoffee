@@ -47,6 +47,17 @@ public class FurnitureUpgrade : MonoBehaviour
         CloseRedPoint();
     }
 
+    //初始化 换皮
+    public void FurnitureSkinInit()
+    {
+        furnitureObj.SetActive(true);
+        for (int i = 0; i < GameManager.Instance.currentClickFurniture.furnitureSkin.Count; i++)
+        {
+            GameObject GO = Instantiate(gridPrefab, gridTrans);
+            GO.GetComponent<FurnitureUseGrid>().FurnitureSkinInit(GameManager.Instance.currentClickFurniture.furnitureSkin[i]);
+        }
+    }
+
     //点击OK按钮
     public void OKClick()
     {

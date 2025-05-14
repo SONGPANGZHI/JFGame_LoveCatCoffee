@@ -137,6 +137,7 @@ public class FurnitureInfos
     public string FurnitureName;
     public Vector2 FurniturePos;
     public int OrderLayer;
+    public List<string> FurnitureSkinName;
 }
 
 //½±Àø³Ø×Ó

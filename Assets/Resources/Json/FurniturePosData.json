@@ -85,7 +85,8 @@
             "x": -0.7200000286102295,
             "y": -0.49000000953674319
         },
-        "OrderLayer": 4
+        "OrderLayer": 4,
+        "FurnitureSkinName":["Hall1_Louti_1","Hall2_Louti_1","None"]
     },
     {
         "FurnitureName": "Xiaowu_2_Qiangzhi",
@@ -93,7 +94,8 @@
             "x": 0.05999999865889549,
             "y": 4.800000190734863
         },
-        "OrderLayer": 1
+        "OrderLayer": 1,
+        "FurnitureSkinName":["Maowu1_Qiangzhi","None"]
     },
     {
         "FurnitureName": "Xiaowu_2_Diban",
@@ -101,7 +103,8 @@
             "x": 0.05000000074505806,
             "y": 1.7899999618530274
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Maowu1_Diban","None"]
     },
     {
         "FurnitureName": "Maowu1_Maowo",
@@ -109,7 +112,8 @@
             "x": -2.2100000381469728,
             "y": 1.2599999904632569
         },
-        "OrderLayer": 4
+        "OrderLayer": 4,
+        "FurnitureSkinName":["Maowu1_Maowo","None"]
     },
     {
         "FurnitureName": "Maowu1_Weilan",
@@ -117,7 +121,8 @@
             "x": 0.11999999731779099,
             "y": 0.9900000095367432
         },
-        "OrderLayer": 7
+        "OrderLayer": 7,
+        "FurnitureSkinName":["Maowu1_Weilan","None"]
     },
     {
         "FurnitureName": "Maowu1_Zhuangshi",
@@ -125,7 +130,8 @@
             "x": -1.3300000429153443,
             "y": 1.5700000524520875
         },
-        "OrderLayer": 4
+        "OrderLayer": 4,
+        "FurnitureSkinName":["Maowu1_Zhuangshi","None"]
     },
     {
         "FurnitureName": "Maowu1_Ditan",
@@ -133,7 +139,8 @@
             "x": 2.450000047683716,
             "y": 1.75
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Maowu1_Ditan","None"]
     },
     {
         "FurnitureName": "Maowu1_Guashi_3",
@@ -141,7 +148,8 @@
             "x": 3.390000104904175,
             "y": 3.559999942779541
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Maowu1_Guashi_3","None"]
     },
     {
         "FurnitureName": "Maowu1_Wanju_3",
@@ -149,7 +157,8 @@
             "x": 1.9800000190734864,
             "y": 1.7400000095367432
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Maowu1_Wanju_3","None"]
     },
     {
         "FurnitureName": "Maowu1_Guashi_2",
@@ -157,7 +166,8 @@
             "x": 1.909999966621399,
             "y": 3.819999933242798
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Maowu1_Guashi_2","None"]
     },
     {
         "FurnitureName": "Maowu1_Lajitong",
@@ -165,7 +175,8 @@
             "x": 1.2200000286102296,
             "y": 2.069999933242798
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Maowu1_Lajitong","None"]
     },
     {
         "FurnitureName": "Maowu1_Deng",
@@ -173,7 +184,8 @@
             "x": 2.4200000762939455,
             "y": 1.3700000047683716
         },
-        "OrderLayer": 4
+        "OrderLayer": 4,
+        "FurnitureSkinName":["Maowu1_Deng","None"]
     },
     {
         "FurnitureName": "Maowu1_Bingxiang",
@@ -181,7 +193,8 @@
             "x": 2.3299999237060549,
             "y": 2.7200000286102297
         },
-        "OrderLayer": 4
+        "OrderLayer": 4,
+        "FurnitureSkinName":["Maowu1_Bingxiang","None"]
     },
     {
         "FurnitureName": "Maowu1_Dianshigui",
@@ -189,7 +202,8 @@
             "x": 3.309999942779541,
             "y": 1.9500000476837159
         },
-        "OrderLayer": 4
+        "OrderLayer": 4,
+        "FurnitureSkinName":["Maowu1_Dianshigui","None"]
     },
     {
         "FurnitureName": "Maowu1_Dianshi",
@@ -197,7 +211,8 @@
             "x": 3.369999885559082,
             "y": 2.630000114440918
         },
-        "OrderLayer": 5
+        "OrderLayer": 5,
+        "FurnitureSkinName":["Maowu1_Dianshi","None"]
     },
     {
         "FurnitureName": "Maowu1_Wanju_2",
@@ -205,7 +220,8 @@
             "x": 2.4600000381469728,
             "y": 3.259999990463257
         },
-        "OrderLayer": 4
+        "OrderLayer": 4,
+        "FurnitureSkinName":["Maowu1_Wanju_2","None"]
     },
     {
         "FurnitureName": "Maowu1_Jiaodian",
@@ -213,7 +229,8 @@
             "x": 0.33000001311302187,
             "y": 1.8700000047683716
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Maowu1_Jiaodian","None"]
     },
     {
         "FurnitureName": "Maowu1_Shafa",
@@ -221,7 +238,8 @@
             "x": 1.4900000095367432,
             "y": 1.149999976158142
         },
-        "OrderLayer": 5
+        "OrderLayer": 5,
+        "FurnitureSkinName":["Maowu1_Shafa","None"]
     },
     {
         "FurnitureName": "Maowu1_Chuang",
@@ -229,7 +247,8 @@
             "x": 0.20999999344348908,
             "y": 3.4000000953674318
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Maowu1_Chuang","None"]
     },
     {
         "FurnitureName": "Maowu1_Wanju_1",
@@ -237,7 +256,8 @@
             "x": -0.7900000214576721,
             "y": 3.2799999713897707
         },
-        "OrderLayer": 4
+        "OrderLayer": 4,
+        "FurnitureSkinName":["Maowu1_Wanju_1","None"]
     },
     {
         "FurnitureName": "Maowu1_Shuzhuangtai",
@@ -245,7 +265,8 @@
             "x": -1.2699999809265137,
             "y": 2.9600000381469728
         },
-        "OrderLayer": 4
+        "OrderLayer": 4,
+        "FurnitureSkinName":["Maowu1_Shuzhuangtai","None"]
     },
     {
         "FurnitureName": "Maowu1_Yigui",
@@ -253,7 +274,8 @@
             "x": -3.200000047683716,
             "y": 2.1700000762939455
         },
-        "OrderLayer": 6
+        "OrderLayer": 6,
+        "FurnitureSkinName":["Maowu1_Yigui","None"]
     },
     {
         "FurnitureName": "Maowu1_Guizi",
@@ -261,7 +283,8 @@
             "x": -2.180000066757202,
             "y": 2.9100000858306886
         },
-        "OrderLayer": 5
+        "OrderLayer": 5,
+        "FurnitureSkinName":["Maowu1_Guizi","None"]
     },
     {
         "FurnitureName": "Maowu1_Chuanghu_1",
@@ -269,7 +292,8 @@
             "x": -2.9800000190734865,
             "y": 4.03000020980835
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Maowu1_Chuanghu_1","None"]
     },
     {
         "FurnitureName": "Maowu1_Guashi_1",
@@ -277,7 +301,8 @@
             "x": -0.6000000238418579,
             "y": 4.630000114440918
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Maowu1_Guashi_1","None"]
     },
     {
         "FurnitureName": "Maowu1_Penzai",
@@ -285,7 +310,8 @@
             "x": 1.6299999952316285,
             "y": 3.059999942779541
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Maowu1_Penzai","None"]
     },
     {
         "FurnitureName": "Maowu1_Taizi",
@@ -293,7 +319,8 @@
             "x": -1.4500000476837159,
             "y": 4.300000190734863
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Maowu1_Taizi","None"]
     },
     {
         "FurnitureName": "Maowu1_Chuanghu_2",
@@ -301,7 +328,8 @@
             "x": 0.8100000023841858,
             "y": 4.460000038146973
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Maowu1_Chuanghu_2","None"]
     },
     {
         "FurnitureName": "Hall1_Qiangzhi",
@@ -309,7 +337,8 @@
             "x": 0.07000000029802323,
             "y": 0.05999999865889549
         },
-        "OrderLayer": 1
+        "OrderLayer": 1,
+        "FurnitureSkinName":["Hall1_Qiangzhi","Hall2_Qiangzhi","None"]
     },
     {
         "FurnitureName": "Hall1_Diban",
@@ -317,7 +346,8 @@
             "x": 0.05999999865889549,
             "y": -4.090000152587891
         },
-        "OrderLayer": 1
+        "OrderLayer": 1,
+        "FurnitureSkinName":["Hall1_Diban","Hall2_Diban","None"]
     },
     {
         "FurnitureName": "Hall1_Jiaodian",
@@ -325,7 +355,8 @@
             "x": -0.1899999976158142,
             "y": -5.599999904632568
         },
-        "OrderLayer": 2
+        "OrderLayer": 2,
+        "FurnitureSkinName":["Hall1_Jiaodian","Hall2_Jiaodian","None"]
     },
     {
         "FurnitureName": "Hall1_Caidanping",
@@ -333,7 +364,8 @@
             "x": 2.890000104904175,
             "y": -0.6499999761581421
         },
-        "OrderLayer": 2
+        "OrderLayer": 2,
+        "FurnitureSkinName":["Hall1_Caidanping","Hall2_Caidanping","None"]
     },
     {
         "FurnitureName": "Hall1_Guashi",
@@ -341,7 +373,8 @@
             "x": -1.2599999904632569,
             "y": -0.14000000059604646
         },
-        "OrderLayer": 2
+        "OrderLayer": 2,
+        "FurnitureSkinName":["Hall1_Guashi","Hall2_Guashi","None"]
     },
     {
         "FurnitureName": "Hall1_Chaunghu_2",
@@ -349,7 +382,8 @@
             "x": 0.9800000190734863,
             "y": 0.05000000074505806
         },
-        "OrderLayer": 2
+        "OrderLayer": 2,
+        "FurnitureSkinName":["Hall1_Chaunghu_2","Hall2_Chaunghu_2","None"]
     },
     {
         "FurnitureName": "Hall1_Zhizuotai_1",
@@ -357,7 +391,8 @@
             "x": 1.7999999523162842,
             "y": -2.369999885559082
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Hall1_Zhizuotai_1","Hall2_Zhizuotai_1","None"]
     },
     {
         "FurnitureName": "Hall1_Tiaozhitai",
@@ -365,7 +400,8 @@
             "x": 3.2899999618530275,
             "y": -3.299999952316284
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Hall1_Tiaozhitai","Hall2_Tiaozhitai","None"]
     },
     {
         "FurnitureName": "Hall1_Banzi",
@@ -373,7 +409,8 @@
             "x": 1.590000033378601,
             "y": -3.2799999713897707
         },
-        "OrderLayer": 2
+        "OrderLayer": 2,
+        "FurnitureSkinName":["Hall1_Banzi","Hall2_Banzi","None"]
     },
     {
         "FurnitureName": "Hall1_Taizi",
@@ -381,7 +418,8 @@
             "x": 2.259999990463257,
             "y": -1.5299999713897706
         },
-        "OrderLayer": 2
+        "OrderLayer": 2,
+        "FurnitureSkinName":["Hall1_Taizi","Hall2_Taizi","None"]
     },
     {
         "FurnitureName": "Hall1_Kafeidai",
@@ -389,7 +427,8 @@
             "x": 2.299999952316284,
             "y": -1.3600000143051148
         },
-        "OrderLayer": 2
+        "OrderLayer": 2,
+        "FurnitureSkinName":["Hall1_Kafeidai","Hall2_Kafeidai","None"]
     },
     {
         "FurnitureName": "Hall1_Kafeiji",
@@ -397,7 +436,8 @@
             "x": 1.1200000047683716,
             "y": -1.4299999475479127
         },
-        "OrderLayer": 4
+        "OrderLayer": 4,
+        "FurnitureSkinName":["Hall1_Kafeiji","Hall2_Kafeiji","None"]
     },
     {
         "FurnitureName": "Hall1_Kafeitiaopin",
@@ -405,7 +445,8 @@
             "x": 2.069999933242798,
             "y": -2.0299999713897707
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Hall1_Kafeitiaopin","Hall2_Kafeitiaopin","None"]
     },
     {
         "FurnitureName": "Hall1_Zhanshigui",
@@ -413,7 +454,8 @@
             "x": 2.049999952316284,
             "y": -3.8399999141693117
         },
-        "OrderLayer": 5
+        "OrderLayer": 5,
+        "FurnitureSkinName":["Hall1_Zhanshigui","Hall2_Zhanshigui","None"]
     },
     {
         "FurnitureName": "Hall1_Shouyintai",
@@ -421,7 +463,8 @@
             "x": 0.30000001192092898,
             "y": -3.0399999618530275
         },
-        "OrderLayer": 4
+        "OrderLayer": 4,
+        "FurnitureSkinName":["Hall1_Shouyintai","Hall2_Shouyintai","None"]
     },
     {
         "FurnitureName": "Hall1_Shouyinji",
@@ -429,7 +472,8 @@
             "x": 0.36000001430511477,
             "y": -2.5799999237060549
         },
-        "OrderLayer": 5
+        "OrderLayer": 5,
+        "FurnitureSkinName":["Hall1_Shouyinji","Hall2_Shouyinji","None"]
     },
     {
         "FurnitureName": "Hall1_Yuanliao",
@@ -437,7 +481,8 @@
             "x": 3.049999952316284,
             "y": -3.4800000190734865
         },
-        "OrderLayer": 6
+        "OrderLayer": 6,
+        "FurnitureSkinName":["Hall1_Yuanliao","Hall2_Yuanliao","None"]
     },
     {
         "FurnitureName": "Hall1_Caidan",
@@ -445,7 +490,8 @@
             "x": 1.1699999570846558,
             "y": -3.130000114440918
         },
-        "OrderLayer": 5
+        "OrderLayer": 5,
+        "FurnitureSkinName":["Hall1_Caidan","Hall2_Caidan","None"]
     },
     {
         "FurnitureName": "Hall1_Dangaogui",
@@ -453,7 +499,8 @@
             "x": 2.1500000953674318,
             "y": -3.619999885559082
         },
-        "OrderLayer": 7
+        "OrderLayer": 7,
+        "FurnitureSkinName":["Hall1_Dangaogui","Hall2_Dangaogui","None"]
     },
     {
         "FurnitureName": "Hall1_Yinliaotong",
@@ -461,7 +508,8 @@
             "x": 3.0999999046325685,
             "y": -2.4200000762939455
         },
-        "OrderLayer": 4
+        "OrderLayer": 4,
+        "FurnitureSkinName":["Hall1_Yinliaotong","Hall2_Yinliaotong","None"]
     },
     {
         "FurnitureName": "Hall1_Beizi",
@@ -469,7 +517,8 @@
             "x": 3.5199999809265138,
             "y": -2.9600000381469728
         },
-        "OrderLayer": 5
+        "OrderLayer": 5,
+        "FurnitureSkinName":["Hall1_Beizi","Hall2_Beizi","None"]
     },
     {
         "FurnitureName": "Hall1_Chaunghu_1",
@@ -477,7 +526,8 @@
             "x": -2.880000114440918,
             "y": -1.149999976158142
         },
-        "OrderLayer": 2
+        "OrderLayer": 2,
+        "FurnitureSkinName":["Hall1_Chaunghu_1","Hall2_Chaunghu_1","None"]
     },
     {
         "FurnitureName": "Hall1_Jiazi",
@@ -485,7 +535,8 @@
             "x": -0.23999999463558198,
             "y": -1.0399999618530274
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Hall1_Jiazi","Hall2_Jiazi","None"]
     },
     {
         "FurnitureName": "Hall1_Pengzai_3",
@@ -493,7 +544,8 @@
             "x": -0.28999999165534975,
             "y": -0.23999999463558198
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Hall1_Pengzai_3","Hall2_Pengzai_3","None"]
     },
     {
         "FurnitureName": "Hall1_Guizi",
@@ -501,7 +553,8 @@
             "x": -1.0499999523162842,
             "y": -1.7000000476837159
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Hall1_Guizi","Hall2_Guizi","None"]
     },
     {
         "FurnitureName": "Hall1_Shujia",
@@ -509,7 +562,8 @@
             "x": -3.299999952316284,
             "y": -2.619999885559082
         },
-        "OrderLayer": 13
+        "OrderLayer": 13,
+        "FurnitureSkinName":["Hall1_Shujia","Hall2_Shujia","None"]
     },
     {
         "FurnitureName": "Hall1_Yinpinjia",
@@ -517,7 +571,8 @@
             "x": -2.240000009536743,
             "y": -2.0799999237060549
         },
-        "OrderLayer": 12
+        "OrderLayer": 12,
+        "FurnitureSkinName":["Hall1_Yinpinjia","Hall2_Yinpinjia","None"]
     },
     {
         "FurnitureName": "Hall1_Zhuoyi_1",
@@ -525,7 +580,8 @@
             "x": -2.2799999713897707,
             "y": -3.9000000953674318
         },
-        "OrderLayer": 2
+        "OrderLayer": 2,
+        "FurnitureSkinName":["Hall1_Zhuoyi_1","Hall2_Zhuoyi_1","None"]
     },
     {
         "FurnitureName": "Hall1_Pengzai_1",
@@ -533,7 +589,8 @@
             "x": -2.25,
             "y": -3.619999885559082
         },
-        "OrderLayer": 2
+        "OrderLayer": 2,
+        "FurnitureSkinName":["Hall1_Pengzai_1","Hall2_Pengzai_1","None"]
     },
     {
         "FurnitureName": "Hall1_Zhuoyi_2",
@@ -541,7 +598,8 @@
             "x": -1.1399999856948853,
             "y": -4.619999885559082
         },
-        "OrderLayer": 2
+        "OrderLayer": 2,
+        "FurnitureSkinName":["Hall1_Zhuoyi_2","Hall2_Zhuoyi_2","None"]
     },
     {
         "FurnitureName": "Hall1_Pengzai_2",
@@ -549,7 +607,8 @@
             "x": -1.0800000429153443,
             "y": -4.320000171661377
         },
-        "OrderLayer": 3
+        "OrderLayer": 3,
+        "FurnitureSkinName":["Hall1_Pengzai_2","Hall2_Pengzai_2","None"]
     },
     {
         "FurnitureName": "Hall1_Deng_2",
@@ -557,7 +616,8 @@
             "x": -3.609999895095825,
             "y": 0.20000000298023225
         },
-        "OrderLayer": 2
+        "OrderLayer": 2,
+        "FurnitureSkinName":["Hall1_Deng_2","Hall2_Deng_2","None"]
     },
     {
         "FurnitureName": "Hall1_Deng_1",
@@ -565,6 +625,7 @@
             "x": 3.680000066757202,
             "y": 0.2199999988079071
         },
-        "OrderLayer": 2
+        "OrderLayer": 2,
+        "FurnitureSkinName":["Hall1_Deng_1","Hall2_Deng_1","None"]
     }
 ]
