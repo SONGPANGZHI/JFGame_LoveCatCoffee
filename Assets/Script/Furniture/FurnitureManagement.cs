@@ -13,6 +13,8 @@ public class FurnitureManagement : MonoBehaviour
     public FurnitureUseGrid currentGrid;        //选中格子
     public FurnitureUseGrid selectBoxGrid;      //之前选择的格子
 
+    public FurnitureInfo currentClickFurniture;
+
     private int defaultFurnitureID;
 
     public static string dialogueNoveicKey = "DialogueNoveicKEY";       //对话新手引导
@@ -52,10 +54,16 @@ public class FurnitureManagement : MonoBehaviour
             {
                 defaultFurniture[defaultFurnitureID].GetComponent<FurnitureInfo>().ChangeSpriteInit(GameManager.Instance.CurrentData.usedFurniture[i].name);
             }
+
             else
             {
-                GameObject GO = Instantiate(furnitureGrid, furnitureTrans);
-                GO.GetComponent<FurnitureInfo>().FurnitureInfoInit(GetFurnitureKey(GameManager.Instance.CurrentData.usedFurniture[i].name));
+                if (GetFurnitureKey(GameManager.Instance.CurrentData.usedFurniture[i].name) != null)
+                {
+                    GameObject GO = Instantiate(furnitureGrid, furnitureTrans);
+                    GO.GetComponent<FurnitureInfo>().FurnitureInfoInit(GetFurnitureKey(GameManager.Instance.CurrentData.usedFurniture[i].name));
+                    GO.name = GameManager.Instance.CurrentData.usedFurniture[i].name;
+                }
+                
             }
           
         }
@@ -72,6 +80,7 @@ public class FurnitureManagement : MonoBehaviour
         {
             GameObject GO = Instantiate(furnitureGrid, furnitureTrans);
             GO.GetComponent<FurnitureInfo>().FurnitureInfoInit(GetFurnitureKey(spriteKey));
+            GO.name = spriteKey;
         }
         
     }
@@ -81,6 +90,10 @@ public class FurnitureManagement : MonoBehaviour
     {
         if (GameManager.Instance.FurniturePosDic.ContainsKey(spriteKey))
             return GameManager.Instance.FurniturePosDic[spriteKey];
+        else
+        { 
+        
+        }
 
         return null;
     }
@@ -98,5 +111,7 @@ public class FurnitureManagement : MonoBehaviour
         }
         return false;
     }
+
+
 }
 

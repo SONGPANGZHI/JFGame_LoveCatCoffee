@@ -216,7 +216,7 @@ public class PlayGameManagement : MonoBehaviour
         blockTypes.Shuffle();
     }
 
-    //获取关卡中间区域最小最大数
+    //获取关卡详细信息
     public void GitMiddleAreaData()
     {
         middleMin = GameManager.Instance.currentGameLevel.BlockNum.min;
@@ -226,8 +226,31 @@ public class PlayGameManagement : MonoBehaviour
         blockTypeNum = GameManager.Instance.currentGameLevel.BlockType;
         conveyorArea = (int)(GameManager.Instance.currentGameLevel.MysteryBox.ConveyorArea * 10);
         blockArea = (int)(GameManager.Instance.currentGameLevel.MysteryBox.BlockArea * 10);
-        furnitureName = GameManager.Instance.currentGameLevel.FurnitureName;
+        if (GameManager.Instance.currentGameLevel.LevelID >= 17)
+        {
+            //奖励池随机抽取1-3家具
+            int awardNum = Random.Range(1,4);
+            RadomGetAwardFurniture(awardNum);
+        }
+        else
+            furnitureName = GameManager.Instance.currentGameLevel.FurnitureName;
+
+
     }
+
+    //获得奖励
+    public List<string> RadomGetAwardFurniture(int IndexID)
+    {
+        GameManager.Instance.CurrentData.levelAwardFureiture.Shuffle();
+
+        for (int i = 0; i < IndexID; i++)
+        {
+            furnitureName.Add(GameManager.Instance.CurrentData.levelAwardFureiture[i].name);
+        }
+
+        return furnitureName;
+    }
+
 
     #endregion
 

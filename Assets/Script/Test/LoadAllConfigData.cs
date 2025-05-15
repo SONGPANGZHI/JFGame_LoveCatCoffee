@@ -55,7 +55,7 @@ public class LoadAllConfigData : MonoBehaviour
         for (int i = 0; i < rootData.Count; i++)
         {
             FurnitureReward furnitureInfo = JsonConvert.DeserializeObject<FurnitureReward>(rootData[i].ToString());
-            GameManager.Instance.furnitureRewardDic.Add(furnitureInfo.ID, furnitureInfo);
+            GameManager.Instance.furnitureRewards.Add(furnitureInfo);
         }
 
         Debug.Log("家具奖励池加载成功---");
@@ -155,10 +155,13 @@ public class FurnitureReward
     }
 }
 
+//本地保存
 [Serializable]
 public class GameSaveData
 {
     public List<FurnitureReward> usedFurniture = new List<FurnitureReward>();           //使用的家具
     public List<string> collectionFurnitureName = new List<string>();                   //领取家具 但未使用
-
+    public List<FurnitureReward> levelAwardFureiture= new List<FurnitureReward>();      //17关后随机奖励的家具
+    public List<string> newSkinFurniture = new List<string>();                          //家具新皮肤
+        
 }

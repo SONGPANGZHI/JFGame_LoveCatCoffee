@@ -400,7 +400,7 @@
             "x": 3.2899999618530275,
             "y": -3.299999952316284
         },
-        "OrderLayer": 3,
+        "OrderLayer": 4,
         "FurnitureSkinName":["Hall1_Tiaozhitai","Hall2_Tiaozhitai","None"]
     },
     {
@@ -445,7 +445,7 @@
             "x": 2.069999933242798,
             "y": -2.0299999713897707
         },
-        "OrderLayer": 3,
+        "OrderLayer": 4,
         "FurnitureSkinName":["Hall1_Kafeitiaopin","Hall2_Kafeitiaopin","None"]
     },
     {
@@ -544,7 +544,7 @@
             "x": -0.28999999165534975,
             "y": -0.23999999463558198
         },
-        "OrderLayer": 3,
+        "OrderLayer": 4,
         "FurnitureSkinName":["Hall1_Pengzai_3","Hall2_Pengzai_3","None"]
     },
     {
@@ -553,7 +553,7 @@
             "x": -1.0499999523162842,
             "y": -1.7000000476837159
         },
-        "OrderLayer": 3,
+        "OrderLayer": 4,
         "FurnitureSkinName":["Hall1_Guizi","Hall2_Guizi","None"]
     },
     {
@@ -589,7 +589,7 @@
             "x": -2.25,
             "y": -3.619999885559082
         },
-        "OrderLayer": 2,
+        "OrderLayer": 3,
         "FurnitureSkinName":["Hall1_Pengzai_1","Hall2_Pengzai_1","None"]
     },
     {

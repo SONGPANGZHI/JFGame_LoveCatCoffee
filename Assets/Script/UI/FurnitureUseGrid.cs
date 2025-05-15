@@ -1,6 +1,8 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class FurnitureUseGrid : MonoBehaviour
 {
@@ -8,9 +10,11 @@ public class FurnitureUseGrid : MonoBehaviour
     public Image furnitureIcon;
     public Button useBTN;
     public TMP_Text use_Tmp;
+    public TMP_Text unlock_Tmp;
     public GameObject unlock_IMG;
 
     private string spriteKey;
+
     private void Awake()
     {
         useBTN.onClick.AddListener(UseClick);
@@ -25,13 +29,12 @@ public class FurnitureUseGrid : MonoBehaviour
         furnitureIcon.sprite = ListExtensions.LoadFurnitureSprite(spriteName);
         useBTN.gameObject.SetActive(true);
         use_Tmp.gameObject.SetActive(false);
-
-        
     }
 
     //生成其他皮肤
     public void FurnitureSkinInit(string spriteName)
     {
+        spriteKey = spriteName;
         unlock_IMG.SetActive(false);
         if (spriteName == "None")
         {
@@ -41,9 +44,33 @@ public class FurnitureUseGrid : MonoBehaviour
         else
         {
             furnitureIcon.sprite = ListExtensions.LoadFurnitureSprite(spriteName);
+            furnitureIcon.color = Color.white;
         }
-        selectBox.SetActive(false);
-        useBTN.gameObject.SetActive(false);
+
+        //本地使用家具
+        GridState();
+    }
+
+    //格子状态
+    public void GridState()
+    {
+        if (DetermineFurnitureUnlocked(spriteKey))
+        {
+            if (FurnitureManagement.instance.currentClickFurniture.furnitureName == spriteKey)
+            {
+                use_Tmp.gameObject.SetActive(true);
+            }
+
+        }
+        else if (GetNewSkin(spriteKey))
+        {
+            useBTN.gameObject.SetActive(true);
+        }
+        else
+        {
+            furnitureIcon.color = Color.grey;
+            unlock_Tmp.gameObject.SetActive(true);
+        }
     }
 
     //点击使用
@@ -81,6 +108,28 @@ public class FurnitureUseGrid : MonoBehaviour
     {
        
     }
-   
 
+    //判断家具是否解锁
+    public bool DetermineFurnitureUnlocked(string spriteName)
+    {
+        for (int i = 0; i < GameManager.Instance.CurrentData.usedFurniture.Count; i++)
+        {
+            if (GameManager.Instance.CurrentData.usedFurniture[i].name == spriteName)
+                return true;
+        }
+
+        return false;
+    }
+
+    //判断家具是否解锁
+    public bool GetNewSkin(string spriteName)
+    {
+        for (int i = 0; i < GameManager.Instance.CurrentData.newSkinFurniture.Count; i++)
+        {
+            if (GameManager.Instance.GetSkinString(GameManager.Instance.CurrentData.newSkinFurniture[i]) == spriteName)
+                return true;
+        }
+
+        return false;
+    }
 }

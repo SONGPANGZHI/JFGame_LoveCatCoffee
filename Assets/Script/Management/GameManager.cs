@@ -13,14 +13,10 @@ public class GameManager : MonoBehaviour
     public List<GameLevelInfo> gameLevelInfos = new List<GameLevelInfo>();
 
     [Header("家具数据")]
-    public Dictionary<int, FurnitureReward> furnitureRewardDic = new Dictionary<int, FurnitureReward>();        //奖励池
     public List<FurnitureReward> furnitureRewards = new List<FurnitureReward>();            //保存数据 
-    public List<string> furnitureName = new List<string>();                 //解锁家具
-
     public Dictionary<string, FurnitureInfos> FurniturePosDic = new Dictionary<string, FurnitureInfos>();       //原皮 记录位置
-    public List<FurnitureInfos> unlockFurniture = new List<FurnitureInfos>();
 
-    public FurnitureInfo currentClickFurniture;
+    
 
     [Header("游戏暂停")]
     public bool pauseGame = true;
@@ -61,6 +57,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        //初始化本地数据
         InitializeData();
         LogInTime();
         //检查关卡
@@ -70,12 +67,68 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        //添加奖励池到本地化数据
+        FirstAddAwardPoolGameData();
         //获得当前 关卡
         GetGameLevelData();
 
         //LoadSaveGameLeveData();
 
         //GetUnLockDefaultFurniture();
+    }
+
+    //第一次添加奖励池到本地化数据
+    public void FirstAddAwardPoolGameData()
+    {
+        if (!PlayerPrefs.HasKey("FristAddAwaardPool"))
+        {
+            for (int i = 0; i < furnitureRewards.Count; i++)
+            {
+                CurrentData.levelAwardFureiture.Add(furnitureRewards[i]);
+            }
+            CurrentData.levelAwardFureiture.Shuffle();
+            PlayerPrefs.SetString("FristAddAwaardPool", "FristAddAwaardPoolGameData");
+            SaveData();
+            Debug.Log("奖励池添加到本地化数据成功---");
+        }
+    }
+
+    //奖励池返回类型
+    public FurnitureReward GetFurnitureReward(string nameKey)
+    {
+        foreach (var furniture in CurrentData.levelAwardFureiture)
+        {
+            if (furniture.name == nameKey)
+            {
+                return furniture;
+            }
+        }
+
+        return null;
+    }
+
+    //判断是否是已有的皮肤 (奖励池抽到第二套皮肤)
+    public bool GetDefaultSkin(string skinName)
+    {
+        foreach (var furniture in CurrentData.usedFurniture)
+        {
+            if (furniture.name == GetSkinString(skinName))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    //获得字符修改的字符串
+    public string GetSkinString(string skinName)
+    {
+        if(skinName.Substring(4) != "Hall2")
+            return skinName;
+
+        string modified = "Hall1" + skinName.Substring(4); // "Hall2" 长度是 4
+        return modified;
     }
 
     //检查保存数据
@@ -108,34 +161,6 @@ public class GameManager : MonoBehaviour
         return currentGameLevel;
     }
 
-    //加载保存家具数据
-    public void LoadSaveGameLeveData()
-    {
-        for (int i = 0; i < gameLevelDic.Count; i++)
-        {
-            if (i < currentGameLevel.LevelID && gameLevelDic[i + 1].FurnitureName != null)
-            {
-                for (int j = 0; j < gameLevelDic[i+1].FurnitureName.Count; j++)
-                {
-                    furnitureName.Add(gameLevelDic[i + 1].FurnitureName[j]);
-                }
-               
-            }
-
-        }
-    }
-
-    //在字典里找解锁家具
-    public void GetUnLockDefaultFurniture()
-    {
-        for (int i = 0; i < furnitureName.Count; i++)
-        {
-            if (FurniturePosDic.ContainsKey(furnitureName[i]))
-            {
-                unlockFurniture.Add(FurniturePosDic[furnitureName[i]]);
-            }
-        }
-    }
 
     #region 时间获取
 
@@ -234,6 +259,8 @@ public class GameManager : MonoBehaviour
             // 确保所有列表已初始化
             CurrentData.usedFurniture = CurrentData.usedFurniture ?? new List<FurnitureReward>();
             CurrentData.collectionFurnitureName = CurrentData.collectionFurnitureName ?? new List<string>();
+            CurrentData.levelAwardFureiture = CurrentData.levelAwardFureiture ?? new List<FurnitureReward>();
+            CurrentData.newSkinFurniture = CurrentData.newSkinFurniture ?? new List<string>();
 
             Debug.Log("游戏数据加载成功");
         }

@@ -50,12 +50,17 @@ public class FurnitureUpgrade : MonoBehaviour
     //初始化 换皮
     public void FurnitureSkinInit()
     {
-        furnitureObj.SetActive(true);
-        for (int i = 0; i < GameManager.Instance.currentClickFurniture.furnitureSkin.Count; i++)
+        if (FurnitureManagement.instance.currentClickFurniture.furnitureSkin != null)
         {
-            GameObject GO = Instantiate(gridPrefab, gridTrans);
-            GO.GetComponent<FurnitureUseGrid>().FurnitureSkinInit(GameManager.Instance.currentClickFurniture.furnitureSkin[i]);
+            ClearGridTrans();
+            furnitureObj.SetActive(true);
+            for (int i = 0; i < FurnitureManagement.instance.currentClickFurniture.furnitureSkin.Count; i++)
+            {
+                GameObject GO = Instantiate(gridPrefab, gridTrans);
+                GO.GetComponent<FurnitureUseGrid>().FurnitureSkinInit(FurnitureManagement.instance.currentClickFurniture.furnitureSkin[i]);
+            }
         }
+        
     }
 
     //点击OK按钮
@@ -69,8 +74,9 @@ public class FurnitureUpgrade : MonoBehaviour
 
     //保存
     public void SaveClick()
-    { 
-    
+    {
+        furnitureObj.SetActive(false);
+        ClearGridTrans();
     }
 
     //返回
@@ -79,6 +85,7 @@ public class FurnitureUpgrade : MonoBehaviour
         MusicManagement.instance.ClickPlaySFX();
         transform.DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
         {
+            furnitureObj.SetActive(false);
             ClearGridTrans();
             this.gameObject.SetActive(false);
         });

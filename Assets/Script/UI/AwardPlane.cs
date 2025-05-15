@@ -11,8 +11,7 @@ public class AwardPlane : MonoBehaviour
     public Transform awardTran;
     [SerializeField]
     private Button ok_BTN;
-    [SerializeField]
-    private string imagePath;
+
     public GameObject unlock_TMP;
 
     private void Awake()
@@ -33,14 +32,31 @@ public class AwardPlane : MonoBehaviour
 
             for (int i = 0; i < PlayGameManagement.Instance.furnitureName.Count; i++)
             {
+                string _furnitureName = PlayGameManagement.Instance.furnitureName[i];
                 GameObject GO = Instantiate(awardGrid, awardTran);
-                GO.GetComponent<AwardGrid>().InitAwardGrid(PlayGameManagement.Instance.furnitureName[i]);
+                GO.GetComponent<AwardGrid>().InitAwardGrid(_furnitureName);
 
-                //把获得的家具名字添加到本地保存
-                GameManager.Instance.CurrentData.collectionFurnitureName.Add(PlayGameManagement.Instance.furnitureName[i]);
-                GameManager.Instance.SaveData();
+                if (GameManager.Instance.currentGameLevel.LevelID >= 17)
+                {
+                    GameManager.Instance.CurrentData.levelAwardFureiture.Remove(GameManager.Instance.GetFurnitureReward(_furnitureName));
+
+                    if (GameManager.Instance.GetDefaultSkin(_furnitureName))
+                    {
+                        GameManager.Instance.CurrentData.newSkinFurniture.Add(_furnitureName);
+                    }
+                    else
+                    {
+                        GameManager.Instance.CurrentData.collectionFurnitureName.Add(_furnitureName);
+                    }
+                }
+                else
+                {
+                    //把获得的家具名字添加到本地保存
+                    GameManager.Instance.CurrentData.collectionFurnitureName.Add(_furnitureName);
+                }
+
             }
-
+            GameManager.Instance.SaveData();
         }
 
         //保存红点
@@ -70,4 +86,6 @@ public class AwardPlane : MonoBehaviour
             Destroy(awardTran.GetChild(i).gameObject);
         }
     }
+
+    
 }

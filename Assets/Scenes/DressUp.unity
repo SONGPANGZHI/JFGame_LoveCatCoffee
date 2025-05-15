@@ -870,6 +870,7 @@ MonoBehaviour:
   furnitureSkin:
   - Hall1_Diban
   - Hall2_Diban
+  - None
 --- !u!1 &108275824313087595
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,6 +979,7 @@ MonoBehaviour:
   furnitureSkin:
   - Hall1_Qiangzhi
   - Hall2_Qiangzhi
+  - None
 --- !u!212 &1835703929529515421
 SpriteRenderer:
   m_ObjectHideFlags: 0

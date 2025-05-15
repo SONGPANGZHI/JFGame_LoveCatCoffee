@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using UnityEditor;
-using UnityEditor.SceneManagement;
 using System.IO;
 using System;
 
 public class DeletePlayerPrefs : MonoBehaviour
 {
-	[MenuItem("PlayerPrefs/Delete All")]
-	public static void DeleteAll()
-	{
+    [MenuItem("PlayerPrefs/Delete All")]
+    public static void DeleteAll()
+    {
         //清除所有的PlayerPrefs
         PlayerPrefs.DeleteAll();
 
