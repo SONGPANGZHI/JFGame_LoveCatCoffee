@@ -1,8 +1,6 @@
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class FurnitureUseGrid : MonoBehaviour
 {
@@ -76,10 +74,11 @@ public class FurnitureUseGrid : MonoBehaviour
     //点击使用
     public void UseClick()
     {
+        MusicManagement.instance.PlayDropZoneSFX();
         FurnitureManagement.instance.CreateFurniture(spriteKey);
 
         //添加到本地保存家具列表
-        FurnitureReward furnitureReward = new FurnitureReward(spriteKey);
+        FurnitureReward furnitureReward = new FurnitureReward(spriteKey,true);
         GameManager.Instance.CurrentData.collectionFurnitureName.Remove(spriteKey);
         GameManager.Instance.CurrentData.usedFurniture.Add(furnitureReward);
         GameManager.Instance.SaveData();
@@ -132,4 +131,24 @@ public class FurnitureUseGrid : MonoBehaviour
 
         return false;
     }
+
+    //移除家具
+    public string RemoveFuruiture(string spriteName)
+    {
+        string modified = "";
+        if (spriteName.Substring(4) == "Hall2")
+        {
+            modified = "Hall1" + spriteName.Substring(4);
+            return modified;
+        }
+        else if (spriteName.Substring(4) == "Hall1")
+        {
+            modified = "Hall2" + spriteName.Substring(4);
+            return modified;
+        }
+
+        return spriteName;
+    }
+
+  
 }

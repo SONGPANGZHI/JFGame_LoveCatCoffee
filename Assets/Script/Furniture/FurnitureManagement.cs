@@ -54,16 +54,13 @@ public class FurnitureManagement : MonoBehaviour
             {
                 defaultFurniture[defaultFurnitureID].GetComponent<FurnitureInfo>().ChangeSpriteInit(GameManager.Instance.CurrentData.usedFurniture[i].name);
             }
-
             else
             {
-                if (GetFurnitureKey(GameManager.Instance.CurrentData.usedFurniture[i].name) != null)
-                {
-                    GameObject GO = Instantiate(furnitureGrid, furnitureTrans);
-                    GO.GetComponent<FurnitureInfo>().FurnitureInfoInit(GetFurnitureKey(GameManager.Instance.CurrentData.usedFurniture[i].name));
-                    GO.name = GameManager.Instance.CurrentData.usedFurniture[i].name;
-                }
-                
+                //根据DefultUse; 判断使用皮肤加载，根据名字转换默认皮肤的位置信息 
+
+                GameObject GO = Instantiate(furnitureGrid, furnitureTrans);
+                GO.GetComponent<FurnitureInfo>().FurnitureInfoInit(GetFurnitureKey(GameManager.Instance.CurrentData.usedFurniture[i].name));
+                GO.name = GameManager.Instance.CurrentData.usedFurniture[i].name;
             }
           
         }
@@ -90,10 +87,6 @@ public class FurnitureManagement : MonoBehaviour
     {
         if (GameManager.Instance.FurniturePosDic.ContainsKey(spriteKey))
             return GameManager.Instance.FurniturePosDic[spriteKey];
-        else
-        { 
-        
-        }
 
         return null;
     }
@@ -112,6 +105,15 @@ public class FurnitureManagement : MonoBehaviour
         return false;
     }
 
+    //新皮肤
+    public FurnitureInfos NewSkinFurnitureInfos(string spriteKey)
+    {
+        GameManager.Instance.GetSkinString(spriteKey);
+
+
+        return null;
+
+    }
 
 }
 

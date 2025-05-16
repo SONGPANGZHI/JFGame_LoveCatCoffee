@@ -9,6 +9,7 @@ public class MusicManagement : MonoBehaviour
     public AudioSource source_BGM;
     public AudioClip clip_SFX;
     public AudioClip clip_BGM;
+    public AudioClip dropZone_SFX;
     private void Awake()
     {
         if(instance==null)
@@ -46,5 +47,15 @@ public class MusicManagement : MonoBehaviour
     {
         source_BGM.clip = clip_BGM;
         source_BGM.Stop();
+    }
+
+    public void PlayDropZoneSFX()
+    {
+        //≈–∂œ  «∑Òπÿ±’“Ù–ß
+        if (PlayerPrefs.GetInt(GameManager.soundSetKey) == 0)
+        {
+            source_SFX.clip = dropZone_SFX;
+            source_SFX.Play();
+        }
     }
 }

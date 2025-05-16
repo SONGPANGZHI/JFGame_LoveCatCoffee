@@ -2849,8 +2849,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameLevelInfos: []
   furnitureRewards: []
-  furnitureName: []
-  unlockFurniture: []
   pauseGame: 1
   currentNumberCats: 0
   NumberLevelChallenges: 0
@@ -2874,6 +2872,8 @@ MonoBehaviour:
   CurrentData:
     usedFurniture: []
     collectionFurnitureName: []
+    levelAwardFureiture: []
+    newSkinFurniture: []
   LogOutTimeKey: 
   LogInTimeKey: 
 --- !u!4 &461545455
@@ -6298,7 +6298,6 @@ MonoBehaviour:
   awardGrid: {fileID: 8255699536134701358, guid: 62b0b8e24b68b46408bc3474dc7e3ca9, type: 3}
   awardTran: {fileID: 714432056}
   ok_BTN: {fileID: 711579736}
-  imagePath: Images/Hall_Brown/
   unlock_TMP: {fileID: 1132480020}
 --- !u!114 &828313528
 MonoBehaviour:
@@ -9783,6 +9782,7 @@ MonoBehaviour:
   source_BGM: {fileID: 866016134}
   clip_SFX: {fileID: 8300000, guid: 5263e4b01f0a1f242ae754288656c56a, type: 3}
   clip_BGM: {fileID: 8300000, guid: 7d6a10de47408de40bd44ba972688b7a, type: 3}
+  dropZone_SFX: {fileID: 8300000, guid: 8ef433a283438964ab6755ce962ce160, type: 3}
 --- !u!1 &1335600423
 GameObject:
   m_ObjectHideFlags: 0

@@ -138,7 +138,10 @@ public class FurnitureInfos
     public Vector2 FurniturePos;
     public int OrderLayer;
     public List<string> FurnitureSkinName;
+    public bool DefultUse; 
 }
+
+
 
 //½±Àø³Ø×Ó
 [Serializable]
@@ -148,10 +151,12 @@ public class FurnitureReward
     public AwardType AwardType;
     public string name;
     public FurnitureFloor FurnitureFloor;
+    public bool DefultUse;
 
-    public FurnitureReward(string _name)
+    public FurnitureReward(string _name, bool _defultUse)
     {
         name = _name;
+        DefultUse = _defultUse;
     }
 }
 
