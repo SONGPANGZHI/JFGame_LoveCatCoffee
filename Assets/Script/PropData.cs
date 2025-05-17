@@ -134,3 +134,10 @@ public enum AwardType
     Cat,
     Block,
 }
+public enum FurnitureSkinState 
+{  
+    Current, 
+    Default, 
+    Unlocked, 
+    Locked 
+}

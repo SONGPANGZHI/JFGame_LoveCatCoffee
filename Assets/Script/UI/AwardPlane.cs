@@ -38,24 +38,13 @@ public class AwardPlane : MonoBehaviour
 
                 if (GameManager.Instance.currentGameLevel.LevelID >= 17)
                 {
-                    GameManager.Instance.CurrentData.levelAwardFureiture.Remove(GameManager.Instance.GetFurnitureReward(_furnitureName));
-
-                    if (GameManager.Instance.GetDefaultSkin(_furnitureName))
-                    {
-                        GameManager.Instance.CurrentData.newSkinFurniture.Add(_furnitureName);
-                    }
-                    else
-                    {
-                        GameManager.Instance.CurrentData.collectionFurnitureName.Add(_furnitureName);
-                    }
-                }
-                else
-                {
-                    //把获得的家具名字添加到本地保存
-                    GameManager.Instance.CurrentData.collectionFurnitureName.Add(_furnitureName);
+                    GameManager.Instance.CurrentData.AwardFurniturePool.Remove(_furnitureName);
                 }
 
+                //把获得的家具名字添加到本地保存
+                GameManager.Instance.CurrentData.collectionFurnitureName.Add(_furnitureName);
             }
+
             GameManager.Instance.SaveData();
         }
 

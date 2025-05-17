@@ -60,6 +60,13 @@ MonoBehaviour:
   use_Tmp: {fileID: 3087524111509157468}
   unlock_Tmp: {fileID: 6873138497925238755}
   unlock_IMG: {fileID: 7394657611471396704}
+  furnitureItem:
+    Id: 
+    IsUnlocked: 0
+    IsDefault: 0
+    DefaultPosition: {x: 0, y: 0}
+    DaseFurnitureId: 
+    OrderLayer: 0
 --- !u!1 &3087524110883262097
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +85,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3087524110883262096
 RectTransform:
   m_ObjectHideFlags: 0
@@ -969,7 +976,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282606501
+    rgba: 4280361396
   m_fontColor: {r: 0.7075472, g: 0.130162, b: 0.130162, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3

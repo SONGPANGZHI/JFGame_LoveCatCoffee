@@ -1,5 +1,4 @@
 using DG.Tweening;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +15,9 @@ public class FurnitureUpgrade : MonoBehaviour
     public Button saveBTN;
     public Button backBTN;
 
+    public static List<FurnitureUseGrid> furnitureUseGridList = new List<FurnitureUseGrid>();
+
+    public static List<FurnitureItem> allFurniture = new List<FurnitureItem>();
     private void Awake()
     {
         OkBTN.onClick.AddListener(OKClick);
@@ -27,6 +29,7 @@ public class FurnitureUpgrade : MonoBehaviour
     public void FurnitureInit()
     {
         transform.DOScale(new Vector3(1, 1, 1), 0.3F);
+
         if (!PlayerPrefs.HasKey(FurnitureManagement.dialogueNoveicKey) && GameManager.Instance.CurrentData.collectionFurnitureName.Count == 0)
         {
             dialogueBoxObj.SetActive(true);
@@ -39,7 +42,8 @@ public class FurnitureUpgrade : MonoBehaviour
             for (int i = 0; i < GameManager.Instance.CurrentData.collectionFurnitureName.Count; i++)
             {
                 GameObject GO = Instantiate(gridPrefab, gridTrans);
-                GO.GetComponent<FurnitureUseGrid>().FurnitureGridInit(GameManager.Instance.CurrentData.collectionFurnitureName[i]);
+                GO.GetComponent<FurnitureUseGrid>().FurnitureGridInit(FurnitureManagement.instance.GetFurnitureItem(
+                GameManager.Instance.CurrentData.collectionFurnitureName[i]));
             }
 
         }
@@ -47,20 +51,48 @@ public class FurnitureUpgrade : MonoBehaviour
         CloseRedPoint();
     }
 
-    //初始化 换皮
+    //点击家具 查看不同皮肤
     public void FurnitureSkinInit()
     {
-        if (FurnitureManagement.instance.currentClickFurniture.furnitureSkin != null)
+        ClearGridTrans();
+        allFurniture.Clear();
+        furnitureUseGridList.Clear();
+        furnitureObj.SetActive(true);
+        GetAllSkinsForBase(FurnitureManagement.instance.currentClickFurniture.FurnitureItem.DaseFurnitureId);
+        for (int i = 0; i < allFurniture.Count; i++)
         {
-            ClearGridTrans();
-            furnitureObj.SetActive(true);
-            for (int i = 0; i < FurnitureManagement.instance.currentClickFurniture.furnitureSkin.Count; i++)
+            GameObject GO = Instantiate(gridPrefab, gridTrans);
+            GO.GetComponent<FurnitureUseGrid>().currentState = GetSkinState(allFurniture[i], FurnitureManagement.instance.currentClickFurniture.FurnitureItem);
+            GO.GetComponent<FurnitureUseGrid>().FurnitureSkinInit(allFurniture[i]);
+            furnitureUseGridList.Add(GO.GetComponent<FurnitureUseGrid>());
+        }
+    }
+
+    //判断状态
+    public FurnitureSkinState GetSkinState(FurnitureItem skin, FurnitureItem currentItem)
+    {
+        if (skin.Id == currentItem.Id)
+            return FurnitureSkinState.Current;
+        if (skin.IsUnlocked)
+            return FurnitureSkinState.Unlocked;
+        return FurnitureSkinState.Locked;
+    }
+
+    public static void SetGridState()
+    {
+        for (int i = 0; i < furnitureUseGridList.Count; i++)
+        {
+            if (furnitureUseGridList[i].furnitureItem.IsDefault)
             {
-                GameObject GO = Instantiate(gridPrefab, gridTrans);
-                GO.GetComponent<FurnitureUseGrid>().FurnitureSkinInit(FurnitureManagement.instance.currentClickFurniture.furnitureSkin[i]);
+                furnitureUseGridList[i].use_Tmp.gameObject.SetActive(true);
+                furnitureUseGridList[i].useBTN.gameObject.SetActive(false);
+            }
+            else
+            {
+                furnitureUseGridList[i].use_Tmp.gameObject.SetActive(false);
+                furnitureUseGridList[i].useBTN.gameObject.SetActive(true);
             }
         }
-        
     }
 
     //点击OK按钮
@@ -69,7 +101,7 @@ public class FurnitureUpgrade : MonoBehaviour
         dialogueBoxObj.SetActive(false);
         //销毁箱子
         FurnitureManagement.instance.NoviceLevel();
-        PlayerPrefs.SetString(FurnitureManagement.dialogueNoveicKey, "dialogueNoveicKey");
+        PlayerPrefs.SetString(FurnitureManagement.dialogueNoveicKey, "dialogueNoveic");
     }
 
     //保存
@@ -87,6 +119,7 @@ public class FurnitureUpgrade : MonoBehaviour
         {
             furnitureObj.SetActive(false);
             ClearGridTrans();
+            GameManager.Instance.currentFurnitureData.Clear();
             this.gameObject.SetActive(false);
         });
         UIManagement.Instance.loadingPlane.gameObject.SetActive(true);
@@ -102,10 +135,10 @@ public class FurnitureUpgrade : MonoBehaviour
             PlayerPrefs.DeleteKey(UIManagement.redPointKey);
     }
 
-    public void CloseFurniturePlane()
-    { 
-    
-    }
+    //public void CloseFurniturePlane()
+    //{ 
+
+    //}
 
     public void ClearGridTrans()
     {
@@ -114,4 +147,18 @@ public class FurnitureUpgrade : MonoBehaviour
             Destroy(gridTrans.GetChild(i).gameObject);
         }
     }
+
+    public List<FurnitureItem> GetAllSkinsForBase(string baseFurnitureId)
+    {
+        foreach (var item in GameManager.Instance.CurrentData.AllFurniture)
+        {
+            if (item.DaseFurnitureId == baseFurnitureId)
+            {
+                allFurniture.Add(item);
+            }
+        }
+
+        return allFurniture;
+    }
+
 }

@@ -10,8 +10,8 @@ public class LoadAllConfigData : MonoBehaviour
         if (GameManager.Instance.gameLevelDic.Count == 0)
         {
             StartLoadConfigAsset();
-            LoadFurnitureRewardJson();
-            LoadFurniturePosJson();
+            LoadFurnitureItemJson();
+            LoadAwardFurniturePoolJson();
         }
     }
 
@@ -41,21 +41,21 @@ public class LoadAllConfigData : MonoBehaviour
     #region 家具奖励池
 
     //读取奖励池
-    public void LoadFurnitureRewardJson()
+    public void LoadFurnitureItemJson()
     {
-        string localUrl = "Json/FurnitureReward";
-        StartLoadFurnitureReward(Resources.Load<TextAsset>(localUrl).text);
+        string localUrl = "Json/FurnitureData";
+        StartLoadFurnitureItam(Resources.Load<TextAsset>(localUrl).text);
     }
 
 
-    public void StartLoadFurnitureReward(string _data)
+    public void StartLoadFurnitureItam(string _data)
     {
         var rootData = JsonConvert.DeserializeObject<List<object>>(_data);
 
         for (int i = 0; i < rootData.Count; i++)
         {
-            FurnitureReward furnitureInfo = JsonConvert.DeserializeObject<FurnitureReward>(rootData[i].ToString());
-            GameManager.Instance.furnitureRewards.Add(furnitureInfo);
+            FurnitureItem furnitureInfo = JsonConvert.DeserializeObject<FurnitureItem>(rootData[i].ToString());
+            GameManager.AllFurnitureData.Add(furnitureInfo);
         }
 
         Debug.Log("家具奖励池加载成功---");
@@ -69,23 +69,23 @@ public class LoadAllConfigData : MonoBehaviour
 
     #region 读取位置奖励池
     //读取奖励池
-    public void LoadFurniturePosJson()
+    public void LoadAwardFurniturePoolJson()
     {
-        string localUrl = "Json/FurniturePosData";
-        StartLoadFurniturePos(Resources.Load<TextAsset>(localUrl).text);
+        string localUrl = "Json/FurnitureReward";
+        StartLoadAwardFurniturePool(Resources.Load<TextAsset>(localUrl).text);
     }
 
-    public void StartLoadFurniturePos(string _data)
+    public void StartLoadAwardFurniturePool(string _data)
     {
         var rootData = JsonConvert.DeserializeObject<List<object>>(_data);
 
         for (int i = 0; i < rootData.Count; i++)
         {
-            FurnitureInfos furnitureInfo = JsonConvert.DeserializeObject<FurnitureInfos>(rootData[i].ToString());
-            GameManager.Instance.FurniturePosDic.Add(furnitureInfo.FurnitureName, furnitureInfo);
+            FurnitureReward furnitureInfo = JsonConvert.DeserializeObject<FurnitureReward>(rootData[i].ToString());
+            GameManager.Instance.awardFurniturePool.Add(furnitureInfo.name);
         }
 
-        Debug.Log("家具位置加载成功---");
+        Debug.Log("奖励池加载成功---");
     }
 
     
@@ -164,9 +164,29 @@ public class FurnitureReward
 [Serializable]
 public class GameSaveData
 {
-    public List<FurnitureReward> usedFurniture = new List<FurnitureReward>();           //使用的家具
+    public List<FurnitureItem> AllFurniture = new List<FurnitureItem>();           //使用的家具
+    //public List<FurnitureReward> usedFurniture = new List<FurnitureReward>();           //使用的家具
     public List<string> collectionFurnitureName = new List<string>();                   //领取家具 但未使用
-    public List<FurnitureReward> levelAwardFureiture= new List<FurnitureReward>();      //17关后随机奖励的家具
-    public List<string> newSkinFurniture = new List<string>();                          //家具新皮肤
-        
+    public List<string> AwardFurniturePool = new List<string>();                          //家具新皮肤
+
+}
+
+[Serializable]
+public class FurnitureItem
+{
+    public string Id;                   // 家具唯一ID
+    public bool IsUnlocked;             // 是否已解锁
+    public bool IsDefault;              // 是否是默认皮肤
+    public Vector2 DefaultPosition;     // 默认位置
+    public string DaseFurnitureId;      // 基础家具ID（用于皮肤分组）
+    public int OrderLayer;
+}
+
+[Serializable]
+public class PlacedFurniture
+{
+    public string instanceId;
+    public string furnitureId;
+    public Vector3 position;
+    public Vector3 rotation;
 }

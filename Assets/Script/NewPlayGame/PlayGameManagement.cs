@@ -230,6 +230,7 @@ public class PlayGameManagement : MonoBehaviour
         {
             //奖励池随机抽取1-3家具
             int awardNum = Random.Range(1,4);
+            Debug.LogError("awardNum ;" + awardNum);
             RadomGetAwardFurniture(awardNum);
         }
         else
@@ -241,11 +242,11 @@ public class PlayGameManagement : MonoBehaviour
     //获得奖励
     public List<string> RadomGetAwardFurniture(int IndexID)
     {
-        GameManager.Instance.CurrentData.levelAwardFureiture.Shuffle();
+        GameManager.Instance.CurrentData.AwardFurniturePool.Shuffle();
 
         for (int i = 0; i < IndexID; i++)
         {
-            furnitureName.Add(GameManager.Instance.CurrentData.levelAwardFureiture[i].name);
+            furnitureName.Add(GameManager.Instance.CurrentData.AwardFurniturePool[i]);
         }
 
         return furnitureName;
