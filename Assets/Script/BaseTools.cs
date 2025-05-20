@@ -1,25 +1,199 @@
 ﻿using DG.Tweening;
 using System;
+using System.Collections;
+using System.IO;
 using System.Net;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BaseTools : MonoBehaviour
 {
-    public Camera MainSceneCamera;
     public static BaseTools Instance = null;
 
     public GameObject tipsObject;
     private Vector3 defualtCameraPos;       //默认位置
+    private int width;
+    private int height;
+    private Texture2D _currentPhoto; // 只保留当前照片的内存引用
+    private float defualtSize;
+    private Camera MainSceneCamera;
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
-
-        defualtCameraPos = MainSceneCamera.transform.position;
     }
+
+    #region 获得家具摄像机 调整相机深度大小
+
+    //获取获取屏幕尺寸
+    public void ScreenAdaptation(Camera camera)
+    {
+        MainSceneCamera = camera;
+        width = Screen.width;
+        height = Screen.height;
+        defualtCameraPos = MainSceneCamera.transform.position;
+
+        float screenRatio = (float)width / height;
+        float designRatio = 1080f / 1980f;
+        if (screenRatio >= designRatio)
+        {
+            //比例 designRatio = 0.5625
+            MainSceneCamera.orthographicSize = 9;
+        }
+        else
+        {
+            // 窄屏设备
+            MainSceneCamera.orthographicSize = 11;
+        }
+
+        defualtSize = MainSceneCamera.orthographicSize;
+    }
+
+    /// <summary>
+    /// 设置摄像机显示
+    /// </summary>
+    /// <param name="type"></param>
+    public void SetCameraPosition(Vector2 _vector2, bool _ChangeSize)
+    {
+        MainSceneCamera.transform.DOMove(new Vector3(_vector2.x, _vector2.y, -10f), 0.3f);
+        if (_ChangeSize)
+            MainSceneCamera.orthographicSize = 5;
+        else
+            MainSceneCamera.orthographicSize = defualtSize;
+        //TutorCamera.gameObject.SetActive(type == 1);
+    }
+
+    //返回默认摄像机位置
+    public void RetureCameraDefualtPosition()
+    {
+        MainSceneCamera.transform.DOMove(defualtCameraPos, 0.3f);
+        MainSceneCamera.orthographicSize = defualtSize;
+    }
+
+    #endregion
+
+    #region 拍照保存
+
+    //保存 保留照片 替换主界面图
+    public void CapturePhoto()
+    {
+        string savePath = Path.Combine(Application.persistentDataPath, "LatestPhoto.png");
+        StartCoroutine(CaptureAndSave(savePath));
+    }
+
+    private IEnumerator CaptureAndSave(string filePath)
+    {
+        yield return new WaitForEndOfFrame();
+
+        // 销毁旧纹理（避免内存泄漏）
+        if (_currentPhoto != null)
+        {
+            Destroy(_currentPhoto);
+        }
+
+        // 创建新纹理
+        RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
+        MainSceneCamera.targetTexture = rt;
+        _currentPhoto = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+
+        MainSceneCamera.Render();
+        RenderTexture.active = rt;
+        _currentPhoto.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+        _currentPhoto.Apply();
+
+        // 清理RenderTexture
+        MainSceneCamera.targetTexture = null;
+        RenderTexture.active = null;
+        Destroy(rt);
+
+        // 保存到文件（覆盖旧文件）
+        File.WriteAllBytes(filePath, _currentPhoto.EncodeToPNG());
+        Debug.Log($"照片已更新: {filePath}");
+    }
+
+    // 获取当前照片的Texture2D（用于实时显示）
+    public Texture2D GetCurrentPhoto()
+    {
+        // 确保路径有效
+        if (string.IsNullOrEmpty("LatestPhoto.png"))
+        {
+            Debug.LogWarning("照片文件名为空！");
+            return null;
+        }
+
+        string filePath = Path.Combine(Application.persistentDataPath, "LatestPhoto.png");
+
+        // 检查文件是否存在
+        if (!File.Exists(filePath))
+        {
+            Debug.Log($"未找到照片文件，路径: {filePath}");
+            return CreateDefaultTexture(); // 返回默认纹理而不是null
+        }
+
+        try
+        {
+            byte[] fileData = File.ReadAllBytes(filePath);
+            if (fileData == null || fileData.Length == 0)
+            {
+                Debug.LogWarning("照片文件为空或损坏");
+                return CreateDefaultTexture();
+            }
+
+            Texture2D loadedPhoto = new Texture2D(2, 2);
+            if (!loadedPhoto.LoadImage(fileData)) // 加载失败会返回false
+            {
+                Debug.LogWarning("照片加载失败，可能是不支持的格式");
+                Destroy(loadedPhoto);
+                return CreateDefaultTexture();
+            }
+
+            return loadedPhoto;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"加载照片时出错: {e.Message}");
+            return CreateDefaultTexture();
+        }
+    }
+
+    // 创建默认纹理（替代null）
+    private Texture2D CreateDefaultTexture()
+    {
+        Texture2D defaultTex = new Texture2D(1, 1);
+        defaultTex.SetPixel(0, 0, Color.gray); // 灰色默认纹理
+        defaultTex.Apply();
+        return defaultTex;
+    }
+
+
+    #endregion
+
+    #region 
+
+    //三消界面部分UI适配
+    public void UIAdaptive(RectTransform _uiTrans, RectTransform _middle)
+    {
+        float screenRatio = (float)width / height;
+        float designRatio = 1080f / 1980f;
+        if (screenRatio >= designRatio)
+        {
+            //使用默认的
+            _uiTrans.sizeDelta = new Vector2(0, 1500);
+            _middle.sizeDelta = new Vector2(0, 680);
+
+        }
+        else
+        {
+            //改变UI大小
+            _uiTrans.sizeDelta = new Vector2(0, 1800);
+            _middle.sizeDelta = new Vector2(0, 800);
+        }
+    }
+
+
+    #endregion
 
     /// <summary>
     /// 通用提示
@@ -120,50 +294,6 @@ public class BaseTools : MonoBehaviour
         return cameraSize;
     }
 
-    /// <summary>
-    /// 设置摄像机显示
-    /// </summary>
-    /// <param name="type"></param>
-    public void SetCameraPosition(Vector2 _vector2,bool _ChangeSize)
-    {
-        MainSceneCamera.transform.DOMove(new Vector3(_vector2.x, _vector2.y, -10f),0.3f);
-        if (_ChangeSize)
-            MainSceneCamera.orthographicSize = 5;
-        else
-            MainSceneCamera.orthographicSize = 9;
-        //TutorCamera.gameObject.SetActive(type == 1);
-    }
-
-    //返回默认摄像机位置
-    public void RetureCameraDefualtPosition()
-    {
-        MainSceneCamera.transform.DOMove(defualtCameraPos, 0.3f);
-        MainSceneCamera.orthographicSize = 9;
-    }
-
-    ///// <summary>
-    ///// 判断是否家具是否解锁
-    ///// </summary>
-    ///// <param name="furnitureName"></param>
-    ///// <returns>解锁:True   未解锁:False</returns>
-    //public bool FurnitureUnlockState(string furnitureName)
-    //{
-    //    return !CreateHomeScene.Instance.marketObjectDic.ContainsKey(furnitureName);
-    //}
-
-    /// <summary>
-    /// 房间解锁状态
-    /// </summary>
-    /// <returns></returns>
-    //public bool GetRoom2State()
-    //{
-    //    int unlockValue = PlayerPrefs.GetInt(PlayerPrefsKeys.room2UnlockKey, 0);
-    //    return unlockValue == 1;
-    //}
-    //public bool GetRoom3State()
-    //{
-    //    int unlockValue = PlayerPrefs.GetInt(PlayerPrefsKeys.room3UnlockKey, 0);
-    //    return unlockValue == 1;
-    //}
+   
 
 }

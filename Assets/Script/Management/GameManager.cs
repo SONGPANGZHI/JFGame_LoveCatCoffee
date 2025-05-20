@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     public static string NumberLevelChallengesKey = "NumberLevelChallengesKEY";         //关卡挑战次数
     public static string CurrentGameLevelKey = "CurrentGameLevelKEY";                   //当前游戏关卡
+    public static string SaveImageKey = "SaveImageKEY";
 
     public const string musicSetKey = "MusicSettingKey";
     public const string soundSetKey = "SoundSettingKey";

@@ -111,7 +111,11 @@ public class FurnitureUpgrade : MonoBehaviour
         furnitureObj.SetActive(false);
         BaseTools.Instance.RetureCameraDefualtPosition();
         ClearGridTrans();
-        FurnitureManagement.instance.CapturePhoto();
+        if (!PlayerPrefs.HasKey(GameManager.SaveImageKey))
+        {
+            PlayerPrefs.SetString(GameManager.SaveImageKey, "SaveLoadImageKEY");
+        }
+        BaseTools.Instance.CapturePhoto();
     }
 
     //·µ»Ø

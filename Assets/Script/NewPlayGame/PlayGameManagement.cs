@@ -7,6 +7,9 @@ public class PlayGameManagement : MonoBehaviour
 {
     public static PlayGameManagement Instance;
 
+    public RectTransform uiTrans;
+    public RectTransform middleTrans;
+
     [Header("放置区数据")]
     public List<GameObject> dropZoneData;
     public Transform dropZoneTran;
@@ -46,9 +49,6 @@ public class PlayGameManagement : MonoBehaviour
     public int conveyorArea;
     public List<string> furnitureName;
 
-
-
-
     public int middleAllNum;
 
     public bool giftsPercentProgress_60;
@@ -68,7 +68,10 @@ public class PlayGameManagement : MonoBehaviour
         GitMiddleAreaData();
     }
 
-
+    private void Start()
+    {
+        BaseTools.Instance.UIAdaptive(uiTrans,middleTrans);
+    }
 
     #region 三消逻辑
     public void CreateDropZoneObject(BlockDataConfigNew _blockProp, bool middle)

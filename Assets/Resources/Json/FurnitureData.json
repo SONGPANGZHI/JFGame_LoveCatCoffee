@@ -602,8 +602,8 @@
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
-            "x": 0.09,
-            "y": -4.11
+            "x": 0.04,
+            "y": -4.1
         },
         "DaseFurnitureId": "Hall1_Diban",
         "OrderLayer": 1,

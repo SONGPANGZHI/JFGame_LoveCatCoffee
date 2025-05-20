@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using UnityEngine;
 
 public class FurnitureManagement : MonoBehaviour
@@ -14,25 +12,23 @@ public class FurnitureManagement : MonoBehaviour
     public FurnitureInfo currentClickFurniture;
 
     public List<GameObject> sceneFurniture;
+    public Camera MainSceneCamera;
 
-    public Camera targetCamera;
-    public int width = 1920;
-    public int height = 1080;
-    public string savePath = "CameraCaptures";
     private void Awake()
     {
         if (instance == null)
             instance = this;
 
         GameManager.Instance.AddCurrentFurnitureData();
+        BaseTools.Instance.ScreenAdaptation(MainSceneCamera);
 
-        
     }
 
     private void Start()
     {
         DefaultFurnitureInit();
     }
+
 
     public void DefaultFurnitureInit()
     {
@@ -130,38 +126,6 @@ public class FurnitureManagement : MonoBehaviour
         }
     }
 
-    public void CapturePhoto()
-    {
-        // 创建RenderTexture
-        RenderTexture rt = new RenderTexture(width, height, 24);
-        targetCamera.targetTexture = rt;
-
-        // 创建Texture2D来保存图像
-        Texture2D screenShot = new Texture2D(width, height, TextureFormat.RGB24, false);
-
-        // 渲染相机视图到RenderTexture
-        targetCamera.Render();
-
-        // 激活RenderTexture并读取像素
-        RenderTexture.active = rt;
-        screenShot.ReadPixels(new Rect(0, 0, width, height), 0, 0);
-
-        // 重置相机设置
-        targetCamera.targetTexture = null;
-        RenderTexture.active = null;
-        Destroy(rt);
-
-        // 将图像编码为PNG
-        byte[] bytes = screenShot.EncodeToPNG();
-
-        // 保存文件
-        string filename = string.Format("{0}/capture_{1}.png",
-                              savePath,
-                              System.DateTime.Now.ToString("yyyyMMddHHmmss"));
-        File.WriteAllBytes(filename, bytes);
-
-        Debug.Log("照片已保存: " + filename);
-    }
-
+  
 }
 
