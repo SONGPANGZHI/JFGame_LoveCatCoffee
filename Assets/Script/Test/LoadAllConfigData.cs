@@ -180,6 +180,8 @@ public class FurnitureItem
     public Vector2 DefaultPosition;     // 默认位置
     public string DaseFurnitureId;      // 基础家具ID（用于皮肤分组）
     public int OrderLayer;
+    public bool CameraSize;             //改变摄像机大小
+    public bool NoUpgradeFurniture;     //不需要升级
 }
 
 [Serializable]

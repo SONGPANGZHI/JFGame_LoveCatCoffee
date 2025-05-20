@@ -212,7 +212,6 @@ public class PlayGameManagement : MonoBehaviour
         {
             blockTypes.Add(blockDataConfig[i]);
         }
-        Debug.LogError("blockTypes" + blockTypes.Count);
         blockTypes.Shuffle();
     }
 

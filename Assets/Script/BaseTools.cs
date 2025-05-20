@@ -10,12 +10,15 @@ public class BaseTools : MonoBehaviour
     public static BaseTools Instance = null;
 
     public GameObject tipsObject;
+    private Vector3 defualtCameraPos;       //默认位置
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
+
+        defualtCameraPos = MainSceneCamera.transform.position;
     }
 
     /// <summary>
@@ -121,10 +124,21 @@ public class BaseTools : MonoBehaviour
     /// 设置摄像机显示
     /// </summary>
     /// <param name="type"></param>
-    public void SetCameraShowByType(int type)
+    public void SetCameraPosition(Vector2 _vector2,bool _ChangeSize)
     {
-        MainSceneCamera.gameObject.SetActive(type == 0);
+        MainSceneCamera.transform.DOMove(new Vector3(_vector2.x, _vector2.y, -10f),0.3f);
+        if (_ChangeSize)
+            MainSceneCamera.orthographicSize = 5;
+        else
+            MainSceneCamera.orthographicSize = 9;
         //TutorCamera.gameObject.SetActive(type == 1);
+    }
+
+    //返回默认摄像机位置
+    public void RetureCameraDefualtPosition()
+    {
+        MainSceneCamera.transform.DOMove(defualtCameraPos, 0.3f);
+        MainSceneCamera.orthographicSize = 9;
     }
 
     ///// <summary>

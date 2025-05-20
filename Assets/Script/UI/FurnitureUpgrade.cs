@@ -29,7 +29,8 @@ public class FurnitureUpgrade : MonoBehaviour
     public void FurnitureInit()
     {
         transform.DOScale(new Vector3(1, 1, 1), 0.3F);
-
+        furnitureUseGridList.Clear();
+        allFurniture.Clear();
         if (!PlayerPrefs.HasKey(FurnitureManagement.dialogueNoveicKey) && GameManager.Instance.CurrentData.collectionFurnitureName.Count == 0)
         {
             dialogueBoxObj.SetActive(true);
@@ -108,7 +109,9 @@ public class FurnitureUpgrade : MonoBehaviour
     public void SaveClick()
     {
         furnitureObj.SetActive(false);
+        BaseTools.Instance.RetureCameraDefualtPosition();
         ClearGridTrans();
+        FurnitureManagement.instance.CapturePhoto();
     }
 
     //·µ»Ø

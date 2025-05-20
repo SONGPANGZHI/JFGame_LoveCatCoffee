@@ -2848,10 +2848,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameLevelInfos: []
-  furnitureRewards: []
+  currentFurnitureData: []
+  awardFurniturePool: []
   pauseGame: 1
   currentNumberCats: 0
   NumberLevelChallenges: 0
+  width: 1652
+  height: 852
+  savePath: CameraCaptures
   currentGameLevel:
     LevelID: 0
     BlockType: 0
@@ -2870,10 +2874,9 @@ MonoBehaviour:
       max: 0
     FurnitureName: []
   CurrentData:
-    usedFurniture: []
+    AllFurniture: []
     collectionFurnitureName: []
-    levelAwardFureiture: []
-    newSkinFurniture: []
+    AwardFurniturePool: []
   LogOutTimeKey: 
   LogInTimeKey: 
 --- !u!4 &461545455

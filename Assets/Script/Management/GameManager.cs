@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +27,9 @@ public class GameManager : MonoBehaviour
 
     [Header("关卡挑战次数")]
     public int NumberLevelChallenges;
+
+ 
+
 
     public GameLevelInfo currentGameLevel;
 
@@ -273,6 +275,9 @@ public class GameManager : MonoBehaviour
             Debug.LogError($"保存数据失败: {e.Message}");
         }
     }
+
+
+    
 }
 
 public static class ListExtensions

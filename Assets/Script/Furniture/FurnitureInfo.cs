@@ -13,14 +13,18 @@ public class FurnitureInfo : MonoBehaviour,IPointerClickHandler
         transform.GetComponent<SpriteRenderer>().sprite = itemSprite;
         transform.GetComponent<SpriteRenderer>().sortingOrder = FurnitureItem.OrderLayer;
         transform.position = FurnitureItem.DefaultPosition;
-        PolygonCollider2D polygonCollider = gameObject.AddComponent<PolygonCollider2D>();
-        polygonCollider.autoTiling = true;
-
+        if (!_furnitureData.NoUpgradeFurniture)
+        {
+            PolygonCollider2D polygonCollider = gameObject.AddComponent<PolygonCollider2D>();
+            polygonCollider.autoTiling = true;
+        }
     }
 
+    //µã»÷¼Ò¾ß
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         FurnitureManagement.instance.currentClickFurniture = this;
+        BaseTools.Instance.SetCameraPosition(this.transform.position, FurnitureItem.CameraSize);
         UIManagement.Instance.OpenFurnitureSkinPlane();
     }
 }
