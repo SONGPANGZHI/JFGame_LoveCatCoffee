@@ -28,13 +28,11 @@ public class GameManager : MonoBehaviour
     [Header("关卡挑战次数")]
     public int NumberLevelChallenges;
 
- 
-
 
     public GameLevelInfo currentGameLevel;
 
     public GameSaveData CurrentData;
-    private static string SavePath => Path.Combine(Application.persistentDataPath, "GameSaveData.json");
+    
     #region  游戏保存KEY
 
     public static string NumberLevelChallengesKey = "NumberLevelChallengesKEY";         //关卡挑战次数
@@ -45,6 +43,8 @@ public class GameManager : MonoBehaviour
     public const string soundSetKey = "SoundSettingKey";
     public const string shakeSetKey = "ShakeSettingKey";
     public const string propUserKey = "PropUserKey";
+
+    private static string SavePath => Path.Combine(Application.persistentDataPath, "GameSaveData.json");
 
     public string LogOutTimeKey;
     public string LogInTimeKey;
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
 
         //初始化本地数据
         InitializeData();
-        LogInTime();
+        //LogInTime();
         //检查关卡
         CheckSaveData();
 
@@ -149,38 +149,44 @@ public class GameManager : MonoBehaviour
         return currentGameLevel;
     }
 
+    public GameLevelInfo GetGameLevelData_TEMP(int ID)
+    {
+        currentGameLevel = gameLevelDic[ID];
+        Debug.LogError("当前关卡" + currentGameLevel.LevelID);
+        return currentGameLevel;
+    }
 
     #region 时间获取
 
-    //登录
-    public void LogInTime()
-    {
-        GetCurrentTime();
-        if (LogInTimeKey != PlayerPrefs.GetString("LogOutTimeKey"))
-        {
-            NumberLevelChallenges = 0;
-            Debug.LogError("新的一天--");
-        }
-    }
+    ////登录
+    //public void LogInTime()
+    //{
+    //    GetCurrentTime();
+    //    if (LogInTimeKey != PlayerPrefs.GetString("LogOutTimeKey"))
+    //    {
+    //        NumberLevelChallenges = 0;
+    //        Debug.LogError("新的一天--");
+    //    }
+    //}
 
-    //获取时间
-    public void GetCurrentTime()
-    {
-        DateTime now = DateTime.Now;
+    ////获取时间
+    //public void GetCurrentTime()
+    //{
+    //    DateTime now = DateTime.Now;
 
-        LogInTimeKey = now.ToString("yyyy年MM月dd日");
-        PlayerPrefs.SetString("LogInTimeKey", LogInTimeKey);
+    //    LogInTimeKey = now.ToString("yyyy年MM月dd日");
+    //    PlayerPrefs.SetString("LogInTimeKey", LogInTimeKey);
 
-    }
+    //}
 
     //退出
-    public void OnApplicationQuit()
-    {
-        DateTime now = DateTime.Now;
-        //UnityEditor.EditorApplication.isPlaying = false;
-        string LogOutTime = now.ToString("yyyy年MM月dd日");
-        PlayerPrefs.SetString("LogOutTimeKey", LogOutTime);
-    }
+    //public void OnApplicationQuit()
+    //{
+    //    DateTime now = DateTime.Now;
+    //    //UnityEditor.EditorApplication.isPlaying = false;
+    //    string LogOutTime = now.ToString("yyyy年MM月dd日");
+    //    PlayerPrefs.SetString("LogOutTimeKey", LogOutTime);
+    //}
     #endregion
 
     #region 数据保存
@@ -194,8 +200,11 @@ public class GameManager : MonoBehaviour
     //保存关卡等级
     public void SavaGameLevel()
     {
-        int saveID = PlayerPrefs.GetInt(CurrentGameLevelKey);
-        PlayerPrefs.SetInt(CurrentGameLevelKey, saveID + 1);
+        if (!UIManagement.Instance._isChallengBool)
+        {
+            int saveID = PlayerPrefs.GetInt(CurrentGameLevelKey);
+            PlayerPrefs.SetInt(CurrentGameLevelKey, saveID + 1);
+        }
     }
 
     //保存挑战次数
@@ -248,8 +257,6 @@ public class GameManager : MonoBehaviour
             CurrentData.AllFurniture = CurrentData.AllFurniture ?? new List<FurnitureItem>();
             CurrentData.collectionFurnitureName = CurrentData.collectionFurnitureName ?? new List<string>();
             CurrentData.AwardFurniturePool = CurrentData.AwardFurniturePool ?? new List<string>();
-            //CurrentData.levelAwardFureiture = CurrentData.levelAwardFureiture ?? new List<FurnitureReward>();
-            //CurrentData.newSkinFurniture = CurrentData.newSkinFurniture ?? new List<string>();
 
             Debug.Log("游戏数据加载成功");
         }

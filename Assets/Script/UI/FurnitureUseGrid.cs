@@ -5,12 +5,14 @@ using UnityEngine.UI;
 public class FurnitureUseGrid : MonoBehaviour
 {
     public GameObject selectBox;
+    public GameObject redPointObj;
     public Image furnitureIcon;
     public Button useBTN;
     public TMP_Text use_Tmp;
     public TMP_Text unlock_Tmp;
     public GameObject unlock_IMG;
     public FurnitureSkinState currentState;
+    public Color gray;
 
     public FurnitureItem furnitureItem;
 
@@ -25,6 +27,7 @@ public class FurnitureUseGrid : MonoBehaviour
         furnitureItem = furniture;
         furnitureIcon.sprite = ListExtensions.LoadFurnitureSprite(furnitureItem.Id);
         useBTN.gameObject.SetActive(true);
+        redPointObj.SetActive(true);
     }
 
     //生成其他皮肤
@@ -48,6 +51,7 @@ public class FurnitureUseGrid : MonoBehaviour
                 break;
             case FurnitureSkinState.Locked:
                 unlock_Tmp.gameObject.SetActive(true);
+                furnitureIcon.color = gray;
                 break;
         }
     }
@@ -77,6 +81,7 @@ public class FurnitureUseGrid : MonoBehaviour
 
         useBTN.gameObject.SetActive(false);
         use_Tmp.gameObject.SetActive(true);
+        redPointObj.SetActive(false);
 
         FurnitureUpgrade.SetGridState();
     }

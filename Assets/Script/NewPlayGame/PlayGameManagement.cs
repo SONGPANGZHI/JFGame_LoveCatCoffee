@@ -65,7 +65,21 @@ public class PlayGameManagement : MonoBehaviour
         //获取方块列表
         GetBlockTypeList();
 
-        GitMiddleAreaData();
+        if (UIManagement.Instance._isChallengBool)
+        {
+            //每日挑战
+            GameManager.Instance.GetGameLevelData_TEMP(30);
+            GitMiddleAreaData();
+        }
+        else
+        {
+            //关卡
+            GameManager.Instance.GetGameLevelData();
+            GitMiddleAreaData();
+        }
+
+        GameManager.Instance.pauseGame = true;
+
     }
 
     private void Start()
@@ -238,7 +252,7 @@ public class PlayGameManagement : MonoBehaviour
         else
             furnitureName = GameManager.Instance.currentGameLevel.FurnitureName;
 
-
+        
     }
 
     //获得奖励

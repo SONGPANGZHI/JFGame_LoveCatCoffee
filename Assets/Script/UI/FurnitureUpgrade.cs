@@ -10,6 +10,7 @@ public class FurnitureUpgrade : MonoBehaviour
 
     public GameObject furnitureObj;
     public GameObject dialogueBoxObj;
+    public GameObject newTitleObj;
 
     public Button OkBTN;
     public Button saveBTN;
@@ -31,7 +32,7 @@ public class FurnitureUpgrade : MonoBehaviour
         transform.DOScale(new Vector3(1, 1, 1), 0.3F);
         furnitureUseGridList.Clear();
         allFurniture.Clear();
-        if (!PlayerPrefs.HasKey(FurnitureManagement.dialogueNoveicKey) && GameManager.Instance.CurrentData.collectionFurnitureName.Count == 0)
+        if (!PlayerPrefs.HasKey(FurnitureManagement.dialogueNoveicKey) /*&& GameManager.Instance.CurrentData.collectionFurnitureName.Count == 0*/)
         {
             dialogueBoxObj.SetActive(true);
         }
@@ -39,7 +40,7 @@ public class FurnitureUpgrade : MonoBehaviour
         if (GameManager.Instance.CurrentData.collectionFurnitureName.Count > 0)
         {
             furnitureObj.SetActive(true);
-
+            newTitleObj.SetActive(true);
             for (int i = 0; i < GameManager.Instance.CurrentData.collectionFurnitureName.Count; i++)
             {
                 GameObject GO = Instantiate(gridPrefab, gridTrans);
@@ -55,6 +56,7 @@ public class FurnitureUpgrade : MonoBehaviour
     //点击家具 查看不同皮肤
     public void FurnitureSkinInit()
     {
+        newTitleObj.SetActive(false);
         ClearGridTrans();
         allFurniture.Clear();
         furnitureUseGridList.Clear();
@@ -109,6 +111,7 @@ public class FurnitureUpgrade : MonoBehaviour
     public void SaveClick()
     {
         furnitureObj.SetActive(false);
+        newTitleObj.SetActive(false);
         BaseTools.Instance.RetureCameraDefualtPosition();
         ClearGridTrans();
         if (!PlayerPrefs.HasKey(GameManager.SaveImageKey))
@@ -125,6 +128,7 @@ public class FurnitureUpgrade : MonoBehaviour
         transform.DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
         {
             furnitureObj.SetActive(false);
+            newTitleObj.SetActive(false);
             ClearGridTrans();
             GameManager.Instance.currentFurnitureData.Clear();
             this.gameObject.SetActive(false);

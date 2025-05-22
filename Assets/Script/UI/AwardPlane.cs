@@ -48,6 +48,7 @@ public class AwardPlane : MonoBehaviour
             GameManager.Instance.SaveData();
         }
 
+        UIManagement.Instance.gameOverPlane.OpenGift();
         //保存红点
         PlayerPrefs.SetString(UIManagement.redPointKey,"RedPiont");
         transform.GetChild(0).DOScale(new Vector3(1,1,1),0.7f);

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,6 @@ public class BaseTools : MonoBehaviour
 {
     public static BaseTools Instance = null;
 
-    public GameObject tipsObject;
     private Vector3 defualtCameraPos;       //默认位置
     private int width;
     private int height;
@@ -175,8 +175,10 @@ public class BaseTools : MonoBehaviour
     //三消界面部分UI适配
     public void UIAdaptive(RectTransform _uiTrans, RectTransform _middle)
     {
-        float screenRatio = (float)width / height;
-        float designRatio = 1080f / 1980f;
+        width = Screen.width;
+        height = Screen.height;
+        double screenRatio = Math.Round((double)width / height, 4);
+        double designRatio = Math.Round(1080f / 1980f, 4); 
         if (screenRatio >= designRatio)
         {
             //使用默认的
@@ -195,31 +197,28 @@ public class BaseTools : MonoBehaviour
 
     #endregion
 
-    /// <summary>
-    /// 通用提示
-    /// </summary>
-    /// <param name="_tipsContent"></param>
+  
     public void GeneralTips(string _tipsContent)
     {
-        float X = Input.mousePosition.x - Screen.width / 2f;
-        float Y = Input.mousePosition.y - Screen.height / 2f;
-        Vector3 tranPos = new Vector3(X, Y, 0);
+        //float X = Input.mousePosition.x - Screen.width / 2f;
+        //float Y = Input.mousePosition.y - Screen.height / 2f;
+        //Vector3 tranPos = new Vector3(X, Y, 0);
 
-        tipsObject.SetActive(true);
-        tipsObject.transform.localPosition = tranPos;
-        tipsObject.transform.Find("TipText").GetComponent<Text>().text = _tipsContent;
+        //tipsObject.SetActive(true);
+        //tipsObject.transform.localPosition = tranPos;
+        //tipsObject.transform.Find("TipText").GetComponent<Text>().text = _tipsContent;
 
-        float defaultY = tipsObject.GetComponent<RectTransform>().anchoredPosition.y;
+        //float defaultY = tipsObject.GetComponent<RectTransform>().anchoredPosition.y;
 
-        Sequence mySequence = DOTween.Sequence();
-        mySequence.Append(tipsObject.GetComponent<RectTransform>().DOAnchorPosY(defaultY + 235f, 2.5f));
-        mySequence.Join(tipsObject.transform.Find("TipText").GetComponent<Text>().DOColor(new Color32(255, 255, 255, 0), 2.5f));
+        //Sequence mySequence = DOTween.Sequence();
+        //mySequence.Append(tipsObject.GetComponent<RectTransform>().DOAnchorPosY(defaultY + 235f, 2.5f));
+        //mySequence.Join(tipsObject.transform.Find("TipText").GetComponent<Text>().DOColor(new Color32(255, 255, 255, 0), 2.5f));
 
-        mySequence.onComplete = () =>
-        {
-            tipsObject.SetActive(false);
-            tipsObject.transform.Find("TipText").GetComponent<Text>().color = new Color32(255, 255, 255, 255);
-        };
+        //mySequence.onComplete = () =>
+        //{
+        //    tipsObject.SetActive(false);
+        //    tipsObject.transform.Find("TipText").GetComponent<Text>().color = new Color32(255, 255, 255, 255);
+        //};
     }
 
     /// <summary>

@@ -12,8 +12,8 @@ public class UIManagement : MonoBehaviour
     private SettingPlane settingPlane;
     [SerializeField]
     private CommonPlane commonPlane;
-    [SerializeField]
-    private GameOverPlane gameOverPlane;
+
+    public GameOverPlane gameOverPlane;
     [SerializeField]
     private AwardPlane awardPlane;
 
@@ -87,7 +87,6 @@ public class UIManagement : MonoBehaviour
     //打开通用界面
     public void OpenCommonPlane(CommonPlaneType _planeType,PropData propData = null)
     {
-        GameManager.Instance.pauseGame = false;
         commonPlane.gameObject.SetActive(true);
         switch (_planeType)
         {

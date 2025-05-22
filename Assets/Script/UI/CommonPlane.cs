@@ -2,6 +2,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -16,7 +17,7 @@ public class CommonPlane : MonoBehaviour
     private Image icon;                 //Icon
 
     [SerializeField]
-    private Button affirm_Abandon_BTN;  //确定界面放弃
+    private Button close_BTN;  //确定界面放弃
     [SerializeField]
     private Button abandon_BTN;         //放弃按钮
     [SerializeField]
@@ -26,15 +27,13 @@ public class CommonPlane : MonoBehaviour
     [SerializeField]
     private Button continue_BTN;        //继续
     [SerializeField]
-    private Button back_BTN;            //返回
-    [SerializeField]
     private Sprite heaet_IMG;
 
     public PropData propData;
 
 
     private const string resurgence_Title_TMP = "复活";
-    private const string resurgence_Desc_TMP = "观看视频可获得一次复活机会";
+    private const string resurgence_Desc_TMP = "确定要离开吗？";
 
     private const string affirm_Title_TMP = "确认";
     private const string use_Title_TMP = "使用";
@@ -44,14 +43,14 @@ public class CommonPlane : MonoBehaviour
         shareGet_BTN.onClick.AddListener(ShareGetClick);
         ADGet_BTN.onClick.AddListener(ADGetClick);
         continue_BTN.onClick.AddListener(ContinueClick);
-        back_BTN.onClick.AddListener(BackClick);
-        affirm_Abandon_BTN.onClick.AddListener(AffirmAbandonClick);
+        close_BTN.onClick.AddListener(BackClick);
     }
 
 
     //界面初始化  复活界面
     public void ResurgenceInitPlane()
     {
+        GameManager.Instance.pauseGame = false;
         CloseMenuBTN();
         icon.sprite = heaet_IMG;
         icon.SetNativeSize();
@@ -64,12 +63,13 @@ public class CommonPlane : MonoBehaviour
     //初始化 确认界面
     public void AffirmInitPlane()
     {
+        GameManager.Instance.pauseGame = false;
         CloseMenuBTN();
         icon.sprite = heaet_IMG;
         icon.SetNativeSize();
         title_TMP.text = affirm_Title_TMP;
         desc_TMP.text = resurgence_Desc_TMP;
-        affirm_Abandon_BTN.gameObject.SetActive(true);
+        abandon_BTN.gameObject.SetActive(true);
         continue_BTN.gameObject.SetActive(true);
     }
 
@@ -77,24 +77,29 @@ public class CommonPlane : MonoBehaviour
     public void PropInitPlane(PropData _propData)
     {
         //传入  道具类型
+        GameManager.Instance.pauseGame = false;
         CloseMenuBTN();
         propData = _propData;
         icon.sprite = propData.propIcon;
         icon.SetNativeSize();
         desc_TMP.text = propData.propDesc;
         title_TMP.text = use_Title_TMP;
-        abandon_BTN.gameObject.SetActive(true);
+        close_BTN.gameObject.SetActive(true);
         ADGet_BTN.gameObject.SetActive(true);
     }
 
+    //放弃挑战
     public void AffirmAbandonClick()
     {
         MusicManagement.instance.ClickPlaySFX();
-        transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3f).OnComplete(() =>
-        {
-            ResurgenceInitPlane();
-        });
-        
+        ClosePlane();
+        UIManagement.Instance.gameOverPlane.GameOverPlaneInit(false);
+
+        //transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3f).OnComplete(() =>
+        //{
+        //    ResurgenceInitPlane();
+        //});
+
     }
 
     //放弃挑战 打开失败界面
@@ -103,9 +108,6 @@ public class CommonPlane : MonoBehaviour
         //打开主界面.
         ClosePlane();
         UIManagement.Instance.OpenGameOverPlane();
-        //UIManagement.Instance.loadingPlane.gameObject.SetActive(true);
-        //UIManagement.Instance.CloseGamePlane();
-        //UIManagement.Instance.loadingPlane.LoadUIScene();
     }
 
     //分享 复活
@@ -185,7 +187,7 @@ public class CommonPlane : MonoBehaviour
         shareGet_BTN.gameObject.SetActive(false);
         ADGet_BTN.gameObject.SetActive(false);
         continue_BTN.gameObject.SetActive(false);
-        affirm_Abandon_BTN.gameObject.SetActive(false);
+        close_BTN.gameObject.SetActive(false);
 
         transform.GetChild(0).DOScale(new Vector3(1, 1, 1), 0.3f);
     }

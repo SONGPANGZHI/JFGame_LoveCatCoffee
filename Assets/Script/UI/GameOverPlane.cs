@@ -18,12 +18,11 @@ public class GameOverPlane : MonoBehaviour
     [SerializeField]
     private GameObject victory_UI;
 
+   
     [SerializeField]
-    private Image gift_60;                          //关卡进度60% 礼物
+    private GameObject closeGift;                          
     [SerializeField]
-    private Image gift_80;                          //关卡进度80% 礼物
-    [SerializeField]
-    private Image gift_100;                         //关卡礼物100% 礼物
+    private GameObject openGift;                         
 
     [SerializeField]
     private List<Sprite> openGift_IMG;              //打开礼物的Sprite 0 = 60 , 1 = 80 , 2 = 100 
@@ -32,6 +31,8 @@ public class GameOverPlane : MonoBehaviour
     private Button resChallenge_BTN;               //重玩按钮
     [SerializeField]
     private Button back_BTN;                        //返回按钮
+    [SerializeField]
+    private Button nextLevel_BTN;                        //返回按钮
 
     private float progress;
 
@@ -48,6 +49,7 @@ public class GameOverPlane : MonoBehaviour
     {
         resChallenge_BTN.onClick.AddListener(RecChanllengeClick);
         back_BTN.onClick.AddListener(BackMain);
+        nextLevel_BTN.onClick.AddListener(NextLevelClick);
     }
 
     //界面初始化  _isVictory = true 打开胜利界面  false 失败界面
@@ -71,16 +73,18 @@ public class GameOverPlane : MonoBehaviour
             resChallenge_BTN.gameObject.SetActive(false);
             victory_UI.SetActive(true);
             defeated_UI.SetActive(false);
-            challengesNum_TMP.text = GameManager.Instance.GetNumbersText(VictoryChallengesNum_TMP, GameManager.Instance.NumberLevelChallenges);
+            nextLevel_BTN.gameObject.SetActive(true);
+            //challengesNum_TMP.text = GameManager.Instance.GetNumbersText(VictoryChallengesNum_TMP, GameManager.Instance.NumberLevelChallenges);
             GameManager.Instance.SavaChallengTime();
         }
         else
         {
             //失败
+            nextLevel_BTN.gameObject.SetActive(false);
             resChallenge_BTN.gameObject.SetActive(true);
             defeated_UI.SetActive(true);
             victory_UI.SetActive(false);
-            challengesNum_TMP.text = GameManager.Instance.GetNumbersText(DefeatedChallengesNum_TMP, GameManager.Instance.NumberLevelChallenges);
+            //challengesNum_TMP.text = GameManager.Instance.GetNumbersText(DefeatedChallengesNum_TMP, GameManager.Instance.NumberLevelChallenges);
         }
 
         LevelProgress_TMP.text = GameManager.Instance.GetNumbersText(ProgressBarNum_TMP, GetGameProgress());
@@ -90,7 +94,7 @@ public class GameOverPlane : MonoBehaviour
     public int GetGameProgress()
     {
         int currentProgress = PlayGameManagement.Instance.allMiddleBlockNum - PlayGameManagement.Instance.middleAllNum;
-        float progree = (currentProgress / PlayGameManagement.Instance.allMiddleBlockNum) * 100;
+        float progree = ((float)currentProgress / PlayGameManagement.Instance.allMiddleBlockNum) * 100;
         progress = progree / 100;
         return (int)progree;
     }
@@ -130,6 +134,8 @@ public class GameOverPlane : MonoBehaviour
         transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
         {
             //加载界面
+            closeGift.SetActive(true);
+            openGift.SetActive(false);
             UIManagement.Instance.CloseGamePlane();
             this.gameObject.SetActive(false);
             UIManagement.Instance.OpenLoadingPlane();
@@ -144,6 +150,8 @@ public class GameOverPlane : MonoBehaviour
         MusicManagement.instance.ClickPlaySFX();
         transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
         {
+            closeGift.SetActive(true);
+            openGift.SetActive(false);
             this.gameObject.SetActive(false);
         });
         UIManagement.Instance.loadingPlane.gameObject.SetActive(true);
@@ -151,4 +159,32 @@ public class GameOverPlane : MonoBehaviour
         UIManagement.Instance.loadingPlane.LoadUIScene();
     }
 
+    public void NextLevelClick()
+    {
+        MusicManagement.instance.ClickPlaySFX();
+        GameManager.Instance.SavaChallengTime();
+        transform.GetChild(0).DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
+        {
+            //加载界面
+            if (GameManager.Instance.currentGameLevel.LevelID >= 30)
+                GameManager.Instance.GetGameLevelData_TEMP(30);
+            else
+                GameManager.Instance.GetGameLevelData();
+
+            closeGift.SetActive(true);
+            openGift.SetActive(false);
+            UIManagement.Instance.CloseGamePlane();
+            this.gameObject.SetActive(false);
+            UIManagement.Instance.OpenLoadingPlane();
+            //if(planeState)
+            //    GameLevelManagement.Instance.currentLevelData = GameLevelManagement.Instance.gameLevelDataList[PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey) - 1];
+        });
+    }
+
+    //打开礼盒
+    public void OpenGift()
+    {
+        closeGift.SetActive(false);
+        openGift.SetActive(true);
+    }
 }
