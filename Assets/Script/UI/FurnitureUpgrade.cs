@@ -105,6 +105,7 @@ public class FurnitureUpgrade : MonoBehaviour
         //Ïú»ÙÏä×Ó
         FurnitureManagement.instance.NoviceLevel();
         PlayerPrefs.SetString(FurnitureManagement.dialogueNoveicKey, "dialogueNoveic");
+        GameManager.Instance.SaveData();
     }
 
     //±£´æ
@@ -113,11 +114,17 @@ public class FurnitureUpgrade : MonoBehaviour
         furnitureObj.SetActive(false);
         newTitleObj.SetActive(false);
         BaseTools.Instance.RetureCameraDefualtPosition();
+        FurnitureManagement.instance.SaveFurnitureDefualtMaterial();
         ClearGridTrans();
         if (!PlayerPrefs.HasKey(GameManager.SaveImageKey))
         {
             PlayerPrefs.SetString(GameManager.SaveImageKey, "SaveLoadImageKEY");
         }
+        Invoke("Photograph", 0.5F);
+    }
+
+    public void Photograph()
+    {
         BaseTools.Instance.CapturePhoto();
     }
 

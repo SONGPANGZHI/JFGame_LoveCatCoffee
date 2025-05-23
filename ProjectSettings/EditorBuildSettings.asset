@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/UI.unity
     guid: 22b347fa309ac414f891faa49481a894
   - enabled: 1
-    path: Assets/Scenes/NewPlayGame.unity
+    path: Assets/Scenes/PlayGame.unity
     guid: be869e2e73d39ab479ccfca6278cfe45
   - enabled: 1
     path: Assets/Scenes/DressUp.unity

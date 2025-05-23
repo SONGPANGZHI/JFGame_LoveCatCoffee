@@ -5,7 +5,7 @@
 
 //public class DeletePlayerPrefs : MonoBehaviour
 //{
-//    //[MenuItem("PlayerPrefs/Delete All")]
+//    [MenuItem("PlayerPrefs/Delete All")]
 //    public static void DeleteAll()
 //    {
 //        //清除所有的PlayerPrefs

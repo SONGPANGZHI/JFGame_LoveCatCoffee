@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4754246083278181955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,7 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11659b8c405c5ba4ea2e74399a3d600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  furnitureInfosData:
-    FurnitureName: 
-    FurniturePos: {x: 0, y: 0}
+  furnitureName: 
+  FurnitureItem:
+    Id: 
+    IsUnlocked: 0
+    IsDefault: 0
+    DefaultPosition: {x: 0, y: 0}
+    DaseFurnitureId: 
     OrderLayer: 0
+    CameraSize: 0
+    NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 2100000, guid: fe4fcbc955bdd9e4d8fa27b5638bb5ec, type: 2}

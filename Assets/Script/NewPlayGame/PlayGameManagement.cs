@@ -65,6 +65,8 @@ public class PlayGameManagement : MonoBehaviour
         //获取方块列表
         GetBlockTypeList();
 
+        Application.targetFrameRate = 60;
+
         if (UIManagement.Instance._isChallengBool)
         {
             //每日挑战
@@ -79,7 +81,6 @@ public class PlayGameManagement : MonoBehaviour
         }
 
         GameManager.Instance.pauseGame = true;
-
     }
 
     private void Start()

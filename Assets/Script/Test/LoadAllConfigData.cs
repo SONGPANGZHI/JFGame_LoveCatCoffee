@@ -103,7 +103,7 @@ public class GameLevelInfo
     public MiddleBlockNum BlockNum;
     public float conveyorSpeed;
     public int PositionsNum;
-    public int cat;
+    public bool cat;
     public int CatAppearTime;
     public CatSectionProbability CatSection;
     public List<string> FurnitureName;
@@ -131,18 +131,6 @@ public class CatSectionProbability
     public float max;
 }
 
-[Serializable]
-public class FurnitureInfos
-{
-    public string FurnitureName;
-    public Vector2 FurniturePos;
-    public int OrderLayer;
-    public List<string> FurnitureSkinName;
-    public bool DefultUse; 
-}
-
-
-
 //奖励池子
 [Serializable]
 public class FurnitureReward
@@ -153,11 +141,6 @@ public class FurnitureReward
     public FurnitureFloor FurnitureFloor;
     public bool DefultUse;
 
-    public FurnitureReward(string _name, bool _defultUse)
-    {
-        name = _name;
-        DefultUse = _defultUse;
-    }
 }
 
 //本地保存

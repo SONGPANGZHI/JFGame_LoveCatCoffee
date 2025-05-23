@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,9 @@ public class FurnitureManagement : MonoBehaviour
     public Transform furnitureTrans;
 
     public static string dialogueNoveicKey = "DialogueNoveicKEY";       //对话新手引导
+
     public FurnitureInfo currentClickFurniture;
+    public FurnitureInfo lastClickFurniture;
 
     public List<GameObject> sceneFurniture;
     public Camera MainSceneCamera;
@@ -37,6 +40,7 @@ public class FurnitureManagement : MonoBehaviour
             GameObject GO = Instantiate(furniturePrefab, furnitureTrans);
             GO.GetComponent<FurnitureInfo>().Init(GameManager.Instance.currentFurnitureData[i]);
             GO.name = GameManager.Instance.currentFurnitureData[i].Id;
+            GO.transform.localScale = Vector3.one;
             sceneFurniture.Add(GO);
         }
     }
@@ -48,7 +52,10 @@ public class FurnitureManagement : MonoBehaviour
         GO.GetComponent<FurnitureInfo>().Init(GetFurnitureItem(spriteKey));
         GO.name = spriteKey;
         sceneFurniture.Add(GO);
-
+        GO.transform.DOScale(1.2f, 0.3f).SetEase(Ease.OutElastic).OnComplete(() => 
+        {
+            GO.transform.localScale = Vector3.one; // 动画完成后恢复原始大小
+        });
     }
 
     //新手关卡（第一关通关）
@@ -126,6 +133,34 @@ public class FurnitureManagement : MonoBehaviour
         }
     }
 
-  
+    //判断当前点击家具 改变上一个点击家具状态
+    public void JudgeCurrentClickFurniture()
+    {
+        if (lastClickFurniture == null)
+        {
+            lastClickFurniture = currentClickFurniture;
+            return;
+        }
+
+        //不相同
+        if (lastClickFurniture != currentClickFurniture)
+        {
+            lastClickFurniture.UseDefualtMaterial();
+            lastClickFurniture = currentClickFurniture;
+        }
+    }
+
+    //保存时 恢复默认 材质
+    public void SaveFurnitureDefualtMaterial()
+    {
+        if (lastClickFurniture == null)
+        {
+            return;
+        }
+        else
+        {
+            lastClickFurniture.UseDefualtMaterial();
+        }
+    }
 }
 
