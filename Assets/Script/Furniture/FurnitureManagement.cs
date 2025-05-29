@@ -22,13 +22,14 @@ public class FurnitureManagement : MonoBehaviour
         if (instance == null)
             instance = this;
 
-        GameManager.Instance.AddCurrentFurnitureData();
-        BaseTools.Instance.ScreenAdaptation(MainSceneCamera);
-
+        
     }
 
     private void Start()
     {
+        GameManager.Instance.AddCurrentFurnitureData();
+        BaseTools.Instance.ScreenAdaptation(MainSceneCamera);
+
         DefaultFurnitureInit();
     }
 

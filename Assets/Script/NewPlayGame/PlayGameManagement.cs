@@ -1,6 +1,8 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 
 public class PlayGameManagement : MonoBehaviour
@@ -17,6 +19,7 @@ public class PlayGameManagement : MonoBehaviour
 
     public List<BlockDataConfigNew> blockDataConfig;         
     public GameObject blockPrefab;
+    public GameObject blockEffect;
 
     [Header("猫猫需求")]
     public int allMiddleBlockNum = 0;
@@ -57,6 +60,8 @@ public class PlayGameManagement : MonoBehaviour
 
     public List<BlockPropData> currentMysteryBox;
 
+    public GameObject blockAnimPrefab;
+    public List<Transform> blockAnimPos;
     private void Awake()
     {
         if(Instance == null)
@@ -65,7 +70,7 @@ public class PlayGameManagement : MonoBehaviour
         //获取方块列表
         GetBlockTypeList();
 
-        Application.targetFrameRate = 60;
+        //Application.targetFrameRate = 60;
 
         if (UIManagement.Instance._isChallengBool)
         {
@@ -102,6 +107,21 @@ public class PlayGameManagement : MonoBehaviour
         //    catData_Temp.UpdateTMP();
     }
 
+    //生成移动动画
+    public void CreateMoveAnim(BlockDataConfigNew _blockProp, bool middle,Transform trans)
+    {
+        blockAnimPrefab = Instantiate(dropZonePrefab, trans);
+        blockAnimPrefab.GetComponent<DropZone>().DropZoneInitNew(_blockProp, middle);
+        blockAnimPrefab.transform.DOMove(blockAnimPos[dropZoneData.Count].position, 0.1f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            Destroy(blockAnimPrefab);
+            CreateDropZoneObject(_blockProp, middle);
+            Destroy(trans.gameObject);
+        });
+    }
+
+
+
     //检查物品类型
     public void CheckForMatches()
     {
@@ -123,7 +143,6 @@ public class PlayGameManagement : MonoBehaviour
             //CreateParticle(matchedCards);
             // 销毁卡牌或执行消除动画
             StartCoroutine(DestroyObject(matchedCards));
-
             // 可以在这里添加得分逻辑等
             //Debug.Log($"消除了3个{group.Key}类型的卡牌");
             //Invoke("DetermineDropAreaFull", 0.5f);
@@ -183,12 +202,11 @@ public class PlayGameManagement : MonoBehaviour
     //0.3秒后销毁
     IEnumerator DestroyObject(List<GameObject> matchedCards)
     {
-
         yield return new WaitForSeconds(0.3f);
         foreach (var card in matchedCards)
         {
             dropZoneData.Remove(card);
-            Destroy(card.gameObject);
+            card.GetComponent<DropZone>().PlayEffect();
         }
         Invoke("DetermineDropAreaFull", 0.5f);
     }
@@ -215,6 +233,27 @@ public class PlayGameManagement : MonoBehaviour
            
         }
 
+    }
+
+    //生成特效
+    IEnumerator BlockEffectPlay(List<GameObject> matchedCards)
+    {
+        yield return new WaitForSeconds(0.3f);
+        foreach (var card in matchedCards)
+        {
+            GameObject GO = Instantiate(blockEffect, card.transform);
+            StartCoroutine(DestroyEffect(GO));
+        }
+
+        //1秒销毁
+
+    }
+
+    //销毁特效
+    IEnumerator DestroyEffect(GameObject effect)
+    {
+        yield return new WaitForSeconds(1);
+        Destroy(effect);
     }
 
     #endregion
@@ -331,7 +370,7 @@ public class PlayGameManagement : MonoBehaviour
             if (timer >= speedSurvivalTime)
             {
                 keepTime = false;
-                conveyorSpeed = 0.2f;
+                conveyorSpeed = GameManager.Instance.currentGameLevel.conveyorSpeed;
                 timer = 0;
                 Debug.LogError("加速结束 当前速度 0.3");
             }

@@ -24,9 +24,6 @@ public class GameOverPlane : MonoBehaviour
     [SerializeField]
     private GameObject openGift;                         
 
-    [SerializeField]
-    private List<Sprite> openGift_IMG;              //打开礼物的Sprite 0 = 60 , 1 = 80 , 2 = 100 
-
     [SerializeField]    
     private Button resChallenge_BTN;               //重玩按钮
     [SerializeField]
@@ -106,7 +103,7 @@ public class GameOverPlane : MonoBehaviour
         if (progress == 1)
         {
             //打开 奖励领取
-            scheduleVlue.DOFillAmount(1, 0.3f).SetEase(Ease.Linear).OnComplete(() =>
+            scheduleVlue.DOFillAmount(1, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
             {
                 UIManagement.Instance.OpenAwardPlane();
             });
@@ -117,14 +114,6 @@ public class GameOverPlane : MonoBehaviour
         }
     }
 
-    //进度条 
-    public void SetProgress(float value)
-    {
-        scheduleVlue.DOFillAmount(value, 0.3f).SetEase(Ease.Linear).OnComplete(() =>
-        {
-            UIManagement.Instance.OpenAwardPlane();
-        });
-    }
 
     //重新挑战
     public void RecChanllengeClick()
@@ -159,6 +148,7 @@ public class GameOverPlane : MonoBehaviour
         UIManagement.Instance.loadingPlane.LoadUIScene();
     }
 
+    //
     public void NextLevelClick()
     {
         MusicManagement.instance.ClickPlaySFX();

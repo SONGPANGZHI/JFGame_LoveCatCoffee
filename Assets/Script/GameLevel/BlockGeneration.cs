@@ -10,7 +10,7 @@ public class BlockGeneration : MonoBehaviour
     {
         for (int i = 0; i < prefabTrans.Count; i++)
         {
-            int elementCount = UnityEngine.Random.Range(1,4);
+            int elementCount = Random.Range(1,4);
             GenerateBlock(i, elementCount);
         }
 
@@ -22,7 +22,7 @@ public class BlockGeneration : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            int randomBlockType = UnityEngine.Random.Range(0,PlayGameManagement.Instance.blockTypeNum);
+            int randomBlockType = Random.Range(0,PlayGameManagement.Instance.blockTypeNum);
             GameObject element = Instantiate(PlayGameManagement.Instance.blockPrefab, prefabTrans[transIndex]);
             element.transform.localPosition = new Vector2(0, i * 15);
             element.GetComponent<BlockPropData>().ConveyorBlockInit(PlayGameManagement.Instance.blockTypes[randomBlockType]);

@@ -3,34 +3,31 @@ using UnityEngine.UI;
 
 public class DropZone : MonoBehaviour
 {
-    #region 新版玩法
-
     public Image iconSprite;
     public BlockPropTypeNew blockPropTypeNew;
     public bool isMiddle = false;
     public BlockDataConfigNew blockPropDataNew;
+    public GameObject effect;
 
     public void DropZoneInitNew(BlockDataConfigNew _blockPropData,bool middle)
     {
+        effect.SetActive(false);
         blockPropDataNew = _blockPropData;
         isMiddle = middle;
         iconSprite.sprite = blockPropDataNew.DorpZoneSprite;
         blockPropTypeNew = blockPropDataNew.blockPropType;
     }
 
-    #endregion
-
-    #region 旧版玩法
-
-    public BlockPropType blockPropType;
-    public BlockDataConfig blockPropData;
-    public void DropZoneInit(BlockDataConfig _blockPropData)
+    //播放特效 然后销毁
+    public void PlayEffect()
     {
-        blockPropData = _blockPropData;
-        iconSprite.sprite = blockPropData.DorpZoneSprite;
-        blockPropType = blockPropData.blockPropType;
+        effect.SetActive(true);
+        iconSprite.gameObject.SetActive(false);
+        Invoke("DestroyObject",1);
     }
-    #endregion
 
-
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
+    }
 }

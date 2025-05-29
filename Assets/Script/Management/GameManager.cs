@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -32,7 +34,9 @@ public class GameManager : MonoBehaviour
     public GameLevelInfo currentGameLevel;
 
     public GameSaveData CurrentData;
-    
+
+    public bool _hasLoaded = false;
+
     #region  游戏保存KEY
 
     public static string NumberLevelChallengesKey = "NumberLevelChallengesKEY";         //关卡挑战次数
@@ -52,15 +56,24 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else if (this != Instance)
+        if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
+
+        if (!_hasLoaded)
+        {
+            //加载loadConfig
+            StartLoadConfigAsset();
+            LoadFurnitureItemJson();
+            LoadAwardFurniturePoolJson();
+            _hasLoaded = false;
+        }
+       
 
         //初始化本地数据
         InitializeData();
@@ -68,12 +81,19 @@ public class GameManager : MonoBehaviour
         //检查关卡
         CheckSaveData();
 
+        if (!_hasLoaded)
+        {
+            _hasLoaded = true;
+            //初始化家具
+            FirstLoadAllFurniture();
+        }
+        
     }
 
     private void Start()
     {
-        //初始化家具
-        FirstLoadAllFurniture();
+        ////初始化家具
+        //FirstLoadAllFurniture();
         //获得当前 关卡
         GetGameLevelData();
 
@@ -145,14 +165,14 @@ public class GameManager : MonoBehaviour
     public GameLevelInfo GetGameLevelData()
     {
         currentGameLevel = gameLevelDic[PlayerPrefs.GetInt(CurrentGameLevelKey)];
-        Debug.LogError("当前关卡" + currentGameLevel.LevelID);
+        Debug.Log("当前关卡" + currentGameLevel.LevelID);
         return currentGameLevel;
     }
 
     public GameLevelInfo GetGameLevelData_TEMP(int ID)
     {
         currentGameLevel = gameLevelDic[ID];
-        Debug.LogError("当前关卡" + currentGameLevel.LevelID);
+        Debug.Log("当前关卡" + currentGameLevel.LevelID);
         return currentGameLevel;
     }
 
@@ -285,8 +305,89 @@ public class GameManager : MonoBehaviour
     }
 
 
-    
+
+    #region 关卡数据加载
+
+    public void StartLoadConfigAsset()
+    {
+        string localUrl = "Json/GameLevelData";
+        ParsingContent(Resources.Load<TextAsset>(localUrl).text);
+    }
+
+    void ParsingContent(string _data)
+    {
+        var rootData = JsonConvert.DeserializeObject<List<object>>(_data);
+
+        for (int i = 0; i < rootData.Count; i++)
+        {
+            GameLevelInfo gameLevelInfo = JsonConvert.DeserializeObject<GameLevelInfo>(rootData[i].ToString());
+            gameLevelDic.Add(gameLevelInfo.LevelID, gameLevelInfo);
+        }
+        Debug.Log("关卡数据加载成功---");
+
+    }
+
+    #endregion
+
+    #region 家具奖励池
+
+    //读取奖励池
+    public void LoadFurnitureItemJson()
+    {
+        string localUrl = "Json/FurnitureData";
+        StartLoadFurnitureItam(Resources.Load<TextAsset>(localUrl).text);
+    }
+
+
+    public void StartLoadFurnitureItam(string _data)
+    {
+        var rootData = JsonConvert.DeserializeObject<List<object>>(_data);
+
+        for (int i = 0; i < rootData.Count; i++)
+        {
+            FurnitureItem furnitureInfo = JsonConvert.DeserializeObject<FurnitureItem>(rootData[i].ToString());
+            AllFurnitureData.Add(furnitureInfo);
+        }
+
+        Debug.Log("家具奖励池加载成功---");
+    }
+
+    #endregion
+
+    #region 读取位置奖励池
+    //读取奖励池
+    public void LoadAwardFurniturePoolJson()
+    {
+        string localUrl = "Json/FurnitureReward";
+        StartLoadAwardFurniturePool(Resources.Load<TextAsset>(localUrl).text);
+    }
+
+    public void StartLoadAwardFurniturePool(string _data)
+    {
+        var rootData = JsonConvert.DeserializeObject<List<object>>(_data);
+
+        for (int i = 0; i < rootData.Count; i++)
+        {
+            FurnitureReward furnitureInfo = JsonConvert.DeserializeObject<FurnitureReward>(rootData[i].ToString());
+            awardFurniturePool.Add(furnitureInfo.name);
+        }
+
+        Debug.Log("奖励池加载成功---");
+    }
+
+
+
+    #endregion
+
+
 }
+
+
+
+
+
+
+#region 工具
 
 public static class ListExtensions
 {
@@ -343,6 +444,9 @@ public static class ListExtensions
         return newSprite;
     }
 }
+
+
+#endregion
 
 
 

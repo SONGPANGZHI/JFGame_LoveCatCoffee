@@ -1,7 +1,6 @@
 ﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Analytics;
 using UnityEngine.UI;
 
 public class MainPlane : MonoBehaviour
@@ -30,9 +29,7 @@ public class MainPlane : MonoBehaviour
     [SerializeField]
     private Transform bottom_OBJ;
 
-    public GameObject defualtBG_IMG;
-
-    public Image saveImage_IMG;
+    public GameObject dressBG;                      //装扮背景
 
     public GameObject redPoint;
 
@@ -50,7 +47,6 @@ public class MainPlane : MonoBehaviour
     //界面初始化
     public void InitPlane()
     {
-        OpenSaveImage();
         bottom_OBJ.DOMoveY(300,0.3f);
         currentLevel_TMP.text = "当前关卡：" + (PlayerPrefs.GetInt(GameManager.CurrentGameLevelKey));
         if (PlayerPrefs.HasKey(UIManagement.redPointKey))
@@ -58,6 +54,7 @@ public class MainPlane : MonoBehaviour
         else
             CloseRedPonit();
 
+        dressBG.SetActive(true);
         DetermineOpenDress();
     }
 
@@ -107,8 +104,11 @@ public class MainPlane : MonoBehaviour
         //打开装扮界面
         UIManagement.Instance._isChallengBool = false;
         MusicManagement.instance.ClickPlaySFX();
-        UIManagement.Instance.sceneName = "DressUp";
-        UIManagement.Instance.OpenLoadingPlane();
+        UIManagement.Instance.OpenFurnitureUpgradePlane();
+        dressBG.SetActive(false);
+        ClosePlane();
+        UIManagement.Instance.CloseMainPlane();
+
     }
 
     //设置界面
@@ -134,29 +134,4 @@ public class MainPlane : MonoBehaviour
         redPoint.SetActive(false);
     }
 
-    //判断是否有本地保存图片
-    public void OpenSaveImage()
-    {
-        if (PlayerPrefs.HasKey(GameManager.SaveImageKey))
-        {
-            //本地存在图片
-            Texture2D tex = BaseTools.Instance.GetCurrentPhoto();
-            defualtBG_IMG.SetActive(false);
-            Sprite sprite = Sprite.Create(
-                tex,
-                new Rect(0, 0, tex.width, tex.height),
-                new Vector2(0.5f, 0.5f)
-            );
-
-            saveImage_IMG.sprite = sprite;
-            saveImage_IMG.gameObject.SetActive(true);
-        }
-        else
-        {
-            //使用默认的
-            defualtBG_IMG.SetActive(true);
-            saveImage_IMG.gameObject.SetActive(false);
-        }
-
-    }
 }

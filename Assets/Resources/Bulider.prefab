@@ -107,6 +107,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &89336047
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,6 +215,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &206649448
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +323,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &213181315
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +431,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &225122241
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +539,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &358483013
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,6 +647,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &431663475
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,6 +755,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &540515344
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,6 +863,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &593516890
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,6 +971,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &604649896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,6 +1079,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &952675205
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,6 +1187,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &956706639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,6 +1295,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1007796863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,6 +1403,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1010818856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,6 +1511,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1115508080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1605,6 +1619,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1141807710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,6 +1727,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1250445083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,6 +1835,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1259441854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1926,6 +1943,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1279654373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2033,6 +2051,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1283111367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,6 +2159,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1394569390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2247,6 +2267,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1465536345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,6 +2375,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1514538660
 GameObject:
   m_ObjectHideFlags: 0
@@ -2461,6 +2483,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1531998329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2568,6 +2591,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1642525936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,6 +2699,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1682136850
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,6 +2807,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1691293532
 GameObject:
   m_ObjectHideFlags: 0
@@ -2889,6 +2915,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1815879031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,6 +3023,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1879179626
 GameObject:
   m_ObjectHideFlags: 0
@@ -3103,6 +3131,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1903198718
 GameObject:
   m_ObjectHideFlags: 0
@@ -3210,6 +3239,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1913933119
 GameObject:
   m_ObjectHideFlags: 0
@@ -3317,6 +3347,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1922168086
 GameObject:
   m_ObjectHideFlags: 0
@@ -3424,6 +3455,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1974948552
 GameObject:
   m_ObjectHideFlags: 0
@@ -3531,6 +3563,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &2088847080
 GameObject:
   m_ObjectHideFlags: 0
@@ -3702,6 +3735,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &83556463063394677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3809,6 +3843,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &333031142373714218
 GameObject:
   m_ObjectHideFlags: 0
@@ -3916,6 +3951,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &676833002062701910
 GameObject:
   m_ObjectHideFlags: 0
@@ -4023,6 +4059,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &709205440215582611
 GameObject:
   m_ObjectHideFlags: 0
@@ -4130,6 +4167,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &730294028606180432
 GameObject:
   m_ObjectHideFlags: 0
@@ -4237,6 +4275,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &958527539923444842
 GameObject:
   m_ObjectHideFlags: 0
@@ -4344,6 +4383,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &989529587194263747
 GameObject:
   m_ObjectHideFlags: 0
@@ -4451,6 +4491,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1314173030112201969
 GameObject:
   m_ObjectHideFlags: 0
@@ -4558,6 +4599,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1433843098307549729
 GameObject:
   m_ObjectHideFlags: 0
@@ -4665,6 +4707,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1477286853674830528
 GameObject:
   m_ObjectHideFlags: 0
@@ -4772,6 +4815,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &1651634393678249441
 GameObject:
   m_ObjectHideFlags: 0
@@ -4879,6 +4923,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &2011317111523201183
 GameObject:
   m_ObjectHideFlags: 0
@@ -4986,6 +5031,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &2188120172634992196
 GameObject:
   m_ObjectHideFlags: 0
@@ -5093,6 +5139,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &2207643604066537777
 GameObject:
   m_ObjectHideFlags: 0
@@ -5200,6 +5247,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &2224270771115203435
 GameObject:
   m_ObjectHideFlags: 0
@@ -5307,6 +5355,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &2315195141665881461
 GameObject:
   m_ObjectHideFlags: 0
@@ -5414,6 +5463,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &2344003507829727783
 GameObject:
   m_ObjectHideFlags: 0
@@ -5521,6 +5571,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &2412205153165648922
 GameObject:
   m_ObjectHideFlags: 0
@@ -5628,6 +5679,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &2720627631964859495
 GameObject:
   m_ObjectHideFlags: 0
@@ -5735,6 +5787,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &2916615991034550124
 GameObject:
   m_ObjectHideFlags: 0
@@ -5842,6 +5895,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &3008272725687107712
 GameObject:
   m_ObjectHideFlags: 0
@@ -5949,6 +6003,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &3296808019046492840
 GameObject:
   m_ObjectHideFlags: 0
@@ -6056,6 +6111,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &3580088565382706093
 GameObject:
   m_ObjectHideFlags: 0
@@ -6163,6 +6219,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &3709502628538292787
 GameObject:
   m_ObjectHideFlags: 0
@@ -6270,6 +6327,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &3742580908081706236
 GameObject:
   m_ObjectHideFlags: 0
@@ -6377,6 +6435,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &3791801791362371580
 GameObject:
   m_ObjectHideFlags: 0
@@ -6484,6 +6543,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &3875196536452572432
 GameObject:
   m_ObjectHideFlags: 0
@@ -6591,6 +6651,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &3907893133095771581
 GameObject:
   m_ObjectHideFlags: 0
@@ -6698,6 +6759,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &3999077076046756834
 GameObject:
   m_ObjectHideFlags: 0
@@ -6805,6 +6867,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &3999683741393154842
 GameObject:
   m_ObjectHideFlags: 0
@@ -6912,6 +6975,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &4193700817128981773
 GameObject:
   m_ObjectHideFlags: 0
@@ -7019,6 +7083,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &4463474838257340999
 GameObject:
   m_ObjectHideFlags: 0
@@ -7126,6 +7191,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &4590181121206746225
 GameObject:
   m_ObjectHideFlags: 0
@@ -7233,6 +7299,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &4711883108038539273
 GameObject:
   m_ObjectHideFlags: 0
@@ -7340,6 +7407,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &4924488092182709546
 GameObject:
   m_ObjectHideFlags: 0
@@ -7447,6 +7515,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &4972744602264846133
 GameObject:
   m_ObjectHideFlags: 0
@@ -7554,6 +7623,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &4995634768677382042
 GameObject:
   m_ObjectHideFlags: 0
@@ -7661,6 +7731,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &5102674897905682872
 GameObject:
   m_ObjectHideFlags: 0
@@ -7768,6 +7839,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &5131837325930103979
 GameObject:
   m_ObjectHideFlags: 0
@@ -7875,6 +7947,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &5153687089907012372
 GameObject:
   m_ObjectHideFlags: 0
@@ -7982,6 +8055,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &5308710659045406747
 GameObject:
   m_ObjectHideFlags: 0
@@ -8089,6 +8163,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &5334491425329563781
 GameObject:
   m_ObjectHideFlags: 0
@@ -8196,6 +8271,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &5354948579499381536
 GameObject:
   m_ObjectHideFlags: 0
@@ -8303,6 +8379,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &5436841957123759214
 GameObject:
   m_ObjectHideFlags: 0
@@ -8410,6 +8487,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &5571811535457332254
 GameObject:
   m_ObjectHideFlags: 0
@@ -8517,6 +8595,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &5771829970697359402
 GameObject:
   m_ObjectHideFlags: 0
@@ -8624,6 +8703,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &5864834017053671718
 GameObject:
   m_ObjectHideFlags: 0
@@ -8731,6 +8811,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &5946126358553345570
 GameObject:
   m_ObjectHideFlags: 0
@@ -8838,6 +8919,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &6052439823484672099
 GameObject:
   m_ObjectHideFlags: 0
@@ -8945,6 +9027,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &6330456224756996058
 GameObject:
   m_ObjectHideFlags: 0
@@ -9052,6 +9135,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &6405181034587969270
 GameObject:
   m_ObjectHideFlags: 0
@@ -9217,6 +9301,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &6405181034692998194
 GameObject:
   m_ObjectHideFlags: 0
@@ -9440,6 +9525,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &6405181035605461508
 GameObject:
   m_ObjectHideFlags: 0
@@ -9611,6 +9697,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &6434364132203517327
 GameObject:
   m_ObjectHideFlags: 0
@@ -9718,6 +9805,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &6434607622966570548
 GameObject:
   m_ObjectHideFlags: 0
@@ -9825,6 +9913,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &6441108983730464549
 GameObject:
   m_ObjectHideFlags: 0
@@ -9932,6 +10021,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &6540210029153298651
 GameObject:
   m_ObjectHideFlags: 0
@@ -10039,6 +10129,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &6774764150430893335
 GameObject:
   m_ObjectHideFlags: 0
@@ -10146,6 +10237,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &6778241246109994608
 GameObject:
   m_ObjectHideFlags: 0
@@ -10253,6 +10345,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &6819461246070574586
 GameObject:
   m_ObjectHideFlags: 0
@@ -10360,6 +10453,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &6975134069454294467
 GameObject:
   m_ObjectHideFlags: 0
@@ -10467,6 +10561,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7005413362456675421
 GameObject:
   m_ObjectHideFlags: 0
@@ -10574,6 +10669,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7054034605005526296
 GameObject:
   m_ObjectHideFlags: 0
@@ -10681,6 +10777,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7178246637686050421
 GameObject:
   m_ObjectHideFlags: 0
@@ -10788,6 +10885,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7288899451387281240
 GameObject:
   m_ObjectHideFlags: 0
@@ -10895,6 +10993,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7302068216315825138
 GameObject:
   m_ObjectHideFlags: 0
@@ -11002,6 +11101,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7316852458225543954
 GameObject:
   m_ObjectHideFlags: 0
@@ -11109,6 +11209,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7378598919934844070
 GameObject:
   m_ObjectHideFlags: 0
@@ -11216,6 +11317,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7499545542258618815
 GameObject:
   m_ObjectHideFlags: 0
@@ -11323,6 +11425,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7586959298742769910
 GameObject:
   m_ObjectHideFlags: 0
@@ -11430,6 +11533,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7656721504443900441
 GameObject:
   m_ObjectHideFlags: 0
@@ -11537,6 +11641,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7675089627295739761
 GameObject:
   m_ObjectHideFlags: 0
@@ -11644,6 +11749,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7720629562915726048
 GameObject:
   m_ObjectHideFlags: 0
@@ -11751,6 +11857,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7831451759665683441
 GameObject:
   m_ObjectHideFlags: 0
@@ -11858,6 +11965,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &7977409046788786989
 GameObject:
   m_ObjectHideFlags: 0
@@ -11965,6 +12073,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &8900296801036670858
 GameObject:
   m_ObjectHideFlags: 0
@@ -12072,6 +12181,7 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}
 --- !u!1 &9197605340554798606
 GameObject:
   m_ObjectHideFlags: 0
@@ -12179,3 +12289,4 @@ MonoBehaviour:
     OrderLayer: 0
     CameraSize: 0
     NoUpgradeFurniture: 0
+  shaderOutlineMat: {fileID: 0}

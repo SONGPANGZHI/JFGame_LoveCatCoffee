@@ -65,7 +65,7 @@ public class LoadingPlane : MonoBehaviour
 
     public void LoadUISceneFade()
     {
-        SceneManager.LoadSceneAsync("UI").completed += operation => {
+        SceneManager.LoadSceneAsync("DressUp").completed += operation => {
 
             valueBG.DOFade(0, 0.5f).SetEase(Ease.Linear);
             load_TMP.DOFade(0, 0.5f).SetEase(Ease.Linear);

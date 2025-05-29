@@ -16,6 +16,9 @@ public class FurnitureUpgrade : MonoBehaviour
     public Button saveBTN;
     public Button backBTN;
 
+    public Transform top_Obj;
+    public Transform bottom_Obj;
+
     public static List<FurnitureUseGrid> furnitureUseGridList = new List<FurnitureUseGrid>();
 
     public static List<FurnitureItem> allFurniture = new List<FurnitureItem>();
@@ -29,7 +32,8 @@ public class FurnitureUpgrade : MonoBehaviour
     //初始化
     public void FurnitureInit()
     {
-        transform.DOScale(new Vector3(1, 1, 1), 0.3F);
+        top_Obj.DOLocalMoveY(800, 0.3f);
+        bottom_Obj.DOMoveY(250, 0.3f);
         furnitureUseGridList.Clear();
         allFurniture.Clear();
         if (!PlayerPrefs.HasKey(FurnitureManagement.dialogueNoveicKey) /*&& GameManager.Instance.CurrentData.collectionFurnitureName.Count == 0*/)
@@ -116,33 +120,25 @@ public class FurnitureUpgrade : MonoBehaviour
         BaseTools.Instance.RetureCameraDefualtPosition();
         FurnitureManagement.instance.SaveFurnitureDefualtMaterial();
         ClearGridTrans();
-        if (!PlayerPrefs.HasKey(GameManager.SaveImageKey))
-        {
-            PlayerPrefs.SetString(GameManager.SaveImageKey, "SaveLoadImageKEY");
-        }
-        Invoke("Photograph", 0.5F);
-    }
-
-    public void Photograph()
-    {
-        BaseTools.Instance.CapturePhoto();
+       
     }
 
     //返回
     public void BackClick()
     {
         MusicManagement.instance.ClickPlaySFX();
-        transform.DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
+        top_Obj.DOLocalMoveY(1200, 0.3f);
+        bottom_Obj.DOMoveY(-300, 0.3f).OnComplete(() =>
         {
             furnitureObj.SetActive(false);
             newTitleObj.SetActive(false);
             ClearGridTrans();
             GameManager.Instance.currentFurnitureData.Clear();
             this.gameObject.SetActive(false);
+            UIManagement.Instance.OpenMainPlane();
         });
-        UIManagement.Instance.loadingPlane.gameObject.SetActive(true);
-        UIManagement.Instance.CloseFurnitureUpgradePlane();
-        UIManagement.Instance.loadingPlane.LoadUIScene();
+
+        
     }
 
     //红点
@@ -153,11 +149,8 @@ public class FurnitureUpgrade : MonoBehaviour
             PlayerPrefs.DeleteKey(UIManagement.redPointKey);
     }
 
-    //public void CloseFurniturePlane()
-    //{ 
-
-    //}
-
+  
+   
     public void ClearGridTrans()
     {
         for (int i = 0; i < gridTrans.childCount; i++)

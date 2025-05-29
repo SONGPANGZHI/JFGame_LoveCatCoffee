@@ -1,11 +1,7 @@
 ﻿using DG.Tweening;
 using System;
-using System.Collections;
-using System.IO;
 using System.Net;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BaseTools : MonoBehaviour
 {
@@ -14,7 +10,6 @@ public class BaseTools : MonoBehaviour
     private Vector3 defualtCameraPos;       //默认位置
     private int width;
     private int height;
-    private Texture2D _currentPhoto; // 只保留当前照片的内存引用
     private float defualtSize;
     private Camera MainSceneCamera;
     void Awake()
@@ -74,103 +69,7 @@ public class BaseTools : MonoBehaviour
 
     #endregion
 
-    #region 拍照保存
-
-    //保存 保留照片 替换主界面图
-    public void CapturePhoto()
-    {
-        string savePath = Path.Combine(Application.persistentDataPath, "LatestPhoto.png");
-        StartCoroutine(CaptureAndSave(savePath));
-    }
-
-    private IEnumerator CaptureAndSave(string filePath)
-    {
-        yield return new WaitForEndOfFrame();
-
-        // 销毁旧纹理（避免内存泄漏）
-        if (_currentPhoto != null)
-        {
-            Destroy(_currentPhoto);
-        }
-
-        // 创建新纹理
-        RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
-        MainSceneCamera.targetTexture = rt;
-        _currentPhoto = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
-
-        MainSceneCamera.Render();
-        RenderTexture.active = rt;
-        _currentPhoto.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
-        _currentPhoto.Apply();
-
-        // 清理RenderTexture
-        MainSceneCamera.targetTexture = null;
-        RenderTexture.active = null;
-        Destroy(rt);
-
-        // 保存到文件（覆盖旧文件）
-        File.WriteAllBytes(filePath, _currentPhoto.EncodeToPNG());
-        Debug.Log($"照片已更新: {filePath}");
-    }
-
-    // 获取当前照片的Texture2D（用于实时显示）
-    public Texture2D GetCurrentPhoto()
-    {
-        // 确保路径有效
-        if (string.IsNullOrEmpty("LatestPhoto.png"))
-        {
-            Debug.LogWarning("照片文件名为空！");
-            return null;
-        }
-
-        string filePath = Path.Combine(Application.persistentDataPath, "LatestPhoto.png");
-
-        // 检查文件是否存在
-        if (!File.Exists(filePath))
-        {
-            Debug.Log($"未找到照片文件，路径: {filePath}");
-            return CreateDefaultTexture(); // 返回默认纹理而不是null
-        }
-
-        try
-        {
-            byte[] fileData = File.ReadAllBytes(filePath);
-            if (fileData == null || fileData.Length == 0)
-            {
-                Debug.LogWarning("照片文件为空或损坏");
-                return CreateDefaultTexture();
-            }
-
-            Texture2D loadedPhoto = new Texture2D(2, 2);
-            if (!loadedPhoto.LoadImage(fileData)) // 加载失败会返回false
-            {
-                Debug.LogWarning("照片加载失败，可能是不支持的格式");
-                Destroy(loadedPhoto);
-                return CreateDefaultTexture();
-            }
-
-            return loadedPhoto;
-        }
-        catch (Exception e)
-        {
-            Debug.LogError($"加载照片时出错: {e.Message}");
-            return CreateDefaultTexture();
-        }
-    }
-
-    // 创建默认纹理（替代null）
-    private Texture2D CreateDefaultTexture()
-    {
-        Texture2D defaultTex = new Texture2D(1, 1);
-        defaultTex.SetPixel(0, 0, Color.gray); // 灰色默认纹理
-        defaultTex.Apply();
-        return defaultTex;
-    }
-
-
-    #endregion
-
-    #region 
+  
 
     //三消界面部分UI适配
     public void UIAdaptive(RectTransform _uiTrans, RectTransform _middle)
@@ -194,8 +93,6 @@ public class BaseTools : MonoBehaviour
         }
     }
 
-
-    #endregion
 
   
     public void GeneralTips(string _tipsContent)
@@ -293,6 +190,100 @@ public class BaseTools : MonoBehaviour
         return cameraSize;
     }
 
-   
+    #region 拍照保存
+
+    //保存 保留照片 替换主界面图
+    //public void CapturePhoto()
+    //{
+    //    string savePath = Path.Combine(Application.persistentDataPath, "LatestPhoto.png");
+    //    StartCoroutine(CaptureAndSave(savePath));
+    //}
+
+    //private IEnumerator CaptureAndSave(string filePath)
+    //{
+    //    yield return new WaitForEndOfFrame();
+
+    //    // 销毁旧纹理（避免内存泄漏）
+    //    if (_currentPhoto != null)
+    //    {
+    //        Destroy(_currentPhoto);
+    //    }
+
+    //    // 创建新纹理
+    //    RenderTexture rt = new RenderTexture(Screen.width, Screen.height, 24);
+    //    MainSceneCamera.targetTexture = rt;
+    //    _currentPhoto = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
+
+    //    MainSceneCamera.Render();
+    //    RenderTexture.active = rt;
+    //    _currentPhoto.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
+    //    _currentPhoto.Apply();
+
+    //    // 清理RenderTexture
+    //    MainSceneCamera.targetTexture = null;
+    //    RenderTexture.active = null;
+    //    Destroy(rt);
+
+    //    // 保存到文件（覆盖旧文件）
+    //    File.WriteAllBytes(filePath, _currentPhoto.EncodeToPNG());
+    //    Debug.Log($"照片已更新: {filePath}");
+    //}
+
+    //// 获取当前照片的Texture2D（用于实时显示）
+    //public Texture2D GetCurrentPhoto()
+    //{
+    //    // 确保路径有效
+    //    if (string.IsNullOrEmpty("LatestPhoto.png"))
+    //    {
+    //        Debug.LogWarning("照片文件名为空！");
+    //        return null;
+    //    }
+
+    //    string filePath = Path.Combine(Application.persistentDataPath, "LatestPhoto.png");
+
+    //    // 检查文件是否存在
+    //    if (!File.Exists(filePath))
+    //    {
+    //        Debug.Log($"未找到照片文件，路径: {filePath}");
+    //        return CreateDefaultTexture(); // 返回默认纹理而不是null
+    //    }
+
+    //    try
+    //    {
+    //        byte[] fileData = File.ReadAllBytes(filePath);
+    //        if (fileData == null || fileData.Length == 0)
+    //        {
+    //            Debug.LogWarning("照片文件为空或损坏");
+    //            return CreateDefaultTexture();
+    //        }
+
+    //        Texture2D loadedPhoto = new Texture2D(2, 2);
+    //        if (!loadedPhoto.LoadImage(fileData)) // 加载失败会返回false
+    //        {
+    //            Debug.LogWarning("照片加载失败，可能是不支持的格式");
+    //            Destroy(loadedPhoto);
+    //            return CreateDefaultTexture();
+    //        }
+
+    //        return loadedPhoto;
+    //    }
+    //    catch (Exception e)
+    //    {
+    //        Debug.LogError($"加载照片时出错: {e.Message}");
+    //        return CreateDefaultTexture();
+    //    }
+    //}
+
+    //// 创建默认纹理（替代null）
+    //private Texture2D CreateDefaultTexture()
+    //{
+    //    Texture2D defaultTex = new Texture2D(1, 1);
+    //    defaultTex.SetPixel(0, 0, Color.gray); // 灰色默认纹理
+    //    defaultTex.Apply();
+    //    return defaultTex;
+    //}
+
+
+    #endregion
 
 }

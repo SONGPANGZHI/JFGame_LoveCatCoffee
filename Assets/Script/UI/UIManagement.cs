@@ -52,6 +52,12 @@ public class UIManagement : MonoBehaviour
         //CloseGame();
     }
 
+    //关闭主界面
+    public void CloseMainPlane()
+    {
+        mainPlane.gameObject.SetActive(false);
+    }
+
     //打开游戏界面
     public void OpenGamePlane()
     {
