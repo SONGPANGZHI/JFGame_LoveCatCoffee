@@ -10,6 +10,7 @@ public class MusicManagement : MonoBehaviour
     public AudioClip clip_SFX;
     public AudioClip clip_BGM;
     public AudioClip dropZone_SFX;
+    public AudioClip destruction_SFX;
     private void Awake()
     {
         if(instance==null)
@@ -49,12 +50,23 @@ public class MusicManagement : MonoBehaviour
         source_BGM.Stop();
     }
 
+    //放置音效
     public void PlayDropZoneSFX()
     {
         //判断 是否关闭音效
         if (PlayerPrefs.GetInt(GameManager.soundSetKey) == 0)
         {
             source_SFX.clip = dropZone_SFX;
+            source_SFX.Play();
+        }
+    }
+
+    public void PlayDestorySFX()
+    {
+        //判断 是否关闭音效
+        if (PlayerPrefs.GetInt(GameManager.soundSetKey) == 0)
+        {
+            source_SFX.clip = destruction_SFX;
             source_SFX.Play();
         }
     }

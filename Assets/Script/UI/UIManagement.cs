@@ -14,8 +14,6 @@ public class UIManagement : MonoBehaviour
     private CommonPlane commonPlane;
 
     public GameOverPlane gameOverPlane;
-    [SerializeField]
-    private AwardPlane awardPlane;
 
     public FurnitureUpgrade furnitureUpgradePlane;
     public LoadingPlane loadingPlane;
@@ -108,13 +106,7 @@ public class UIManagement : MonoBehaviour
         }
     }
 
-    //打开奖励界面
-    public void OpenAwardPlane()
-    {
-        awardPlane.gameObject.SetActive(true);
-        awardPlane.AwardPlaneInit();
-    }
-
+   
     //打开加载场景
     public void OpenLoadingPlane()
     {

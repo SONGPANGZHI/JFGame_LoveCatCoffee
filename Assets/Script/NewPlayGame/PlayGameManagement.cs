@@ -202,6 +202,7 @@ public class PlayGameManagement : MonoBehaviour
             dropZoneData.Remove(card);
             card.GetComponent<DropZone>().PlayEffect();
         }
+        MusicManagement.instance.PlayDestorySFX();
         Invoke("DetermineDropAreaFull", 0.5f);
     }
 

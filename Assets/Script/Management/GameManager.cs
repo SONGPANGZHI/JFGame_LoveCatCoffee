@@ -230,9 +230,9 @@ public class GameManager : MonoBehaviour
     //保存挑战次数
     public void SavaChallengTime()
     {
-        int saveID = PlayerPrefs.GetInt(NumberLevelChallengesKey);
-        PlayerPrefs.SetInt(NumberLevelChallengesKey, saveID + 1);
-        NumberLevelChallenges = PlayerPrefs.GetInt(NumberLevelChallengesKey);
+        //int saveID = PlayerPrefs.GetInt(NumberLevelChallengesKey);
+        //PlayerPrefs.SetInt(NumberLevelChallengesKey, saveID + 1);
+        //NumberLevelChallenges = PlayerPrefs.GetInt(NumberLevelChallengesKey);
     }
 
     #endregion

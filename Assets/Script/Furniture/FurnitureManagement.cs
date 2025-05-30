@@ -53,7 +53,7 @@ public class FurnitureManagement : MonoBehaviour
         GO.GetComponent<FurnitureInfo>().Init(GetFurnitureItem(spriteKey));
         GO.name = spriteKey;
         sceneFurniture.Add(GO);
-        GO.transform.DOScale(1.2f, 0.3f).SetEase(Ease.OutElastic).OnComplete(() => 
+        GO.transform.DOScale(1.2f, 0.3f).SetEase(Ease.Linear).OnComplete(() => 
         {
             GO.transform.localScale = Vector3.one; // 动画完成后恢复原始大小
         });
