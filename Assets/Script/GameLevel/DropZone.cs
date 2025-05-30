@@ -4,18 +4,18 @@ using UnityEngine.UI;
 public class DropZone : MonoBehaviour
 {
     public Image iconSprite;
-    public BlockPropTypeNew blockPropTypeNew;
+    public BlockPropType blockPropType;
     public bool isMiddle = false;
-    public BlockDataConfigNew blockPropDataNew;
+    public BlockDataConfig blockPropData;
     public GameObject effect;
 
-    public void DropZoneInitNew(BlockDataConfigNew _blockPropData,bool middle)
+    public void DropZoneInit(BlockDataConfig _blockPropData,bool middle)
     {
         effect.SetActive(false);
-        blockPropDataNew = _blockPropData;
+        blockPropData = _blockPropData;
         isMiddle = middle;
-        iconSprite.sprite = blockPropDataNew.DorpZoneSprite;
-        blockPropTypeNew = blockPropDataNew.blockPropType;
+        iconSprite.sprite = blockPropData.fruits_IMG;
+        blockPropType = blockPropData.blockPropType;
     }
 
     //播放特效 然后销毁

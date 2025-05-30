@@ -2946,7 +2946,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fb11911dc8682e041b3d64da5f3c183c, type: 2}
   - {fileID: 11400000, guid: 960f8679da97def4ca337cbf6fa5bf16, type: 2}
   - {fileID: 11400000, guid: d26e4ccff27b38a49a88ce7cf5af8924, type: 2}
-  blockPrefab: {fileID: 1992354133550683463, guid: fff575e1f59fd8b449cf86b9c4e6ee03, type: 3}
+  blockPrefab: {fileID: 5055306385122260937, guid: da8e07df03af70948919b8e64c999591, type: 3}
   blockEffect: {fileID: 803289198933309588, guid: e73ab7676e8053449aa93a50562f36b9, type: 3}
   allMiddleBlockNum: 0
   catDataAll:

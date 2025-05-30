@@ -15,7 +15,6 @@ public class ConveyorManagement : MonoBehaviour
 
     private List<Transform> middle_Trans_Temp = new List<Transform>();
     private bool stopCutsceneAnim = true;
-    private float cutsceneAnimSpeed = 1;
     private void Start()
     {
         PlayGameManagement.Instance.conveyorSpeed = 1.5F;

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayGameManagement : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class PlayGameManagement : MonoBehaviour
     public Transform dropZoneTran;
     public GameObject dropZonePrefab;
 
-    public List<BlockDataConfigNew> blockDataConfig;         
+    public List<BlockDataConfig> blockDataConfig;         
     public GameObject blockPrefab;
     public GameObject blockEffect;
 
@@ -42,7 +43,7 @@ public class PlayGameManagement : MonoBehaviour
     public float perspectiveSurvivalTime = 30f;
 
     [Header("关卡数据")]
-    public List<BlockDataConfigNew> blockTypes;
+    public List<BlockDataConfig> blockTypes;
     public int middleMin;
     public int middleMax;
     public float conveyorSpeed;
@@ -94,41 +95,34 @@ public class PlayGameManagement : MonoBehaviour
     }
 
     #region 三消逻辑
-    public void CreateDropZoneObject(BlockDataConfigNew _blockProp, bool middle)
+    public void CreateDropZoneObject(BlockDataConfig _blockProp, bool middle)
     {
         GameObject currentOBJ = Instantiate(dropZonePrefab, dropZoneTran);
-        currentOBJ.GetComponent<DropZone>().DropZoneInitNew(_blockProp, middle);
+        currentOBJ.GetComponent<DropZone>().DropZoneInit(_blockProp, middle);
 
         dropZoneData.Add(currentOBJ);
 
         CheckForMatches();
 
-        //if (CatNeedBlock(_blockProp))
-        //    catData_Temp.UpdateTMP();
     }
 
     //生成移动动画
-    public void CreateMoveAnim(BlockDataConfigNew _blockProp, bool middle,Transform trans)
+    public void CreateMoveAnim(Image fruitIMG, BlockDataConfig itemData, bool middle)
     {
-        blockAnimPrefab = Instantiate(dropZonePrefab, trans);
-        blockAnimPrefab.GetComponent<DropZone>().DropZoneInitNew(_blockProp, middle);
-        blockAnimPrefab.transform.DOMove(blockAnimPos[dropZoneData.Count].position, 0.1f).SetEase(Ease.Linear).OnComplete(() =>
-        {
-            Destroy(blockAnimPrefab);
-            CreateDropZoneObject(_blockProp, middle);
-            Destroy(trans.gameObject);
+        fruitIMG.transform.DOMove(blockAnimPos[dropZoneData.Count].position, 0.1f).SetEase(Ease.Linear).OnComplete(() =>
+        { 
+            Destroy(fruitIMG.transform.parent.gameObject);
         });
+
     }
-
-
 
     //检查物品类型
     public void CheckForMatches()
     {
         // 获取所有卡牌并按类型分组
         var cardGroups = dropZoneData
-            .OrderBy(card => card.GetComponent<DropZone>().blockPropTypeNew)  // 先按类型排序
-            .GroupBy(card => card.GetComponent<DropZone>().blockPropTypeNew)  // 然后分组
+            .OrderBy(card => card.GetComponent<DropZone>().blockPropType)  // 先按类型排序
+            .GroupBy(card => card.GetComponent<DropZone>().blockPropType)  // 然后分组
             .Where(group => group.Count() >= 3);  // 筛选出数量>=3的组
 
         if (cardGroups.Count() == 0)
@@ -159,12 +153,12 @@ public class PlayGameManagement : MonoBehaviour
         // 1. 获取所有卡牌并缓存信息
         var cardsWithInfo = dropZoneData.Select(card => new {
             Card = card,
-            Type = card.GetComponent<DropZone>().blockPropTypeNew,
+            Type = card.GetComponent<DropZone>().blockPropType,
             OriginalIndex = card.transform.GetSiblingIndex()
         }).ToList();
 
         // 2. 按类型分组并记录每个类型的最后位置
-        var typeLastIndexDict = new Dictionary<BlockPropTypeNew, int>();
+        var typeLastIndexDict = new Dictionary<BlockPropType, int>();
         foreach (var card in cardsWithInfo.OrderBy(c => c.OriginalIndex))
         {
             typeLastIndexDict[card.Type] = cardsWithInfo.IndexOf(card);
