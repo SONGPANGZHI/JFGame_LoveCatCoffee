@@ -27,6 +27,8 @@ public class CommonPlane : MonoBehaviour
     [SerializeField]
     private Button continue_BTN;        //继续
     [SerializeField]
+    private Button ADResurgence_BTN;        //广告复活
+    [SerializeField]
     private Sprite heaet_IMG;
 
     public PropData propData;
@@ -44,6 +46,7 @@ public class CommonPlane : MonoBehaviour
         ADGet_BTN.onClick.AddListener(ADGetClick);
         continue_BTN.onClick.AddListener(ContinueClick);
         close_BTN.onClick.AddListener(BackClick);
+        ADResurgence_BTN.onClick.AddListener(ADResurgenceClick);
     }
 
 
@@ -71,6 +74,10 @@ public class CommonPlane : MonoBehaviour
         desc_TMP.text = resurgence_Desc_TMP;
         abandon_BTN.gameObject.SetActive(true);
         continue_BTN.gameObject.SetActive(true);
+
+        if(!PlayerPrefs.HasKey("ADResurgenceKey"))
+            ADResurgence_BTN.gameObject.SetActive(true);
+
     }
 
     //初始化 道具使用界面
@@ -125,6 +132,16 @@ public class CommonPlane : MonoBehaviour
         //观看 广告获得道具  点击就可以获得
         ClosePlane();
         IssueReward(propData.awardvideoType);
+    }
+
+    //广告复活 重新加载
+    public void ADResurgenceClick()
+    {
+        PlayerPrefs.SetString("ADResurgenceKey", "ADResurgence");
+        ClosePlane();
+        this.gameObject.SetActive(false);
+        UIManagement.Instance.OpenLoadingPlane();
+        Debug.LogError("复活----");
     }
 
     //继续游戏
@@ -188,6 +205,7 @@ public class CommonPlane : MonoBehaviour
         ADGet_BTN.gameObject.SetActive(false);
         continue_BTN.gameObject.SetActive(false);
         close_BTN.gameObject.SetActive(false);
+        ADResurgence_BTN.gameObject.SetActive(false);
 
         transform.GetChild(0).DOScale(new Vector3(1, 1, 1), 0.3f);
     }

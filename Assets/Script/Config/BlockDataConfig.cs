@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BlockDataConfig", menuName = "BlockDataNew")]
+[CreateAssetMenu(fileName = "BlockDataConfig", menuName = "BlockData")]
 public class BlockDataConfig : ScriptableObject
 {
     public BlockPropType blockPropType;

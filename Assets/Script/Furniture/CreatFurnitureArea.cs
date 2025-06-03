@@ -5,8 +5,6 @@ using UnityEngine;
 public class CreatFurnitureArea : MonoBehaviour
 {
 
-
-
     //¼Ò¾ßµã»÷
     public void OnPointClick()
     {

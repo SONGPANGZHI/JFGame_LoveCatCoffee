@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     public bool _hasLoaded = false;
 
+    public List<GuidanceConfig> guidanceData;
+
     #region  游戏保存KEY
 
     public static string NumberLevelChallengesKey = "NumberLevelChallengesKEY";         //关卡挑战次数

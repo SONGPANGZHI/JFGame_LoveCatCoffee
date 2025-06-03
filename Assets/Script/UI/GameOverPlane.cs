@@ -77,6 +77,7 @@ public class GameOverPlane : MonoBehaviour
             menu_BTN.transform.DOLocalMoveY(-400, 0.3F);
         }
 
+        PlayerPrefs.DeleteKey("ADResurgenceKey");
     }
 
     //初始化奖励

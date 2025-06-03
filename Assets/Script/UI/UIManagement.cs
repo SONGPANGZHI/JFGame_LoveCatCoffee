@@ -4,14 +4,15 @@ public class UIManagement : MonoBehaviour
 {
     public static UIManagement Instance;
 
-    [SerializeField]
-    private MainPlane mainPlane;
+    public MainPlane mainPlane;
 
     public GamePlane gamePlane;
     [SerializeField]
     private SettingPlane settingPlane;
     [SerializeField]
     private CommonPlane commonPlane;
+
+    public GameObject guidance;
 
     public GameOverPlane gameOverPlane;
 
@@ -46,6 +47,7 @@ public class UIManagement : MonoBehaviour
         mainPlane.gameObject.SetActive(true);
         mainPlane.InitPlane();
         GameManager.Instance.pauseGame = true;
+        
 
         //CloseGame();
     }
@@ -134,6 +136,18 @@ public class UIManagement : MonoBehaviour
     public void CloseFurnitureUpgradePlane()
     {
         furnitureUpgradePlane.gameObject.SetActive(false);
+    }
+
+    //打开新手引导
+    public void OpenGuidancePlane()
+    {
+        guidance.SetActive(true);
+    }
+
+    //关闭新手引导
+    public void CloseGuidancePlane()
+    {
+        guidance.SetActive(false);
     }
 
     private void Update()
