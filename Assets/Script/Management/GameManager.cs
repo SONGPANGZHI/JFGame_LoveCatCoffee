@@ -445,6 +445,12 @@ public static class ListExtensions
 
         return newSprite;
     }
+
+    public static string LoadSprite(string strKey)
+    {
+        string changeText = strKey.Replace("<M>", "<sprite name=\"Game_Manghe_String\"verticalOffset=1em horizontalOffset=1emsize=100>");
+        return changeText.Replace("<N>", "\n");
+    }
 }
 
 

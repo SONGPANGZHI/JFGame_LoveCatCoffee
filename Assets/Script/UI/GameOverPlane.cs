@@ -17,7 +17,7 @@ public class GameOverPlane : MonoBehaviour
     public Transform awardTran;
 
 
-    [SerializeField]    
+    [SerializeField]
     private Button resChallenge_BTN;                //重玩按钮
     [SerializeField]
     private Button back_BTN;                        //返回按钮
@@ -59,9 +59,19 @@ public class GameOverPlane : MonoBehaviour
             //界面显示动画
             defeated_UI.SetActive(false);
             victory_UI.SetActive(true);
-            victory_UI.transform.DOScale(new Vector3(1,1,1),0.3f);
-            menu_BTN.transform.DOLocalMoveY(-400,0.3F);
+            victory_UI.transform.DOScale(new Vector3(1, 1, 1), 0.3f);
+            menu_BTN.transform.DOLocalMoveY(-400, 0.3F);
             InitAward();
+            if (GuidancePlane.Instance.JudgeWhetherOpenGuide(2))
+            {
+                Invoke("GuidanceNextLevel", 0.5f);
+            }
+            else if (!GuidancePlane.Instance.JudgeWhetherOpenGuide(2) && GuidancePlane.Instance.JudgeWhetherOpenGuide(3))
+            {
+                //点击返回
+                Invoke("GuidanceBack", 0.5f);
+
+            }
             //奖励
         }
         else
@@ -114,6 +124,20 @@ public class GameOverPlane : MonoBehaviour
         Debug.Log("解锁下一关");
     }
 
+    //新手引导下一关
+    public void GuidanceNextLevel()
+    {
+        UIManagement.Instance.OpenGuidancePlane();
+        GuidancePlane.Instance.GuidanceInit(2, nextLevel_BTN.transform.position);
+    }
+
+    //新手引导返回
+    public void GuidanceBack()
+    {
+        UIManagement.Instance.OpenGuidancePlane();
+        GuidancePlane.Instance.GuidanceInit(3, back_BTN.transform.position);
+
+    }
 
     //重新挑战
     public void RecChanllengeClick()

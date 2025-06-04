@@ -56,16 +56,37 @@ public class MainPlane : MonoBehaviour
 
         dressBG.SetActive(true);
         DetermineOpenDress();
+
+        //新手引导
+        Guidance();
+    }
+
+    public void Guidance()
+    {
         if (GuidancePlane.Instance.JudgeWhetherOpenGuide(0))
         {
-            Invoke("Test", 0.5f);
+            //新手引导点击开始
+            Invoke("GuidanceStartPlay", 0.5f);
+        }
+        else if (!GuidancePlane.Instance.JudgeWhetherOpenGuide(3) && GuidancePlane.Instance.JudgeWhetherOpenGuide(4))
+        {
+            //新手引导装扮
+            Invoke("GuidanceDressUp", 0.5f);
         }
     }
 
-    public void Test()
+    //新手引导点击开始
+    public void GuidanceStartPlay()
     {
         UIManagement.Instance.OpenGuidancePlane();
         GuidancePlane.Instance.GuidanceInit(0, startPlay_BTN.transform.position);
+    }
+
+    //新手引导装扮
+    public void GuidanceDressUp()
+    {
+        UIManagement.Instance.OpenGuidancePlane();
+        GuidancePlane.Instance.GuidanceInit(4, pretend_BTN.transform.position);
     }
 
     //开始

@@ -1,6 +1,8 @@
 [
     {
         "Id": "Xiaowu_Xiangzi_1",
+        "FurnitureFloor":"None",
+        "FurnitureType":"None",
         "IsUnlocked": false,
         "IsDefault": true,
         "DefaultPosition": {
@@ -14,6 +16,8 @@
     },
     {
         "Id": "Xiaowu_Xiangzi_2",
+        "FurnitureFloor":"None",
+        "FurnitureType":"None",
         "IsUnlocked": false,
         "IsDefault": true,
         "DefaultPosition": {
@@ -27,6 +31,8 @@
     },
     {
         "Id": "Xiaowu_1_Qiangzhi",
+        "FurnitureFloor":"None",
+        "FurnitureType":"None",
         "IsUnlocked": false,
         "IsDefault": true,
         "DefaultPosition": {
@@ -40,6 +46,8 @@
     },
     {
         "Id": "Xiaowu_1_Diban",
+        "FurnitureFloor":"None",
+        "FurnitureType":"None",
         "IsUnlocked": false,
         "IsDefault": true,
         "DefaultPosition": {
@@ -53,6 +61,8 @@
     },
     {
         "Id": "Xiaowu_2_Qiangzhi",
+        "FurnitureFloor":"None",
+        "FurnitureType":"None",
         "IsUnlocked": false,
         "IsDefault": true,
         "DefaultPosition": {
@@ -66,6 +76,8 @@
     },
     {
         "Id": "Xiaowu_2_Diban",
+        "FurnitureFloor":"None",
+        "FurnitureType":"None",
         "IsUnlocked": false,
         "IsDefault": true,
         "DefaultPosition": {
@@ -79,6 +91,8 @@
     },
     {
         "Id": "Hall1_Louti_1",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -92,6 +106,8 @@
     },
     {
         "Id": "Hall2_Louti_1",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -105,6 +121,8 @@
     },
     {
         "Id": "Maowu1_Qiangzhi",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Wall",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -118,6 +136,8 @@
     },
     {
         "Id": "Maowu1_Diban",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Floor",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -131,6 +151,8 @@
     },
     {
         "Id": "Maowu1_Maowo",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -144,6 +166,8 @@
     },
     {
         "Id": "Maowu1_Weilan",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -157,6 +181,8 @@
     },
     {
         "Id": "Maowu1_Zhuangshi",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -170,6 +196,8 @@
     },
     {
         "Id": "Maowu1_Ditan",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -183,6 +211,8 @@
     },
     {
         "Id": "Maowu1_Guashi_3",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -196,6 +226,8 @@
     },
     {
         "Id": "Maowu1_Wanju_3",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -209,6 +241,8 @@
     },
     {
         "Id": "Maowu1_Guashi_2",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -222,6 +256,8 @@
     },
     {
         "Id": "Maowu1_Lajitong",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -235,6 +271,8 @@
     },
     {
         "Id": "Maowu1_Deng",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -248,6 +286,8 @@
     },
     {
         "Id": "Maowu1_Bingxiang",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -261,6 +301,8 @@
     },
     {
         "Id": "Maowu1_Dianshigui",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -274,6 +316,8 @@
     },
     {
         "Id": "Maowu1_Dianshi",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -287,6 +331,8 @@
     },
     {
         "Id": "Maowu1_Wanju_2",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -300,6 +346,8 @@
     },
     {
         "Id": "Maowu1_Jiaodian",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -313,6 +361,8 @@
     },
     {
         "Id": "Maowu1_Shafa",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -326,6 +376,8 @@
     },
     {
         "Id": "Maowu1_Chuang",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -339,6 +391,8 @@
     },
     {
         "Id": "Maowu1_Wanju_1",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -352,6 +406,8 @@
     },
     {
         "Id": "Maowu1_Shuzhuangtai",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -365,6 +421,8 @@
     },
     {
         "Id": "Maowu1_Yigui",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -378,6 +436,8 @@
     },
     {
         "Id": "Maowu1_Guizi",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -391,6 +451,8 @@
     },
     {
         "Id": "Maowu1_Chuanghu_1",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Window",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -404,6 +466,8 @@
     },
     {
         "Id": "Maowu1_Guashi_1",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"FreenPlants",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -417,6 +481,8 @@
     },
     {
         "Id": "Maowu1_Penzai",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"FreenPlants",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -430,6 +496,8 @@
     },
     {
         "Id": "Maowu1_Taizi",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -443,6 +511,8 @@
     },
     {
         "Id": "Maowu1_Chuanghu_2",
+        "FurnitureFloor":"SecondFloor",
+        "FurnitureType":"Window",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -456,6 +526,8 @@
     },
     {
         "Id": "Hall1_Qiangzhi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Wall",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -469,6 +541,8 @@
     },
     {
         "Id": "Hall1_Diban",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Floor",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -482,6 +556,8 @@
     },
     {
         "Id": "Hall1_Jiaodian",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -495,6 +571,8 @@
     },
     {
         "Id": "Hall1_Caidanping",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -508,6 +586,8 @@
     },
     {
         "Id": "Hall1_Guashi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -521,6 +601,8 @@
     },
     {
         "Id": "Hall1_Chaunghu_2",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Window",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -534,6 +616,8 @@
     },
     {
         "Id": "Hall1_Zhizuotai_1",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -547,6 +631,8 @@
     },
     {
         "Id": "Hall1_Tiaozhitai",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -560,6 +646,8 @@
     },
     {
         "Id": "Hall1_Banzi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Floor",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -573,6 +661,8 @@
     },
     {
         "Id": "Hall1_Taizi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -586,6 +676,8 @@
     },
     {
         "Id": "Hall1_Kafeidai",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -599,6 +691,8 @@
     },
     {
         "Id": "Hall1_Kafeiji",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -612,6 +706,8 @@
     },
     {
         "Id": "Hall1_Kafeitiaopin",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -625,6 +721,8 @@
     },
     {
         "Id": "Hall1_Zhanshigui",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -638,6 +736,8 @@
     },
     {
         "Id": "Hall1_Shouyintai",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -651,6 +751,8 @@
     },
     {
         "Id": "Hall1_Shouyinji",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -664,6 +766,8 @@
     },
     {
         "Id": "Hall1_Yuanliao",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -677,6 +781,8 @@
     },
     {
         "Id": "Hall1_Caidan",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -690,6 +796,8 @@
     },
     {
         "Id": "Hall1_Dangaogui",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -703,6 +811,8 @@
     },
     {
         "Id": "Hall1_Yinliaotong",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -716,6 +826,8 @@
     },
     {
         "Id": "Hall1_Beizi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -729,6 +841,8 @@
     },
     {
         "Id": "Hall1_Chaunghu_1",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Window",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -742,6 +856,8 @@
     },
     {
         "Id": "Hall1_Jiazi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -755,6 +871,8 @@
     },
     {
         "Id": "Hall1_Pengzai_3",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"FreenPlants",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -768,6 +886,8 @@
     },
     {
         "Id": "Hall1_Guizi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"FreenPlants",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -781,6 +901,8 @@
     },
     {
         "Id": "Hall1_Shujia",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -794,6 +916,8 @@
     },
     {
         "Id": "Hall1_Yinpinjia",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -807,6 +931,8 @@
     },
     {
         "Id": "Hall1_Zhuoyi_1",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -820,6 +946,8 @@
     },
     {
         "Id": "Hall1_Pengzai_1",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"FreenPlants",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -833,6 +961,8 @@
     },
     {
         "Id": "Hall1_Zhuoyi_2",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -846,6 +976,8 @@
     },
     {
         "Id": "Hall1_Pengzai_2",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"FreenPlants",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -859,6 +991,8 @@
     },
     {
         "Id": "Hall1_Deng_2",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -872,6 +1006,8 @@
     },
     {
         "Id": "Hall1_Deng_1",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -885,6 +1021,8 @@
     },
     {
         "Id": "Hall2_Qiangzhi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Wall",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -898,6 +1036,8 @@
     },
     {
         "Id": "Hall2_Diban",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Floor",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -911,6 +1051,8 @@
     },
     {
         "Id": "Hall2_Jiaodian",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -924,6 +1066,8 @@
     },
     {
         "Id": "Hall2_Caidanping",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -937,6 +1081,8 @@
     },
     {
         "Id": "Hall2_Guashi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -950,6 +1096,8 @@
     },
     {
         "Id": "Hall2_Chaunghu_2",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Window",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -963,6 +1111,8 @@
     },
     {
         "Id": "Hall2_Zhizuotai_1",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -976,6 +1126,8 @@
     },
     {
         "Id": "Hall2_Tiaozhitai",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -989,6 +1141,8 @@
     },
     {
         "Id": "Hall2_Banzi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Floor",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1002,6 +1156,8 @@
     },
     {
         "Id": "Hall2_Taizi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1015,6 +1171,8 @@
     },
     {
         "Id": "Hall2_Kafeidai",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1028,6 +1186,8 @@
     },
     {
         "Id": "Hall2_Kafeiji",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1041,6 +1201,8 @@
     },
     {
         "Id": "Hall2_Kafeitiaopin",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1054,6 +1216,8 @@
     },
     {
         "Id": "Hall2_Zhanshigui",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1067,6 +1231,8 @@
     },
     {
         "Id": "Hall2_Shouyintai",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1080,6 +1246,8 @@
     },
     {
         "Id": "Hall2_Shouyinji",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1093,6 +1261,8 @@
     },
     {
         "Id": "Hall2_Yuanliao",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1106,6 +1276,8 @@
     },
     {
         "Id": "Hall2_Caidan",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1119,6 +1291,8 @@
     },
     {
         "Id": "Hall2_Dangaogui",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1132,6 +1306,8 @@
     },
     {
         "Id": "Hall2_Yinliaotong",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1145,6 +1321,8 @@
     },
     {
         "Id": "Hall2_Beizi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1158,6 +1336,8 @@
     },
     {
         "Id": "Hall2_Chaunghu_1",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Window",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1171,6 +1351,8 @@
     },
     {
         "Id": "Hall2_Jiazi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1184,6 +1366,8 @@
     },
     {
         "Id": "Hall2_Pengzai_3",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"FreenPlants",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1197,6 +1381,8 @@
     },
     {
         "Id": "Hall2_Guizi",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"FreenPlants",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1210,6 +1396,8 @@
     },
     {
         "Id": "Hall2_Shujia",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1223,6 +1411,8 @@
     },
     {
         "Id": "Hall2_Yinpinjia",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1236,6 +1426,8 @@
     },
     {
         "Id": "Hall2_Zhuoyi_1",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1249,6 +1441,8 @@
     },
     {
         "Id": "Hall2_Pengzai_1",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"FreenPlants",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1262,6 +1456,8 @@
     },
     {
         "Id": "Hall2_Zhuoyi_2",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Furniture",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1275,6 +1471,8 @@
     },
     {
         "Id": "Hall2_Pengzai_2",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"FreenPlants",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1288,6 +1486,8 @@
     },
     {
         "Id": "Hall2_Deng_2",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {
@@ -1301,6 +1501,8 @@
     },
     {
         "Id": "Hall2_Deng_1",
+        "FurnitureFloor":"FirstFloor",
+        "FurnitureType":"Decorate",
         "IsUnlocked": false,
         "IsDefault": false,
         "DefaultPosition": {

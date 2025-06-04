@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a374e25967ea5b844b1eba1c7dd97406, type: 3}
-  m_Name: NextLevel
+  m_Name: 1_PlayGame
   m_EditorClassIdentifier: 
-  ID: 0
-  maskSprite: {fileID: 0}
-  dialogueStr: 
+  ID: 1
+  maskSprite: {fileID: 21300000, guid: 2de65b7406de758479085d6adf45dd5c, type: 3}
+  dialogueStr: "\u6211\u4EEC\u7684\u76EE\u6807\u662F\u6D88\u9664\u4E2D\u95F4\u533A\u57DF\u7684\u6C34\u679C\uFF01<N>\u5176\u4E2D<M>\u4E3A\u76F2\u76D2\u54E6\uFF01"
+  _isDialogue: 1
+  saveKey: GuidancePlayGameKey

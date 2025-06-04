@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,10 @@ public class GuidancePlane : MonoBehaviour
     public Image mask_IMG;
     public GameObject finger_OBJ;
     public GameObject dialogue_OBJ;
+    public TMP_Text guidance_TMP;
+    public Sprite mysterySprite;
     private GuidanceConfig guidanceData;
+
 
     private void Awake()
     {
@@ -26,6 +30,7 @@ public class GuidancePlane : MonoBehaviour
     {
         guidanceData = GameManager.Instance.guidanceData[ID];
         mask_IMG.sprite = guidanceData.maskSprite;
+        mask_IMG.SetNativeSize();
         mask_IMG.transform.DOMove(guidancePos, 0.3f).OnComplete(() => 
         {
             finger_OBJ.transform.position = guidancePos;
@@ -42,10 +47,10 @@ public class GuidancePlane : MonoBehaviour
 
     }
 
-    //新手引导对话框初始化
+    //新手引导对话框初始化 
     public void DialogueInit()
-    { 
-    
+    {
+        guidance_TMP.text = ListExtensions.LoadSprite(guidanceData.dialogueStr);
     }
 
     //点击事件
@@ -58,15 +63,18 @@ public class GuidancePlane : MonoBehaviour
                 Debug.LogError("当前ID;" + guidanceData.ID);
                 break;
             case 1:
+                Debug.LogError("playgame");
                 break;
             case 2:
+                UIManagement.Instance.gameOverPlane.NextLevelClick();
+                Debug.LogError("解锁下一关");
                 break;
             case 3:
                 break;
         }
 
-        UIManagement.Instance.CloseGuidancePlane();
         //PlayerPrefs.SetString(guidanceData.saveKey, "Save" + guidanceData.saveKey);
+        UIManagement.Instance.CloseGuidancePlane();
     }
 
     //判断是否打开新手引导

@@ -5,6 +5,84 @@ using UnityEngine.UI;
 
 public class FurnitureUpgrade : MonoBehaviour
 {
+    public List<Sprite> title_Sprit;        //0 默认图 ，1 点击图
+
+    public Button outsideStore_BTN;
+    public Button hall_BTN;
+    public Button catHouse_BTN;
+    public Button back_BTN;
+
+    public Transform outsideStoreTrans;
+    public Transform hallTrans;
+    public Transform catHouseTrans;
+
+    public GameObject furnitureTypePrefab;
+
+
+    private void Awake()
+    {
+        back_BTN.onClick.AddListener(ClosePlane);
+    }
+
+    //界面初始化
+    public void OpenPlaneInit()
+    {
+
+    }
+
+    //生成大厅外家具
+    public void CreateOutsideStore()
+    { 
+    
+    }
+
+    //生成大厅家具
+    public void CreateHall()
+    { 
+    
+    }
+
+    //生成猫屋家具
+    public void CreateCatHouse()
+    { 
+    
+    }
+
+    
+
+    //改变按钮状态 按钮点击 外部调用
+    public void ChangeBTNState(string btnName)
+    {
+        outsideStore_BTN.GetComponent<Image>().sprite = title_Sprit[0];
+        hall_BTN.GetComponent<Image>().sprite = title_Sprit[0];
+        catHouse_BTN.GetComponent<Image>().sprite = title_Sprit[0];
+        outsideStoreTrans.gameObject.SetActive(false);
+        hallTrans.gameObject.SetActive(false);
+        catHouseTrans.gameObject.SetActive(false);
+        switch (btnName)
+        {
+            case "outsideStore_BTN":
+                outsideStore_BTN.GetComponent<Image>().sprite = title_Sprit[1];
+                outsideStoreTrans.gameObject.SetActive(true);
+                break;
+            case "hall_BTN":
+                hall_BTN.GetComponent<Image>().sprite = title_Sprit[1];
+                hallTrans.gameObject.SetActive(true);
+                break;
+            case "catHouse_BTN":
+                catHouse_BTN.GetComponent<Image>().sprite = title_Sprit[1];
+                catHouseTrans.gameObject.SetActive(true);
+                break;
+        }
+    }
+
+    //关闭界面
+    public void ClosePlane()
+    { 
+    
+    }
+
+
     public GameObject gridPrefab;
     public Transform gridTrans;
 
@@ -22,12 +100,12 @@ public class FurnitureUpgrade : MonoBehaviour
     public static List<FurnitureUseGrid> furnitureUseGridList = new List<FurnitureUseGrid>();
 
     public static List<FurnitureItem> allFurniture = new List<FurnitureItem>();
-    private void Awake()
-    {
-        OkBTN.onClick.AddListener(OKClick);
-        saveBTN.onClick.AddListener(SaveClick);
-        backBTN.onClick.AddListener(BackClick);
-    }
+    //private void Awake()
+    //{
+    //    OkBTN.onClick.AddListener(OKClick);
+    //    saveBTN.onClick.AddListener(SaveClick);
+    //    backBTN.onClick.AddListener(BackClick);
+    //}
 
     //初始化
     public void FurnitureInit()
@@ -120,7 +198,7 @@ public class FurnitureUpgrade : MonoBehaviour
         BaseTools.Instance.RetureCameraDefualtPosition();
         FurnitureManagement.instance.SaveFurnitureDefualtMaterial();
         ClearGridTrans();
-       
+
     }
 
     //返回
@@ -138,7 +216,7 @@ public class FurnitureUpgrade : MonoBehaviour
             UIManagement.Instance.OpenMainPlane();
         });
 
-        
+
     }
 
     //红点
@@ -149,8 +227,8 @@ public class FurnitureUpgrade : MonoBehaviour
             PlayerPrefs.DeleteKey(UIManagement.redPointKey);
     }
 
-  
-   
+
+
     public void ClearGridTrans()
     {
         for (int i = 0; i < gridTrans.childCount; i++)

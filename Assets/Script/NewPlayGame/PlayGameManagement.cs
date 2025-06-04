@@ -87,11 +87,25 @@ public class PlayGameManagement : MonoBehaviour
         }
 
         GameManager.Instance.pauseGame = true;
+
+       
     }
+
+    public void Test()
+    {
+        UIManagement.Instance.OpenGuidancePlane();
+        GuidancePlane.Instance.GuidanceInit(1, new Vector3(540,960,0));
+    }
+
 
     private void Start()
     {
         BaseTools.Instance.UIAdaptive(uiTrans,middleTrans);
+
+        if (GuidancePlane.Instance.JudgeWhetherOpenGuide(1))
+        {
+            Invoke("Test", 0.5f);
+        }
     }
 
     #region ÈýÏûÂß¼­

@@ -81,22 +81,6 @@ public enum BlockPropType
     Watermelon,         //西瓜
 }
 
-public enum TypesCards
-{ 
-    None,
-    KeyCard,            //关键牌
-    SurplusCard,        //冗余牌
-    MysteryCard,        //盲盒
-}
-
-//家具皮肤
-public enum FurnitureType
-{ 
-    None,
-    YellowHouse,
-    PinkHouse,
-}
-
 public enum FurnitureFloor
 {
     None,
@@ -117,4 +101,16 @@ public enum FurnitureSkinState
     Default, 
     Unlocked, 
     Locked 
+}
+
+public enum FurnitureType
+{ 
+    None,
+    Window,             //窗户
+    Hall,               //大厅
+    Floor,              //地板
+    Furniture,          //家具
+    FreenPlants,        //绿植
+    Wall,               //墙
+    Decorate,           //装饰
 }
