@@ -24,10 +24,12 @@ public class FurnitureUpgrade : MonoBehaviour
         back_BTN.onClick.AddListener(ClosePlane);
     }
 
+
+
     //界面初始化
     public void OpenPlaneInit()
     {
-
+        CreateHall();
     }
 
     //生成大厅外家具
@@ -38,17 +40,56 @@ public class FurnitureUpgrade : MonoBehaviour
 
     //生成大厅家具
     public void CreateHall()
-    { 
-    
+    {
+        for (int i = 0; i < FurnitureManagement.instance.firstFloorFurniture.Count; i++)
+        {
+            GenerateByCategory(hallTrans,FurnitureManagement.instance.firstFloorFurniture[i]);
+        }
     }
 
     //生成猫屋家具
     public void CreateCatHouse()
-    { 
-    
+    {
+        
     }
 
-    
+    //按分类生成
+    public void GenerateByCategory(Transform trans, FurnitureItem _Item)
+    {
+        switch (_Item.FurnitureType)
+        {
+            case FurnitureType.Window:
+                GameObject WindowGO = Instantiate(furnitureTypePrefab, trans);
+                WindowGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
+                break;
+            case FurnitureType.Hall:
+                GameObject HallGO = Instantiate(furnitureTypePrefab, trans);
+                HallGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
+                break;
+            case FurnitureType.Floor:
+                GameObject FloorGO = Instantiate(furnitureTypePrefab, trans);
+                FloorGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
+                break;
+            case FurnitureType.Furniture:
+                GameObject FurnitureGO = Instantiate(furnitureTypePrefab, trans);
+                FurnitureGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
+                break;
+            case FurnitureType.FreenPlants:
+                GameObject FreenPlantsGO = Instantiate(furnitureTypePrefab, trans);
+                FreenPlantsGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
+                break;
+            case FurnitureType.Wall:
+                GameObject WallGO = Instantiate(furnitureTypePrefab, trans);
+                WallGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
+                break;
+            case FurnitureType.Decorate:
+                GameObject DecorateGO = Instantiate(furnitureTypePrefab, trans);
+                DecorateGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
+                break;
+        }
+    }
+
+
 
     //改变按钮状态 按钮点击 外部调用
     public void ChangeBTNState(string btnName)

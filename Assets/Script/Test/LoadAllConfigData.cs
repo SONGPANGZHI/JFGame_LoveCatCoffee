@@ -67,6 +67,8 @@ public class GameSaveData
 public class FurnitureItem
 {
     public string Id;                   // 家具唯一ID
+    public FurnitureFloor FurnitureFloor;
+    public FurnitureType FurnitureType;
     public bool IsUnlocked;             // 是否已解锁
     public bool IsDefault;              // 是否是默认皮肤
     public Vector2 DefaultPosition;     // 默认位置

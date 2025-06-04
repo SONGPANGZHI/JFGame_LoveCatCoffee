@@ -473,6 +473,8 @@ MonoBehaviour:
   furnitureName: 
   FurnitureItem:
     Id: 
+    FurnitureFloor: 0
+    FurnitureType: 0
     IsUnlocked: 0
     IsDefault: 0
     DefaultPosition: {x: 0, y: 0}
@@ -581,6 +583,8 @@ MonoBehaviour:
   furnitureName: 
   FurnitureItem:
     Id: 
+    FurnitureFloor: 0
+    FurnitureType: 0
     IsUnlocked: 0
     IsDefault: 0
     DefaultPosition: {x: 0, y: 0}
@@ -1520,6 +1524,8 @@ MonoBehaviour:
   furnitureName: 
   FurnitureItem:
     Id: 
+    FurnitureFloor: 0
+    FurnitureType: 0
     IsUnlocked: 0
     IsDefault: 0
     DefaultPosition: {x: 0, y: 0}
@@ -2554,6 +2560,8 @@ MonoBehaviour:
   furnitureName: 
   FurnitureItem:
     Id: 
+    FurnitureFloor: 0
+    FurnitureType: 0
     IsUnlocked: 0
     IsDefault: 0
     DefaultPosition: {x: 0, y: 0}
@@ -2667,6 +2675,8 @@ MonoBehaviour:
   lastClickFurniture: {fileID: 0}
   sceneFurniture: []
   MainSceneCamera: {fileID: 1532698470}
+  firstFloorFurniture: []
+  secondFloorFurniture: []
 --- !u!114 &1143097039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3208,6 +3218,8 @@ MonoBehaviour:
   furnitureName: 
   FurnitureItem:
     Id: 
+    FurnitureFloor: 0
+    FurnitureType: 0
     IsUnlocked: 0
     IsDefault: 0
     DefaultPosition: {x: 0, y: 0}
@@ -3604,6 +3616,7 @@ GameObject:
   - component: {fileID: 1396402394}
   - component: {fileID: 1396402396}
   - component: {fileID: 1396402395}
+  - component: {fileID: 1396402397}
   m_Layer: 5
   m_Name: Back_BTN
   m_TagString: Untagged
@@ -3669,6 +3682,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396402393}
   m_CullTransparentMesh: 1
+--- !u!114 &1396402397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396402393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1396402395}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1426804205
 GameObject:
   m_ObjectHideFlags: 0
@@ -4409,6 +4466,8 @@ MonoBehaviour:
   furnitureName: 
   FurnitureItem:
     Id: 
+    FurnitureFloor: 0
+    FurnitureType: 0
     IsUnlocked: 0
     IsDefault: 0
     DefaultPosition: {x: 0, y: 0}
@@ -4914,7 +4973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1874025513
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4949,7 +5008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 379706123}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -5223,6 +5282,8 @@ MonoBehaviour:
   furnitureName: 
   FurnitureItem:
     Id: 
+    FurnitureFloor: 0
+    FurnitureType: 0
     IsUnlocked: 0
     IsDefault: 0
     DefaultPosition: {x: 0, y: 0}
@@ -5466,6 +5527,8 @@ MonoBehaviour:
   furnitureName: 
   FurnitureItem:
     Id: 
+    FurnitureFloor: 0
+    FurnitureType: 0
     IsUnlocked: 0
     IsDefault: 0
     DefaultPosition: {x: 0, y: 0}
@@ -5592,7 +5655,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2106183233
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5627,7 +5690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 307298382}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -5669,7 +5732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2132814065
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5704,7 +5767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 506241711}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -22656,14 +22719,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title_Sprit: []
-  outsideStore_BTN: {fileID: 0}
-  hall_BTN: {fileID: 0}
-  catHouse_BTN: {fileID: 0}
-  back_BTN: {fileID: 0}
-  outsideStoreTrans: {fileID: 0}
-  hallTrans: {fileID: 0}
-  catHouseTrans: {fileID: 0}
-  furnitureTypePrefab: {fileID: 0}
+  outsideStore_BTN: {fileID: 2020646644}
+  hall_BTN: {fileID: 111496607}
+  catHouse_BTN: {fileID: 1426804209}
+  back_BTN: {fileID: 1396402397}
+  outsideStoreTrans: {fileID: 307298382}
+  hallTrans: {fileID: 506241711}
+  catHouseTrans: {fileID: 379706123}
+  furnitureTypePrefab: {fileID: 5563620210119018883, guid: c4bb2bcb3625e3b49aa2f21925e49d8d, type: 3}
   gridPrefab: {fileID: 3087524110789335887, guid: 9e27419f419ec194da7f930debe3153a, type: 3}
   gridTrans: {fileID: 995315502232524742}
   furnitureObj: {fileID: 995315503646135413}

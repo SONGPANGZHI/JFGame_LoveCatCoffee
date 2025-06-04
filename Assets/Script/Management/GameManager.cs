@@ -114,6 +114,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //家具分类
+
+
     public void FirstLoadAllFurniture()
     {
         //把JSON文件 转换到本地数据 第一次登陆时加载

@@ -17,12 +17,14 @@ public class FurnitureManagement : MonoBehaviour
     public List<GameObject> sceneFurniture;
     public Camera MainSceneCamera;
 
+    public List<FurnitureItem> firstFloorFurniture;     //一楼家具
+    public List<FurnitureItem> secondFloorFurniture;    //二楼家具
+
+
     private void Awake()
     {
         if (instance == null)
             instance = this;
-
-        
     }
 
     private void Start()
@@ -30,9 +32,23 @@ public class FurnitureManagement : MonoBehaviour
         GameManager.Instance.AddCurrentFurnitureData();
         BaseTools.Instance.ScreenAdaptation(MainSceneCamera);
 
+        //家具分类
+        FurnitureCategory();
+
         DefaultFurnitureInit();
     }
 
+    //家具分类
+    public void FurnitureCategory()
+    {
+        for (int i = 0; i < GameManager.Instance.CurrentData.AllFurniture.Count; i++)
+        {
+            if (GameManager.Instance.CurrentData.AllFurniture[i].FurnitureFloor == FurnitureFloor.FirstFloor)
+                firstFloorFurniture.Add(GameManager.Instance.CurrentData.AllFurniture[i]);
+            else if (GameManager.Instance.CurrentData.AllFurniture[i].FurnitureFloor == FurnitureFloor.SecondFloor)
+                secondFloorFurniture.Add(GameManager.Instance.CurrentData.AllFurniture[i]);
+        }
+    }
 
     public void DefaultFurnitureInit()
     {

@@ -58,7 +58,7 @@ public class MainPlane : MonoBehaviour
         DetermineOpenDress();
 
         //新手引导
-        Guidance();
+        //Guidance();
     }
 
     public void Guidance()
@@ -135,6 +135,7 @@ public class MainPlane : MonoBehaviour
         //打开装扮界面
         UIManagement.Instance._isChallengBool = false;
         MusicManagement.instance.ClickPlaySFX();
+        //UIManagement.Instance.OpenFurnitureUpgradePlane();
         UIManagement.Instance.OpenFurnitureUpgradePlane();
         dressBG.SetActive(false);
         ClosePlane();
