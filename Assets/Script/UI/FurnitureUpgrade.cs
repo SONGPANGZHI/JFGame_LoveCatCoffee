@@ -33,12 +33,20 @@ public class FurnitureUpgrade : MonoBehaviour
     {
         CreateHall();
         CloseRedPoint();
+
+        FurnitureManagement.useFurnitureItemGrid = GameObject.Find("Hall1_Diban_Grid").GetComponent<FurnitureItemGrid>();
+
+        if (GuidancePlane.Instance.JudgeWhetherOpenGuide(5))
+        {
+            Invoke("GuidanceFurnitureUse", 0.5f);
+        }
     }
 
-    //生成大厅外家具
-    public void CreateOutsideStore()
-    { 
-    
+    //新手引导 家具使用
+    public void GuidanceFurnitureUse()
+    {
+        UIManagement.Instance.OpenGuidancePlane();
+        GuidancePlane.Instance.GuidanceInit(5, FurnitureManagement.useFurnitureItemGrid.use_BTN.transform.position);
     }
 
     //生成大厅家具
@@ -82,8 +90,6 @@ public class FurnitureUpgrade : MonoBehaviour
         }
     }
 
-
-    
 
     //关闭界面
     public void ClosePlane()

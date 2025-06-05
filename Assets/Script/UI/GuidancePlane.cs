@@ -12,6 +12,7 @@ public class GuidancePlane : MonoBehaviour
     public GameObject finger_OBJ;
     public GameObject dialogue_OBJ;
     public TMP_Text guidance_TMP;
+    public GameObject Special_TMP;
     public Sprite mysterySprite;
     private GuidanceConfig guidanceData;
 
@@ -26,21 +27,22 @@ public class GuidancePlane : MonoBehaviour
 
 
     //新手引导初始化
-    public void GuidanceInit(int ID,Vector3 guidancePos)
+    public void GuidanceInit(int ID,Vector3 guidancePos,int size = 1)
     {
         guidanceData = GameManager.Instance.guidanceData[ID];
         mask_IMG.sprite = guidanceData.maskSprite;
+        mask_IMG.transform.localScale = new Vector3(size, size, size);
         mask_IMG.SetNativeSize();
+        finger_OBJ.transform.DOMove(guidancePos,0.3f); 
         mask_IMG.transform.DOMove(guidancePos, 0.3f).OnComplete(() => 
         {
-            finger_OBJ.transform.position = guidancePos;
             mask_IMG.GetComponent<Button>().interactable = true;
         });
         
         if (guidanceData._isDialogue)
         {
             dialogue_OBJ.SetActive(true);
-            DialogueInit();
+            DialogueInit(ID);
         }
         else
             dialogue_OBJ.SetActive(false);
@@ -48,8 +50,17 @@ public class GuidancePlane : MonoBehaviour
     }
 
     //新手引导对话框初始化 
-    public void DialogueInit()
+    public void DialogueInit(int ID)
     {
+        if (ID == 1)
+        {
+            Special_TMP.SetActive(true);
+        }
+        else
+        {
+            Special_TMP.SetActive(false);
+        }
+
         guidance_TMP.text = ListExtensions.LoadSprite(guidanceData.dialogueStr);
     }
 
@@ -67,12 +78,26 @@ public class GuidancePlane : MonoBehaviour
                 Debug.LogError("解锁下一关");
                 break;
             case 3:
+                UIManagement.Instance.gameOverPlane.BackMain();
+                Debug.LogError("返回主界面");
+                break;
+            case 4:
+                UIManagement.Instance.OpenFurnitureUpgradePlane();
+                Debug.LogError("点击装扮");
+                break;
+            case 5:
+                FurnitureManagement.useFurnitureItemGrid.UseClick();
+                Debug.LogError("家具使用");
                 break;
         }
 
         PlayerPrefs.SetString(guidanceData.saveKey, "Save" + guidanceData.saveKey);
+        finger_OBJ.transform.DOMove(new Vector3(540,2880), 0.1f);
+        mask_IMG.transform.DOMove(new Vector3(540, 2880), 0.1f);
         UIManagement.Instance.CloseGuidancePlane();
     }
+
+
 
     //判断是否打开新手引导
     public bool JudgeWhetherOpenGuide(int IDKey)
