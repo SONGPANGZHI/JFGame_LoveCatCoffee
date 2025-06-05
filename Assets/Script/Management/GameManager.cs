@@ -398,6 +398,7 @@ public static class ListExtensions
 {
     private static System.Random rng = new System.Random();
     private const string DEFAULT_AWARD_PATH = "Images/Hall_Brown/";
+    private const string ICON_PATH = "Images/DressUpIcon/";
     private static Dictionary<string, Sprite> spriteCache = new Dictionary<string, Sprite>();
 
 
@@ -432,7 +433,26 @@ public static class ListExtensions
         return result;
     }
 
+    //加载家具图片
     public static Sprite LoadFurnitureSprite(string spriteKey, string imagePath = DEFAULT_AWARD_PATH)
+    {
+        string cacheKey = imagePath + spriteKey;
+
+        if (spriteCache.TryGetValue(cacheKey, out Sprite cachedSprite))
+            return cachedSprite;
+
+        Sprite newSprite = Resources.Load<Sprite>(Path.Combine(imagePath, spriteKey));
+
+        if (newSprite != null)
+            spriteCache[cacheKey] = newSprite;
+        else
+            Debug.LogWarning($"Sprite not found: {cacheKey}");
+
+        return newSprite;
+    }
+
+    //加载家具图片Icon
+    public static Sprite LoadFurnitureIconSprite(string spriteKey, string imagePath = ICON_PATH)
     {
         string cacheKey = imagePath + spriteKey;
 

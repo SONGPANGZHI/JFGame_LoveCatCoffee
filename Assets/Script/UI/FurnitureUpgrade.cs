@@ -18,6 +18,8 @@ public class FurnitureUpgrade : MonoBehaviour
 
     public GameObject furnitureTypePrefab;
 
+    public List<Transform> HallFurnitureTran = new List<Transform>();
+    public List<Transform> CatHouseFurnitureTran = new List<Transform>();
 
     private void Awake()
     {
@@ -30,6 +32,7 @@ public class FurnitureUpgrade : MonoBehaviour
     public void OpenPlaneInit()
     {
         CreateHall();
+        CloseRedPoint();
     }
 
     //生成大厅外家具
@@ -43,7 +46,7 @@ public class FurnitureUpgrade : MonoBehaviour
     {
         for (int i = 0; i < FurnitureManagement.instance.firstFloorFurniture.Count; i++)
         {
-            GenerateByCategory(hallTrans,FurnitureManagement.instance.firstFloorFurniture[i]);
+            CreateByCategory(FurnitureManagement.instance.firstFloorFurniture[i], HallFurnitureTran);
         }
     }
 
@@ -54,42 +57,62 @@ public class FurnitureUpgrade : MonoBehaviour
     }
 
     //按分类生成
-    public void GenerateByCategory(Transform trans, FurnitureItem _Item)
+    public void CreateByCategory(FurnitureItem Item, List<Transform> Trans)
     {
-        switch (_Item.FurnitureType)
+        switch (Item.FurnitureType)
         {
-            case FurnitureType.Window:
-                GameObject WindowGO = Instantiate(furnitureTypePrefab, trans);
-                WindowGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
-                break;
-            case FurnitureType.Hall:
-                GameObject HallGO = Instantiate(furnitureTypePrefab, trans);
-                HallGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
-                break;
             case FurnitureType.Floor:
-                GameObject FloorGO = Instantiate(furnitureTypePrefab, trans);
-                FloorGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
+                Trans[0].GetComponent<FurnitureTypeGrid>().GridInit(Item);
                 break;
-            case FurnitureType.Furniture:
-                GameObject FurnitureGO = Instantiate(furnitureTypePrefab, trans);
-                FurnitureGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
-                break;
-            case FurnitureType.FreenPlants:
-                GameObject FreenPlantsGO = Instantiate(furnitureTypePrefab, trans);
-                FreenPlantsGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
+            case FurnitureType.Window:
+                Trans[1].GetComponent<FurnitureTypeGrid>().GridInit(Item);
                 break;
             case FurnitureType.Wall:
-                GameObject WallGO = Instantiate(furnitureTypePrefab, trans);
-                WallGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
+                Trans[2].GetComponent<FurnitureTypeGrid>().GridInit(Item);
+                break;
+            case FurnitureType.Furniture:
+                Trans[3].GetComponent<FurnitureTypeGrid>().GridInit(Item);
                 break;
             case FurnitureType.Decorate:
-                GameObject DecorateGO = Instantiate(furnitureTypePrefab, trans);
-                DecorateGO.GetComponent<FurnitureTypeGrid>().GridInit(_Item);
+                Trans[4].GetComponent<FurnitureTypeGrid>().GridInit(Item);
+                break;
+            case FurnitureType.FreenPlants:
+                Trans[5].GetComponent<FurnitureTypeGrid>().GridInit(Item);
                 break;
         }
     }
 
 
+    
+
+    //关闭界面
+    public void ClosePlane()
+    {
+        MusicManagement.instance.ClickPlaySFX();
+        gameObject.SetActive(false);
+        ClearTrans(HallFurnitureTran);
+        UIManagement.Instance.OpenMainPlane();
+    }
+
+    //红点
+    public void CloseRedPoint()
+    {
+        //关掉红点显示
+        if (PlayerPrefs.HasKey(UIManagement.redPointKey))
+            PlayerPrefs.DeleteKey(UIManagement.redPointKey);
+    }
+
+    //清空
+    public void ClearTrans(List<Transform> Trans)
+    {
+        for (int i = 0; i < Trans.Count; i++)
+        {
+            for (int j = 0; j < HallFurnitureTran[i].GetComponent<FurnitureTypeGrid>().trans.childCount; j++)
+            {
+                Destroy(HallFurnitureTran[i].GetComponent<FurnitureTypeGrid>().trans.GetChild(j).gameObject);
+            }
+        }
+    }
 
     //改变按钮状态 按钮点击 外部调用
     public void ChangeBTNState(string btnName)
@@ -117,178 +140,69 @@ public class FurnitureUpgrade : MonoBehaviour
         }
     }
 
-    //关闭界面
-    public void ClosePlane()
-    { 
-    
-    }
+    #region 弃用
+    //public GameObject gridPrefab;
+    //public Transform gridTrans;
+
+    //public Button OkBTN;
+    //public Button saveBTN;
+    //public Button backBTN;
+
+    //public Transform top_Obj;
+    //public Transform bottom_Obj;
+
+    //public static List<FurnitureItem> allFurniture = new List<FurnitureItem>();
 
 
-    public GameObject gridPrefab;
-    public Transform gridTrans;
-
-    public GameObject furnitureObj;
-    public GameObject dialogueBoxObj;
-    public GameObject newTitleObj;
-
-    public Button OkBTN;
-    public Button saveBTN;
-    public Button backBTN;
-
-    public Transform top_Obj;
-    public Transform bottom_Obj;
-
-    public static List<FurnitureUseGrid> furnitureUseGridList = new List<FurnitureUseGrid>();
-
-    public static List<FurnitureItem> allFurniture = new List<FurnitureItem>();
-    //private void Awake()
+    ////点击家具 查看不同皮肤
+    //public void FurnitureSkinInit()
     //{
-    //    OkBTN.onClick.AddListener(OKClick);
-    //    saveBTN.onClick.AddListener(SaveClick);
-    //    backBTN.onClick.AddListener(BackClick);
+    //    ClearGridTrans();
+    //    allFurniture.Clear();
+    //    furnitureUseGridList.Clear();
+    //    furnitureObj.SetActive(true);
+    //    GetAllSkinsForBase(FurnitureManagement.instance.currentClickFurniture.FurnitureItem.DaseFurnitureId);
+    //    for (int i = 0; i < allFurniture.Count; i++)
+    //    {
+    //        GameObject GO = Instantiate(gridPrefab, gridTrans);
+    //        GO.GetComponent<FurnitureUseGrid>().currentState = GetSkinState(allFurniture[i], FurnitureManagement.instance.currentClickFurniture.FurnitureItem);
+    //        GO.GetComponent<FurnitureUseGrid>().FurnitureSkinInit(allFurniture[i]);
+    //        furnitureUseGridList.Add(GO.GetComponent<FurnitureUseGrid>());
+    //    }
     //}
 
-    //初始化
-    public void FurnitureInit()
-    {
-        top_Obj.DOLocalMoveY(800, 0.3f);
-        bottom_Obj.DOMoveY(250, 0.3f);
-        furnitureUseGridList.Clear();
-        allFurniture.Clear();
-        if (!PlayerPrefs.HasKey(FurnitureManagement.dialogueNoveicKey) /*&& GameManager.Instance.CurrentData.collectionFurnitureName.Count == 0*/)
-        {
-            dialogueBoxObj.SetActive(true);
-        }
+    ////判断状态
+    //public FurnitureSkinState GetSkinState(FurnitureItem skin, FurnitureItem currentItem)
+    //{
+    //    if (skin.Id == currentItem.Id)
+    //        return FurnitureSkinState.Current;
+    //    if (skin.IsUnlocked)
+    //        return FurnitureSkinState.Unlocked;
+    //    return FurnitureSkinState.Locked;
+    //}
 
-        if (GameManager.Instance.CurrentData.collectionFurnitureName.Count > 0)
-        {
-            furnitureObj.SetActive(true);
-            newTitleObj.SetActive(true);
-            for (int i = 0; i < GameManager.Instance.CurrentData.collectionFurnitureName.Count; i++)
-            {
-                GameObject GO = Instantiate(gridPrefab, gridTrans);
-                GO.GetComponent<FurnitureUseGrid>().FurnitureGridInit(FurnitureManagement.instance.GetFurnitureItem(
-                GameManager.Instance.CurrentData.collectionFurnitureName[i]));
-            }
+    //public void ClearGridTrans()
+    //{
+    //    for (int i = 0; i < gridTrans.childCount; i++)
+    //    {
+    //        Destroy(gridTrans.GetChild(i).gameObject);
+    //    }
+    //}
 
-        }
+    //public List<FurnitureItem> GetAllSkinsForBase(string baseFurnitureId)
+    //{
+    //    foreach (var item in GameManager.Instance.CurrentData.AllFurniture)
+    //    {
+    //        if (item.DaseFurnitureId == baseFurnitureId)
+    //        {
+    //            allFurniture.Add(item);
+    //        }
+    //    }
 
-        CloseRedPoint();
-    }
-
-    //点击家具 查看不同皮肤
-    public void FurnitureSkinInit()
-    {
-        newTitleObj.SetActive(false);
-        ClearGridTrans();
-        allFurniture.Clear();
-        furnitureUseGridList.Clear();
-        furnitureObj.SetActive(true);
-        GetAllSkinsForBase(FurnitureManagement.instance.currentClickFurniture.FurnitureItem.DaseFurnitureId);
-        for (int i = 0; i < allFurniture.Count; i++)
-        {
-            GameObject GO = Instantiate(gridPrefab, gridTrans);
-            GO.GetComponent<FurnitureUseGrid>().currentState = GetSkinState(allFurniture[i], FurnitureManagement.instance.currentClickFurniture.FurnitureItem);
-            GO.GetComponent<FurnitureUseGrid>().FurnitureSkinInit(allFurniture[i]);
-            furnitureUseGridList.Add(GO.GetComponent<FurnitureUseGrid>());
-        }
-    }
-
-    //判断状态
-    public FurnitureSkinState GetSkinState(FurnitureItem skin, FurnitureItem currentItem)
-    {
-        if (skin.Id == currentItem.Id)
-            return FurnitureSkinState.Current;
-        if (skin.IsUnlocked)
-            return FurnitureSkinState.Unlocked;
-        return FurnitureSkinState.Locked;
-    }
-
-    public static void SetGridState()
-    {
-        for (int i = 0; i < furnitureUseGridList.Count; i++)
-        {
-            if (furnitureUseGridList[i].furnitureItem.IsDefault)
-            {
-                furnitureUseGridList[i].use_Tmp.gameObject.SetActive(true);
-                furnitureUseGridList[i].useBTN.gameObject.SetActive(false);
-            }
-            else
-            {
-                furnitureUseGridList[i].use_Tmp.gameObject.SetActive(false);
-                furnitureUseGridList[i].useBTN.gameObject.SetActive(true);
-            }
-        }
-    }
-
-    //点击OK按钮
-    public void OKClick()
-    {
-        dialogueBoxObj.SetActive(false);
-        //销毁箱子
-        FurnitureManagement.instance.NoviceLevel();
-        PlayerPrefs.SetString(FurnitureManagement.dialogueNoveicKey, "dialogueNoveic");
-        GameManager.Instance.SaveData();
-    }
-
-    //保存
-    public void SaveClick()
-    {
-        furnitureObj.SetActive(false);
-        newTitleObj.SetActive(false);
-        BaseTools.Instance.RetureCameraDefualtPosition();
-        FurnitureManagement.instance.SaveFurnitureDefualtMaterial();
-        ClearGridTrans();
-
-    }
-
-    //返回
-    public void BackClick()
-    {
-        MusicManagement.instance.ClickPlaySFX();
-        top_Obj.DOLocalMoveY(1200, 0.3f);
-        bottom_Obj.DOMoveY(-300, 0.3f).OnComplete(() =>
-        {
-            furnitureObj.SetActive(false);
-            newTitleObj.SetActive(false);
-            ClearGridTrans();
-            GameManager.Instance.currentFurnitureData.Clear();
-            this.gameObject.SetActive(false);
-            UIManagement.Instance.OpenMainPlane();
-        });
+    //    return allFurniture;
+    //}
+    #endregion
 
 
-    }
-
-    //红点
-    public void CloseRedPoint()
-    {
-        //关掉红点显示
-        if (PlayerPrefs.HasKey(UIManagement.redPointKey))
-            PlayerPrefs.DeleteKey(UIManagement.redPointKey);
-    }
-
-
-
-    public void ClearGridTrans()
-    {
-        for (int i = 0; i < gridTrans.childCount; i++)
-        {
-            Destroy(gridTrans.GetChild(i).gameObject);
-        }
-    }
-
-    public List<FurnitureItem> GetAllSkinsForBase(string baseFurnitureId)
-    {
-        foreach (var item in GameManager.Instance.CurrentData.AllFurniture)
-        {
-            if (item.DaseFurnitureId == baseFurnitureId)
-            {
-                allFurniture.Add(item);
-            }
-        }
-
-        return allFurniture;
-    }
 
 }

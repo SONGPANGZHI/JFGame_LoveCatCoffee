@@ -71,6 +71,7 @@ public class FurnitureItem
     public FurnitureType FurnitureType;
     public bool IsUnlocked;             // 是否已解锁
     public bool IsDefault;              // 是否是默认皮肤
+    public bool IsNewSkin;              // 新皮
     public Vector2 DefaultPosition;     // 默认位置
     public string DaseFurnitureId;      // 基础家具ID（用于皮肤分组）
     public int OrderLayer;

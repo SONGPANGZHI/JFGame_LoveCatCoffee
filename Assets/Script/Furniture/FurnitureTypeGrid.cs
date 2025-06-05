@@ -1,14 +1,18 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class FurnitureTypeGrid : MonoBehaviour
 {
-    //³õÊ¼»¯¸ñ×Ó
+    public GameObject gridItemPre;
+    public Transform trans;
+    //åˆå§‹åŒ–æ ¼å­
     public void GridInit(FurnitureItem Gird)
-    { 
-    
+    {
+        GameObject GO = Instantiate(gridItemPre, trans);
+        GO.GetComponent<FurnitureItemGrid>().ItemInit(Gird);
+        GO.name = Gird.Id + "_Grid";
     }
 
 }

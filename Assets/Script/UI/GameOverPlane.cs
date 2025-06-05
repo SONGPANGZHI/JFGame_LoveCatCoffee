@@ -111,7 +111,8 @@ public class GameOverPlane : MonoBehaviour
                 }
 
                 //把获得的家具名字添加到本地保存
-                GameManager.Instance.CurrentData.collectionFurnitureName.Add(_furnitureName);
+                FurnitureManagement.instance.ChangeFurnitureItemGetNewSkine(_furnitureName,true);
+               
             }
 
             GameManager.Instance.SaveData();

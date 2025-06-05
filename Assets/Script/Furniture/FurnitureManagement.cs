@@ -20,6 +20,7 @@ public class FurnitureManagement : MonoBehaviour
     public List<FurnitureItem> firstFloorFurniture;     //一楼家具
     public List<FurnitureItem> secondFloorFurniture;    //二楼家具
 
+    public static FurnitureItemGrid useFurnitureItemGrid;
 
     private void Awake()
     {
@@ -36,11 +37,20 @@ public class FurnitureManagement : MonoBehaviour
         FurnitureCategory();
 
         DefaultFurnitureInit();
+
+        if (!PlayerPrefs.HasKey(dialogueNoveicKey) && GameManager.Instance.currentGameLevel.LevelID > 2)
+        {
+            NoviceLevel();
+            PlayerPrefs.SetString(dialogueNoveicKey, "dialogueNoveic");
+            GameManager.Instance.SaveData();
+        }
     }
 
-    //家具分类
+    //家具分类 一楼二楼东西
     public void FurnitureCategory()
     {
+        firstFloorFurniture.Clear();
+        secondFloorFurniture.Clear();
         for (int i = 0; i < GameManager.Instance.CurrentData.AllFurniture.Count; i++)
         {
             if (GameManager.Instance.CurrentData.AllFurniture[i].FurnitureFloor == FurnitureFloor.FirstFloor)
@@ -49,6 +59,8 @@ public class FurnitureManagement : MonoBehaviour
                 secondFloorFurniture.Add(GameManager.Instance.CurrentData.AllFurniture[i]);
         }
     }
+
+
 
     public void DefaultFurnitureInit()
     {
@@ -103,15 +115,10 @@ public class FurnitureManagement : MonoBehaviour
 
         for (int i = 0; i < sceneFurniture.Count; i++)
         {
-            if (sceneFurniture[i] == null)
-            { 
-                sceneFurniture.Remove(sceneFurniture[i]);
-                return;
-            }
-
             if (sceneFurniture[i].name == furnitureID)
             {
                 Destroy(sceneFurniture[i]);
+                sceneFurniture.Remove(sceneFurniture[i]);
             }
         }
 
@@ -130,6 +137,24 @@ public class FurnitureManagement : MonoBehaviour
             if (item.Id == furnitureID)
             {
                 item.IsDefault = changeBool;
+            }
+        }
+
+    }
+
+    //解锁新家具
+    public void ChangeFurnitureItemGetNewSkine(string furnitureID, bool changeBool)
+    {
+        if (GameManager.Instance.FurniturePosDic.ContainsKey(furnitureID))
+        {
+            GameManager.Instance.FurniturePosDic[furnitureID].IsNewSkin = changeBool; // 直接修改值
+        }
+
+        foreach (var item in GameManager.Instance.CurrentData.AllFurniture)
+        {
+            if (item.Id == furnitureID)
+            {
+                item.IsNewSkin = changeBool;
             }
         }
 
@@ -178,6 +203,34 @@ public class FurnitureManagement : MonoBehaviour
         {
             lastClickFurniture.UseDefualtMaterial();
         }
+    }
+
+    //改变之前状态
+    public static void ChangeGridState(string furnitureID)
+    {
+        useFurnitureItemGrid = GameObject.Find(furnitureID + "_Grid").GetComponent<FurnitureItemGrid>();
+        useFurnitureItemGrid.ShowUseBtn();
+    }
+
+    //检查是否有一级建筑
+    public static string CheckFirstFurniture(string furnitureID)
+    {
+        if (furnitureID.StartsWith("Hall2_"))
+        {
+            string newString = furnitureID.Replace("Hall2", "Hall1");
+            return newString;
+        }
+        else if (furnitureID.StartsWith("Hall1_"))
+        {
+            string newString = furnitureID.Replace("Hall1", "Hall2");
+            return newString;
+        }
+        else
+        {
+            Debug.LogError("newString" + furnitureID);
+            return furnitureID;
+        }
+
     }
 }
 

@@ -128,10 +128,10 @@ public class UIManagement : MonoBehaviour
     }
 
     //打开家具换皮界面
-    public void OpenFurnitureSkinPlane()
-    {
-        furnitureUpgradePlane.FurnitureSkinInit();
-    }
+    //public void OpenFurnitureSkinPlane()
+    //{
+    //    //furnitureUpgradePlane.FurnitureSkinInit();
+    //}
 
 
     public void CloseFurnitureUpgradePlane()

@@ -62,9 +62,6 @@ public class GuidancePlane : MonoBehaviour
                 UIManagement.Instance.mainPlane.StartPlayClick();
                 Debug.LogError("当前ID;" + guidanceData.ID);
                 break;
-            case 1:
-                Debug.LogError("playgame");
-                break;
             case 2:
                 UIManagement.Instance.gameOverPlane.NextLevelClick();
                 Debug.LogError("解锁下一关");
@@ -73,7 +70,7 @@ public class GuidancePlane : MonoBehaviour
                 break;
         }
 
-        //PlayerPrefs.SetString(guidanceData.saveKey, "Save" + guidanceData.saveKey);
+        PlayerPrefs.SetString(guidanceData.saveKey, "Save" + guidanceData.saveKey);
         UIManagement.Instance.CloseGuidancePlane();
     }
 

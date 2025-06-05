@@ -9,7 +9,7 @@ public class AwardGrid : MonoBehaviour
 
     public void InitAwardGrid(string spriteKey)
     {
-        Sprite itemSprite = ListExtensions.LoadFurnitureSprite(spriteKey);
+        Sprite itemSprite = ListExtensions.LoadFurnitureIconSprite(spriteKey);
         Icon.sprite = itemSprite;
         text_Tmp.text = "ÐÂ¼Ò¾ß";
     }

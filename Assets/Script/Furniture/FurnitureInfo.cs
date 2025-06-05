@@ -32,7 +32,7 @@ public class FurnitureInfo : MonoBehaviour,IPointerClickHandler
         FurnitureManagement.instance.currentClickFurniture = this;
         FurnitureManagement.instance.JudgeCurrentClickFurniture();
         BaseTools.Instance.SetCameraPosition(this.transform.position, FurnitureItem.CameraSize);
-        UIManagement.Instance.OpenFurnitureSkinPlane();
+        //UIManagement.Instance.OpenFurnitureSkinPlane();
     }
 
     //使用默认材质
