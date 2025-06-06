@@ -96,16 +96,9 @@ public class FurnitureItemGrid : MonoBehaviour
         use_TMP.gameObject.SetActive(true);
         redPonit.SetActive(false);
 
-        if (GuidancePlane.Instance.JudgeWhetherOpenGuide(6))
-        {
-            Invoke("GuidanceFurnitureUse",0.2f);
-        }
+        UIManagement.Instance.OpenFurnitureConfirmPlane();
+
+        
     }
 
-    //新手引导 结束
-    public void GuidanceFurnitureUse()
-    {
-        UIManagement.Instance.OpenGuidancePlane();
-        GuidancePlane.Instance.GuidanceInit(6, new Vector3(540, 960, 0),5);
-    }
 }

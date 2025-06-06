@@ -12,6 +12,8 @@ public class BaseTools : MonoBehaviour
     private int height;
     private float defualtSize;
     private Camera MainSceneCamera;
+
+    public static bool changePlaneSize;
     void Awake()
     {
         if (Instance == null)
@@ -36,11 +38,13 @@ public class BaseTools : MonoBehaviour
         {
             //比例 designRatio = 0.5625
             MainSceneCamera.orthographicSize = 9;
+            changePlaneSize = false;
         }
         else
         {
             // 窄屏设备
             MainSceneCamera.orthographicSize = 11;
+            changePlaneSize = true;
         }
 
         defualtSize = MainSceneCamera.orthographicSize;

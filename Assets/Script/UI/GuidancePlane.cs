@@ -27,7 +27,7 @@ public class GuidancePlane : MonoBehaviour
 
 
     //新手引导初始化
-    public void GuidanceInit(int ID,Vector3 guidancePos,int size = 1)
+    public void GuidanceInit(int ID,Vector3 guidancePos,float size = 1)
     {
         guidanceData = GameManager.Instance.guidanceData[ID];
         mask_IMG.sprite = guidanceData.maskSprite;
@@ -54,10 +54,12 @@ public class GuidancePlane : MonoBehaviour
     {
         if (ID == 1)
         {
+            dialogue_OBJ.GetComponent<Image>().enabled = true;
             Special_TMP.SetActive(true);
         }
         else
         {
+            dialogue_OBJ.GetComponent<Image>().enabled = false;
             Special_TMP.SetActive(false);
         }
 
@@ -71,23 +73,22 @@ public class GuidancePlane : MonoBehaviour
         {
             case 0:
                 UIManagement.Instance.mainPlane.StartPlayClick();
-                Debug.LogError("当前ID;" + guidanceData.ID);
                 break;
             case 2:
                 UIManagement.Instance.gameOverPlane.NextLevelClick();
-                Debug.LogError("解锁下一关");
                 break;
             case 3:
                 UIManagement.Instance.gameOverPlane.BackMain();
-                Debug.LogError("返回主界面");
                 break;
             case 4:
                 UIManagement.Instance.OpenFurnitureUpgradePlane();
-                Debug.LogError("点击装扮");
                 break;
             case 5:
                 FurnitureManagement.useFurnitureItemGrid.UseClick();
-                Debug.LogError("家具使用");
+                break;
+            case 6:
+                UIManagement.Instance.furnitureUpgradePlane.OkBackClick();
+                PlayerPrefs.SetString("HallCatKey", "HallCat");
                 break;
         }
 

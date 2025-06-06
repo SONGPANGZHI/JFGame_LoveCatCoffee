@@ -94,7 +94,7 @@ public class PlayGameManagement : MonoBehaviour
     public void GuidancePlayGame()
     {
         UIManagement.Instance.OpenGuidancePlane();
-        GuidancePlane.Instance.GuidanceInit(1, new Vector3(540,960,0));
+        GuidancePlane.Instance.GuidanceInit(1, new Vector3(540,960,0),1.5f);
     }
 
 

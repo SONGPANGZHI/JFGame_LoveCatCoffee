@@ -7,6 +7,7 @@ public class MusicManagement : MonoBehaviour
     public static MusicManagement instance;
     public AudioSource source_SFX;
     public AudioSource source_BGM;
+    public AudioSource special_SFX;
     public AudioClip clip_SFX;
     public AudioClip clip_BGM;
     public AudioClip dropZone_SFX;
@@ -61,13 +62,14 @@ public class MusicManagement : MonoBehaviour
         }
     }
 
+    //播放销毁音效
     public void PlayDestorySFX()
     {
         //判断 是否关闭音效
         if (PlayerPrefs.GetInt(GameManager.soundSetKey) == 0)
         {
-            source_SFX.clip = destruction_SFX;
-            source_SFX.Play();
+            special_SFX.clip = destruction_SFX;
+            special_SFX.Play();
         }
     }
 }

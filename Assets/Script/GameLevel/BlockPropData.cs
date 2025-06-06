@@ -101,7 +101,7 @@ public class BlockPropData : MonoBehaviour
 
         click_BTN.interactable = false;
         fruits_Icon.transform.DOScale(1.2F,0.2F);
-
+        plate_Icon.transform.DOScale(0, 0.2f);
         fruits_Icon.transform.DOMove(PlayGameManagement.Instance.blockAnimPos[PlayGameManagement.Instance.dropZoneData.Count].position, 0.1f).SetEase(Ease.Linear).OnComplete(() =>
         {
             fruits_Icon.transform.localScale = Vector3.one; // 动画完成后恢复原始大小

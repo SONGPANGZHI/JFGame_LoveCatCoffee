@@ -20,8 +20,14 @@ public class FurnitureManagement : MonoBehaviour
     public List<FurnitureItem> firstFloorFurniture;     //一楼家具
     public List<FurnitureItem> secondFloorFurniture;    //二楼家具
 
+    public GameObject hallCatAnim;
+
     public static FurnitureItemGrid useFurnitureItemGrid;
 
+
+
+    public static bool _openMaowuTitle;
+    public static bool _openHallTitle;
     private void Awake()
     {
         if (instance == null)
@@ -43,6 +49,11 @@ public class FurnitureManagement : MonoBehaviour
             NoviceLevel();
             PlayerPrefs.SetString(dialogueNoveicKey, "dialogueNoveic");
             GameManager.Instance.SaveData();
+        }
+
+        if (PlayerPrefs.HasKey("HallCatKey"))
+        {
+            hallCatAnim.SetActive(true);
         }
     }
 
@@ -79,12 +90,13 @@ public class FurnitureManagement : MonoBehaviour
     {
         GameObject GO = Instantiate(furniturePrefab, furnitureTrans);
         GO.GetComponent<FurnitureInfo>().Init(GetFurnitureItem(spriteKey));
+        currentClickFurniture = GO.GetComponent<FurnitureInfo>();
         GO.name = spriteKey;
         sceneFurniture.Add(GO);
-        GO.transform.DOScale(1.2f, 0.3f).SetEase(Ease.Linear).OnComplete(() => 
-        {
-            GO.transform.localScale = Vector3.one; // 动画完成后恢复原始大小
-        });
+        //GO.transform.DOScale(1.2f, 0.3f).SetEase(Ease.Linear).OnComplete(() => 
+        //{
+        //    GO.transform.localScale = Vector3.one; // 动画完成后恢复原始大小
+        //});
     }
 
     //新手关卡（第一关通关）

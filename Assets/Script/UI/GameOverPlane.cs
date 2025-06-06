@@ -24,8 +24,6 @@ public class GameOverPlane : MonoBehaviour
     [SerializeField]
     private Button nextLevel_BTN;                   //返回按钮
 
-    private float progress;
-
     private bool planeState;
 
 
@@ -137,7 +135,6 @@ public class GameOverPlane : MonoBehaviour
     {
         UIManagement.Instance.OpenGuidancePlane();
         GuidancePlane.Instance.GuidanceInit(3, back_BTN.transform.position);
-
     }
 
     //重新挑战

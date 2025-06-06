@@ -127,6 +127,12 @@ public class UIManagement : MonoBehaviour
         //furnitureUpgradePlane.FurnitureInit(); 
     }
 
+    public void OpenFurnitureConfirmPlane()
+    {
+        furnitureUpgradePlane.ClosePlaneOpenConfirmPlane();
+        furnitureUpgradePlane.OpenConfirmationPlane();
+    }
+
     //打开家具换皮界面
     //public void OpenFurnitureSkinPlane()
     //{
@@ -136,7 +142,7 @@ public class UIManagement : MonoBehaviour
 
     public void CloseFurnitureUpgradePlane()
     {
-        furnitureUpgradePlane.gameObject.SetActive(false);
+        furnitureUpgradePlane.ClosePlaneOpenConfirmPlane();
     }
 
     //打开新手引导

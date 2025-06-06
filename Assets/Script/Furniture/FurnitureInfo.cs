@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -33,6 +34,16 @@ public class FurnitureInfo : MonoBehaviour,IPointerClickHandler
         FurnitureManagement.instance.JudgeCurrentClickFurniture();
         BaseTools.Instance.SetCameraPosition(this.transform.position, FurnitureItem.CameraSize);
         //UIManagement.Instance.OpenFurnitureSkinPlane();
+    }
+
+    //摄像机对准家具
+    public void CameraFocusedOnFurniture()
+    {
+        transform.DOScale(1.2f, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            transform.localScale = Vector3.one; // 动画完成后恢复原始大小
+        });
+        BaseTools.Instance.SetCameraPosition(this.transform.position, FurnitureItem.CameraSize);
     }
 
     //使用默认材质

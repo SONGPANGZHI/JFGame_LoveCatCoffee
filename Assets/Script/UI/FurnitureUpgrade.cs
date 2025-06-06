@@ -21,9 +21,14 @@ public class FurnitureUpgrade : MonoBehaviour
     public List<Transform> HallFurnitureTran = new List<Transform>();
     public List<Transform> CatHouseFurnitureTran = new List<Transform>();
 
+    [Header("家具确认界面")]
+    public GameObject FurnitureConfirmationPlane_OBJ;
+    public Button OkBack_BTN;
+
     private void Awake()
     {
         back_BTN.onClick.AddListener(ClosePlane);
+        OkBack_BTN.onClick.AddListener(OkBackClick);
     }
 
 
@@ -31,13 +36,29 @@ public class FurnitureUpgrade : MonoBehaviour
     //界面初始化
     public void OpenPlaneInit()
     {
+        //if (BaseTools.changePlaneSize)
+        //    this.transform.localScale = new Vector3(0.9f,0.9f,0.9f);
+        //else
+        //    transform.localScale  = Vector3.one;
+
+        //生成大厅和猫屋家具
         CreateHall();
+        CreateCatHouse();
+
+
+        //关闭红点
         CloseRedPoint();
 
-        FurnitureManagement.useFurnitureItemGrid = GameObject.Find("Hall1_Diban_Grid").GetComponent<FurnitureItemGrid>();
+        //新手引导
+        Guidance();
+    }
 
+    //新手引导
+    public void Guidance()
+    {
         if (GuidancePlane.Instance.JudgeWhetherOpenGuide(5))
         {
+            FurnitureManagement.useFurnitureItemGrid = GameObject.Find("Hall1_Diban_Grid").GetComponent<FurnitureItemGrid>();
             Invoke("GuidanceFurnitureUse", 0.5f);
         }
     }
@@ -47,6 +68,19 @@ public class FurnitureUpgrade : MonoBehaviour
     {
         UIManagement.Instance.OpenGuidancePlane();
         GuidancePlane.Instance.GuidanceInit(5, FurnitureManagement.useFurnitureItemGrid.use_BTN.transform.position);
+    }
+
+    public void OpenTitleRed()
+    {
+        if (FurnitureManagement._openHallTitle)
+        {
+            hall_BTN.transform.GetChild(1).gameObject.SetActive(true);
+        }
+
+        if (FurnitureManagement._openMaowuTitle)
+        {
+            hall_BTN.transform.GetChild(1).gameObject.SetActive(true);
+        }
     }
 
     //生成大厅家具
@@ -61,7 +95,10 @@ public class FurnitureUpgrade : MonoBehaviour
     //生成猫屋家具
     public void CreateCatHouse()
     {
-        
+        for (int i = 0; i < FurnitureManagement.instance.secondFloorFurniture.Count; i++)
+        {
+            CreateByCategory(FurnitureManagement.instance.secondFloorFurniture[i], CatHouseFurnitureTran);
+        }
     }
 
     //按分类生成
@@ -95,9 +132,26 @@ public class FurnitureUpgrade : MonoBehaviour
     public void ClosePlane()
     {
         MusicManagement.instance.ClickPlaySFX();
+        ChangeBTNState("hall_BTN");
         gameObject.SetActive(false);
+        ClearTrans(CatHouseFurnitureTran);
         ClearTrans(HallFurnitureTran);
         UIManagement.Instance.OpenMainPlane();
+    }
+
+    //优先打开大厅界面 后续修改
+    public void OpenHall()
+    {
+        hallTrans.gameObject.SetActive(true);
+        outsideStoreTrans.gameObject.SetActive(false);
+        catHouseTrans.gameObject.SetActive(false);
+    }
+
+    //关闭界面打开确定界面
+    public void ClosePlaneOpenConfirmPlane()
+    {
+        gameObject.SetActive(false);
+        ClearTrans(HallFurnitureTran);
     }
 
     //红点
@@ -144,6 +198,36 @@ public class FurnitureUpgrade : MonoBehaviour
                 catHouseTrans.gameObject.SetActive(true);
                 break;
         }
+    }
+
+
+    //家具交互返回界面
+    public void OkBackClick()
+    {
+        BaseTools.Instance.RetureCameraDefualtPosition();
+        FurnitureConfirmationPlane_OBJ.SetActive(false);
+        UIManagement.Instance.OpenFurnitureUpgradePlane();
+    }
+
+    //打开确认界面
+    public void OpenConfirmationPlane()
+    {
+        FurnitureConfirmationPlane_OBJ.SetActive(true);
+        FurnitureManagement.instance.currentClickFurniture.CameraFocusedOnFurniture();
+
+        if (GuidancePlane.Instance.JudgeWhetherOpenGuide(6))
+        {
+            Invoke("GuidanceFurnitureUseBack", 0.5f);
+        }
+    }
+
+
+    //新手引导家具使用返回
+    public void GuidanceFurnitureUseBack()
+    {
+        UIManagement.Instance.OpenGuidancePlane();
+        GuidancePlane.Instance.GuidanceInit(6, OkBack_BTN.transform.position);
+        FurnitureManagement.instance.hallCatAnim.SetActive(true);
     }
 
     #region 弃用
