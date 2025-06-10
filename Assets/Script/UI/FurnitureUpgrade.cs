@@ -17,6 +17,7 @@ public class FurnitureUpgrade : MonoBehaviour
     public Transform catHouseTrans;
 
     public GameObject furnitureTypePrefab;
+    public RectTransform planeAnim;
 
     public List<Transform> HallFurnitureTran = new List<Transform>();
     public List<Transform> CatHouseFurnitureTran = new List<Transform>();
@@ -48,9 +49,13 @@ public class FurnitureUpgrade : MonoBehaviour
 
         //关闭红点
         CloseRedPoint();
+        OpenTitleRed();
 
         //新手引导
         Guidance();
+
+        planeAnim.DOAnchorPosX(0, 0.3f);
+       
     }
 
     //新手引导
@@ -70,17 +75,19 @@ public class FurnitureUpgrade : MonoBehaviour
         GuidancePlane.Instance.GuidanceInit(5, FurnitureManagement.useFurnitureItemGrid.use_BTN.transform.position);
     }
 
+
+
     public void OpenTitleRed()
     {
         if (FurnitureManagement._openHallTitle)
-        {
             hall_BTN.transform.GetChild(1).gameObject.SetActive(true);
-        }
+        else
+            hall_BTN.transform.GetChild(1).gameObject.SetActive(false);
 
         if (FurnitureManagement._openMaowuTitle)
-        {
-            hall_BTN.transform.GetChild(1).gameObject.SetActive(true);
-        }
+            catHouse_BTN.transform.GetChild(1).gameObject.SetActive(true);
+        else
+            catHouse_BTN.transform.GetChild(1).gameObject.SetActive(false);
     }
 
     //生成大厅家具
@@ -132,11 +139,15 @@ public class FurnitureUpgrade : MonoBehaviour
     public void ClosePlane()
     {
         MusicManagement.instance.ClickPlaySFX();
-        ChangeBTNState("hall_BTN");
-        gameObject.SetActive(false);
-        ClearTrans(CatHouseFurnitureTran);
-        ClearTrans(HallFurnitureTran);
-        UIManagement.Instance.OpenMainPlane();
+        planeAnim.DOAnchorPosX(1300, 0.3f).OnComplete(() =>
+        {
+            ChangeBTNState("hall_BTN");
+            gameObject.SetActive(false);
+            ClearTrans(CatHouseFurnitureTran);
+            ClearTrans(HallFurnitureTran);
+            UIManagement.Instance.OpenMainPlane();
+        });
+       
     }
 
     //优先打开大厅界面 后续修改
@@ -150,8 +161,12 @@ public class FurnitureUpgrade : MonoBehaviour
     //关闭界面打开确定界面
     public void ClosePlaneOpenConfirmPlane()
     {
-        gameObject.SetActive(false);
-        ClearTrans(HallFurnitureTran);
+        planeAnim.DOAnchorPosX(1300, 0.3f).OnComplete(() =>
+        {
+            gameObject.SetActive(false);
+
+            ClearTrans(HallFurnitureTran);
+        });
     }
 
     //红点
@@ -205,6 +220,7 @@ public class FurnitureUpgrade : MonoBehaviour
     public void OkBackClick()
     {
         BaseTools.Instance.RetureCameraDefualtPosition();
+        FurnitureManagement.instance.currentClickFurniture.UseDefualtMaterial();
         FurnitureConfirmationPlane_OBJ.SetActive(false);
         UIManagement.Instance.OpenFurnitureUpgradePlane();
     }

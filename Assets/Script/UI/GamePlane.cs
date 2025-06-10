@@ -45,12 +45,6 @@ public class GamePlane : MonoBehaviour
         buttom_Menu.DOMoveY(143, 0.1f);
     }
 
-    ////目标文本 改变
-    //public void TargetTmpChange()
-    //{
-    //    targetNum_TMP.text = GameManager.Instance.currentNumberCats + "/" + PlayGameManagement.Instance.catTarget;
-    //}
-
     //设置
     private void SettingClick()
     {
@@ -156,6 +150,30 @@ public class GamePlane : MonoBehaviour
     { 
     
     }
+
+    #endregion
+
+    #region
+
+    //生成速度道具
+    public void CreateSpeedProp()
+    {
+
+    }
+
+    //生成清楚道具
+    public void CreateClearPorp()
+    {
+
+    }
+
+    //生成透视道具
+    public void CreateperspectiveProp()
+    {
+
+    }
+
+
 
     #endregion
 

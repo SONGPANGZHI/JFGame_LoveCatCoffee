@@ -8,13 +8,13 @@ public class BlockGeneration : MonoBehaviour
     //生成所有数据
     public void GenerateAllBlock()
     {
+        //PlayGameManagement.Instance.UpdateMysteryBox();
         for (int i = 0; i < prefabTrans.Count; i++)
         {
             int elementCount = Random.Range(1,4);
             GenerateBlock(i, elementCount);
         }
 
-        PlayGameManagement.Instance.UpdateMysteryBox();
     }
 
     //生成一组数据
@@ -39,10 +39,16 @@ public class BlockGeneration : MonoBehaviour
         {
             for (int j = 0; j < prefabTrans[i].childCount; j++)
             {
+                RemoveMysteryBox(prefabTrans[i].GetChild(j).GetComponent<BlockPropData>());
                 Destroy(prefabTrans[i].GetChild(j).gameObject);
             }
         }
     }
 
-
+    //移除盲盒
+    public void RemoveMysteryBox(BlockPropData blockPropData)
+    {
+        if (blockPropData._isMayster)
+            PlayGameManagement.Instance.currentMysteryBox.Remove(blockPropData);
+    }
 }

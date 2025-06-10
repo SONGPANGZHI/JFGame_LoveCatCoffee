@@ -19,6 +19,7 @@ public class LoadingPlane : MonoBehaviour
     public void LoadingPlaneInit()
     {
         SetProgress();
+
     }
 
     public void SetProgress()
@@ -40,9 +41,10 @@ public class LoadingPlane : MonoBehaviour
             changeValue.DOFade(0, 0.5f).SetEase(Ease.Linear);
             bg.transform.GetChild(0).GetComponent<Image>().DOFade(0, 0.5f).SetEase(Ease.Linear);
             bg.transform.GetChild(1).GetComponent<Image>().DOFade(0, 0.5f).SetEase(Ease.Linear);
-            bg.DOFade(0, 0.5f).SetEase(Ease.Linear).OnComplete(() => {
+            bg.DOFade(0, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+            {
 
-                if(UIManagement.Instance.sceneName == "DressUp")
+                if (UIManagement.Instance.sceneName == "DressUp")
                     UIManagement.Instance.OpenFurnitureUpgradePlane();
                 else
                     UIManagement.Instance.OpenGamePlane();
@@ -72,7 +74,8 @@ public class LoadingPlane : MonoBehaviour
             changeValue.DOFade(0, 0.5f).SetEase(Ease.Linear);
             bg.transform.GetChild(0).GetComponent<Image>().DOFade(0, 0.5f).SetEase(Ease.Linear);
             bg.transform.GetChild(1).GetComponent<Image>().DOFade(0, 0.5f).SetEase(Ease.Linear);
-            bg.DOFade(0, 0.5f).SetEase(Ease.Linear).OnComplete(() => {
+            bg.DOFade(0, 0.5f).SetEase(Ease.Linear).OnComplete(() =>
+            {
 
                 this.gameObject.SetActive(false);
                 UIManagement.Instance.OpenMainPlane();

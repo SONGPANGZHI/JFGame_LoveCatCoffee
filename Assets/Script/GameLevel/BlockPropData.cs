@@ -16,7 +16,7 @@ public class BlockPropData : MonoBehaviour
     public Transform blockParent;
 
     public bool midlleBlock;
-    private bool _isMayster;
+    public bool _isMayster;
     private void Awake()
     {
         click_BTN.onClick.AddListener(BlockClick);
@@ -112,7 +112,16 @@ public class BlockPropData : MonoBehaviour
         UpdateButtonInteractability();
 
         if (midlleBlock)
+        {
             PlayGameManagement.Instance.middleAllNum -= 1;
+            if (_isMayster)
+                PlayGameManagement.Instance.currentMysteryBox.Remove(this);
+        }
+        else
+        { 
+            if(_isMayster)
+                PlayGameManagement.Instance.currentMysteryBox.Remove(this);
+        }
 
     }
 

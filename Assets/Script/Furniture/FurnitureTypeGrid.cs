@@ -9,6 +9,8 @@ public class FurnitureTypeGrid : MonoBehaviour
     {
         GameObject GO = Instantiate(gridItemPre, trans);
         GO.GetComponent<FurnitureItemGrid>().ItemInit(Gird);
+        if(Gird.IsNewSkin)
+            GO.transform.SetAsFirstSibling();
         GO.name = Gird.Id + "_Grid";
     }
 

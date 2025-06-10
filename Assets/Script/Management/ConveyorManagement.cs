@@ -105,7 +105,6 @@ public class ConveyorManagement : MonoBehaviour
             if (i < element - 1)
                 GO.GetComponent<BlockPropData>().ButtonNotClickable();
             PlayGameManagement.Instance.middleAllNum += 1;
-            PlayGameManagement.Instance.allMiddleBlockNum += 1;
         }
     }
 
@@ -148,6 +147,7 @@ public class ConveyorManagement : MonoBehaviour
         // 检查是否需要循环
         if (topConveyor_IMG[0].localPosition.x < -imageWidth)
         {
+
             topConveyor_IMG[0].GetComponent<BlockGeneration>().ClearAllBlock();
             RectTransform firstImage = topConveyor_IMG[0];
             firstImage.localPosition = new Vector3(topConveyor_IMG[2].localPosition.x + imageWidth, 0, 0);

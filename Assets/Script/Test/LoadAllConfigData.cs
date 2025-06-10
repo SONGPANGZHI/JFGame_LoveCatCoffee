@@ -12,9 +12,6 @@ public class GameLevelInfo
     public MiddleBlockNum BlockNum;
     public float conveyorSpeed;
     public int PositionsNum;
-    public bool cat;
-    public int CatAppearTime;
-    public CatSectionProbability CatSection;
     public List<string> FurnitureName;
 
 }

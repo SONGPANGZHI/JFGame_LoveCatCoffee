@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 //道具类
@@ -25,6 +27,44 @@ public class BlockPropDataClass
         config= _config;
     }
 }
+[Serializable]
+public class CatRequirement
+{
+    public BlockPropType requiredType; // 需求方块类型
+    public int totalRequired;     // 总需求数量
+    public int currentCount;      // 当前已收集数量
+
+    public bool IsSatisfied => currentCount <= 0;
+
+    public CatRequirement(BlockPropType _blockPropType,int total,int current)
+    {
+        requiredType =  _blockPropType;
+        totalRequired = total;
+        currentCount = current;
+    }
+}
+
+[Serializable]
+public class Cat
+{
+    public string name;
+    public Sprite icon;
+    public List<CatRequirement> requirements = new List<CatRequirement>();
+
+    public bool IsFullySatisfied => requirements.All(r => r.IsSatisfied);
+
+    // 添加新需求
+    //public void AddRequirement(BlockPropType type, int count)
+    //{
+    //    requirements.Add(new CatRequirement()
+    //    {
+    //        requiredType = type,
+    //        totalRequired = count,
+    //        currentCount = 0
+    //    });
+    //}
+}
+
 
 public enum BlockHierarchy
 { 
@@ -81,6 +121,14 @@ public enum BlockPropType
     Watermelon,         //西瓜
 }
 
+//关卡类型
+public enum LevelType
+{
+    Countdown,
+    CatNeedNum,
+    TimeAndCat
+}
+
 public enum FurnitureFloor
 {
     None,
@@ -114,3 +162,5 @@ public enum FurnitureType
     Wall,               //墙
     Decorate,           //装饰
 }
+
+

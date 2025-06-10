@@ -44,7 +44,7 @@ public class FurnitureManagement : MonoBehaviour
 
         DefaultFurnitureInit();
 
-        if (!PlayerPrefs.HasKey(dialogueNoveicKey) && GameManager.Instance.currentGameLevel.LevelID > 2)
+        if (!PlayerPrefs.HasKey(dialogueNoveicKey) || GameManager.Instance.currentGameLevel.LevelID > 2)
         {
             NoviceLevel();
             PlayerPrefs.SetString(dialogueNoveicKey, "dialogueNoveic");
@@ -229,20 +229,40 @@ public class FurnitureManagement : MonoBehaviour
     {
         if (furnitureID.StartsWith("Hall2_"))
         {
+            _openHallTitle = false;
             string newString = furnitureID.Replace("Hall2", "Hall1");
             return newString;
         }
         else if (furnitureID.StartsWith("Hall1_"))
         {
+            _openHallTitle = false;
             string newString = furnitureID.Replace("Hall1", "Hall2");
             return newString;
         }
         else
         {
+            _openMaowuTitle = false;
             Debug.LogError("newString" + furnitureID);
             return furnitureID;
         }
 
     }
+
+    //判断奖励中有几楼家具，打开对应的红点
+    public void CheckFurnitureTypeOpenRed()
+    {
+        for (int i = 0; i < GameManager.Instance.currentGameLevel.FurnitureName.Count; i++)
+        {
+            if (GameManager.Instance.currentGameLevel.FurnitureName[i].StartsWith("Hall2_") || GameManager.Instance.currentGameLevel.FurnitureName[i].StartsWith("Hall1_"))
+            {
+                _openHallTitle = true;
+            }
+            else if (GameManager.Instance.currentGameLevel.FurnitureName[i].StartsWith("Maowu1_"))
+            {
+                _openMaowuTitle = true;
+            }
+        }
+    }
+
 }
 

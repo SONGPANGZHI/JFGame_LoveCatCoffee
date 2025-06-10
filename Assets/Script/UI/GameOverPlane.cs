@@ -57,7 +57,7 @@ public class GameOverPlane : MonoBehaviour
             //界面显示动画
             defeated_UI.SetActive(false);
             victory_UI.SetActive(true);
-            victory_UI.transform.DOScale(new Vector3(1, 1, 1), 0.3f);
+            victory_UI.transform.DOLocalMoveY(0,0.3F);
             menu_BTN.transform.DOLocalMoveY(-400, 0.3F);
             InitAward();
             if (GuidancePlane.Instance.JudgeWhetherOpenGuide(2))
@@ -81,7 +81,7 @@ public class GameOverPlane : MonoBehaviour
 
             victory_UI.SetActive(false);
             defeated_UI.SetActive(true);
-            defeated_UI.transform.DOScale(Vector3.one, 0.3f);
+            defeated_UI.transform.DOLocalMoveY(263, 0.3f);
             menu_BTN.transform.DOLocalMoveY(-400, 0.3F);
         }
 
@@ -91,6 +91,7 @@ public class GameOverPlane : MonoBehaviour
     //初始化奖励
     public void InitAward()
     {
+        FurnitureManagement.instance.CheckFurnitureTypeOpenRed();
         if (GameManager.Instance.currentGameLevel.LevelID == 1)
         {
             GameObject GO = Instantiate(awardGrid, awardTran);
@@ -142,7 +143,7 @@ public class GameOverPlane : MonoBehaviour
     {
         MusicManagement.instance.ClickPlaySFX();
         menu_BTN.transform.DOMoveY(-1200, 0.3F);
-        defeated_UI.transform.DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
+        defeated_UI.transform.DOMoveY(1800, 0.3F).OnComplete(() =>
         {
             ClearTrans();
             //加载界面
@@ -173,7 +174,7 @@ public class GameOverPlane : MonoBehaviour
     {
         MusicManagement.instance.ClickPlaySFX();
         menu_BTN.transform.DOMoveY(-1200, 0.3F);
-        victory_UI.transform.DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
+        victory_UI.transform.DOMoveY(1800, 0.3F).OnComplete(() =>
         {
             ClearTrans();
             //加载界面
@@ -190,7 +191,7 @@ public class GameOverPlane : MonoBehaviour
 
     public void ClosePlane(GameObject plane)
     {
-        plane.transform.DOScale(new Vector3(0, 0, 0), 0.3F).OnComplete(() =>
+        plane.transform.DOMoveY(1800, 0.3F).OnComplete(() =>
         {
             ClearTrans();
             this.gameObject.SetActive(false);

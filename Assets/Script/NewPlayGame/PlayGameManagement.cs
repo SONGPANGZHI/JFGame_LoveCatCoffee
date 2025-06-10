@@ -1,10 +1,13 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Reflection;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class PlayGameManagement : MonoBehaviour
 {
@@ -12,22 +15,28 @@ public class PlayGameManagement : MonoBehaviour
 
     public RectTransform uiTrans;
     public RectTransform middleTrans;
+    public TMP_Text timer_TMP;
+    private float currentTime = 240;
 
     [Header("放置区数据")]
     public List<GameObject> dropZoneData;
     public Transform dropZoneTran;
     public GameObject dropZonePrefab;
 
-    public List<BlockDataConfig> blockDataConfig;         
+    public List<BlockDataConfig> blockDataConfig;
     public GameObject blockPrefab;
     public GameObject blockEffect;
 
     [Header("猫猫需求")]
-    public int allMiddleBlockNum = 0;
+    public GameObject catPrefab;        //猫咪预制体
+    public Transform catPosTrans;       //猫咪位置
+    public List<CatData> cats = new List<CatData>();
+    public List<CatRequirementFurite> allRequirements = new List<CatRequirementFurite>();
 
-    public List<CatData> catDataAll;
-    public List<CatData> catNeedBlock;
-    private CatData catData_Temp;
+
+    //public List<CatData> catDataAll;
+    //public List<CatData> catNeedBlock;
+    //private CatData catData_Temp;
 
     [Header("传送带 速度")]
     public bool keepTime = false;
@@ -51,21 +60,19 @@ public class PlayGameManagement : MonoBehaviour
     public int blockTypeNum;
     public int blockArea;
     public int conveyorArea;
+    public float levelTimer;
     public List<string> furnitureName;
 
+
+
+
+
     public int middleAllNum;
-
-    public bool giftsPercentProgress_60;
-    public bool giftsPercentProgress_80;
-    public bool giftsPercentProgress_100;
-
     public List<BlockPropData> currentMysteryBox;
-
-    public GameObject blockAnimPrefab;
     public List<Transform> blockAnimPos;
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
             Instance = this;
 
         //获取方块列表
@@ -88,24 +95,31 @@ public class PlayGameManagement : MonoBehaviour
 
         GameManager.Instance.pauseGame = true;
 
-       
+
     }
 
+    //新手引导开始游戏
     public void GuidancePlayGame()
     {
         UIManagement.Instance.OpenGuidancePlane();
-        GuidancePlane.Instance.GuidanceInit(1, new Vector3(540,960,0),1.5f);
+        GuidancePlane.Instance.GuidanceInit(1, new Vector3(540, 960, 0), 1.5f);
     }
 
 
     private void Start()
     {
-        BaseTools.Instance.UIAdaptive(uiTrans,middleTrans);
+        BaseTools.Instance.UIAdaptive(uiTrans, middleTrans);
 
         if (GuidancePlane.Instance.JudgeWhetherOpenGuide(1))
         {
             Invoke("GuidancePlayGame", 0.5f);
         }
+
+        //开始计时
+        //StartGame();
+
+        //生成猫猫
+        InitCat();
     }
 
     #region 三消逻辑
@@ -124,7 +138,7 @@ public class PlayGameManagement : MonoBehaviour
     public void CreateMoveAnim(Image fruitIMG, BlockDataConfig itemData, bool middle)
     {
         fruitIMG.transform.DOMove(blockAnimPos[dropZoneData.Count].position, 0.1f).SetEase(Ease.Linear).OnComplete(() =>
-        { 
+        {
             Destroy(fruitIMG.transform.parent.gameObject);
         });
 
@@ -239,7 +253,7 @@ public class PlayGameManagement : MonoBehaviour
         {
             //游戏结束
             UIManagement.Instance.OpenGameOverPlane(true);
-           
+
         }
 
     }
@@ -294,14 +308,14 @@ public class PlayGameManagement : MonoBehaviour
         if (GameManager.Instance.currentGameLevel.LevelID >= 17)
         {
             //奖励池随机抽取1-3家具
-            int awardNum = Random.Range(1,4);
-            Debug.LogError("awardNum ;" + awardNum);
+            int awardNum = Random.Range(1, 4);
+            Debug.Log("awardNum ;" + awardNum);
             RadomGetAwardFurniture(awardNum);
         }
         else
             furnitureName = GameManager.Instance.currentGameLevel.FurnitureName;
 
-        
+
     }
 
     //获得奖励
@@ -317,35 +331,115 @@ public class PlayGameManagement : MonoBehaviour
         return furnitureName;
     }
 
+    #endregion
+
+    #region 关卡时间倒计时
+
+    //开始游戏
+    public void StartGame()
+    {
+        currentTime = levelTimer;
+        UpdateTimerDisplay();
+    }
+
+    //开始游戏倒计时
+    public void StartCountdown()
+    {
+        currentTime -= Time.deltaTime;
+        UpdateTimerDisplay();
+
+        if (currentTime <= 0)
+        {
+            GameManager.Instance.pauseGame = false;
+            currentTime = 0;
+            EndGame();
+        }
+    }
+
+    //关卡倒计时
+    public void UpdateTimerDisplay()
+    {
+        timer_TMP.text = Mathf.Ceil(currentTime).ToString();
+
+        // 最后10秒变红
+        if (currentTime <= 10f)
+        {
+            timer_TMP.color = Color.red;
+            // 可以添加闪烁效果
+        }
+
+    }
+
+    //添加时间
+    public void AddTime(float extraTime)
+    {
+        currentTime += extraTime;
+        if (currentTime > levelTimer)
+            currentTime = levelTimer;
+    }
+
+    //游戏结束
+    public void EndGame()
+    {
+        Debug.Log("时间到！游戏结束");
+        // 显示结算界面等
+    }
 
     #endregion
 
-    ////猫咪需求
-    //public bool CatNeedBlock(BlockDataConfigNew _blockProp)
-    //{
-    //    for (int i = 0; i < catNeedBlock.Count; i++)
-    //    {
-    //        if (_blockProp.blockPropType == catNeedBlock[i].needBlock.blockPropType)
-    //        {
-    //            catData_Temp = catNeedBlock[i];
-    //            return true;
-    //        }
-    //    }
-    //    return false;
-    //}
+    #region 关卡猫猫
+
+    //初始化猫猫
+    public void InitCat()
+    {
+        cats.Clear();
+        for (int i = 0; i < 2; i++)
+        {
+            GameObject GO = Instantiate(catPrefab,catPosTrans);
+            GO.GetComponent<CatData>().CatDataInit();
+            cats.Add(GO.GetComponent<CatData>());
+        }
+    }
+
+    // 生成新的猫需求
+    private void GenerateNewCatRequirements()
+    {
+        GameObject GO = Instantiate(catPrefab, catPosTrans);
+        GO.GetComponent<CatData>().CatDataInit();
+        cats.Add(GO.GetComponent<CatData>());
+    }
+
+    // 当水果被放入放置区时调用
+    public void OnFruitPlaced(DropZone placedFruit)
+    {
+        BlockPropType fruitType = placedFruit.blockPropType;
+
+        // 通知所有猫猫需求
+        NotifyCatRequirements(fruitType);
+
+    }
+
+    private void NotifyCatRequirements(BlockPropType type)
+    {
+        // 找到场景中所有猫猫需求
+
+        foreach (var requirement in allRequirements)
+        {
+            // 只更新匹配类型的需求
+            if (requirement.currentRequirement.requiredType == type)
+            {
+                requirement.DecreaseRequirement();
+            }
+        }
+    }
+   
 
 
-    ////检查猫咪需求
-    //public void CheckCatRequirements(CatData catData)
-    //{
-    //    for (int i = 0; i < dropZoneData.Count; i++)
-    //    {
-    //        if (dropZoneData[i].GetComponent<DropZone>().blockPropTypeNew == catData.needBlock.blockPropType)
-    //        {
-    //            catData.UpdateTMP();
-    //        }
-    //    }
-    //}
+
+    #endregion
+
+
+
 
 
     #region 道具的使用
@@ -356,7 +450,7 @@ public class PlayGameManagement : MonoBehaviour
         dropZoneData.Clear();
         for (int i = 0; i < dropZoneTran.childCount; i++)
         {
-            Destroy(dropZoneTran.GetChild(i).gameObject);
+            dropZoneTran.GetChild(i).GetComponent<DropZone>().PlayEffect();
         }
         //检查游戏状态
         CheckeGameOver();
@@ -390,7 +484,6 @@ public class PlayGameManagement : MonoBehaviour
     public void PerspectivePropUse()
     {
         perspective = true;
-
         for (int i = 0; i < currentMysteryBox.Count; i++)
         {
             if (currentMysteryBox[i] == null)
@@ -421,12 +514,12 @@ public class PlayGameManagement : MonoBehaviour
     //盲盒列表刷新
     public void UpdateMysteryBox()
     {
-        //for (int i = 0; i < currentMysteryBox.Count; i++)
-        //{
-        //    if (currentMysteryBox[i] == null)
-        //        currentMysteryBox.RemoveAt(i);
-        //}
-        currentMysteryBox.RemoveAll(item => item == null);
+        for (int i = 0; i < currentMysteryBox.Count; i++)
+        {
+            if (currentMysteryBox[i] == null)
+                currentMysteryBox.RemoveAt(i);
+        }
+        //currentMysteryBox.RemoveAll(item => item == null);
     }
 
     //透视倒计时
@@ -449,7 +542,10 @@ public class PlayGameManagement : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.Instance.pauseGame) return;
+
         SpeedTimer();
         PerspectiveTimer();
+        StartCountdown();
     }
 }
