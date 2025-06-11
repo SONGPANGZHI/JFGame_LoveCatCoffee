@@ -23,29 +23,30 @@ public class CatRequirementFurite : MonoBehaviour
         PlayGameManagement.Instance.allRequirements.Add(this);
     }
 
-    // 改名为更语义化的方法名
+    // 改变UI显示
     public void DecreaseRequirement()
     {
         if (currentRequired <= 0)
             return;
 
         currentRequired--;
-        UpdateUI();
+        //UpdateUI();
 
         if (currentRequired == 0)
         {
-            OnRequirementCompleted();
+            complete_IMG.SetActive(true);
+            furite_TMP.gameObject.SetActive(false);
+            Invoke("OnRequirementCompleted", 0.3f);
         }
     }
 
-    private void UpdateUI()
-    {
-        furite_TMP.text = "X" + currentRequired;
-    }
+    //private void UpdateUI()
+    //{
+    //    furite_TMP.text = "X" + currentRequired;
+    //}
 
     private void OnRequirementCompleted()
     {
-        complete_IMG.SetActive(true);
         // 通知父对象检查是否所有需求都完成了
         GetComponentInParent<CatData>()?.CheckAllRequirementsCompleted();
         PlayGameManagement.Instance.allRequirements.Remove(this);
@@ -69,40 +70,40 @@ public class CatRequirementFurite : MonoBehaviour
             case BlockPropType.Blueberry:
                 _furite_IMG = PlayGameManagement.Instance.blockDataConfig[3].fruits_IMG;
                 return _furite_IMG;
-            case BlockPropType.Coconut:
+            case BlockPropType.Grape:
                 _furite_IMG = PlayGameManagement.Instance.blockDataConfig[4].fruits_IMG;
                 return _furite_IMG;
-            case BlockPropType.Grape:
+            case BlockPropType.KiwiFruit:
                 _furite_IMG = PlayGameManagement.Instance.blockDataConfig[5].fruits_IMG;
                 return _furite_IMG;
-            case BlockPropType.KiwiFruit:
+            case BlockPropType.Lemon:
                 _furite_IMG = PlayGameManagement.Instance.blockDataConfig[6].fruits_IMG;
                 return _furite_IMG;
-            case BlockPropType.Lemon:
+            case BlockPropType.Litchi:
                 _furite_IMG = PlayGameManagement.Instance.blockDataConfig[7].fruits_IMG;
                 return _furite_IMG;
-            case BlockPropType.Litchi:
+            case BlockPropType.Mango:
                 _furite_IMG = PlayGameManagement.Instance.blockDataConfig[8].fruits_IMG;
                 return _furite_IMG;
-            case BlockPropType.Mango:
+            case BlockPropType.Peach:
                 _furite_IMG = PlayGameManagement.Instance.blockDataConfig[9].fruits_IMG;
                 return _furite_IMG;
-            case BlockPropType.Peach:
+            case BlockPropType.Pear:
                 _furite_IMG = PlayGameManagement.Instance.blockDataConfig[10].fruits_IMG;
                 return _furite_IMG;
-            case BlockPropType.Pear:
+            case BlockPropType.Pineapple:
                 _furite_IMG = PlayGameManagement.Instance.blockDataConfig[11].fruits_IMG;
                 return _furite_IMG;
-            case BlockPropType.Pineapple:
+            case BlockPropType.Pitaya:
                 _furite_IMG = PlayGameManagement.Instance.blockDataConfig[12].fruits_IMG;
                 return _furite_IMG;
-            case BlockPropType.Pitaya:
+            case BlockPropType.Strawberry:
                 _furite_IMG = PlayGameManagement.Instance.blockDataConfig[13].fruits_IMG;
                 return _furite_IMG;
-            case BlockPropType.Strawberry:
+            case BlockPropType.Watermelon:
                 _furite_IMG = PlayGameManagement.Instance.blockDataConfig[14].fruits_IMG;
                 return _furite_IMG;
-            case BlockPropType.Watermelon:
+            case BlockPropType.Coconut:
                 _furite_IMG = PlayGameManagement.Instance.blockDataConfig[15].fruits_IMG;
                 return _furite_IMG;
         }

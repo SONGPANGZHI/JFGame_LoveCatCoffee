@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CatData : MonoBehaviour
 {
+    public int priority = 0; // 数值越小优先级越高
     public GameObject furitePrefab;
     public Transform furiteTrans;
     public GameObject catAnim;
@@ -10,8 +11,9 @@ public class CatData : MonoBehaviour
 
 
     //猫咪初始化UI
-    public void CatDataInit()
+    public void CatDataInit(int id)
     {
+        priority = id;
         RandomCatNeed();
         for (int i = 0; i < catRequirements.Count; i++)
         {
@@ -81,8 +83,19 @@ public class CatData : MonoBehaviour
 
     private void OnAllRequirementsMet()
     {
-        // 可以播放动画、增加分数等
         Debug.Log("所有需求已完成!");
         PlayGameManagement.Instance.cats.Remove(this);
+        Destroy(gameObject);
+        if (PlayGameManagement.Instance.JuageCreateCat() && GameManager.Instance.pauseGame)
+        {
+            //游戏胜利
+            UIManagement.Instance.OpenGameOverPlane(true);
+        }
+        else
+        {
+            //生成新的猫猫
+            PlayGameManagement.Instance.GenerateNewCatRequirements();
+        }
+       
     }
 }

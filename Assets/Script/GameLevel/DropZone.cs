@@ -16,7 +16,6 @@ public class DropZone : MonoBehaviour
         isMiddle = middle;
         iconSprite.sprite = blockPropData.fruits_IMG;
         blockPropType = blockPropData.blockPropType;
-        OnFruitDropped();
     }
 
     //播放特效 然后销毁
@@ -32,9 +31,4 @@ public class DropZone : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void OnFruitDropped()
-    {
-        // 通知三消逻辑
-        PlayGameManagement.Instance.OnFruitPlaced(this);
-    }
 }

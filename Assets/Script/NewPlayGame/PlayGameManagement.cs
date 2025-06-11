@@ -1,13 +1,10 @@
 using DG.Tweening;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
 public class PlayGameManagement : MonoBehaviour
 {
@@ -16,9 +13,15 @@ public class PlayGameManagement : MonoBehaviour
     public RectTransform uiTrans;
     public RectTransform middleTrans;
     public TMP_Text timer_TMP;
-    private float currentTime = 240;
+    private float currentTime = 2400;        //游戏时长 秒数
 
     [Header("放置区数据")]
+    public GameObject unlockGridSix;
+    public bool specialGridUnlockSix;
+    public GameObject unlockGridSeven;
+    public bool specialGridUnlockSeven;
+    public int dropZoneGridSum = 5;
+
     public List<GameObject> dropZoneData;
     public Transform dropZoneTran;
     public GameObject dropZonePrefab;
@@ -28,15 +31,13 @@ public class PlayGameManagement : MonoBehaviour
     public GameObject blockEffect;
 
     [Header("猫猫需求")]
-    public GameObject catPrefab;        //猫咪预制体
-    public Transform catPosTrans;       //猫咪位置
+    public int catRequirementSum=10;               //猫咪需求总数
+    public GameObject catPrefab;                //猫咪预制体
+    public Transform catPosTrans;               //猫咪位置
+    public int catIndexID = 0;                  //猫猫ID;
     public List<CatData> cats = new List<CatData>();
     public List<CatRequirementFurite> allRequirements = new List<CatRequirementFurite>();
 
-
-    //public List<CatData> catDataAll;
-    //public List<CatData> catNeedBlock;
-    //private CatData catData_Temp;
 
     [Header("传送带 速度")]
     public bool keepTime = false;
@@ -53,6 +54,7 @@ public class PlayGameManagement : MonoBehaviour
 
     [Header("关卡数据")]
     public List<BlockDataConfig> blockTypes;
+    public LevelType levelType;
     public int middleMin;
     public int middleMax;
     public float conveyorSpeed;
@@ -62,9 +64,6 @@ public class PlayGameManagement : MonoBehaviour
     public int conveyorArea;
     public float levelTimer;
     public List<string> furnitureName;
-
-
-
 
 
     public int middleAllNum;
@@ -79,6 +78,8 @@ public class PlayGameManagement : MonoBehaviour
         GetBlockTypeList();
 
         //Application.targetFrameRate = 60;
+        //恢复默认数据
+        DropZoneGridInit();
 
         if (UIManagement.Instance._isChallengBool)
         {
@@ -94,8 +95,6 @@ public class PlayGameManagement : MonoBehaviour
         }
 
         GameManager.Instance.pauseGame = true;
-
-
     }
 
     //新手引导开始游戏
@@ -108,30 +107,62 @@ public class PlayGameManagement : MonoBehaviour
 
     private void Start()
     {
+        //关卡模式
+        //DetermineLevelMode();
+        //测试
+        InitCat();
+        //新手引导
         BaseTools.Instance.UIAdaptive(uiTrans, middleTrans);
-
         if (GuidancePlane.Instance.JudgeWhetherOpenGuide(1))
         {
             Invoke("GuidancePlayGame", 0.5f);
         }
-
-        //开始计时
-        //StartGame();
-
-        //生成猫猫
-        InitCat();
     }
 
     #region 三消逻辑
+
+    //生成放置区水果
     public void CreateDropZoneObject(BlockDataConfig _blockProp, bool middle)
     {
         GameObject currentOBJ = Instantiate(dropZonePrefab, dropZoneTran);
         currentOBJ.GetComponent<DropZone>().DropZoneInit(_blockProp, middle);
 
         dropZoneData.Add(currentOBJ);
-
+        NotifyCatRequirements(_blockProp.blockPropType);
+        //OnFruitPlaced(currentOBJ.GetComponent<DropZone>());
         CheckForMatches();
 
+    }
+
+    //解锁放置区 第六个位置
+    public void UnlockDropZoneSixthPos()
+    {
+        dropZoneGridSum += 1;
+        unlockGridSix.SetActive(false);
+        specialGridUnlockSix = true;
+    }
+
+    //解锁放置区 第期个位置
+    public void UnlockDropZoneSeventhPos()
+    {
+        if (specialGridUnlockSix)
+        {
+            //先判断第六个格子 是否解锁
+            dropZoneGridSum += 1;
+            unlockGridSeven.SetActive(false);
+            specialGridUnlockSeven = true;
+        }
+    }
+
+    //初始化格子
+    public void DropZoneGridInit()
+    {
+        dropZoneGridSum = 5;
+        catIndexID = 0;
+        unlockGridSix.SetActive(true);
+        unlockGridSeven.SetActive(true);
+        specialGridUnlockSeven = false;
+        specialGridUnlockSix = false;
     }
 
     //生成移动动画
@@ -230,6 +261,7 @@ public class PlayGameManagement : MonoBehaviour
             dropZoneData.Remove(card);
             card.GetComponent<DropZone>().PlayEffect();
         }
+
         MusicManagement.instance.PlayDestorySFX();
         Invoke("DetermineDropAreaFull", 0.5f);
     }
@@ -237,7 +269,7 @@ public class PlayGameManagement : MonoBehaviour
     //检查游戏状态
     public void DetermineDropAreaFull()
     {
-        if (dropZoneData.Count >= 7)
+        if (dropZoneData.Count >= dropZoneGridSum)
         {
             //游戏结束逻辑
             GameManager.Instance.pauseGame = false;
@@ -293,6 +325,27 @@ public class PlayGameManagement : MonoBehaviour
             blockTypes.Add(blockDataConfig[i]);
         }
         blockTypes.Shuffle();
+    }
+
+    //判断关卡模式
+    public void DetermineLevelMode()
+    {
+        switch (levelType)
+        {
+            case LevelType.Countdown:
+                //开始计时
+                StartGame();
+                break;
+            case LevelType.CatNeedNum:
+                //生成猫猫
+                InitCat();
+                break;
+            case LevelType.TimeAndCat:
+                //两者都
+                StartGame();
+                InitCat();
+                break;
+        }
     }
 
     //获取关卡详细信息
@@ -396,16 +449,18 @@ public class PlayGameManagement : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             GameObject GO = Instantiate(catPrefab,catPosTrans);
-            GO.GetComponent<CatData>().CatDataInit();
+            GO.GetComponent<CatData>().CatDataInit(catIndexID);
             cats.Add(GO.GetComponent<CatData>());
+            catIndexID += 1;
         }
     }
 
     // 生成新的猫需求
-    private void GenerateNewCatRequirements()
+    public void GenerateNewCatRequirements()
     {
+        catIndexID += 1;
         GameObject GO = Instantiate(catPrefab, catPosTrans);
-        GO.GetComponent<CatData>().CatDataInit();
+        GO.GetComponent<CatData>().CatDataInit(catIndexID);
         cats.Add(GO.GetComponent<CatData>());
     }
 
@@ -419,28 +474,39 @@ public class PlayGameManagement : MonoBehaviour
 
     }
 
+    //猫的需求通知
     private void NotifyCatRequirements(BlockPropType type)
     {
-        // 找到场景中所有猫猫需求
+        var sortedCats = cats.OrderBy(cat => cat.priority).ToList();
 
-        foreach (var requirement in allRequirements)
+        foreach (var cat in sortedCats)
         {
-            // 只更新匹配类型的需求
-            if (requirement.currentRequirement.requiredType == type)
+            bool foundMatch = false;
+            foreach (Transform child in cat.furiteTrans)
             {
-                requirement.DecreaseRequirement();
+                var requirement = child.GetComponent<CatRequirementFurite>();
+                if (requirement != null &&
+                    requirement.currentRequirement.requiredType == type &&
+                    requirement.currentRequired > 0)
+                {
+                    requirement.DecreaseRequirement();
+                    foundMatch = true;
+                    break;
+                }
             }
+            if (foundMatch) break; // 只处理最高优先级的匹配
         }
     }
-   
 
-
+    //判断是否继续生成小猫
+    public bool JuageCreateCat()
+    {
+        if (catIndexID >= catRequirementSum)
+            return true;
+        return false;
+    }
 
     #endregion
-
-
-
-
 
     #region 道具的使用
 
