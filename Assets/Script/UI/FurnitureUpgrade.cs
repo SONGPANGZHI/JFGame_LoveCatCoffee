@@ -166,6 +166,7 @@ public class FurnitureUpgrade : MonoBehaviour
             gameObject.SetActive(false);
 
             ClearTrans(HallFurnitureTran);
+            ClearTrans(CatHouseFurnitureTran);
         });
     }
 

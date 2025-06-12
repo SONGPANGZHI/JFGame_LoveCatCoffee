@@ -50,7 +50,7 @@ public class CommonPlane : MonoBehaviour
     }
 
 
-    //界面初始化  复活界面
+    //界面初始化  设置界面复活
     public void ResurgenceInitPlane()
     {
         GameManager.Instance.pauseGame = false;
@@ -78,6 +78,19 @@ public class CommonPlane : MonoBehaviour
         if(!PlayerPrefs.HasKey("ADResurgenceKey"))
             ADResurgence_BTN.gameObject.SetActive(true);
 
+    }
+
+    //游戏界面复活
+    public void OpenResurgenceInitPlane()
+    {
+        GameManager.Instance.pauseGame = false;
+        CloseMenuBTN();
+        icon.sprite = heaet_IMG;
+        icon.SetNativeSize();
+        title_TMP.text = resurgence_Title_TMP;
+        desc_TMP.text = resurgence_Desc_TMP;
+        ADResurgence_BTN.gameObject.SetActive(true);
+        abandon_BTN.gameObject.SetActive(true);
     }
 
     //初始化 道具使用界面
@@ -140,7 +153,8 @@ public class CommonPlane : MonoBehaviour
         PlayerPrefs.SetString("ADResurgenceKey", "ADResurgence");
         ClosePlane();
         this.gameObject.SetActive(false);
-        UIManagement.Instance.OpenLoadingPlane();
+        PlayGameManagement.Instance.ClearPropUse();
+        GameManager.Instance.pauseGame = true;
         Debug.LogError("复活----");
     }
 

@@ -5,19 +5,14 @@ public class UIManagement : MonoBehaviour
     public static UIManagement Instance;
 
     public MainPlane mainPlane;
-
     public GamePlane gamePlane;
-    [SerializeField]
-    private SettingPlane settingPlane;
-    [SerializeField]
-    private CommonPlane commonPlane;
-
+    public SettingPlane settingPlane;
+    public CommonPlane commonPlane;
     public GameObject guidance;
-
     public GameOverPlane gameOverPlane;
-
     public FurnitureUpgrade furnitureUpgradePlane;
     public LoadingPlane loadingPlane;
+    public ReminderBox reminderBoxPlane;
 
     public string sceneName;
     public static string redPointKey = "RedPointKEY";

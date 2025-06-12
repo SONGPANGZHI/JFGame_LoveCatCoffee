@@ -7,16 +7,13 @@
 	},
 	"BlockNum": {
 		"min": 1,
-		"max": 5
+		"max": 4
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 8,
-	"cat": true,
-	"CatAppearTime": 1,
-	"CatSection": {
-		"min": 0.2,
-		"max": 0.3
-	}
+	"CatNum": 10,
+	"Time": 90,
+	"LevelType": "Countdown"
 }, {
 	"LevelID": 2,
 	"BlockType": 5,
@@ -25,21 +22,15 @@
 		"BlockArea": 0.1
 	},
 	"BlockNum": {
-		"min": 1,
+		"min": 2,
 		"max": 5
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 10,
-	"cat": false,
-	"CatAppearTime": 0,
-	"CatSection": {
-		"min": 0,
-		"max": 0
-	},
-	"FurnitureName": [ 
-		"Hall1_Diban",
-		"Hall1_Qiangzhi"
-	]
+	"CatNum": 12,
+	"Time": 90,
+	"LevelType": "CatNeedNum",
+	"FurnitureName": ["Hall1_Diban","Hall1_Qiangzhi"]
 }, {
 	"LevelID": 3,
 	"BlockType": 7,
@@ -53,14 +44,10 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 12,
-	"cat": false,
-	"CatAppearTime": 0,
-	"CatSection": {
-		"min": 0,
-		"max": 0
-	},
-	"FurnitureName": [ "Hall1_Chaunghu_2","Hall1_Chaunghu_1","Hall1_Banzi"
-	]
+	"CatNum": 15,
+	"Time": 90,
+	"LevelType": "TimeAndCat",
+	"FurnitureName": ["Hall1_Chaunghu_2","Hall1_Chaunghu_1","Hall1_Banzi"]
 }, {
 	"LevelID": 4,
 	"BlockType": 9,
@@ -74,14 +61,10 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"cat": false,
-	"CatAppearTime": 0,
-	"CatSection": {
-		"min": 0,
-		"max": 0
-	},
-	"FurnitureName": [ "Hall1_Zhanshigui","Hall1_Shouyintai","Hall1_Shouyinji"
-	]
+	"CatNum": 18,
+	"Time": 120,
+	"LevelType": "CatNeedNum",
+	"FurnitureName": ["Hall1_Zhanshigui","Hall1_Shouyintai","Hall1_Shouyinji"]
 }, {
 	"LevelID": 5,
 	"BlockType": 9,
@@ -95,14 +78,10 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 1,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.6
-	},
-	"FurnitureName": ["Hall1_Zhuoyi_1","Hall1_Zhuoyi_2"
-	]
+	"CatNum": 25,
+	"Time": 120,
+	"LevelType": "TimeAndCat",
+	"FurnitureName": ["Hall1_Zhuoyi_1","Hall1_Zhuoyi_2"]
 }, {
 	"LevelID": 6,
 	"BlockType": 9,
@@ -116,14 +95,10 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 1,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.6
-	},
-	"FurnitureName": ["Hall1_Dangaogui","Hall1_Caidan","Hall1_Yuanliao"
-	]
+	"CatNum": 28,
+	"Time": 120,
+	"LevelType": "Countdown",
+	"FurnitureName": ["Hall1_Dangaogui","Hall1_Caidan","Hall1_Yuanliao"]
 }, {
 	"LevelID": 7,
 	"BlockType": 9,
@@ -137,14 +112,10 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 1,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.6
-	},
-	"FurnitureName": ["Hall1_Zhizuotai_1","Hall1_Tiaozhitai"
-	]
+	"CatNum": 35,
+	"Time": 150,
+	"LevelType": "Countdown",
+	"FurnitureName": ["Hall1_Zhizuotai_1","Hall1_Tiaozhitai"]
 }, {
 	"LevelID": 8,
 	"BlockType": 9,
@@ -158,14 +129,10 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 1,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.6
-	},
-	"FurnitureName": [ "Hall1_Kafeiji", "Hall1_Kafeitiaopin"
-	]
+	"CatNum": 40,
+	"Time": 150,
+	"LevelType": "CatNeedNum",
+	"FurnitureName": ["Hall1_Kafeiji","Hall1_Kafeitiaopin"]
 }, {
 	"LevelID": 9,
 	"BlockType": 9,
@@ -179,17 +146,13 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 1,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.6
-	},
-	"FurnitureName": ["Hall1_Yinliaotong","Hall1_Beizi"
-	]
+	"CatNum": 40,
+	"Time": 150,
+	"LevelType": "CatNeedNum",
+	"FurnitureName": ["Hall1_Yinliaotong","Hall1_Beizi"]
 }, {
 	"LevelID": 10,
-	"BlockType": 9,
+	"BlockType": 10,
 	"MysteryBox": {
 		"ConveyorArea": 0.2,
 		"BlockArea": 0.3
@@ -200,17 +163,13 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 1,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.6
-	},
-	"FurnitureName": ["Hall1_Taizi","Hall1_Kafeidai", "Hall1_Caidanping"
-	]
+	"CatNum": 45,
+	"Time": 150,
+	"LevelType": "TimeAndCat",
+	"FurnitureName": ["Hall1_Taizi","Hall1_Kafeidai","Hall1_Caidanping"]
 }, {
 	"LevelID": 11,
-	"BlockType": 11,
+	"BlockType": 10,
 	"MysteryBox": {
 		"ConveyorArea": 0.2,
 		"BlockArea": 0.3
@@ -221,17 +180,13 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 1,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.6
-	},
-	"FurnitureName": [ "Hall1_Jiazi", "Hall1_Guizi"
-	]
+	"CatNum": 45,
+	"Time": 180,
+	"LevelType": "Countdown",
+	"FurnitureName": ["Hall1_Jiazi","Hall1_Guizi"]
 }, {
 	"LevelID": 12,
-	"BlockType": 11,
+	"BlockType": 10,
 	"MysteryBox": {
 		"ConveyorArea": 0.2,
 		"BlockArea": 0.3
@@ -242,17 +197,13 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 1,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.6
-	},
-	"FurnitureName": ["Hall1_Shujia","Hall1_Yinpinjia"
-	]
+	"CatNum": 45,
+	"Time": 180,
+	"LevelType": "CatNeedNum",
+	"FurnitureName": ["Hall1_Shujia","Hall1_Yinpinjia"]
 }, {
 	"LevelID": 13,
-	"BlockType": 11,
+	"BlockType": 10,
 	"MysteryBox": {
 		"ConveyorArea": 0.2,
 		"BlockArea": 0.3
@@ -263,17 +214,13 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.2,
-		"max": 0.7
-	},
-	"FurnitureName": ["Hall1_Pengzai_3","Hall1_Pengzai_1","Hall1_Pengzai_2"
-	]
+	"CatNum": 45,
+	"Time": 180,
+	"LevelType": "CatNeedNum",
+	"FurnitureName": ["Hall1_Pengzai_3","Hall1_Pengzai_1","Hall1_Pengzai_2"]
 }, {
 	"LevelID": 14,
-	"BlockType": 11,
+	"BlockType": 10,
 	"MysteryBox": {
 		"ConveyorArea": 0.3,
 		"BlockArea": 0.35
@@ -284,16 +231,29 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.2,
-		"max": 0.7
-	},
-	"FurnitureName": ["Hall1_Deng_1","Hall1_Deng_2"
-	]
+	"CatNum": 45,
+	"Time": 210,
+	"LevelType": "Countdown",
+	"FurnitureName": ["Hall1_Deng_1","Hall1_Deng_2"]
 }, {
 	"LevelID": 15,
+	"BlockType": 10,
+	"MysteryBox": {
+		"ConveyorArea": 0.3,
+		"BlockArea": 0.35
+	},
+	"BlockNum": {
+		"min": 5,
+		"max": 13
+	},
+	"ConveyorSpeed": 0.4,
+	"PositionsNum": 14,
+	"CatNum": 50,
+	"Time": 210,
+	"LevelType": "Countdown",
+	"FurnitureName": ["Hall1_Guashi","Hall1_Jiaodian"]
+}, {
+	"LevelID": 16,
 	"BlockType": 11,
 	"MysteryBox": {
 		"ConveyorArea": 0.3,
@@ -305,38 +265,13 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.2,
-		"max": 0.7
-	},
-	"FurnitureName": ["Hall1_Guashi", "Hall1_Jiaodian"
-	]
-}, {
-	"LevelID": 16,
-	"BlockType": 13,
-	"MysteryBox": {
-		"ConveyorArea": 0.3,
-		"BlockArea": 0.35
-	},
-	"BlockNum": {
-		"min": 5,
-		"max": 13
-	},
-	"ConveyorSpeed": 0.4,
-	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.2,
-		"max": 0.7
-	},
-	"FurnitureName": ["Hall1_Louti_1"
-	]
+	"CatNum": 50,
+	"Time": 210,
+	"LevelType": "TimeAndCat",
+	"FurnitureName": ["Hall1_Louti_1"]
 }, {
 	"LevelID": 17,
-	"BlockType": 13,
+	"BlockType": 11,
 	"MysteryBox": {
 		"ConveyorArea": 0.3,
 		"BlockArea": 0.35
@@ -347,15 +282,12 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.2,
-		"max": 0.7
-	}
+	"CatNum": 50,
+	"Time": 240,
+	"LevelType": "CatNeedNum"
 }, {
 	"LevelID": 18,
-	"BlockType": 13,
+	"BlockType": 11,
 	"MysteryBox": {
 		"ConveyorArea": 0.3,
 		"BlockArea": 0.35
@@ -366,15 +298,12 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.2,
-		"max": 0.7
-	}
+	"CatNum": 50,
+	"Time": 240,
+	"LevelType": "Countdown"
 }, {
 	"LevelID": 19,
-	"BlockType": 13,
+	"BlockType": 11,
 	"MysteryBox": {
 		"ConveyorArea": 0.35,
 		"BlockArea": 0.4
@@ -385,15 +314,12 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.2,
-		"max": 0.7
-	}
+	"CatNum": 50,
+	"Time": 240,
+	"LevelType": "CatNeedNum"
 }, {
 	"LevelID": 20,
-	"BlockType": 13,
+	"BlockType": 11,
 	"MysteryBox": {
 		"ConveyorArea": 0.35,
 		"BlockArea": 0.4
@@ -404,15 +330,12 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.7
-	}
+	"CatNum": 55,
+	"Time": 260,
+	"LevelType": "CatNeedNum"
 }, {
 	"LevelID": 21,
-	"BlockType": 15,
+	"BlockType": 12,
 	"MysteryBox": {
 		"ConveyorArea": 0.35,
 		"BlockArea": 0.4
@@ -423,15 +346,12 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.7
-	}
+	"CatNum": 55,
+	"Time": 260,
+	"LevelType": "TimeAndCat"
 }, {
 	"LevelID": 22,
-	"BlockType": 15,
+	"BlockType": 12,
 	"MysteryBox": {
 		"ConveyorArea": 0.35,
 		"BlockArea": 0.4
@@ -442,15 +362,12 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.7
-	}
+	"CatNum": 55,
+	"Time": 260,
+	"LevelType": "CatNeedNum"
 }, {
 	"LevelID": 23,
-	"BlockType": 15,
+	"BlockType": 12,
 	"MysteryBox": {
 		"ConveyorArea": 0.35,
 		"BlockArea": 0.4
@@ -461,15 +378,12 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.7
-	}
+	"CatNum": 55,
+	"Time": 280,
+	"LevelType": "CatNeedNum"
 }, {
 	"LevelID": 24,
-	"BlockType": 15,
+	"BlockType": 12,
 	"MysteryBox": {
 		"ConveyorArea": 0.35,
 		"BlockArea": 0.4
@@ -480,110 +394,92 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.7
-	}
+	"CatNum": 55,
+	"Time": 280,
+	"LevelType": "Countdown"
 }, {
 	"LevelID": 25,
-	"BlockType": 15,
+	"BlockType": 14,
 	"MysteryBox": {
 		"ConveyorArea": 0.35,
 		"BlockArea": 0.4
 	},
 	"BlockNum": {
-		"min": 7,
+		"min": 10,
 		"max": 17
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.7
-	}
+	"CatNum": 60,
+	"Time": 280,
+	"LevelType": "CatNeedNum"
 }, {
 	"LevelID": 26,
-	"BlockType": 16,
+	"BlockType": 14,
 	"MysteryBox": {
 		"ConveyorArea": 0.35,
 		"BlockArea": 0.4
 	},
 	"BlockNum": {
-		"min": 8,
+		"min": 10,
 		"max": 19
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.7
-	}
+	"CatNum": 60,
+	"Time": 300,
+	"LevelType": "TimeAndCat"
 }, {
 	"LevelID": 27,
-	"BlockType": 16,
+	"BlockType": 14,
 	"MysteryBox": {
 		"ConveyorArea": 0.35,
 		"BlockArea": 0.4
 	},
 	"BlockNum": {
-		"min": 9,
+		"min": 10,
 		"max": 21
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.7
-	}
+	"CatNum": 60,
+	"Time": 300,
+	"LevelType": "Countdown"
 }, {
 	"LevelID": 28,
-	"BlockType": 16,
+	"BlockType": 14,
 	"MysteryBox": {
 		"ConveyorArea": 0.35,
 		"BlockArea": 0.4
 	},
 	"BlockNum": {
-		"min": 9,
+		"min": 10,
 		"max": 21
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.7
-	}
+	"CatNum": 60,
+	"Time": 300,
+	"LevelType": "CatNeedNum"
 }, {
 	"LevelID": 29,
-	"BlockType": 16,
+	"BlockType": 14,
 	"MysteryBox": {
 		"ConveyorArea": 0.35,
 		"BlockArea": 0.4
 	},
 	"BlockNum": {
-		"min": 9,
+		"min": 10,
 		"max": 21
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.7
-	}
+	"CatNum": 60,
+	"Time": 330,
+	"LevelType": "CatNeedNum"
 }, {
 	"LevelID": 30,
-	"BlockType": 16,
+	"BlockType": 14,
 	"MysteryBox": {
 		"ConveyorArea": 0.35,
 		"BlockArea": 0.4
@@ -594,10 +490,7 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"cat": true,
-	"CatAppearTime": 2,
-	"CatSection": {
-		"min": 0.3,
-		"max": 0.7
-	}
+	"CatNum": 60,
+	"Time": 330,
+	"LevelType": "Countdown"
 }]

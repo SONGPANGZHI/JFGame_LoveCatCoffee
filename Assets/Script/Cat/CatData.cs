@@ -86,10 +86,12 @@ public class CatData : MonoBehaviour
         Debug.Log("所有需求已完成!");
         PlayGameManagement.Instance.cats.Remove(this);
         Destroy(gameObject);
+
         if (PlayGameManagement.Instance.JuageCreateCat() && GameManager.Instance.pauseGame)
         {
             //游戏胜利
-            UIManagement.Instance.OpenGameOverPlane(true);
+             if(PlayGameManagement.Instance.allRequirements.Count == 1)
+                UIManagement.Instance.OpenGameOverPlane(true);
         }
         else
         {

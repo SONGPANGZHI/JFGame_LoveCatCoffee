@@ -91,13 +91,13 @@ public class GameOverPlane : MonoBehaviour
     //初始化奖励
     public void InitAward()
     {
-        FurnitureManagement.instance.CheckFurnitureTypeOpenRed();
         if (GameManager.Instance.currentGameLevel.LevelID == 1)
         {
             GameObject GO = Instantiate(awardGrid, awardTran);
         }
         else
         {
+            
             for (int i = 0; i < PlayGameManagement.Instance.furnitureName.Count; i++)
             {
                 string _furnitureName = PlayGameManagement.Instance.furnitureName[i];
@@ -113,7 +113,7 @@ public class GameOverPlane : MonoBehaviour
                 FurnitureManagement.instance.ChangeFurnitureItemGetNewSkine(_furnitureName,true);
                
             }
-
+            FurnitureManagement.instance.CheckFurnitureTypeOpenRed();
             GameManager.Instance.SaveData();
         }
 

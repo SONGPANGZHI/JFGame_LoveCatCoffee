@@ -24,27 +24,27 @@ public class CatRequirementFurite : MonoBehaviour
     }
 
     // 改变UI显示
-    public void DecreaseRequirement()
+    public void DecreaseRequirement(int amount)
     {
         if (currentRequired <= 0)
             return;
 
-        currentRequired--;
-        //UpdateUI();
+        currentRequired = Mathf.Max(0, currentRequired - amount);
 
-        if (currentRequired == 0)
+        // 只在需求变化时更新UI
+        if (currentRequired <= 0)
         {
             complete_IMG.SetActive(true);
             furite_TMP.gameObject.SetActive(false);
             Invoke("OnRequirementCompleted", 0.3f);
         }
+        else
+        {
+            furite_TMP.text = "X" + currentRequired;
+        }
     }
 
-    //private void UpdateUI()
-    //{
-    //    furite_TMP.text = "X" + currentRequired;
-    //}
-
+    
     private void OnRequirementCompleted()
     {
         // 通知父对象检查是否所有需求都完成了

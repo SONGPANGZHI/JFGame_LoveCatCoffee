@@ -12,6 +12,9 @@ public class GameLevelInfo
     public MiddleBlockNum BlockNum;
     public float conveyorSpeed;
     public int PositionsNum;
+    public int CatNum;
+    public int Time;
+    public LevelType LevelType;
     public List<string> FurnitureName;
 
 }

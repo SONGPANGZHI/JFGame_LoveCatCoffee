@@ -13,7 +13,7 @@ public class PlayGameManagement : MonoBehaviour
     public RectTransform uiTrans;
     public RectTransform middleTrans;
     public TMP_Text timer_TMP;
-    private float currentTime = 2400;        //游戏时长 秒数
+    private float currentTime;        //游戏时长 秒数
 
     [Header("放置区数据")]
     public GameObject unlockGridSix;
@@ -31,7 +31,7 @@ public class PlayGameManagement : MonoBehaviour
     public GameObject blockEffect;
 
     [Header("猫猫需求")]
-    public int catRequirementSum=10;               //猫咪需求总数
+    public int catRequirementSum;               //猫咪需求总数
     public GameObject catPrefab;                //猫咪预制体
     public Transform catPosTrans;               //猫咪位置
     public int catIndexID = 0;                  //猫猫ID;
@@ -62,7 +62,7 @@ public class PlayGameManagement : MonoBehaviour
     public int blockTypeNum;
     public int blockArea;
     public int conveyorArea;
-    public float levelTimer;
+    public int levelTimer;
     public List<string> furnitureName;
 
 
@@ -97,27 +97,49 @@ public class PlayGameManagement : MonoBehaviour
         GameManager.Instance.pauseGame = true;
     }
 
+    private void Start()
+    {
+        PlayerPrefs.DeleteKey("ADResurgenceKey");
+        //关卡模式
+        DetermineLevelMode();
+        //新手引导
+        BaseTools.Instance.UIAdaptive(uiTrans, middleTrans);
+        Guidance();
+    }
+
+    #region 新手引导
+
     //新手引导开始游戏
     public void GuidancePlayGame()
     {
         UIManagement.Instance.OpenGuidancePlane();
-        GuidancePlane.Instance.GuidanceInit(1, new Vector3(540, 960, 0), 1.5f);
+        GuidancePlane.Instance.GuidanceInit(1,new Vector3(Screen.width/2,Screen.height/2,0));
     }
 
-
-    private void Start()
+    //新手引导第二关
+    public void GuidanceSecondLevel()
     {
-        //关卡模式
-        //DetermineLevelMode();
-        //测试
-        InitCat();
-        //新手引导
-        BaseTools.Instance.UIAdaptive(uiTrans, middleTrans);
+        UIManagement.Instance.OpenGuidancePlane();
+        GuidancePlane.Instance.GuidanceInit(8, new Vector3(Screen.width / 2, (Screen.height / 2) + 700, 0));
+    }
+
+    //新手引导
+    public void Guidance()
+    {
         if (GuidancePlane.Instance.JudgeWhetherOpenGuide(1))
         {
             Invoke("GuidancePlayGame", 0.5f);
         }
+        if (GameManager.Instance.currentGameLevel.LevelID == 2 && GuidancePlane.Instance.JudgeWhetherOpenGuide(8))
+        {
+            Invoke("GuidanceSecondLevel", 0.5f);
+        }
+
+        if(GameManager.Instance.currentGameLevel.LevelID == 3)
+            UIManagement.Instance.reminderBoxPlane.OpenReminderBox(1);
     }
+
+    #endregion
 
     #region 三消逻辑
 
@@ -128,7 +150,6 @@ public class PlayGameManagement : MonoBehaviour
         currentOBJ.GetComponent<DropZone>().DropZoneInit(_blockProp, middle);
 
         dropZoneData.Add(currentOBJ);
-        NotifyCatRequirements(_blockProp.blockPropType);
         //OnFruitPlaced(currentOBJ.GetComponent<DropZone>());
         CheckForMatches();
 
@@ -140,6 +161,7 @@ public class PlayGameManagement : MonoBehaviour
         dropZoneGridSum += 1;
         unlockGridSix.SetActive(false);
         specialGridUnlockSix = true;
+        UIManagement.Instance.reminderBoxPlane.OpenReminderBox();
     }
 
     //解锁放置区 第期个位置
@@ -151,6 +173,7 @@ public class PlayGameManagement : MonoBehaviour
             dropZoneGridSum += 1;
             unlockGridSeven.SetActive(false);
             specialGridUnlockSeven = true;
+            UIManagement.Instance.reminderBoxPlane.OpenReminderBox();
         }
     }
 
@@ -192,7 +215,10 @@ public class PlayGameManagement : MonoBehaviour
         {
             // 获取前三个匹配的卡牌
             var matchedCards = group.Take(3).ToList();
+            BlockPropType matchedType = matchedCards[0].GetComponent<DropZone>().blockPropType;
 
+            // 通知猫需求，每次匹配减少3个需求
+            NotifyCatRequirements(matchedType, 3);
             //CreateParticle(matchedCards);
             // 销毁卡牌或执行消除动画
             StartCoroutine(DestroyObject(matchedCards));
@@ -269,25 +295,32 @@ public class PlayGameManagement : MonoBehaviour
     //检查游戏状态
     public void DetermineDropAreaFull()
     {
-        if (dropZoneData.Count >= dropZoneGridSum)
+        if (dropZoneData.Count >= dropZoneGridSum )
         {
             //游戏结束逻辑
             GameManager.Instance.pauseGame = false;
-            UIManagement.Instance.OpenGameOverPlane();
+            if (PlayerPrefs.HasKey("ADResurgenceKey"))
+                UIManagement.Instance.OpenGameOverPlane();
+            else
+            {
+                //打开复活界面
+                GameManager.Instance.pauseGame = false;
+                UIManagement.Instance.commonPlane.gameObject.SetActive(true);
+                UIManagement.Instance.commonPlane.OpenResurgenceInitPlane();
+            }
         }
+
         CheckeGameOver();
     }
 
     //判断是否结束
     public void CheckeGameOver()
     {
-        if (middleAllNum <= 0 && CheckDorpZoneMiddleBlock())
+        if (middleAllNum <= 0 && CheckDorpZoneMiddleBlock() && levelType == LevelType.Countdown)
         {
             //游戏结束
             UIManagement.Instance.OpenGameOverPlane(true);
-
         }
-
     }
 
     //生成特效
@@ -358,6 +391,9 @@ public class PlayGameManagement : MonoBehaviour
         blockTypeNum = GameManager.Instance.currentGameLevel.BlockType;
         conveyorArea = (int)(GameManager.Instance.currentGameLevel.MysteryBox.ConveyorArea * 10);
         blockArea = (int)(GameManager.Instance.currentGameLevel.MysteryBox.BlockArea * 10);
+        levelType = GameManager.Instance.currentGameLevel.LevelType;
+        catRequirementSum = GameManager.Instance.currentGameLevel.CatNum;
+        levelTimer = GameManager.Instance.currentGameLevel.Time;
         if (GameManager.Instance.currentGameLevel.LevelID >= 17)
         {
             //奖励池随机抽取1-3家具
@@ -436,6 +472,7 @@ public class PlayGameManagement : MonoBehaviour
     {
         Debug.Log("时间到！游戏结束");
         // 显示结算界面等
+        UIManagement.Instance.OpenGameOverPlane();
     }
 
     #endregion
@@ -464,18 +501,9 @@ public class PlayGameManagement : MonoBehaviour
         cats.Add(GO.GetComponent<CatData>());
     }
 
-    // 当水果被放入放置区时调用
-    public void OnFruitPlaced(DropZone placedFruit)
-    {
-        BlockPropType fruitType = placedFruit.blockPropType;
-
-        // 通知所有猫猫需求
-        NotifyCatRequirements(fruitType);
-
-    }
-
     //猫的需求通知
-    private void NotifyCatRequirements(BlockPropType type)
+    // 修改通知方法，添加数量参数
+    private void NotifyCatRequirements(BlockPropType type, int amount)
     {
         var sortedCats = cats.OrderBy(cat => cat.priority).ToList();
 
@@ -489,12 +517,12 @@ public class PlayGameManagement : MonoBehaviour
                     requirement.currentRequirement.requiredType == type &&
                     requirement.currentRequired > 0)
                 {
-                    requirement.DecreaseRequirement();
+                    requirement.DecreaseRequirement(amount);
                     foundMatch = true;
                     break;
                 }
             }
-            if (foundMatch) break; // 只处理最高优先级的匹配
+            if (foundMatch) break;
         }
     }
 
@@ -610,8 +638,12 @@ public class PlayGameManagement : MonoBehaviour
     {
         if (!GameManager.Instance.pauseGame) return;
 
+        if(levelType == LevelType.Countdown)
+            StartCountdown();
+
         SpeedTimer();
         PerspectiveTimer();
-        StartCountdown();
+
+       
     }
 }
