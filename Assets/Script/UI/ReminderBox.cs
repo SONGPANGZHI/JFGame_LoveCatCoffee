@@ -8,6 +8,7 @@ public class ReminderBox : MonoBehaviour
 {
     private string unlockGridStr = "解锁成功！";
     private string increaseDifficultyStr = "难度增加！";
+    private string timer_30 = "获得60S加时！";
 
     public TMP_Text tips_TMP;
     public Image tips_IMG;
@@ -17,6 +18,8 @@ public class ReminderBox : MonoBehaviour
     {
         if (ID == 0)
             tips_TMP.text = unlockGridStr;
+        else if(ID == 2)
+            tips_TMP.text = timer_30;
         else
             tips_TMP.text = increaseDifficultyStr;
 

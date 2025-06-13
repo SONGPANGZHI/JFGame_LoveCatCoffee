@@ -8,10 +8,13 @@ public class MusicManagement : MonoBehaviour
     public AudioSource source_SFX;
     public AudioSource source_BGM;
     public AudioSource special_SFX;
+    public AudioSource specialClock_SFX;
+
     public AudioClip clip_SFX;
     public AudioClip clip_BGM;
     public AudioClip dropZone_SFX;
     public AudioClip destruction_SFX;
+    public AudioClip clock_SFX;
     private void Awake()
     {
         if(instance==null)
@@ -70,6 +73,28 @@ public class MusicManagement : MonoBehaviour
         {
             special_SFX.clip = destruction_SFX;
             special_SFX.Play();
+        }
+    }
+
+    //≤•∑≈ƒ÷÷”µƒ
+    public void PlayClockSFX()
+    {
+        //≈–∂œ  «∑Òπÿ±’“Ù–ß
+        if (PlayerPrefs.GetInt(GameManager.soundSetKey) == 0)
+        {
+            specialClock_SFX.clip = clock_SFX;
+            specialClock_SFX.Play();
+        }
+    }
+
+    //Õ£÷πƒ÷÷”≤•∑≈
+    public void StopClockSFX()
+    {
+        //≈–∂œ  «∑Òπÿ±’“Ù–ß
+        if (PlayerPrefs.GetInt(GameManager.soundSetKey) == 0)
+        {
+            specialClock_SFX.clip = clock_SFX;
+            specialClock_SFX.Stop();
         }
     }
 }

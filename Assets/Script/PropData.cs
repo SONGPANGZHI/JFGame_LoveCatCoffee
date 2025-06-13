@@ -44,6 +44,14 @@ public class CatRequirement
     }
 }
 
+[Serializable]
+public class CatSkin
+{
+    public Sprite catHeat;
+    public Sprite catHand;
+    public Sprite catArm;
+}
+
 //道具类型
 public enum PropType
 {

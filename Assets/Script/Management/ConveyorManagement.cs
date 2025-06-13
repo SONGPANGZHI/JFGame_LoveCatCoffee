@@ -11,13 +11,20 @@ public class ConveyorManagement : MonoBehaviour
     public List<Transform> middle_Trans_8;
     public List<Transform> middle_Trans_10;
     public List<Transform> middle_Trans_12;
-    public List<Transform> middle_Trans_14;
+    public List<Transform> middle_Trans_14_A;
+    public List<Transform> middle_Trans_14_B;
+    public List<Transform> middle_Trans_14_C;
+    public List<Transform> middle_Trans_14_D;
+
+    public List<Transform> middleTrans;
+
 
     private List<Transform> middle_Trans_Temp = new List<Transform>();
     private bool stopCutsceneAnim = true;
     private void Start()
     {
         PlayGameManagement.Instance.conveyorSpeed = 1.5F;
+        CloseTrans();
         //初始化两条传送带
         ConveyorInitData();
         InitConveyor();
@@ -44,17 +51,52 @@ public class ConveyorManagement : MonoBehaviour
         switch (ID)
         {
             case 8:
+                middleTrans[0].gameObject.SetActive(true);
                 middle_Trans_Temp = middle_Trans_8;
                 break;
             case 10:
+                middleTrans[0].gameObject.SetActive(true);
                 middle_Trans_Temp = middle_Trans_10;
                 break;
             case 12:
+                middleTrans[0].gameObject.SetActive(true);
                 middle_Trans_Temp = middle_Trans_12;
                 break;
             case 14:
-                middle_Trans_Temp = middle_Trans_14;
+                middle_Trans_Temp = RandomModdlePos();
                 break;
+        }
+    }
+
+    //随机中间样子
+    public List<Transform> RandomModdlePos()
+    {
+        int randomIndex = Random.Range(0,4);
+        switch (randomIndex)
+        {
+            case 0:
+                middleTrans[0].gameObject.SetActive(true);
+                return middle_Trans_14_A;
+            case 1:
+                middleTrans[1].gameObject.SetActive(true);
+                return middle_Trans_14_B;
+            case 2:
+                middleTrans[2].gameObject.SetActive(true);
+                return middle_Trans_14_C;
+            case 3:
+                middleTrans[3].gameObject.SetActive(true);
+                return middle_Trans_14_D;
+        }
+
+        return middle_Trans_14_A;
+    }
+
+    //关闭中间格子
+    public void CloseTrans()
+    {
+        for (int i = 0; i < middleTrans.Count; i++)
+        {
+            middleTrans[i].gameObject.SetActive(false);
         }
     }
 

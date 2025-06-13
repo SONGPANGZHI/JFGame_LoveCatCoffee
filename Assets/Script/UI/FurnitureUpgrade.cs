@@ -243,7 +243,7 @@ public class FurnitureUpgrade : MonoBehaviour
     public void GuidanceFurnitureUseBack()
     {
         UIManagement.Instance.OpenGuidancePlane();
-        GuidancePlane.Instance.GuidanceInit(6, OkBack_BTN.transform.position);
+        GuidancePlane.Instance.GuidanceInit(6, new Vector3(Screen.width/2,Screen.height/2),3);
         FurnitureManagement.instance.hallCatAnim.SetActive(true);
     }
 

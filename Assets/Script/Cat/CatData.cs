@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CatData : MonoBehaviour
 {
     public int priority = 0; // 数值越小优先级越高
     public GameObject furitePrefab;
     public Transform furiteTrans;
-    public GameObject catAnim;
+    public Image catHead;
+    public Image catArm;
+    public Image catHand;
     public List<CatRequirement> catRequirements;
 
 
@@ -15,12 +18,28 @@ public class CatData : MonoBehaviour
     {
         priority = id;
         RandomCatNeed();
+        RandomCatSkin();
         for (int i = 0; i < catRequirements.Count; i++)
         {
             GameObject GO = Instantiate(furitePrefab, furiteTrans);
             GO.GetComponent<CatRequirementFurite>().FuriteInit(catRequirements[i]);
         }
        
+    }
+
+    //随机猫猫皮肤
+    public void RandomCatSkin()
+    { 
+        int skinIndex = Random.Range(0, PlayGameManagement.Instance.catSkinList.Count);
+        UpdateCatSkin(PlayGameManagement.Instance.catSkinList[skinIndex]);
+    }
+
+    //更新皮肤
+    public void UpdateCatSkin(CatSkin catSkin)
+    {
+        catHead.sprite = catSkin.catHeat;
+        catArm.sprite = catSkin.catArm;
+        catHand.sprite = catSkin.catHand;
     }
 
     //随机猫咪需求
@@ -84,6 +103,8 @@ public class CatData : MonoBehaviour
     private void OnAllRequirementsMet()
     {
         Debug.Log("所有需求已完成!");
+        PlayGameManagement.Instance.requirementNum += 1;
+        PlayGameManagement.Instance.GetLevelTitle();
         PlayGameManagement.Instance.cats.Remove(this);
         Destroy(gameObject);
 

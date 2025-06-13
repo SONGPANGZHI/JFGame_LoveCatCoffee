@@ -87,7 +87,6 @@ public class GuidancePlane : MonoBehaviour
                 FurnitureManagement.useFurnitureItemGrid.UseClick();
                 break;
             case 6:
-                UIManagement.Instance.furnitureUpgradePlane.OkBackClick();
                 PlayerPrefs.SetString("HallCatKey", "HallCat");
                 break;
         }

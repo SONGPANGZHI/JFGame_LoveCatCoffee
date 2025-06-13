@@ -12,8 +12,13 @@ public class PlayGameManagement : MonoBehaviour
 
     public RectTransform uiTrans;
     public RectTransform middleTrans;
+    public GameObject clock_OBJ;
     public TMP_Text timer_TMP;
     private float currentTime;        //游戏时长 秒数
+    public TMP_Text levelTitle_TMP;        //猫咪需求文本
+    private string catNeed_Str = "满足猫猫需求：";
+    private string countDown_Str = "在规定时间内清空中间水果!";
+    private string timerAndCat_Str = "在规定时间内<N>满足猫猫需求：";
 
     [Header("放置区数据")]
     public GameObject unlockGridSix;
@@ -31,6 +36,8 @@ public class PlayGameManagement : MonoBehaviour
     public GameObject blockEffect;
 
     [Header("猫猫需求")]
+    public List<CatSkin> catSkinList;
+    public int requirementNum = 0;
     public int catRequirementSum;               //猫咪需求总数
     public GameObject catPrefab;                //猫咪预制体
     public Transform catPosTrans;               //猫咪位置
@@ -69,6 +76,9 @@ public class PlayGameManagement : MonoBehaviour
     public int middleAllNum;
     public List<BlockPropData> currentMysteryBox;
     public List<Transform> blockAnimPos;
+
+    private Animator _clockAnimator;
+    private bool _isWarning; // 是否正在播放警告状态
     private void Awake()
     {
         if (Instance == null)
@@ -95,15 +105,16 @@ public class PlayGameManagement : MonoBehaviour
         }
 
         GameManager.Instance.pauseGame = true;
+        _clockAnimator = clock_OBJ.GetComponent<Animator>();
     }
 
     private void Start()
     {
         PlayerPrefs.DeleteKey("ADResurgenceKey");
+        //新手引导
+        BaseTools.Instance.UIAdaptive(uiTrans, middleTrans, catPosTrans.GetComponent<RectTransform>());
         //关卡模式
         DetermineLevelMode();
-        //新手引导
-        BaseTools.Instance.UIAdaptive(uiTrans, middleTrans);
         Guidance();
     }
 
@@ -120,7 +131,7 @@ public class PlayGameManagement : MonoBehaviour
     public void GuidanceSecondLevel()
     {
         UIManagement.Instance.OpenGuidancePlane();
-        GuidancePlane.Instance.GuidanceInit(8, new Vector3(Screen.width / 2, (Screen.height / 2) + 700, 0));
+        GuidancePlane.Instance.GuidanceInit(8, new Vector3(Screen.width / 2, (Screen.height / 2) + 1300, 0));
     }
 
     //新手引导
@@ -366,19 +377,38 @@ public class PlayGameManagement : MonoBehaviour
         switch (levelType)
         {
             case LevelType.Countdown:
+                clock_OBJ.SetActive(true);
                 //开始计时
+                GetLevelTitle();
                 StartGame();
                 break;
             case LevelType.CatNeedNum:
                 //生成猫猫
+                clock_OBJ.SetActive(false);
+                GetLevelTitle();
                 InitCat();
                 break;
             case LevelType.TimeAndCat:
                 //两者都
+                clock_OBJ.SetActive(true);
+                GetLevelTitle();
                 StartGame();
                 InitCat();
                 break;
         }
+    }
+
+    //标题文本文字改变
+    public void GetLevelTitle()
+    {
+        if (levelType == LevelType.CatNeedNum)
+            levelTitle_TMP.text = catNeed_Str + requirementNum + "/" + catRequirementSum;
+        else if (levelType == LevelType.TimeAndCat)
+            levelTitle_TMP.text = ListExtensions.LoadSprite(timerAndCat_Str) + requirementNum + "/" + catRequirementSum;
+        else
+            levelTitle_TMP.text = countDown_Str;
+
+
     }
 
     //获取关卡详细信息
@@ -445,26 +475,60 @@ public class PlayGameManagement : MonoBehaviour
         }
     }
 
+    private bool isPlaySFX;
+
     //关卡倒计时
     public void UpdateTimerDisplay()
     {
-        timer_TMP.text = Mathf.Ceil(currentTime).ToString();
+        // 计算分钟和秒数
+        int minutes = Mathf.FloorToInt(currentTime / 60f);
+        int seconds = Mathf.FloorToInt(currentTime % 60f);
 
-        // 最后10秒变红
+        // 格式化显示，确保两位数（01:05而不是1:5）
+        timer_TMP.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        // 最后10秒警告逻辑
         if (currentTime <= 10f)
         {
-            timer_TMP.color = Color.red;
-            // 可以添加闪烁效果
+            if (!_isWarning) // 防止重复触发
+            {
+                _isWarning = true;
+                timer_TMP.color = Color.red;
+
+                // 播放时钟动画
+                _clockAnimator.enabled = true;
+                _clockAnimator.Play("GameClock");
+
+                // 播放音效
+                MusicManagement.instance.PlayClockSFX();
+            }
+        }
+        else if (_isWarning) // 如果之前是警告状态，现在恢复
+        {
+            _isWarning = false;
+            timer_TMP.color = Color.white;
+
+            // 停止动画
+            _clockAnimator.enabled = false;
+            clock_OBJ.transform.localScale = Vector3.one; // 重置缩放
+
+            // 停止音效
+            MusicManagement.instance.StopClockSFX();
         }
 
+    }
+
+    //播放闹钟
+    public void PlayClockSFX()
+    {
+        
     }
 
     //添加时间
     public void AddTime(float extraTime)
     {
         currentTime += extraTime;
-        if (currentTime > levelTimer)
-            currentTime = levelTimer;
+        UIManagement.Instance.reminderBoxPlane.OpenReminderBox(2);
     }
 
     //游戏结束
@@ -638,7 +702,7 @@ public class PlayGameManagement : MonoBehaviour
     {
         if (!GameManager.Instance.pauseGame) return;
 
-        if(levelType == LevelType.Countdown)
+        if(levelType != LevelType.CatNeedNum)
             StartCountdown();
 
         SpeedTimer();

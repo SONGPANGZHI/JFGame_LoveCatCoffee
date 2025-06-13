@@ -18,7 +18,7 @@ public class CatRequirementFurite : MonoBehaviour
         currentRequirement = catRequirement;
         maxRequired = currentRequirement.totalRequired;
         currentRequired = currentRequirement.totalRequired;
-        furite_TMP.text = "X" + currentRequired;
+        furite_TMP.text = currentRequired.ToString();
         Furite_IMG.sprite = GetFuriteIcon(currentRequirement.requiredType);
         PlayGameManagement.Instance.allRequirements.Add(this);
     }
@@ -40,7 +40,7 @@ public class CatRequirementFurite : MonoBehaviour
         }
         else
         {
-            furite_TMP.text = "X" + currentRequired;
+            furite_TMP.text = currentRequired.ToString();
         }
     }
 

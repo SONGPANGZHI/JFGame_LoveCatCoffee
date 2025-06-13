@@ -27,7 +27,7 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 10,
-	"CatNum": 12,
+	"CatNum": 5,
 	"Time": 90,
 	"LevelType": "CatNeedNum",
 	"FurnitureName": ["Hall1_Diban","Hall1_Qiangzhi"]

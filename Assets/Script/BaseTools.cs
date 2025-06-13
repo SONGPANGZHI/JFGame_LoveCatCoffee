@@ -76,7 +76,7 @@ public class BaseTools : MonoBehaviour
   
 
     //三消界面部分UI适配
-    public void UIAdaptive(RectTransform _uiTrans, RectTransform _middle)
+    public void UIAdaptive(RectTransform _uiTrans, RectTransform _middle,RectTransform catPos)
     {
         width = Screen.width;
         height = Screen.height;
@@ -87,6 +87,7 @@ public class BaseTools : MonoBehaviour
             //使用默认的
             _uiTrans.sizeDelta = new Vector2(0, 1500);
             _middle.sizeDelta = new Vector2(0, 680);
+            catPos.sizeDelta = new Vector2(0,200);
 
         }
         else
@@ -94,6 +95,7 @@ public class BaseTools : MonoBehaviour
             //改变UI大小
             _uiTrans.sizeDelta = new Vector2(0, 1800);
             _middle.sizeDelta = new Vector2(0, 800);
+            catPos.sizeDelta = new Vector2(0,520);
         }
     }
 
