@@ -19,6 +19,8 @@ public class PlayGameManagement : MonoBehaviour
     private string catNeed_Str = "满足猫猫需求：";
     private string countDown_Str = "在规定时间内清空中间水果!";
     private string timerAndCat_Str = "在规定时间内<N>满足猫猫需求：";
+    public Transform addTimer_startPos;
+    public Transform addTimer;
 
     [Header("放置区数据")]
     public GameObject unlockGridSix;
@@ -131,7 +133,7 @@ public class PlayGameManagement : MonoBehaviour
     public void GuidanceSecondLevel()
     {
         UIManagement.Instance.OpenGuidancePlane();
-        GuidancePlane.Instance.GuidanceInit(8, new Vector3(Screen.width / 2, (Screen.height / 2) + 1300, 0));
+        GuidancePlane.Instance.GuidanceInit(8, new Vector3(Screen.width / 2, (Screen.height) - 200, 0));
     }
 
     //新手引导
@@ -298,7 +300,8 @@ public class PlayGameManagement : MonoBehaviour
             dropZoneData.Remove(card);
             card.GetComponent<DropZone>().PlayEffect();
         }
-
+        //加3秒
+        InitAddTimer(3,false);
         MusicManagement.instance.PlayDestorySFX();
         Invoke("DetermineDropAreaFull", 0.5f);
     }
@@ -475,7 +478,6 @@ public class PlayGameManagement : MonoBehaviour
         }
     }
 
-    private bool isPlaySFX;
 
     //关卡倒计时
     public void UpdateTimerDisplay()
@@ -518,17 +520,26 @@ public class PlayGameManagement : MonoBehaviour
 
     }
 
-    //播放闹钟
-    public void PlayClockSFX()
+    //添加时间 外部按钮调用
+    public void AddTime()
     {
-        
+        InitAddTimer(60);
     }
 
-    //添加时间
-    public void AddTime(float extraTime)
+    public void InitAddTimer(float extraTime, bool isOpen = true)
     {
-        currentTime += extraTime;
-        UIManagement.Instance.reminderBoxPlane.OpenReminderBox(2);
+        if (isOpen)
+            UIManagement.Instance.reminderBoxPlane.OpenReminderBox(2);
+
+        GameObject GO = Instantiate(addTimer.gameObject, addTimer_startPos);
+        GO.GetComponentInChildren<TMP_Text>().text = "+" + extraTime + "S";
+        GO.transform.DOMoveY(timer_TMP.transform.position.y, 1f);
+        GO.GetComponentInChildren<TMP_Text>().DOFade(0, 1f).OnComplete(() =>
+        {
+            currentTime += extraTime;
+            Destroy(GO);
+        });
+
     }
 
     //游戏结束

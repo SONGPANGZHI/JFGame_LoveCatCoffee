@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 519614651419059896}
   - component: {fileID: 1688888655310084248}
+  - component: {fileID: 7453880421888494596}
   m_Layer: 5
   m_Name: NeedFurite
   m_TagString: Untagged
@@ -59,8 +60,29 @@ MonoBehaviour:
   Furite_IMG: {fileID: 1506892652165005686}
   furite_TMP: {fileID: 2845547238632538111}
   complete_IMG: {fileID: 4983742471634069428}
+  anim: {fileID: 7453880421888494596}
   currentRequired: 0
   maxRequired: 0
+--- !u!95 &7453880421888494596
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325321432418681162}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d36fcf2a39299fc4eb3629b9970879b7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &538143849195696662
 GameObject:
   m_ObjectHideFlags: 0

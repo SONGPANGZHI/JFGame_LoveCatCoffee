@@ -163,10 +163,10 @@ public class FurnitureUpgrade : MonoBehaviour
     {
         planeAnim.DOAnchorPosX(1300, 0.3f).OnComplete(() =>
         {
-            gameObject.SetActive(false);
-
             ClearTrans(HallFurnitureTran);
             ClearTrans(CatHouseFurnitureTran);
+            gameObject.SetActive(false);
+
         });
     }
 
@@ -183,9 +183,9 @@ public class FurnitureUpgrade : MonoBehaviour
     {
         for (int i = 0; i < Trans.Count; i++)
         {
-            for (int j = 0; j < HallFurnitureTran[i].GetComponent<FurnitureTypeGrid>().trans.childCount; j++)
+            for (int j = 0; j < Trans[i].GetComponent<FurnitureTypeGrid>().trans.childCount; j++)
             {
-                Destroy(HallFurnitureTran[i].GetComponent<FurnitureTypeGrid>().trans.GetChild(j).gameObject);
+                Destroy(Trans[i].GetComponent<FurnitureTypeGrid>().trans.GetChild(j).gameObject);
             }
         }
     }

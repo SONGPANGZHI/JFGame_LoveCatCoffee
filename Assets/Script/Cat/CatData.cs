@@ -7,6 +7,7 @@ public class CatData : MonoBehaviour
     public int priority = 0; // 数值越小优先级越高
     public GameObject furitePrefab;
     public Transform furiteTrans;
+    public Animator animator;
     public Image catHead;
     public Image catArm;
     public Image catHand;
@@ -106,12 +107,18 @@ public class CatData : MonoBehaviour
         PlayGameManagement.Instance.requirementNum += 1;
         PlayGameManagement.Instance.GetLevelTitle();
         PlayGameManagement.Instance.cats.Remove(this);
-        Destroy(gameObject);
+        furiteTrans.gameObject.SetActive(false);
+        animator.SetBool("Happy",false);
+        Invoke("DestroyGameObject",2f);
+    }
 
+    public void DestroyGameObject()
+    {
+        Destroy(gameObject);
         if (PlayGameManagement.Instance.JuageCreateCat() && GameManager.Instance.pauseGame)
         {
             //游戏胜利
-             if(PlayGameManagement.Instance.allRequirements.Count == 1)
+            if (PlayGameManagement.Instance.allRequirements.Count == 0)
                 UIManagement.Instance.OpenGameOverPlane(true);
         }
         else
@@ -119,6 +126,5 @@ public class CatData : MonoBehaviour
             //生成新的猫猫
             PlayGameManagement.Instance.GenerateNewCatRequirements();
         }
-       
     }
 }

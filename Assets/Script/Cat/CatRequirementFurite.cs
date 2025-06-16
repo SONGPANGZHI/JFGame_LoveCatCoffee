@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,12 +9,14 @@ public class CatRequirementFurite : MonoBehaviour
     public Image Furite_IMG;
     public TMP_Text furite_TMP;
     public GameObject complete_IMG;
+    public Animator anim;
 
     public int currentRequired;
     public int maxRequired;
 
     public void FuriteInit(CatRequirement catRequirement)
     {
+        anim.enabled = false;
         complete_IMG.SetActive(false);
         currentRequirement = catRequirement;
         maxRequired = currentRequirement.totalRequired;
@@ -34,12 +37,16 @@ public class CatRequirementFurite : MonoBehaviour
         // 只在需求变化时更新UI
         if (currentRequired <= 0)
         {
+            anim.enabled = true;
             complete_IMG.SetActive(true);
             furite_TMP.gameObject.SetActive(false);
             Invoke("OnRequirementCompleted", 0.3f);
+
+
         }
         else
         {
+            anim.enabled = true;
             furite_TMP.text = currentRequired.ToString();
         }
     }

@@ -157,6 +157,7 @@ MonoBehaviour:
   priority: 0
   furitePrefab: {fileID: 325321432418681162, guid: 02b5abc381ab1ff40994f8a90b615b9d, type: 3}
   furiteTrans: {fileID: 4250828282963445309}
+  animator: {fileID: 4967243772182552770}
   catHead: {fileID: 5790273741291411384}
   catArm: {fileID: 5790273741845875289}
   catHand: {fileID: 5790273742781842670}

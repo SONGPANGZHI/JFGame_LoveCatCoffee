@@ -77,7 +77,8 @@ public class GameOverPlane : MonoBehaviour
             //失败
             resChallenge_BTN.gameObject.SetActive(true);
             nextLevel_BTN.gameObject.SetActive(false);
-
+            // 停止音效
+            MusicManagement.instance.StopClockSFX();
 
             victory_UI.SetActive(false);
             defeated_UI.SetActive(true);

@@ -100,7 +100,7 @@ public class BaseTools : MonoBehaviour
     }
 
 
-  
+   
     public void GeneralTips(string _tipsContent)
     {
         //float X = Input.mousePosition.x - Screen.width / 2f;

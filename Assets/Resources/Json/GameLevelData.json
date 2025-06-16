@@ -12,8 +12,9 @@
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 8,
 	"CatNum": 10,
-	"Time": 90,
-	"LevelType": "Countdown"
+	"Time": 150,
+	"LevelType": "Countdown",
+	
 }, {
 	"LevelID": 2,
 	"BlockType": 5,
@@ -27,8 +28,8 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 10,
-	"CatNum": 5,
-	"Time": 90,
+	"CatNum": 10,
+	"Time": 150,
 	"LevelType": "CatNeedNum",
 	"FurnitureName": ["Hall1_Diban","Hall1_Qiangzhi"]
 }, {
@@ -44,8 +45,8 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 12,
-	"CatNum": 15,
-	"Time": 90,
+	"CatNum": 12,
+	"Time": 150,
 	"LevelType": "TimeAndCat",
 	"FurnitureName": ["Hall1_Chaunghu_2","Hall1_Chaunghu_1","Hall1_Banzi"]
 }, {
@@ -61,9 +62,9 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"CatNum": 18,
-	"Time": 120,
-	"LevelType": "CatNeedNum",
+	"CatNum": 15,
+	"Time": 150,
+	"LevelType": "Countdown",
 	"FurnitureName": ["Hall1_Zhanshigui","Hall1_Shouyintai","Hall1_Shouyinji"]
 }, {
 	"LevelID": 5,
@@ -78,9 +79,9 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"CatNum": 25,
-	"Time": 120,
-	"LevelType": "TimeAndCat",
+	"CatNum": 18,
+	"Time": 140,
+	"LevelType": "Countdown",
 	"FurnitureName": ["Hall1_Zhuoyi_1","Hall1_Zhuoyi_2"]
 }, {
 	"LevelID": 6,
@@ -95,8 +96,8 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"CatNum": 28,
-	"Time": 120,
+	"CatNum": 18,
+	"Time": 130,
 	"LevelType": "Countdown",
 	"FurnitureName": ["Hall1_Dangaogui","Hall1_Caidan","Hall1_Yuanliao"]
 }, {
@@ -112,8 +113,8 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"CatNum": 35,
-	"Time": 150,
+	"CatNum": 18,
+	"Time": 120,
 	"LevelType": "Countdown",
 	"FurnitureName": ["Hall1_Zhizuotai_1","Hall1_Tiaozhitai"]
 }, {
@@ -129,8 +130,8 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"CatNum": 40,
-	"Time": 150,
+	"CatNum": 18,
+	"Time": 360,
 	"LevelType": "CatNeedNum",
 	"FurnitureName": ["Hall1_Kafeiji","Hall1_Kafeitiaopin"]
 }, {
@@ -146,8 +147,8 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"CatNum": 40,
-	"Time": 150,
+	"CatNum": 18,
+	"Time": 360,
 	"LevelType": "CatNeedNum",
 	"FurnitureName": ["Hall1_Yinliaotong","Hall1_Beizi"]
 }, {
@@ -163,8 +164,8 @@
 	},
 	"ConveyorSpeed": 0.3,
 	"PositionsNum": 14,
-	"CatNum": 45,
-	"Time": 150,
+	"CatNum": 20,
+	"Time": 360,
 	"LevelType": "TimeAndCat",
 	"FurnitureName": ["Hall1_Taizi","Hall1_Kafeidai","Hall1_Caidanping"]
 }, {
@@ -180,8 +181,8 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"CatNum": 45,
-	"Time": 180,
+	"CatNum": 20,
+	"Time": 360,
 	"LevelType": "Countdown",
 	"FurnitureName": ["Hall1_Jiazi","Hall1_Guizi"]
 }, {
@@ -197,8 +198,8 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"CatNum": 45,
-	"Time": 180,
+	"CatNum": 20,
+	"Time": 420,
 	"LevelType": "CatNeedNum",
 	"FurnitureName": ["Hall1_Shujia","Hall1_Yinpinjia"]
 }, {
@@ -214,8 +215,8 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"CatNum": 45,
-	"Time": 180,
+	"CatNum": 20,
+	"Time": 420,
 	"LevelType": "CatNeedNum",
 	"FurnitureName": ["Hall1_Pengzai_3","Hall1_Pengzai_1","Hall1_Pengzai_2"]
 }, {
@@ -231,8 +232,8 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"CatNum": 45,
-	"Time": 210,
+	"CatNum": 20,
+	"Time": 360,
 	"LevelType": "Countdown",
 	"FurnitureName": ["Hall1_Deng_1","Hall1_Deng_2"]
 }, {
@@ -248,8 +249,8 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"CatNum": 50,
-	"Time": 210,
+	"CatNum": 24,
+	"Time": 360,
 	"LevelType": "Countdown",
 	"FurnitureName": ["Hall1_Guashi","Hall1_Jiaodian"]
 }, {
@@ -265,8 +266,8 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"CatNum": 50,
-	"Time": 210,
+	"CatNum": 24,
+	"Time": 480,
 	"LevelType": "TimeAndCat",
 	"FurnitureName": ["Hall1_Louti_1"]
 }, {
@@ -282,9 +283,10 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"CatNum": 50,
-	"Time": 240,
-	"LevelType": "CatNeedNum"
+	"CatNum": 24,
+	"Time": 540,
+	"LevelType": "CatNeedNum",
+	
 }, {
 	"LevelID": 18,
 	"BlockType": 11,
@@ -298,9 +300,10 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"CatNum": 50,
-	"Time": 240,
-	"LevelType": "Countdown"
+	"CatNum": 24,
+	"Time": 540,
+	"LevelType": "Countdown",
+	
 }, {
 	"LevelID": 19,
 	"BlockType": 11,
@@ -314,9 +317,10 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"CatNum": 50,
-	"Time": 240,
-	"LevelType": "CatNeedNum"
+	"CatNum": 24,
+	"Time": 540,
+	"LevelType": "CatNeedNum",
+	
 }, {
 	"LevelID": 20,
 	"BlockType": 11,
@@ -330,9 +334,10 @@
 	},
 	"ConveyorSpeed": 0.4,
 	"PositionsNum": 14,
-	"CatNum": 55,
-	"Time": 260,
-	"LevelType": "CatNeedNum"
+	"CatNum": 28,
+	"Time": 540,
+	"LevelType": "CatNeedNum",
+	
 }, {
 	"LevelID": 21,
 	"BlockType": 12,
@@ -346,9 +351,10 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"CatNum": 55,
-	"Time": 260,
-	"LevelType": "TimeAndCat"
+	"CatNum": 28,
+	"Time": 540,
+	"LevelType": "TimeAndCat",
+	
 }, {
 	"LevelID": 22,
 	"BlockType": 12,
@@ -362,9 +368,10 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"CatNum": 55,
-	"Time": 260,
-	"LevelType": "CatNeedNum"
+	"CatNum": 28,
+	"Time": 540,
+	"LevelType": "CatNeedNum",
+	
 }, {
 	"LevelID": 23,
 	"BlockType": 12,
@@ -378,9 +385,10 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"CatNum": 55,
-	"Time": 280,
-	"LevelType": "CatNeedNum"
+	"CatNum": 28,
+	"Time": 540,
+	"LevelType": "CatNeedNum",
+	
 }, {
 	"LevelID": 24,
 	"BlockType": 12,
@@ -394,9 +402,10 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"CatNum": 55,
-	"Time": 280,
-	"LevelType": "Countdown"
+	"CatNum": 28,
+	"Time": 540,
+	"LevelType": "Countdown",
+	
 }, {
 	"LevelID": 25,
 	"BlockType": 14,
@@ -410,9 +419,10 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"CatNum": 60,
-	"Time": 280,
-	"LevelType": "CatNeedNum"
+	"CatNum": 30,
+	"Time": 540,
+	"LevelType": "CatNeedNum",
+	
 }, {
 	"LevelID": 26,
 	"BlockType": 14,
@@ -426,9 +436,10 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"CatNum": 60,
-	"Time": 300,
-	"LevelType": "TimeAndCat"
+	"CatNum": 30,
+	"Time": 540,
+	"LevelType": "TimeAndCat",
+	
 }, {
 	"LevelID": 27,
 	"BlockType": 14,
@@ -442,9 +453,10 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"CatNum": 60,
-	"Time": 300,
-	"LevelType": "Countdown"
+	"CatNum": 30,
+	"Time": 540,
+	"LevelType": "Countdown",
+	
 }, {
 	"LevelID": 28,
 	"BlockType": 14,
@@ -458,9 +470,10 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"CatNum": 60,
-	"Time": 300,
-	"LevelType": "CatNeedNum"
+	"CatNum": 30,
+	"Time": 540,
+	"LevelType": "CatNeedNum",
+	
 }, {
 	"LevelID": 29,
 	"BlockType": 14,
@@ -474,9 +487,10 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"CatNum": 60,
-	"Time": 330,
-	"LevelType": "CatNeedNum"
+	"CatNum": 30,
+	"Time": 540,
+	"LevelType": "Countdown",
+	
 }, {
 	"LevelID": 30,
 	"BlockType": 14,
@@ -490,7 +504,8 @@
 	},
 	"ConveyorSpeed": 0.5,
 	"PositionsNum": 14,
-	"CatNum": 60,
-	"Time": 330,
-	"LevelType": "Countdown"
+	"CatNum": 35,
+	"Time": 540,
+	"LevelType": "TimeAndCat",
+	
 }]
