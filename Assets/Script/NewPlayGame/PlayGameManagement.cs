@@ -78,6 +78,8 @@ public class PlayGameManagement : MonoBehaviour
     public int middleAllNum;
     public List<BlockPropData> currentMysteryBox;
     public List<Transform> blockAnimPos;
+    public List<Sprite> middle_Sprite;
+    public Image middle_BG;
 
     private Animator _clockAnimator;
     private bool _isWarning; // 是否正在播放警告状态
@@ -85,6 +87,9 @@ public class PlayGameManagement : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+
+        //修改背景图
+        ChangeMiddleBG();
 
         //获取方块列表
         GetBlockTypeList();
@@ -118,6 +123,12 @@ public class PlayGameManagement : MonoBehaviour
         //关卡模式
         DetermineLevelMode();
         Guidance();
+    }
+
+    public void ChangeMiddleBG()
+    {
+        int middleID = Random.Range(0, middle_Sprite.Count);
+        middle_BG.sprite = middle_Sprite[middleID];
     }
 
     #region 新手引导
@@ -436,7 +447,6 @@ public class PlayGameManagement : MonoBehaviour
         }
         else
             furnitureName = GameManager.Instance.currentGameLevel.FurnitureName;
-
 
     }
 

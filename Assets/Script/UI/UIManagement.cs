@@ -42,7 +42,6 @@ public class UIManagement : MonoBehaviour
         mainPlane.gameObject.SetActive(true);
         mainPlane.InitPlane();
         GameManager.Instance.pauseGame = true;
-        
 
         //CloseGame();
     }
@@ -173,4 +172,5 @@ public class UIManagement : MonoBehaviour
             Debug.LogError("清除所有PlayerPrefs");
         }
     }
+
 }

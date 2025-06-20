@@ -5231,6 +5231,16 @@ MonoBehaviour:
   - {fileID: 767485126}
   - {fileID: 1073559526}
   - {fileID: 567951135}
+  middle_Sprite:
+  - {fileID: 21300000, guid: 2de65b7406de758479085d6adf45dd5c, type: 3}
+  - {fileID: 21300000, guid: 38ccf0042d21b304dae9355669015718, type: 3}
+  - {fileID: 21300000, guid: fcb001b756f691d42909b9f9235cc221, type: 3}
+  - {fileID: 21300000, guid: ed814c80a47d153439331f406cecf634, type: 3}
+  - {fileID: 21300000, guid: 7c8236c5f422d094ca5f58682b9ce075, type: 3}
+  - {fileID: 21300000, guid: f578f40efc66e584f81d65903785f194, type: 3}
+  - {fileID: 21300000, guid: 7b95aeac933ecac49bc6e9f7d43c725d, type: 3}
+  - {fileID: 21300000, guid: e9c3f8f47d64498449f25bf8417a464f, type: 3}
+  middle_BG: {fileID: 2021349949}
 --- !u!1 &1518641535
 GameObject:
   m_ObjectHideFlags: 0
