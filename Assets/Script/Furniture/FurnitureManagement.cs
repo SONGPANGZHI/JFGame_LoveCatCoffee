@@ -60,13 +60,13 @@ public class FurnitureManagement : MonoBehaviour
         //    hallCatAnim.SetActive(true);
         //}
 
-        //测试 家具全部打开
-        if (!PlayerPrefs.HasKey("OpenAllFurnitureKey"))
-        {
-            //测试 家具全部打开
-            OpenAllFurniture();
-            PlayerPrefs.SetString("OpenAllFurnitureKey", "OpenAllFurniture");
-        }
+        ////测试 家具全部打开
+        //if (!PlayerPrefs.HasKey("OpenAllFurnitureKey"))
+        //{
+        //    //测试 家具全部打开
+        //    OpenAllFurniture();
+        //    PlayerPrefs.SetString("OpenAllFurnitureKey", "OpenAllFurniture");
+        //}
         
 
     }

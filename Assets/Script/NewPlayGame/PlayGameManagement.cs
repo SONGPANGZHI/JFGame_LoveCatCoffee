@@ -123,7 +123,7 @@ public class PlayGameManagement : MonoBehaviour
         //关卡模式
         DetermineLevelMode();
         //新手引导
-        //Guidance();
+        Guidance();
     }
 
     public void ChangeMiddleBG()

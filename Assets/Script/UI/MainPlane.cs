@@ -58,7 +58,7 @@ public class MainPlane : MonoBehaviour
         DetermineOpenDress();
 
         //新手引导
-        //Guidance();
+        Guidance();
     }
 
     public void Guidance()

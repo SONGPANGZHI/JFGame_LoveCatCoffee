@@ -52,7 +52,7 @@ public class FurnitureUpgrade : MonoBehaviour
         OpenTitleRed();
 
         //新手引导
-        //Guidance();
+        Guidance();
 
         planeAnim.DOAnchorPosX(0, 0.3f);
        
@@ -233,10 +233,10 @@ public class FurnitureUpgrade : MonoBehaviour
         FurnitureManagement.instance.currentClickFurniture.CameraFocusedOnFurniture();
 
         //新手引导
-        //if (GuidancePlane.Instance.JudgeWhetherOpenGuide(6))
-        //{
-        //    Invoke("GuidanceFurnitureUseBack", 0.5f);
-        //}
+        if (GuidancePlane.Instance.JudgeWhetherOpenGuide(6))
+        {
+            Invoke("GuidanceFurnitureUseBack", 0.5f);
+        }
     }
 
 
