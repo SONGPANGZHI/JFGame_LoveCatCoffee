@@ -70,15 +70,20 @@ public class FurnitureItemGrid : MonoBehaviour
     {
         FurnitureManagement.instance.ChangeFurnitureItemGetNewSkine(furnitureItem.Id,false);
 
-        if (GameManager.Instance.currentGameLevel.LevelID >= 17)
-        {
-            //奖励第二套皮肤
-            FurnitureManagement.instance.GetFurnitureNameDestory(FurnitureManagement.CheckFirstFurniture(furnitureItem.Id));
-            FurnitureManagement.instance.ChangeFurnitureItemDefault(FurnitureManagement.CheckFirstFurniture(furnitureItem.Id), false);
-            FurnitureManagement.ChangeGridState(FurnitureManagement.CheckFirstFurniture(furnitureItem.Id));
-        }
-        else
-            FurnitureManagement._openHallTitle = false;
+        //测试
+        FurnitureManagement.instance.GetFurnitureNameDestory(FurnitureManagement.CheckFirstFurniture(furnitureItem.Id));
+        FurnitureManagement.instance.ChangeFurnitureItemDefault(FurnitureManagement.CheckFirstFurniture(furnitureItem.Id), false);
+        FurnitureManagement.ChangeGridState(FurnitureManagement.CheckFirstFurniture(furnitureItem.Id));
+
+        //if (GameManager.Instance.currentGameLevel.LevelID >= 17)
+        //{
+        //    //奖励第二套皮肤
+        //    FurnitureManagement.instance.GetFurnitureNameDestory(FurnitureManagement.CheckFirstFurniture(furnitureItem.Id));
+        //    FurnitureManagement.instance.ChangeFurnitureItemDefault(FurnitureManagement.CheckFirstFurniture(furnitureItem.Id), false);
+        //    FurnitureManagement.ChangeGridState(FurnitureManagement.CheckFirstFurniture(furnitureItem.Id));
+        //}
+        //else
+        //    FurnitureManagement._openHallTitle = false;
 
         //点击生成新的家具
         FurnitureManagement.instance.CreateFurniture(furnitureItem.Id);

@@ -118,11 +118,12 @@ public class PlayGameManagement : MonoBehaviour
     private void Start()
     {
         PlayerPrefs.DeleteKey("ADResurgenceKey");
-        //新手引导
+        
         BaseTools.Instance.UIAdaptive(uiTrans, middleTrans, catPosTrans.GetComponent<RectTransform>());
         //关卡模式
         DetermineLevelMode();
-        Guidance();
+        //新手引导
+        //Guidance();
     }
 
     public void ChangeMiddleBG()

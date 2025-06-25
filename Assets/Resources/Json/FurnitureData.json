@@ -101,7 +101,7 @@
             "y": -0.49000000953674319
         },
         "DaseFurnitureId": "Hall1_Louti_1",
-        "OrderLayer": 4,
+        "OrderLayer": 5,
         "CameraSize": false,
         "NoUpgradeFurniture": false
     },
@@ -117,7 +117,7 @@
             "y": -0.49000000953674319
         },
         "DaseFurnitureId": "Hall1_Louti_1",
-        "OrderLayer": 4,
+        "OrderLayer": 5,
         "CameraSize": false,
         "NoUpgradeFurniture": false
     },
@@ -149,7 +149,7 @@
             "y": 1.7899999618530274
         },
         "DaseFurnitureId": "Maowu1_Diban",
-        "OrderLayer": 3,
+        "OrderLayer": 4,
         "CameraSize": false,
         "NoUpgradeFurniture": false
     },
@@ -165,7 +165,7 @@
             "y": 1.2599999904632569
         },
         "DaseFurnitureId": "Maowu1_Maowo",
-        "OrderLayer": 4,
+        "OrderLayer": 5,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -181,7 +181,7 @@
             "y": 0.9900000095367432
         },
         "DaseFurnitureId": "Maowu1_Weilan",
-        "OrderLayer": 7,
+        "OrderLayer": 9,
         "CameraSize": false,
         "NoUpgradeFurniture": false
     },
@@ -197,7 +197,7 @@
             "y": 1.5700000524520875
         },
         "DaseFurnitureId": "Maowu1_Zhuangshi",
-        "OrderLayer": 4,
+        "OrderLayer": 5,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -213,7 +213,7 @@
             "y": 1.75
         },
         "DaseFurnitureId": "Maowu1_Ditan",
-        "OrderLayer": 4,
+        "OrderLayer": 5,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -229,7 +229,7 @@
             "y": 3.559999942779541
         },
         "DaseFurnitureId": "Maowu1_Guashi_3",
-        "OrderLayer": 3,
+        "OrderLayer": 4,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -245,7 +245,7 @@
             "y": 1.7400000095367432
         },
         "DaseFurnitureId": "Maowu1_Wanju_3",
-        "OrderLayer": 5,
+        "OrderLayer": 6,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -261,7 +261,7 @@
             "y": 3.819999933242798
         },
         "DaseFurnitureId": "Maowu1_Guashi_2",
-        "OrderLayer": 3,
+        "OrderLayer": 4,
         "CameraSize": false,
         "NoUpgradeFurniture": false
     },
@@ -293,7 +293,7 @@
             "y": 1.3700000047683716
         },
         "DaseFurnitureId": "Maowu1_Deng",
-        "OrderLayer": 5,
+        "OrderLayer": 6,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -309,7 +309,7 @@
             "y": 2.7200000286102297
         },
         "DaseFurnitureId": "Maowu1_Bingxiang",
-        "OrderLayer": 5,
+        "OrderLayer": 6,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -325,7 +325,7 @@
             "y": 1.9500000476837159
         },
         "DaseFurnitureId": "Maowu1_Dianshigui",
-        "OrderLayer": 6,
+        "OrderLayer": 7,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -341,7 +341,7 @@
             "y": 2.630000114440918
         },
         "DaseFurnitureId": "Maowu1_Dianshi",
-        "OrderLayer": 7,
+        "OrderLayer": 8,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -357,7 +357,7 @@
             "y": 3.3
         },
         "DaseFurnitureId": "Maowu1_Wanju_2",
-        "OrderLayer": 6,
+        "OrderLayer": 7,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -373,7 +373,7 @@
             "y": 1.8700000047683716
         },
         "DaseFurnitureId": "Maowu1_Jiaodian",
-        "OrderLayer": 3,
+        "OrderLayer": 4,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -389,7 +389,7 @@
             "y": 1.149999976158142
         },
         "DaseFurnitureId": "Maowu1_Shafa",
-        "OrderLayer": 5,
+        "OrderLayer": 6,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -405,7 +405,7 @@
             "y": 3.4000000953674318
         },
         "DaseFurnitureId": "Maowu1_Chuang",
-        "OrderLayer": 3,
+        "OrderLayer": 5,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -421,7 +421,7 @@
             "y": 3.2799999713897707
         },
         "DaseFurnitureId": "Maowu1_Wanju_1",
-        "OrderLayer": 4,
+        "OrderLayer": 5,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -437,7 +437,7 @@
             "y": 2.9600000381469728
         },
         "DaseFurnitureId": "Maowu1_Shuzhuangtai",
-        "OrderLayer": 5,
+        "OrderLayer": 6,
         "CameraSize": false,
         "NoUpgradeFurniture": false
     },
@@ -453,7 +453,7 @@
             "y": 2.1700000762939455
         },
         "DaseFurnitureId": "Maowu1_Yigui",
-        "OrderLayer": 6,
+        "OrderLayer": 8,
         "CameraSize": false,
         "NoUpgradeFurniture": false
     },
@@ -469,7 +469,7 @@
             "y": 2.9100000858306886
         },
         "DaseFurnitureId": "Maowu1_Guizi",
-        "OrderLayer": 5,
+        "OrderLayer": 7,
         "CameraSize": false,
         "NoUpgradeFurniture": false
     },
@@ -485,7 +485,7 @@
             "y": 4.03000020980835
         },
         "DaseFurnitureId": "Maowu1_Chuanghu_1",
-        "OrderLayer": 3,
+        "OrderLayer": 4,
         "CameraSize": false,
         "NoUpgradeFurniture": false
     },
@@ -501,7 +501,7 @@
             "y": 4.630000114440918
         },
         "DaseFurnitureId": "Maowu1_Guashi_1",
-        "OrderLayer": 3,
+        "OrderLayer": 4,
         "CameraSize": false,
         "NoUpgradeFurniture": false
     },
@@ -517,7 +517,7 @@
             "y": 3.059999942779541
         },
         "DaseFurnitureId": "Maowu1_Penzai",
-        "OrderLayer": 3,
+        "OrderLayer": 4,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -533,7 +533,7 @@
             "y": 4.300000190734863
         },
         "DaseFurnitureId": "Maowu1_Taizi",
-        "OrderLayer": 3,
+        "OrderLayer": 4,
         "CameraSize": false,
         "NoUpgradeFurniture": false
     },
@@ -549,7 +549,7 @@
             "y": 4.460000038146973
         },
         "DaseFurnitureId": "Maowu1_Chuanghu_2",
-        "OrderLayer": 3,
+        "OrderLayer": 4,
         "CameraSize": false,
         "NoUpgradeFurniture": false
     },
@@ -869,7 +869,7 @@
             "y": -2.4200000762939455
         },
         "DaseFurnitureId": "Hall1_Yinliaotong",
-        "OrderLayer": 4,
+        "OrderLayer": 5,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },
@@ -1397,7 +1397,7 @@
             "y": -2.4200000762939455
         },
         "DaseFurnitureId": "Hall1_Yinliaotong",
-        "OrderLayer": 4,
+        "OrderLayer": 5,
         "CameraSize": true,
         "NoUpgradeFurniture": false
     },

@@ -60,16 +60,18 @@ public class GameOverPlane : MonoBehaviour
             victory_UI.transform.DOLocalMoveY(0,0.3F);
             menu_BTN.transform.DOLocalMoveY(-400, 0.3F);
             InitAward();
-            if (GuidancePlane.Instance.JudgeWhetherOpenGuide(2))
-            {
-                Invoke("GuidanceNextLevel", 0.5f);
-            }
-            else if (!GuidancePlane.Instance.JudgeWhetherOpenGuide(2) && GuidancePlane.Instance.JudgeWhetherOpenGuide(3))
-            {
-                //点击返回
-                Invoke("GuidanceBack", 0.5f);
 
-            }
+            //新手引导
+            //if (GuidancePlane.Instance.JudgeWhetherOpenGuide(2))
+            //{
+            //    Invoke("GuidanceNextLevel", 0.5f);
+            //}
+            //else if (!GuidancePlane.Instance.JudgeWhetherOpenGuide(2) && GuidancePlane.Instance.JudgeWhetherOpenGuide(3))
+            //{
+            //    //点击返回
+            //    Invoke("GuidanceBack", 0.5f);
+
+            //}
             //奖励
         }
         else

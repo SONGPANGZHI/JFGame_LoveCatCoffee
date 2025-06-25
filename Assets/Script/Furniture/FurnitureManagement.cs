@@ -44,17 +44,31 @@ public class FurnitureManagement : MonoBehaviour
 
         DefaultFurnitureInit();
 
-        if (!PlayerPrefs.HasKey(dialogueNoveicKey) || GameManager.Instance.currentGameLevel.LevelID > 2)
+        if (GameManager.Instance.currentGameLevel.LevelID >= 2)
         {
             NoviceLevel();
+            //测试
+            hallCatAnim.SetActive(true);
+
             PlayerPrefs.SetString(dialogueNoveicKey, "dialogueNoveic");
             GameManager.Instance.SaveData();
         }
 
-        if (PlayerPrefs.HasKey("HallCatKey"))
+        //测试
+        //if (PlayerPrefs.HasKey("HallCatKey"))
+        //{
+        //    hallCatAnim.SetActive(true);
+        //}
+
+        //测试 家具全部打开
+        if (!PlayerPrefs.HasKey("OpenAllFurnitureKey"))
         {
-            hallCatAnim.SetActive(true);
+            //测试 家具全部打开
+            OpenAllFurniture();
+            PlayerPrefs.SetString("OpenAllFurnitureKey", "OpenAllFurniture");
         }
+        
+
     }
 
     //家具分类 一楼二楼东西
@@ -264,5 +278,19 @@ public class FurnitureManagement : MonoBehaviour
         }
     }
 
+
+    //测试 家具全部打开
+    public void OpenAllFurniture()
+    {
+        foreach (var item in GameManager.Instance.FurniturePosDic)
+        {
+            item.Value.IsUnlocked = true;
+        }
+
+        foreach (var item in GameManager.Instance.CurrentData.AllFurniture)
+        {
+            item.IsUnlocked = true;
+        }
+    }
 }
 
